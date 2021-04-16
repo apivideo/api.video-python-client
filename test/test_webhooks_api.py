@@ -97,6 +97,12 @@ class TestWebhooksApi(MainTest):
             responses.reset()
 
             kwargs = {
+                'webhooks_create_payload': WebhooksCreatePayload(
+        events=[
+            "video.encoding.quality.completed",
+        ],
+        url="https://example.com/webhooks",
+    ),
             }
             url = '/webhooks'.format(**kwargs)
 

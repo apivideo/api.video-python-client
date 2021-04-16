@@ -6,10 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**get_video_status**](VideosApi.md#get_video_status) | **GET** /videos/{videoId}/status | Show video status
+[**get_status**](VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Show video status
 [**list**](VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pick_thumbnail**](VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**upload_with_upload_token**](VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an upload token
 [**create**](VideosApi.md#create) | **POST** /videos | Create a video
 [**upload**](VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
 [**upload_thumbnail**](VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
@@ -125,8 +126,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_video_status**
-> Videostatus get_video_status(video_id)
+# **get_status**
+> Videostatus get_status(video_id)
 
 Show video status
 
@@ -150,10 +151,10 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Show video status
-        api_response = api_instance.get_video_status(video_id)
+        api_response = api_instance.get_status(video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->get_video_status: %s\n" % e)
+        print("Exception when calling VideosApi->get_status: %s\n" % e)
 ```
 
 
@@ -203,7 +204,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = videos_api.VideosApi(api_client)
     title = "My Video.mp4" # str | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)
     tags = ["captions", "dialogue"] # [str] | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
-    metadata = [{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}] # [str] | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
+    metadata = {
+        "key": "key_example",
+    } # {str: (str,)} | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
     description = "New Zealand" # str | If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)
     sort_by = "publishedAt" # str | Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)
@@ -228,7 +231,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **str**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | **[str]**| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | **[str]**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **metadata** | **{str: (str,)}**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **str**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional]
  **live_stream_id** | **str**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional]
  **sort_by** | **str**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional]
@@ -255,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Video update(video_id)
+> Video update(video_id, video_update_payload)
 
 Update a video
 
@@ -291,21 +294,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
-    ) # VideoUpdatePayload |  (optional)
+    ) # VideoUpdatePayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Update a video
-        api_response = api_instance.update(video_id)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->update: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Update a video
-        api_response = api_instance.update(video_id, video_update_payload=video_update_payload)
+        api_response = api_instance.update(video_id, video_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->update: %s\n" % e)
@@ -317,7 +311,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| The video ID for the video you want to delete. |
- **video_update_payload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  | [optional]
+ **video_update_payload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  |
 
 ### Return type
 
@@ -339,7 +333,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pick_thumbnail**
-> Video pick_thumbnail(video_id)
+> Video pick_thumbnail(video_id, video_thumbnail_pick_payload)
 
 Pick a thumbnail
 
@@ -361,22 +355,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
     video_thumbnail_pick_payload = VideoThumbnailPickPayload(
-        timecode="00:00:00/0",
-    ) # VideoThumbnailPickPayload |  (optional)
+        timecode="04:80:7",
+    ) # VideoThumbnailPickPayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Pick a thumbnail
-        api_response = api_instance.pick_thumbnail(video_id)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->pick_thumbnail: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Pick a thumbnail
-        api_response = api_instance.pick_thumbnail(video_id, video_thumbnail_pick_payload=video_thumbnail_pick_payload)
+        api_response = api_instance.pick_thumbnail(video_id, video_thumbnail_pick_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->pick_thumbnail: %s\n" % e)
@@ -388,7 +373,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. |
- **video_thumbnail_pick_payload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  | [optional]
+ **video_thumbnail_pick_payload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  |
 
 ### Return type
 
@@ -405,6 +390,78 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_with_upload_token**
+> Video upload_with_upload_token(token, file)
+
+Upload with an upload token
+
+When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  We have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+
+### Example
+
+```python
+import apivideo
+from apivideo.api import videos_api
+from apivideo.model.bad_request import BadRequest
+from apivideo.model.video import Video
+from apivideo.configuration import Configuration
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+# When uploading a file you can change the chunk size (in octet)
+configuration = Configuration(chunk_size=10 * 1024 * 1024)
+with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = videos_api.VideosApi(api_client)
+    token = "to1tcmSFHeYY5KzyhOqVKMKb" # str | The unique identifier for the token you want to use to upload a video.
+    file = open('/path/to/file', 'rb') # file_type | The path to the video you want to upload.
+    video_id = "video_id_example" # str | The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Upload with an upload token
+        api_response = api_instance.upload_with_upload_token(token, file)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling VideosApi->upload_with_upload_token: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Upload with an upload token
+        api_response = api_instance.upload_with_upload_token(token, file, video_id=video_id)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling VideosApi->upload_with_upload_token: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **str**| The unique identifier for the token you want to use to upload a video. |
+ **file** | **file_type**| The path to the video you want to upload. |
+ **video_id** | **str**| The video id returned by the first call to this endpoint in a large video upload scenario. | [optional]
+
+### Return type
+
+[**Video**](Video.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

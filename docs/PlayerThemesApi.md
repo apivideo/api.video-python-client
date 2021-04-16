@@ -1,16 +1,16 @@
-# apivideo.PlayersApi
+# apivideo.PlayerThemesApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](PlayersApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**delete_logo**](PlayersApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](PlayersApi.md#list) | **GET** /players | List all players
-[**get**](PlayersApi.md#get) | **GET** /players/{playerId} | Show a player
-[**update**](PlayersApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create**](PlayersApi.md#create) | **POST** /players | Create a player
-[**upload_logo**](PlayersApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
+[**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**delete_logo**](PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list**](PlayerThemesApi.md#list) | **GET** /players | List all players
+[**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**upload_logo**](PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 # **delete**
@@ -24,14 +24,14 @@ Delete a player if you no longer need it. You can delete any player that you hav
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player you want to delete.
 
     # example passing only required values which don't have defaults set
@@ -39,7 +39,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         # Delete a player
         api_instance.delete(player_id)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->delete: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->delete: %s\n" % e)
 ```
 
 
@@ -68,7 +68,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_logo**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} delete_logo(player_id)
+> delete_logo(player_id)
 
 Delete logo
 
@@ -76,23 +76,22 @@ Delete logo
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl14Db6oMJRH6SRVoOwORacK" # str | The unique identifier for the player.
 
     # example passing only required values which don't have defaults set
     try:
         # Delete logo
-        api_response = api_instance.delete_logo(player_id)
-        pprint(api_response)
+        api_instance.delete_logo(player_id)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->delete_logo: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->delete_logo: %s\n" % e)
 ```
 
 
@@ -104,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### HTTP request headers
 
@@ -131,7 +130,7 @@ Retrieve a list of all the players you created, as well as details about each on
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.players_list_response import PlayersListResponse
 from pprint import pprint
@@ -139,7 +138,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     sort_by = "createdAt" # str | createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)
     sort_order = "asc" # str | Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
@@ -152,7 +151,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.list(sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->list: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->list: %s\n" % e)
 ```
 
 
@@ -194,7 +193,7 @@ Use a player ID to retrieve details about the player and display it for viewers.
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
 from pprint import pprint
@@ -202,7 +201,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player you want to retrieve. 
 
     # example passing only required values which don't have defaults set
@@ -211,7 +210,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.get(player_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->get: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->get: %s\n" % e)
 ```
 
 
@@ -250,7 +249,7 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.player_update_payload import PlayerUpdatePayload
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
@@ -259,7 +258,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player.
     player_update_payload = PlayerUpdatePayload() # PlayerUpdatePayload | 
 
@@ -269,7 +268,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(player_id, player_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->update: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->update: %s\n" % e)
 ```
 
 
@@ -309,7 +308,7 @@ Create a player for your video, and customise it.
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.player import Player
 from apivideo.model.player_creation_payload import PlayerCreationPayload
 from pprint import pprint
@@ -317,7 +316,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_creation_payload = PlayerCreationPayload() # PlayerCreationPayload | 
 
     # example passing only required values which don't have defaults set
@@ -326,7 +325,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.create(player_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->create: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->create: %s\n" % e)
 ```
 
 
@@ -364,7 +363,7 @@ The uploaded image maximum size should be 200x100 and its weight should be 200KB
 
 ```python
 import apivideo
-from apivideo.api import players_api
+from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
@@ -373,7 +372,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = players_api.PlayersApi(api_client)
+    api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl14Db6oMJRH6SRVoOwORacK" # str | The unique identifier for the player.
     file = open('/path/to/file', 'rb') # file_type | The name of the file you want to use for your logo.
     link = "path/to/my/logo/mylogo.jpg" # str | The path to the file you want to upload and use as a logo.
@@ -384,7 +383,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.upload_logo(player_id, file, link)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling PlayersApi->upload_logo: %s\n" % e)
+        print("Exception when calling PlayerThemesApi->upload_logo: %s\n" % e)
 ```
 
 

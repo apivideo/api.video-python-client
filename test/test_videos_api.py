@@ -68,12 +68,12 @@ class TestVideosApi(MainTest):
                 self.api.get(**kwargs)
 
     @responses.activate
-    def test_get_video_status(self):
-        """Test case for get_video_status
+    def test_get_status(self):
+        """Test case for get_status
 
         Show video status  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'get_video_status'):
+        for status, json in self.load_json('videos', 'get_status'):
             responses.reset()
 
             kwargs = {
@@ -85,11 +85,11 @@ class TestVideosApi(MainTest):
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.get_video_status(**kwargs)
+                    self.api.get_status(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.get_video_status(**kwargs)
+                self.api.get_status(**kwargs)
 
     @responses.activate
     def test_list(self):
@@ -125,6 +125,21 @@ class TestVideosApi(MainTest):
 
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'video_update_payload': VideoUpdatePayload(
+        player_id="pl4k0jvEUuaTdRAEjQ4Jfrgz",
+        title="title_example",
+        description="A film about good books.",
+        public=True,
+        panoramic=False,
+        mp4_support=True,
+        tags=["maths", "string theory", "video"],
+        metadata=[
+            Metadata(
+                key="Color",
+                value="Green",
+            ),
+        ],
+    ),
             }
             url = '/videos/{video_id}'.format(**kwargs)
 
@@ -149,6 +164,9 @@ class TestVideosApi(MainTest):
 
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'video_thumbnail_pick_payload': VideoThumbnailPickPayload(
+        timecode="04:80:70",
+    ),
             }
             url = '/videos/{video_id}/thumbnail'.format(**kwargs)
 
@@ -161,6 +179,31 @@ class TestVideosApi(MainTest):
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
                 self.api.pick_thumbnail(**kwargs)
+
+    @responses.activate
+    def test_upload_with_upload_token(self):
+        """Test case for upload_with_upload_token
+
+        Upload with an upload token  # noqa: E501
+        """
+        for status, json in self.load_json('videos', 'upload_with_upload_token'):
+            responses.reset()
+
+            kwargs = {
+                'token': "to1tcmSFHeYY5KzyhOqVKMKb",
+                'file': open('test_file', 'rb'),
+            }
+            url = '/upload'.format(**kwargs)
+
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.upload_with_upload_token(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.upload_with_upload_token(**kwargs)
 
     @responses.activate
     def test_create(self):

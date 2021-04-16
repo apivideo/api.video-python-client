@@ -350,7 +350,7 @@ class VideosApi(_EndPoint):
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
 
-    def get_video_status(
+    def get_status(
             self,
             video_id,
             **kwargs
@@ -361,7 +361,7 @@ class VideosApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_video_status(video_id, async_req=True)
+            >>> thread = api.get_status(video_id, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -465,7 +465,7 @@ class VideosApi(_EndPoint):
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `get_video_status`" %
+                        " to method `get_status`" %
                         (key, )
                     )
                 # only throw this nullable ApiValueError if _check_input_type
@@ -475,7 +475,7 @@ class VideosApi(_EndPoint):
                         and kwargs['_check_input_type'] is False):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `get_video_status`" %
+                        " when calling `get_status`" %
                         (key, )
                     )
 
@@ -483,7 +483,7 @@ class VideosApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`get_video_status`" % (key, )
+                        "`get_status`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
@@ -522,7 +522,7 @@ class VideosApi(_EndPoint):
             Keyword Args:
                 title (str): The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.. [optional]
                 tags ([str]): A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.. [optional]
-                metadata ([str]): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.. [optional]
+                metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.. [optional]
                 description (str): If you described a video with a term or sentence, you can add it here to return videos containing this string.. [optional]
                 live_stream_id (str): If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.. [optional]
                 sort_by (str): Allowed: publishedAt, title. You can search by the time videos were published at, or by title.. [optional]
@@ -612,7 +612,7 @@ class VideosApi(_EndPoint):
                 'tags':
                     ([str],),
                 'metadata':
-                    ([str],),
+                    ({str: (str,)},),
                 'description':
                     (str,),
                 'live_stream_id':
@@ -657,7 +657,6 @@ class VideosApi(_EndPoint):
             }
             collection_format_map = {
                 'tags': 'multi',
-                'metadata': 'multi',
             }
 
             for key, value in kwargs.items():
@@ -707,6 +706,7 @@ class VideosApi(_EndPoint):
     def update(
             self,
             video_id,
+            video_update_payload,
             **kwargs
         ):
             """Update a video  # noqa: E501
@@ -715,14 +715,14 @@ class VideosApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.update(video_id, async_req=True)
+            >>> thread = api.update(video_id, video_update_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
                 video_id (str): The video ID for the video you want to delete.
+                video_update_payload (VideoUpdatePayload):
 
             Keyword Args:
-                video_update_payload (VideoUpdatePayload): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -769,6 +769,8 @@ class VideosApi(_EndPoint):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
+            kwargs['video_update_payload'] = \
+                video_update_payload
 
             params_map = {
                 'all': [
@@ -784,6 +786,7 @@ class VideosApi(_EndPoint):
                 ],
                 'required': [
                     'video_id',
+                    'video_update_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -867,6 +870,7 @@ class VideosApi(_EndPoint):
     def pick_thumbnail(
             self,
             video_id,
+            video_thumbnail_pick_payload,
             **kwargs
         ):
             """Pick a thumbnail  # noqa: E501
@@ -875,14 +879,14 @@ class VideosApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.pick_thumbnail(video_id, async_req=True)
+            >>> thread = api.pick_thumbnail(video_id, video_thumbnail_pick_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
                 video_id (str): Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
+                video_thumbnail_pick_payload (VideoThumbnailPickPayload):
 
             Keyword Args:
-                video_thumbnail_pick_payload (VideoThumbnailPickPayload): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -929,6 +933,8 @@ class VideosApi(_EndPoint):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
+            kwargs['video_thumbnail_pick_payload'] = \
+                video_thumbnail_pick_payload
 
             params_map = {
                 'all': [
@@ -944,6 +950,7 @@ class VideosApi(_EndPoint):
                 ],
                 'required': [
                     'video_id',
+                    'video_thumbnail_pick_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -1023,6 +1030,175 @@ class VideosApi(_EndPoint):
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
+
+    def upload_with_upload_token(
+            self,
+            token,
+            file,
+            **kwargs
+        ):
+            """Upload with an upload token  # noqa: E501
+
+            When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  We have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.upload_with_upload_token(token, file, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                token (str): The unique identifier for the token you want to use to upload a video.
+                file (file_type): The path to the video you want to upload.
+
+            Keyword Args:
+                video_id (str): The video id returned by the first call to this endpoint in a large video upload scenario.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                Video
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['token'] = \
+                token
+            kwargs['file'] = \
+                file
+
+            params_map = {
+                'all': [
+                    'token',
+                    'file',
+                    'async_req',
+                    '_host_index',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only',
+                    '_check_input_type',
+                    '_check_return_type'
+                ],
+                'required': [
+                    'token',
+                    'file',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'token':
+                    (str,),
+                'file':
+                    (file_type,),
+                'async_req': (bool,),
+                '_host_index': (none_type, int),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,),
+                '_check_input_type': (bool,),
+                '_check_return_type': (bool,)
+            }
+            attribute_map = {
+                'token': 'token',
+                'file': 'file',
+            }
+            location_map = {
+                'token': 'query',
+                'file': 'form',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `upload_with_upload_token`" %
+                        (key, )
+                    )
+                # only throw this nullable ApiValueError if _check_input_type
+                # is False, if _check_input_type==True we catch this case
+                # in self.__validate_inputs
+                if (key not in params_map['nullable'] and value is None
+                        and kwargs['_check_input_type'] is False):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `upload_with_upload_token`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`upload_with_upload_token`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            res = None
+            for content_range, chunk in self._chunk_file(params['file']):
+                res = self.api_client.call_api(
+                    "/upload",
+                    "POST",
+                    params['path'],
+                    params['query'],
+                    {**params['header'], 'Content-Range': content_range},
+                    body=params['body'],
+                    post_params=params['form'],
+                    files=chunk,
+                    response_type=(Video,),
+                    async_req=kwargs['async_req'],
+                    _check_type=kwargs['_check_return_type'],
+                    _return_http_data_only=kwargs['_return_http_data_only'],
+                    _preload_content=kwargs['_preload_content'],
+                    _request_timeout=kwargs['_request_timeout'],
+                    collection_formats=params['collection_format'])
+            return res  # return the last response
 
     def create(
             self,

@@ -36,7 +36,7 @@ class RawStatisticsApi(_EndPoint):
     Do not edit the class manually.
     """
 
-    def get_live_stream_analytics(
+    def list_live_stream_sessions(
             self,
             live_stream_id,
             **kwargs
@@ -46,7 +46,7 @@ class RawStatisticsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_live_stream_analytics(live_stream_id, async_req=True)
+            >>> thread = api.list_live_stream_sessions(live_stream_id, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -168,7 +168,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `get_live_stream_analytics`" %
+                        " to method `list_live_stream_sessions`" %
                         (key, )
                     )
                 # only throw this nullable ApiValueError if _check_input_type
@@ -178,7 +178,7 @@ class RawStatisticsApi(_EndPoint):
                         and kwargs['_check_input_type'] is False):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `get_live_stream_analytics`" %
+                        " when calling `list_live_stream_sessions`" %
                         (key, )
                     )
 
@@ -186,7 +186,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`get_live_stream_analytics`" % (key, )
+                        "`list_live_stream_sessions`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
@@ -208,7 +208,7 @@ class RawStatisticsApi(_EndPoint):
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
 
-    def list_player_session_events(
+    def list_session_events(
             self,
             session_id,
             **kwargs
@@ -219,7 +219,7 @@ class RawStatisticsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_player_session_events(session_id, async_req=True)
+            >>> thread = api.list_session_events(session_id, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -335,7 +335,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `list_player_session_events`" %
+                        " to method `list_session_events`" %
                         (key, )
                     )
                 # only throw this nullable ApiValueError if _check_input_type
@@ -345,7 +345,7 @@ class RawStatisticsApi(_EndPoint):
                         and kwargs['_check_input_type'] is False):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `list_player_session_events`" %
+                        " when calling `list_session_events`" %
                         (key, )
                     )
 
@@ -353,7 +353,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`list_player_session_events`" % (key, )
+                        "`list_session_events`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
@@ -375,7 +375,7 @@ class RawStatisticsApi(_EndPoint):
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
 
-    def list_sessions(
+    def list_video_sessions(
             self,
             video_id,
             **kwargs
@@ -386,7 +386,7 @@ class RawStatisticsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_sessions(video_id, async_req=True)
+            >>> thread = api.list_video_sessions(video_id, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -515,7 +515,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `list_sessions`" %
+                        " to method `list_video_sessions`" %
                         (key, )
                     )
                 # only throw this nullable ApiValueError if _check_input_type
@@ -525,7 +525,7 @@ class RawStatisticsApi(_EndPoint):
                         and kwargs['_check_input_type'] is False):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `list_sessions`" %
+                        " when calling `list_video_sessions`" %
                         (key, )
                     )
 
@@ -533,7 +533,7 @@ class RawStatisticsApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`list_sessions`" % (key, )
+                        "`list_video_sessions`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)

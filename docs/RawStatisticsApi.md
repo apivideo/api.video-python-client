@@ -4,13 +4,13 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_live_stream_analytics**](RawStatisticsApi.md#get_live_stream_analytics) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**list_player_session_events**](RawStatisticsApi.md#list_player_session_events) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**list_sessions**](RawStatisticsApi.md#list_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**list_live_stream_sessions**](RawStatisticsApi.md#list_live_stream_sessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**list_session_events**](RawStatisticsApi.md#list_session_events) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**list_video_sessions**](RawStatisticsApi.md#list_video_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
-# **get_live_stream_analytics**
-> RawStatisticsListLiveStreamAnalyticsResponse get_live_stream_analytics(live_stream_id)
+# **list_live_stream_sessions**
+> RawStatisticsListLiveStreamAnalyticsResponse list_live_stream_sessions(live_stream_id)
 
 List live stream player sessions
 
@@ -35,19 +35,19 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List live stream player sessions
-        api_response = api_instance.get_live_stream_analytics(live_stream_id)
+        api_response = api_instance.list_live_stream_sessions(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->get_live_stream_analytics: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_live_stream_sessions: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # List live stream player sessions
-        api_response = api_instance.get_live_stream_analytics(live_stream_id, period=period, current_page=current_page, page_size=page_size)
+        api_response = api_instance.list_live_stream_sessions(live_stream_id, period=period, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->get_live_stream_analytics: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_live_stream_sessions: %s\n" % e)
 ```
 
 
@@ -78,8 +78,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_player_session_events**
-> RawStatisticsListPlayerSessionEventsResponse list_player_session_events(session_id)
+# **list_session_events**
+> RawStatisticsListPlayerSessionEventsResponse list_session_events(session_id)
 
 List player session events
 
@@ -105,19 +105,19 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List player session events
-        api_response = api_instance.list_player_session_events(session_id)
+        api_response = api_instance.list_session_events(session_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->list_player_session_events: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_session_events: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # List player session events
-        api_response = api_instance.list_player_session_events(session_id, current_page=current_page, page_size=page_size)
+        api_response = api_instance.list_session_events(session_id, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->list_player_session_events: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_session_events: %s\n" % e)
 ```
 
 
@@ -147,8 +147,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_sessions**
-> RawStatisticsListSessionsResponse list_sessions(video_id)
+# **list_video_sessions**
+> RawStatisticsListSessionsResponse list_video_sessions(video_id)
 
 List video player sessions
 
@@ -176,19 +176,19 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # List video player sessions
-        api_response = api_instance.list_sessions(video_id)
+        api_response = api_instance.list_video_sessions(video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->list_sessions: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_video_sessions: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # List video player sessions
-        api_response = api_instance.list_sessions(video_id, period=period, metadata=metadata, current_page=current_page, page_size=page_size)
+        api_response = api_instance.list_video_sessions(video_id, period=period, metadata=metadata, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling RawStatisticsApi->list_sessions: %s\n" % e)
+        print("Exception when calling RawStatisticsApi->list_video_sessions: %s\n" % e)
 ```
 
 

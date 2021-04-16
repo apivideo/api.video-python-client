@@ -178,11 +178,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Webhook create()
+> Webhook create(webhooks_create_payload)
 
 Create Webhook
 
-Webhooks can push notifications to your server, rather than polling api.video for changes
+Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the ```video.encoding.quality.completed``` event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed.
 
 ### Example
 
@@ -203,13 +203,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
             "video.encoding.quality.completed",
         ],
         url="https://example.com/webhooks",
-    ) # WebhooksCreatePayload |  (optional)
+    ) # WebhooksCreatePayload | 
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Create Webhook
-        api_response = api_instance.create(webhooks_create_payload=webhooks_create_payload)
+        api_response = api_instance.create(webhooks_create_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling WebhooksApi->create: %s\n" % e)
@@ -220,7 +219,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhooks_create_payload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  | [optional]
+ **webhooks_create_payload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  |
 
 ### Return type
 

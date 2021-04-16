@@ -57,7 +57,7 @@ class VideoThumbnailPickPayload(ModelNormal):
     validations = {
         ('timecode',): {
             'regex': {
-                'pattern': r'00:00:00.00',  # noqa: E501
+                'pattern': r'\d{2}:\d{2}:\d{2}(\.\d{2})?',  # noqa: E501
             },
         },
     }

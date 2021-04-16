@@ -1,16 +1,16 @@
-# apivideo.LiveApi
+# apivideo.LiveStreamsApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](LiveApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**delete_thumbnail**](LiveApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](LiveApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](LiveApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](LiveApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](LiveApi.md#create) | **POST** /live-streams | Create live stream
-[**upload_thumbnail**](LiveApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete**](LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**delete_thumbnail**](LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**get**](LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**update**](LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**create**](LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**upload_thumbnail**](LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
 # **delete**
@@ -22,13 +22,13 @@ Delete a live stream
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream that you want to remove.
 
     # example passing only required values which don't have defaults set
@@ -36,7 +36,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         # Delete a live stream
         api_instance.delete(live_stream_id)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->delete: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->delete: %s\n" % e)
 ```
 
 
@@ -74,7 +74,7 @@ Send the unique identifier for a live stream to delete it from the system.
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
@@ -82,7 +82,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique identifier for the live stream you want to delete. 
 
     # example passing only required values which don't have defaults set
@@ -91,7 +91,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.delete_thumbnail(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->delete_thumbnail: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->delete_thumbnail: %s\n" % e)
 ```
 
 
@@ -130,14 +130,14 @@ With no parameters added to the url, this will return all livestreams. Query by 
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.live_stream_list_response import LiveStreamListResponse
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     stream_key = "30087931-229e-42cf-b5f9-e91bcc1f7332" # str | The unique stream key that allows you to stream videos. (optional)
     name = "My Video" # str | You can filter live streams by their name or a part of their name. (optional)
     sort_by = "createdAt" # str | Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
@@ -152,7 +152,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.list(stream_key=stream_key, name=name, sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->list: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->list: %s\n" % e)
 ```
 
 
@@ -195,14 +195,14 @@ Supply a LivestreamId, and you'll get all the details for streaming into, and wa
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream you want to watch.
 
     # example passing only required values which don't have defaults set
@@ -211,7 +211,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.get(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->get: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->get: %s\n" % e)
 ```
 
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> LiveStream update(live_stream_id)
+> LiveStream update(live_stream_id, live_stream_update_payload)
 
 Update a live stream
 
@@ -249,7 +249,7 @@ Use this endpoint to update the player, or to turn recording on/off (saving a co
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream_update_payload import LiveStreamUpdatePayload
 from apivideo.model.live_stream import LiveStream
@@ -258,31 +258,22 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
     live_stream_update_payload = LiveStreamUpdatePayload(
         name="My Live Stream Video",
         public=True,
         record=True,
         player_id="pl45KFKdlddgk654dspkze",
-    ) # LiveStreamUpdatePayload |  (optional)
+    ) # LiveStreamUpdatePayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Update a live stream
-        api_response = api_instance.update(live_stream_id)
+        api_response = api_instance.update(live_stream_id, live_stream_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->update: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Update a live stream
-        api_response = api_instance.update(live_stream_id, live_stream_update_payload=live_stream_update_payload)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->update: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->update: %s\n" % e)
 ```
 
 
@@ -291,7 +282,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **live_stream_id** | **str**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
- **live_stream_update_payload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  | [optional]
+ **live_stream_update_payload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  |
 
 ### Return type
 
@@ -312,7 +303,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> LiveStream create()
+> LiveStream create(live_stream_create_payload)
 
 Create live stream
 
@@ -322,7 +313,7 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.live_stream_create_payload import LiveStreamCreatePayload
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream import LiveStream
@@ -331,22 +322,21 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_create_payload = LiveStreamCreatePayload(
         name="My Live Stream Video",
         record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
-    ) # LiveStreamCreatePayload |  (optional)
+    ) # LiveStreamCreatePayload | 
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Create live stream
-        api_response = api_instance.create(live_stream_create_payload=live_stream_create_payload)
+        api_response = api_instance.create(live_stream_create_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->create: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->create: %s\n" % e)
 ```
 
 
@@ -354,7 +344,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **live_stream_create_payload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  | [optional]
+ **live_stream_create_payload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  |
 
 ### Return type
 
@@ -385,7 +375,7 @@ Upload an image to use as a backdrop for your livestream.
 
 ```python
 import apivideo
-from apivideo.api import live_api
+from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.live_stream import LiveStream
@@ -394,7 +384,7 @@ from pprint import pprint
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = live_api.LiveApi(api_client)
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique ID for the live stream you want to upload.
     file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
 
@@ -404,7 +394,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.upload_thumbnail(live_stream_id, file)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveApi->upload_thumbnail: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->upload_thumbnail: %s\n" % e)
 ```
 
 

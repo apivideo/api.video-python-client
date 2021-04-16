@@ -55,11 +55,6 @@ class PaginationLink(ModelNormal):
     }
 
     validations = {
-        ('rel',): {
-            'regex': {
-                'pattern': r'^self|first|next|last$',  # noqa: E501
-            },
-        },
     }
 
     additional_properties_type = None

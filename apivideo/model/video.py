@@ -82,11 +82,11 @@ class Video(ModelNormal):
         lazy_import()
         return {
             'video_id': (str,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
             'title': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'published_at': (str,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
             'tags': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'metadata': ([Metadata],),  # noqa: E501
             'source': (VideoSource,),  # noqa: E501
@@ -104,11 +104,11 @@ class Video(ModelNormal):
 
     attribute_map = {
         'video_id': 'videoId',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'title': 'title',  # noqa: E501
         'description': 'description',  # noqa: E501
         'published_at': 'publishedAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'source': 'source',  # noqa: E501
@@ -166,11 +166,11 @@ class Video(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             video_id (str): The unique identifier of the video object.. [optional]  # noqa: E501
+            created_at (datetime): When an webhook was created, presented in ISO-8601 format.. [optional]  # noqa: E501
             title (str): The title of the video content. . [optional]  # noqa: E501
             description (str): A description for the video content. . [optional]  # noqa: E501
             published_at (str): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
             updated_at (datetime): The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
-            created_at (str): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
             tags ([bool, date, datetime, dict, float, int, list, str, none_type]): One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  . [optional]  # noqa: E501
             metadata ([Metadata]): Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  . [optional]  # noqa: E501
             source (VideoSource): [optional]  # noqa: E501

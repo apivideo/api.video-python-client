@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Subtitle update(video_id, language)
+> Subtitle update(video_id, language, captions_update_payload)
 
 Update caption
 
@@ -220,21 +220,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
     captions_update_payload = CaptionsUpdatePayload(
         default=True,
-    ) # CaptionsUpdatePayload |  (optional)
+    ) # CaptionsUpdatePayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Update caption
-        api_response = api_instance.update(video_id, language)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->update: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Update caption
-        api_response = api_instance.update(video_id, language, captions_update_payload=captions_update_payload)
+        api_response = api_instance.update(video_id, language, captions_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling CaptionsApi->update: %s\n" % e)
@@ -247,7 +238,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| The unique identifier for the video you want to have automatic captions for.  |
  **language** | **str**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
- **captions_update_payload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  | [optional]
+ **captions_update_payload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
 
 ### Return type
 

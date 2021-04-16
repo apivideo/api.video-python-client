@@ -101,6 +101,9 @@ class TestCaptionsApi(MainTest):
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Prklg",
                 'language': "en",
+                'captions_update_payload': CaptionsUpdatePayload(
+        default=True,
+    ),
             }
             url = '/videos/{video_id}/captions/{language}'.format(**kwargs)
 

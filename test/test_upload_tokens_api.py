@@ -10,7 +10,7 @@
 from dateutil.parser import parse as dateutil_parser
 from urllib3_mock import Responses
 
-from apivideo.api.videos_delegated_upload_api import VideosDelegatedUploadApi  # noqa: E501
+from apivideo.api.upload_tokens_api import UploadTokensApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.bad_request import BadRequest
@@ -18,7 +18,6 @@ from apivideo.model.not_found import NotFound
 from apivideo.model.token_create_payload import TokenCreatePayload
 from apivideo.model.token_list_response import TokenListResponse
 from apivideo.model.upload_token import UploadToken
-from apivideo.model.video import Video
 
 from helper import MainTest
 
@@ -26,12 +25,12 @@ from helper import MainTest
 responses = Responses()
 
 
-class TestVideosDelegatedUploadApi(MainTest):
-    """VideosDelegatedUploadApi unit test"""
+class TestUploadTokensApi(MainTest):
+    """UploadTokensApi unit test"""
 
     def setUp(self):
         super().setUp()
-        self.api = VideosDelegatedUploadApi(self.client)  # noqa: E501
+        self.api = UploadTokensApi(self.client)  # noqa: E501
 
     @responses.activate
     def test_delete_token(self):
@@ -42,12 +41,12 @@ class TestVideosDelegatedUploadApi(MainTest):
         pass
 
     @responses.activate
-    def test_list_tokens(self):
-        """Test case for list_tokens
+    def test_list(self):
+        """Test case for list
 
         List all active upload tokens.  # noqa: E501
         """
-        for status, json in self.load_json('videos_delegated_upload', 'list_tokens'):
+        for status, json in self.load_json('upload_tokens', 'list'):
             responses.reset()
 
             kwargs = {
@@ -58,11 +57,11 @@ class TestVideosDelegatedUploadApi(MainTest):
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list_tokens(**kwargs)
+                    self.api.list(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list_tokens(**kwargs)
+                self.api.list(**kwargs)
 
     @responses.activate
     def test_get_token(self):
@@ -70,7 +69,7 @@ class TestVideosDelegatedUploadApi(MainTest):
 
         Show upload token  # noqa: E501
         """
-        for status, json in self.load_json('videos_delegated_upload', 'get_token'):
+        for status, json in self.load_json('upload_tokens', 'get_token'):
             responses.reset()
 
             kwargs = {
@@ -89,40 +88,18 @@ class TestVideosDelegatedUploadApi(MainTest):
                 self.api.get_token(**kwargs)
 
     @responses.activate
-    def test_upload(self):
-        """Test case for upload
-
-        Upload with an upload token  # noqa: E501
-        """
-        for status, json in self.load_json('videos_delegated_upload', 'upload'):
-            responses.reset()
-
-            kwargs = {
-                'token': "to1tcmSFHeYY5KzyhOqVKMKb",
-                'file': open('test_file', 'rb'),
-            }
-            url = '/upload'.format(**kwargs)
-
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
-
-            if status[0] == '4':
-                with self.assertRaises(ApiException) as context:
-                    self.api.upload(**kwargs)
-                if status == '404':
-                    self.assertIsInstance(context.exception, NotFoundException)
-            else:
-                self.api.upload(**kwargs)
-
-    @responses.activate
     def test_create_token(self):
         """Test case for create_token
 
         Generate an upload token  # noqa: E501
         """
-        for status, json in self.load_json('videos_delegated_upload', 'create_token'):
+        for status, json in self.load_json('upload_tokens', 'create_token'):
             responses.reset()
 
             kwargs = {
+                'token_create_payload': TokenCreatePayload(
+        ttl=0,
+    ),
             }
             url = '/upload-tokens'.format(**kwargs)
 

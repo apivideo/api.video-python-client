@@ -510,20 +510,22 @@ class WebhooksApi(_EndPoint):
 
     def create(
             self,
+            webhooks_create_payload,
             **kwargs
         ):
             """Create Webhook  # noqa: E501
 
-            Webhooks can push notifications to your server, rather than polling api.video for changes  # noqa: E501
+            Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the ```video.encoding.quality.completed``` event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create(async_req=True)
+            >>> thread = api.create(webhooks_create_payload, async_req=True)
             >>> result = thread.get()
 
+            Args:
+                webhooks_create_payload (WebhooksCreatePayload):
 
             Keyword Args:
-                webhooks_create_payload (WebhooksCreatePayload): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -568,6 +570,8 @@ class WebhooksApi(_EndPoint):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['webhooks_create_payload'] = \
+                webhooks_create_payload
 
             params_map = {
                 'all': [
@@ -580,7 +584,9 @@ class WebhooksApi(_EndPoint):
                     '_check_input_type',
                     '_check_return_type'
                 ],
-                'required': [],
+                'required': [
+                    'webhooks_create_payload',
+                ],
                 'nullable': [
                     '_request_timeout'
                 ],

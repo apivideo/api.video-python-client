@@ -85,8 +85,8 @@ class LiveStream(ModelNormal):
             'assets': (LiveStreamAssets,),  # noqa: E501
             'player_id': (str,),  # noqa: E501
             'broadcasting': (bool,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'updated_at': (str,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime,),  # noqa: E501
         }
 
     @cached_property
@@ -161,8 +161,8 @@ class LiveStream(ModelNormal):
             assets (LiveStreamAssets): [optional]  # noqa: E501
             player_id (str): The unique identifier for the player.. [optional]  # noqa: E501
             broadcasting (bool): Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.. [optional]  # noqa: E501
-            created_at (str): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
-            updated_at (str): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
+            created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
+            updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -538,6 +538,7 @@ class CaptionsApi(_EndPoint):
             self,
             video_id,
             language,
+            captions_update_payload,
             **kwargs
         ):
             """Update caption  # noqa: E501
@@ -546,15 +547,15 @@ class CaptionsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.update(video_id, language, async_req=True)
+            >>> thread = api.update(video_id, language, captions_update_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
                 video_id (str): The unique identifier for the video you want to have automatic captions for. 
                 language (str): A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+                captions_update_payload (CaptionsUpdatePayload):
 
             Keyword Args:
-                captions_update_payload (CaptionsUpdatePayload): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -603,6 +604,8 @@ class CaptionsApi(_EndPoint):
                 video_id
             kwargs['language'] = \
                 language
+            kwargs['captions_update_payload'] = \
+                captions_update_payload
 
             params_map = {
                 'all': [
@@ -620,6 +623,7 @@ class CaptionsApi(_EndPoint):
                 'required': [
                     'video_id',
                     'language',
+                    'captions_update_payload',
                 ],
                 'nullable': [
                     '_request_timeout'

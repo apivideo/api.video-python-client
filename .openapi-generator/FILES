@@ -2,14 +2,13 @@
 README.md
 apivideo/__init__.py
 apivideo/api/__init__.py
-apivideo/api/account_api.py
 apivideo/api/captions_api.py
 apivideo/api/chapters_api.py
-apivideo/api/live_api.py
-apivideo/api/players_api.py
+apivideo/api/live_streams_api.py
+apivideo/api/player_themes_api.py
 apivideo/api/raw_statistics_api.py
+apivideo/api/upload_tokens_api.py
 apivideo/api/videos_api.py
-apivideo/api/videos_delegated_upload_api.py
 apivideo/api/webhooks_api.py
 apivideo/api_client.py
 apivideo/apis/__init__.py
@@ -90,7 +89,6 @@ apivideo/models/__init__.py
 apivideo/rest.py
 docs/AccessToken.md
 docs/Account.md
-docs/AccountApi.md
 docs/AccountQuota.md
 docs/AuthenticatePayload.md
 docs/BadRequest.md
@@ -102,7 +100,6 @@ docs/Chapter.md
 docs/ChaptersApi.md
 docs/ChaptersListResponse.md
 docs/Link.md
-docs/LiveApi.md
 docs/LiveStream.md
 docs/LiveStreamAssets.md
 docs/LiveStreamCreatePayload.md
@@ -114,6 +111,7 @@ docs/LiveStreamSessionLocation.md
 docs/LiveStreamSessionReferrer.md
 docs/LiveStreamSessionSession.md
 docs/LiveStreamUpdatePayload.md
+docs/LiveStreamsApi.md
 docs/Metadata.md
 docs/NotFound.md
 docs/Pagination.md
@@ -123,9 +121,9 @@ docs/PlayerAllOf.md
 docs/PlayerAllOfAssets.md
 docs/PlayerCreationPayload.md
 docs/PlayerSessionEvent.md
+docs/PlayerThemesApi.md
 docs/PlayerUpdatePayload.md
 docs/Playerinput.md
-docs/PlayersApi.md
 docs/PlayersListResponse.md
 docs/Quality.md
 docs/RawStatisticsApi.md
@@ -137,6 +135,7 @@ docs/Subtitle.md
 docs/TokenCreatePayload.md
 docs/TokenListResponse.md
 docs/UploadToken.md
+docs/UploadTokensApi.md
 docs/Video.md
 docs/VideoAssets.md
 docs/VideoCreatePayload.md
@@ -153,7 +152,6 @@ docs/VideoSourceLiveStreamLink.md
 docs/VideoThumbnailPickPayload.md
 docs/VideoUpdatePayload.md
 docs/VideosApi.md
-docs/VideosDelegatedUploadApi.md
 docs/VideosListResponse.md
 docs/Videostatus.md
 docs/VideostatusEncoding.md
@@ -169,15 +167,14 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/helper.py
-test/test_account_api.py
 test/test_auth.py
 test/test_captions_api.py
 test/test_chapters_api.py
 test/test_file
-test/test_live_api.py
-test/test_players_api.py
+test/test_live_streams_api.py
+test/test_player_themes_api.py
 test/test_raw_statistics_api.py
+test/test_upload_tokens_api.py
 test/test_videos_api.py
-test/test_videos_delegated_upload_api.py
 test/test_webhooks_api.py
 tox.ini

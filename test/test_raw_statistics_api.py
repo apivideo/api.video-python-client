@@ -32,12 +32,12 @@ class TestRawStatisticsApi(MainTest):
         self.api = RawStatisticsApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_get_live_stream_analytics(self):
-        """Test case for get_live_stream_analytics
+    def test_list_live_stream_sessions(self):
+        """Test case for list_live_stream_sessions
 
         List live stream player sessions  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'get_live_stream_analytics'):
+        for status, json in self.load_json('raw_statistics', 'list_live_stream_sessions'):
             responses.reset()
 
             kwargs = {
@@ -49,19 +49,19 @@ class TestRawStatisticsApi(MainTest):
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.get_live_stream_analytics(**kwargs)
+                    self.api.list_live_stream_sessions(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.get_live_stream_analytics(**kwargs)
+                self.api.list_live_stream_sessions(**kwargs)
 
     @responses.activate
-    def test_list_player_session_events(self):
-        """Test case for list_player_session_events
+    def test_list_session_events(self):
+        """Test case for list_session_events
 
         List player session events  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'list_player_session_events'):
+        for status, json in self.load_json('raw_statistics', 'list_session_events'):
             responses.reset()
 
             kwargs = {
@@ -73,19 +73,19 @@ class TestRawStatisticsApi(MainTest):
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list_player_session_events(**kwargs)
+                    self.api.list_session_events(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list_player_session_events(**kwargs)
+                self.api.list_session_events(**kwargs)
 
     @responses.activate
-    def test_list_sessions(self):
-        """Test case for list_sessions
+    def test_list_video_sessions(self):
+        """Test case for list_video_sessions
 
         List video player sessions  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'list_sessions'):
+        for status, json in self.load_json('raw_statistics', 'list_video_sessions'):
             responses.reset()
 
             kwargs = {
@@ -97,9 +97,9 @@ class TestRawStatisticsApi(MainTest):
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list_sessions(**kwargs)
+                    self.api.list_video_sessions(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list_sessions(**kwargs)
+                self.api.list_video_sessions(**kwargs)
 
