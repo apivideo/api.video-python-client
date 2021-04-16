@@ -24,6 +24,7 @@ Delete a live stream
 import apivideo
 from apivideo.api import live_api
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -77,6 +78,7 @@ from apivideo.api import live_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -131,6 +133,7 @@ import apivideo
 from apivideo.api import live_api
 from apivideo.model.live_stream_list_response import LiveStreamListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -195,6 +198,7 @@ import apivideo
 from apivideo.api import live_api
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -250,6 +254,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream_update_payload import LiveStreamUpdatePayload
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -322,6 +327,7 @@ from apivideo.model.live_stream_create_payload import LiveStreamCreatePayload
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -384,6 +390,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

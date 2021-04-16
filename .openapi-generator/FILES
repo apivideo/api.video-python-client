@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 apivideo/__init__.py
 apivideo/api/__init__.py
@@ -174,6 +173,7 @@ test/test_account_api.py
 test/test_auth.py
 test/test_captions_api.py
 test/test_chapters_api.py
+test/test_file
 test/test_live_api.py
 test/test_players_api.py
 test/test_raw_statistics_api.py

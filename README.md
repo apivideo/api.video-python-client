@@ -31,7 +31,7 @@ with apivideo.AuthenticatedApiClient(api_key) as client:
     # with apivideo.AuthenticatedApiClient(api_key, production=False) as client:
 
     videos_api = VideosApi(client)
-    videos = videos_api.list_videos()
+    videos = videos_api.list()
 ```
 
 In this context the client will keep its authentification updated.
@@ -52,7 +52,7 @@ client = apivideo.AuthenticatedApiClient(api_key):
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)
 client.connect()
 videos_api = VideosApi(client)
-videos = videos_api.list_videos()
+videos = videos_api.list()
 
 try:
     client.refresh_token()

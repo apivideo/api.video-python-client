@@ -22,6 +22,7 @@ import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -78,6 +79,7 @@ from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.chapters_list_response import ChaptersListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -144,6 +146,7 @@ from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.chapter import Chapter
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -202,6 +205,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.chapter import Chapter
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

@@ -22,6 +22,7 @@ from apivideo.api import account_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.account import Account
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

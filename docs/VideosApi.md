@@ -29,6 +29,7 @@ import apivideo
 from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -83,6 +84,7 @@ from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -138,6 +140,7 @@ from apivideo.api import videos_api
 from apivideo.model.videostatus import Videostatus
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -193,17 +196,14 @@ from apivideo.api import videos_api
 from apivideo.model.videos_list_response import VideosListResponse
 from apivideo.model.bad_request import BadRequest
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     title = "My Video.mp4" # str | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)
-    tags = [
-        ""tags": ["captions", "dialogue"]",
-    ] # [str] | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
-    metadata = [
-        "[{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}]",
-    ] # [str] | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
+    tags = ["captions", "dialogue"] # [str] | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
+    metadata = [{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}] # [str] | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
     description = "New Zealand" # str | If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)
     sort_by = "publishedAt" # str | Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)
@@ -271,6 +271,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -283,9 +284,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         public=True,
         panoramic=False,
         mp4_support=True,
-        tags=[
-            "["maths", "string theory", "video"]",
-        ],
+        tags=["maths", "string theory", "video"],
         metadata=[
             Metadata(
                 key="Color",
@@ -355,6 +354,7 @@ from apivideo.model.video_thumbnail_pick_payload import VideoThumbnailPickPayloa
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Video create()
+> Video create(video_create_payload)
 
 Create a video
 
@@ -424,6 +424,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.video_create_payload import VideoCreatePayload
 from apivideo.model.video import Video
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -436,9 +437,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         panoramic=False,
         mp4_support=True,
         player_id="pl45KFKdlddgk654dspkze",
-        tags=[
-            "["maths", "string theory", "video"]",
-        ],
+        tags=["maths", "string theory", "video"],
         metadata=[
             Metadata(
                 key="Color",
@@ -446,13 +445,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
             ),
         ],
         published_at=dateutil_parser('2020-07-14T23:36:18.598Z'),
-    ) # VideoCreatePayload | video to create (optional)
+    ) # VideoCreatePayload | video to create
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Create a video
-        api_response = api_instance.create(video_create_payload=video_create_payload)
+        api_response = api_instance.create(video_create_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->create: %s\n" % e)
@@ -463,7 +461,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_create_payload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | [optional]
+ **video_create_payload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create |
 
 ### Return type
 
@@ -499,28 +497,22 @@ from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
+from apivideo.configuration import Configuration
 from pprint import pprint
+
 # Enter a context with an instance of the API client
-with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+# When uploading a file you can change the chunk size (in octet)
+configuration = Configuration(chunk_size=10 * 1024 * 1024)
+with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | Enter the videoId you want to use to upload your video.
     file = open('/path/to/file', 'rb') # file_type | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
-    content_range = "Content-Range: bytes 200-100/5000" # str | Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Upload a video
         api_response = api_instance.upload(video_id, file)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->upload: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Upload a video
-        api_response = api_instance.upload(video_id, file, content_range=content_range)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->upload: %s\n" % e)
@@ -533,7 +525,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| Enter the videoId you want to use to upload your video. |
  **file** | **file_type**| The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video. |
- **content_range** | **str**| Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. | [optional]
 
 ### Return type
 
@@ -570,6 +561,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

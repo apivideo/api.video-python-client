@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **assets** | [**LiveStreamAssets**](LiveStreamAssets.md) |  | [optional] 
 **player_id** | **str** | The unique identifier for the player. | [optional] 
 **broadcasting** | **bool** | Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not. | [optional] 
+**created_at** | **str** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. | [optional] 
+**updated_at** | **str** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

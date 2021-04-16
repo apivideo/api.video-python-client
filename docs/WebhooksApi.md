@@ -24,6 +24,7 @@ import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -77,6 +78,7 @@ import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.webhook import Webhook
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -130,6 +132,7 @@ import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.webhooks_list_response import WebhooksListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -190,6 +193,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.webhook import Webhook
 from apivideo.model.webhooks_create_payload import WebhooksCreatePayload
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

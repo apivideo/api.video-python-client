@@ -162,4 +162,4 @@ def render_path(path_to_item):
 class ApiAuthException(ApiException):
 
     def __init__(self, status=None, reason=None, http_resp=None):
-        super(ForbiddenException, self).__init__(status, reason, http_resp)
+        super(ApiAuthException, self).__init__(status, reason, http_resp)

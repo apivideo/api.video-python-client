@@ -15,8 +15,6 @@ from apivideo.model_utils import check_validations
 from apivideo.model_utils import file_type
 from apivideo.model_utils import validate_and_convert_types
 
-CHUNK_SIZE = 1024 * 1024
-
 
 class ChunkIO(io.BytesIO):
     def __init__(self, content: bytes, name: str):
@@ -111,7 +109,7 @@ class EndPoint(object):
         file_size = file.tell()
         file.seek(0, 0)
 
-        for chunk in iter(partial(file.read, CHUNK_SIZE), b''):
+        for chunk in iter(partial(file.read, self.api_client.configuration.chunk_size), b''):
             offset = index + len(chunk)
             yield 'bytes {}-{}/{}'.format(index, offset - 1, file_size), {file_name: [ChunkIO(chunk, file.name)]}
             index = offset

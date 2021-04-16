@@ -90,6 +90,7 @@ class Configuration(object):
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
                  ssl_ca_cert=None,
+                 chunk_size=1024 * 1024,
                  ):
         """Constructor
         """
@@ -194,6 +195,9 @@ class Configuration(object):
 
         # Options to pass down to the underlying urllib3 socket
         self.socket_options = None
+
+        # chunk size for upload
+        self.chunk_size = chunk_size
 
     def __deepcopy__(self, memo):
         cls = self.__class__

@@ -25,6 +25,7 @@ import apivideo
 from apivideo.api import videos_delegated_upload_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -78,6 +79,7 @@ import apivideo
 from apivideo.api import videos_delegated_upload_api
 from apivideo.model.token_list_response import TokenListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -139,6 +141,7 @@ from apivideo.api import videos_delegated_upload_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.upload_token import UploadToken
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -193,14 +196,17 @@ import apivideo
 from apivideo.api import videos_delegated_upload_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.video import Video
+from apivideo.configuration import Configuration
 from pprint import pprint
+
 # Enter a context with an instance of the API client
-with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+# When uploading a file you can change the chunk size (in octet)
+configuration = Configuration(chunk_size=10 * 1024 * 1024)
+with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) as api_client:
     # Create an instance of the API class
     api_instance = videos_delegated_upload_api.VideosDelegatedUploadApi(api_client)
     token = "to1tcmSFHeYY5KzyhOqVKMKb" # str | The unique identifier for the token you want to use to upload a video.
     file = open('/path/to/file', 'rb') # file_type | The path to the video you want to upload.
-    content_range = "Content-Range: bytes 200-100/5000" # str | Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. (optional)
     video_id = "video_id_example" # str | The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
 
     # example passing only required values which don't have defaults set
@@ -215,7 +221,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # and optional values
     try:
         # Upload with an upload token
-        api_response = api_instance.upload(token, file, content_range=content_range, video_id=video_id)
+        api_response = api_instance.upload(token, file, video_id=video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosDelegatedUploadApi->upload: %s\n" % e)
@@ -228,7 +234,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **str**| The unique identifier for the token you want to use to upload a video. |
  **file** | **file_type**| The path to the video you want to upload. |
- **content_range** | **str**| Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object. | [optional]
  **video_id** | **str**| The video id returned by the first call to this endpoint in a large video upload scenario. | [optional]
 
 ### Return type
@@ -265,6 +270,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.token_create_payload import TokenCreatePayload
 from apivideo.model.upload_token import UploadToken
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

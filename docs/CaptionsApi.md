@@ -25,6 +25,7 @@ import apivideo
 from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -81,6 +82,7 @@ from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.captions_list_response import CaptionsListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -149,6 +151,7 @@ from apivideo.api import captions_api
 from apivideo.model.subtitle import Subtitle
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -208,6 +211,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.captions_update_payload import CaptionsUpdatePayload
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -280,6 +284,7 @@ from apivideo.model.subtitle import Subtitle
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class

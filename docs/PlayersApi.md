@@ -27,6 +27,7 @@ import apivideo
 from apivideo.api import players_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -78,6 +79,7 @@ import apivideo
 from apivideo.api import players_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -133,6 +135,7 @@ from apivideo.api import players_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.players_list_response import PlayersListResponse
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -195,6 +198,7 @@ from apivideo.api import players_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -251,6 +255,7 @@ from apivideo.model.player_update_payload import PlayerUpdatePayload
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -308,6 +313,7 @@ from apivideo.api import players_api
 from apivideo.model.player import Player
 from apivideo.model.player_creation_payload import PlayerCreationPayload
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
@@ -363,6 +369,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.player import Player
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
