@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'api.video client (python; v:0.0.3; )'
+        self.user_agent = '"api.video client (python; v:0.0.4; )"'
 
     def __enter__(self):
         return self
@@ -658,7 +658,6 @@ class Endpoint(object):
         self.params_map = params_map
         self.params_map['all'].extend([
             'async_req',
-            '_host_index',
             '_preload_content',
             '_request_timeout',
             '_return_http_data_only',
@@ -671,7 +670,6 @@ class Endpoint(object):
         self.openapi_types = root_map['openapi_types']
         extra_types = {
             'async_req': (bool,),
-            '_host_index': (none_type, int),
             '_preload_content': (bool,),
             '_request_timeout': (none_type, int, (int,), [int]),
             '_return_http_data_only': (bool,),
@@ -774,7 +772,7 @@ class Endpoint(object):
         try:
             index = self.api_client.configuration.server_operation_index.get(
                 self.settings['operation_id'], self.api_client.configuration.server_index
-            ) if kwargs['_host_index'] is None else kwargs['_host_index']
+            )
             server_variables = self.api_client.configuration.server_operation_variables.get(
                 self.settings['operation_id'], self.api_client.configuration.server_variables
             )

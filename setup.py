@@ -6,11 +6,11 @@
     Contact: ecosystem@api.video
 """
 
-
+import pathlib
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "api.video"
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 # To install the library, run the following
 #
 # python setup.py install
@@ -24,6 +24,13 @@ REQUIRES = [
   "urllib3 >= 1.25.3"
 ]
 
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
+
+# The text of the README file
+README = (HERE / "README.md").read_text()
+
+
 setup(
     name=NAME,
     version=VERSION,
@@ -36,9 +43,7 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    long_description="""\
-    api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
-
-    Full documentation can be found in the project repository: https://github.com/apivideo/python-api-client
-    """
+    license="MIT",
+    long_description=README,
+    long_description_content_type="text/markdown",
 )
