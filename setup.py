@@ -3,7 +3,7 @@
 
     api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.  # noqa: E501
 
-    Contact: ecosystem-team@api.video
+    Contact: ecosystem@api.video
 """
 
 
@@ -29,7 +29,7 @@ setup(
     version=VERSION,
     description="api.video Python API client",
     author="api.video ecosystem team",
-    author_email="ecosystem-team@api.video",
+    author_email="ecosystem@api.video",
     url="https://github.com/apivideo/python-api-client",
     keywords=["api.video", "sdk", "api client", "video", "live", "hls"],
     python_requires=">=3.6",
