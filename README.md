@@ -47,7 +47,7 @@ from apivideo.exceptions import ApiAuthException
 
 api_key = "__API_KEY__"
 
-client = apivideo.AuthenticatedApiClient(api_key):
+client = apivideo.AuthenticatedApiClient(api_key)
 # if you rather like to use the sandbox environment:
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)
 client.connect()
