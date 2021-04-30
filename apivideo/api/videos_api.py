@@ -74,9 +74,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -102,7 +99,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
 
@@ -110,7 +106,6 @@ class VideosApi(_EndPoint):
                 'all': [
                     'video_id',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -136,7 +131,6 @@ class VideosApi(_EndPoint):
                 'video_id':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -229,9 +223,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -257,7 +248,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
 
@@ -265,7 +255,6 @@ class VideosApi(_EndPoint):
                 'all': [
                     'video_id',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -291,7 +280,6 @@ class VideosApi(_EndPoint):
                 'video_id':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -384,9 +372,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -412,7 +397,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
 
@@ -420,7 +404,6 @@ class VideosApi(_EndPoint):
                 'all': [
                     'video_id',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -446,7 +429,6 @@ class VideosApi(_EndPoint):
                 'video_id':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -545,9 +527,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -573,7 +552,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
 
             params_map = {
                 'all': [
@@ -587,7 +565,6 @@ class VideosApi(_EndPoint):
                     'current_page',
                     'page_size',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -627,7 +604,6 @@ class VideosApi(_EndPoint):
                 'page_size':
                     (int,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -739,9 +715,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -767,7 +740,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['video_update_payload'] = \
@@ -778,7 +750,6 @@ class VideosApi(_EndPoint):
                     'video_id',
                     'video_update_payload',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -807,7 +778,6 @@ class VideosApi(_EndPoint):
                 'video_update_payload':
                     (VideoUpdatePayload,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -903,9 +873,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -931,7 +898,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['video_thumbnail_pick_payload'] = \
@@ -942,7 +908,6 @@ class VideosApi(_EndPoint):
                     'video_id',
                     'video_thumbnail_pick_payload',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -971,7 +936,6 @@ class VideosApi(_EndPoint):
                 'video_thumbnail_pick_payload':
                     (VideoThumbnailPickPayload,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -1068,9 +1032,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1096,7 +1057,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['token'] = \
                 token
             kwargs['file'] = \
@@ -1107,7 +1067,6 @@ class VideosApi(_EndPoint):
                     'token',
                     'file',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -1136,7 +1095,6 @@ class VideosApi(_EndPoint):
                 'file':
                     (file_type,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -1234,9 +1192,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1262,7 +1217,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_creation_payload'] = \
                 video_creation_payload
 
@@ -1270,7 +1224,6 @@ class VideosApi(_EndPoint):
                 'all': [
                     'video_creation_payload',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -1296,7 +1249,6 @@ class VideosApi(_EndPoint):
                 'video_creation_payload':
                     (VideoCreationPayload,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -1390,9 +1342,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1418,7 +1367,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['file'] = \
@@ -1429,7 +1377,6 @@ class VideosApi(_EndPoint):
                     'video_id',
                     'file',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -1458,7 +1405,6 @@ class VideosApi(_EndPoint):
                 'file':
                     (file_type,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -1558,9 +1504,6 @@ class VideosApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1586,7 +1529,6 @@ class VideosApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['file'] = \
@@ -1597,7 +1539,6 @@ class VideosApi(_EndPoint):
                     'video_id',
                     'file',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -1626,7 +1567,6 @@ class VideosApi(_EndPoint):
                 'file':
                     (file_type,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),

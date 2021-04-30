@@ -71,9 +71,6 @@ class ChaptersApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -99,7 +96,6 @@ class ChaptersApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -110,7 +106,6 @@ class ChaptersApi(_EndPoint):
                     'video_id',
                     'language',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -139,7 +134,6 @@ class ChaptersApi(_EndPoint):
                 'language':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -236,9 +230,6 @@ class ChaptersApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -264,7 +255,6 @@ class ChaptersApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
 
@@ -274,7 +264,6 @@ class ChaptersApi(_EndPoint):
                     'current_page',
                     'page_size',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -304,7 +293,6 @@ class ChaptersApi(_EndPoint):
                 'page_size':
                     (int,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -402,9 +390,6 @@ class ChaptersApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -430,7 +415,6 @@ class ChaptersApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -441,7 +425,6 @@ class ChaptersApi(_EndPoint):
                     'video_id',
                     'language',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -470,7 +453,6 @@ class ChaptersApi(_EndPoint):
                 'language':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -569,9 +551,6 @@ class ChaptersApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -597,7 +576,6 @@ class ChaptersApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -611,7 +589,6 @@ class ChaptersApi(_EndPoint):
                     'language',
                     'file',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -643,7 +620,6 @@ class ChaptersApi(_EndPoint):
                 'file':
                     (file_type,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
