@@ -26,7 +26,7 @@ from apivideo.model_utils import (  # noqa: F401
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream import LiveStream
-from apivideo.model.live_stream_create_payload import LiveStreamCreatePayload
+from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
 from apivideo.model.live_stream_list_response import LiveStreamListResponse
 from apivideo.model.live_stream_update_payload import LiveStreamUpdatePayload
 from apivideo.model.not_found import NotFound
@@ -854,7 +854,7 @@ class LiveStreamsApi(_EndPoint):
 
     def create(
             self,
-            live_stream_create_payload,
+            live_stream_creation_payload,
             **kwargs
         ):
             """Create live stream  # noqa: E501
@@ -863,11 +863,11 @@ class LiveStreamsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create(live_stream_create_payload, async_req=True)
+            >>> thread = api.create(live_stream_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                live_stream_create_payload (LiveStreamCreatePayload):
+                live_stream_creation_payload (LiveStreamCreationPayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -914,12 +914,12 @@ class LiveStreamsApi(_EndPoint):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['live_stream_create_payload'] = \
-                live_stream_create_payload
+            kwargs['live_stream_creation_payload'] = \
+                live_stream_creation_payload
 
             params_map = {
                 'all': [
-                    'live_stream_create_payload',
+                    'live_stream_creation_payload',
                     'async_req',
                     '_host_index',
                     '_preload_content',
@@ -929,7 +929,7 @@ class LiveStreamsApi(_EndPoint):
                     '_check_return_type'
                 ],
                 'required': [
-                    'live_stream_create_payload',
+                    'live_stream_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -944,8 +944,8 @@ class LiveStreamsApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'live_stream_create_payload':
-                    (LiveStreamCreatePayload,),
+                'live_stream_creation_payload':
+                    (LiveStreamCreationPayload,),
                 'async_req': (bool,),
                 '_host_index': (none_type, int),
                 '_preload_content': (bool,),
@@ -957,7 +957,7 @@ class LiveStreamsApi(_EndPoint):
             attribute_map = {
             }
             location_map = {
-                'live_stream_create_payload': 'body',
+                'live_stream_creation_payload': 'body',
             }
             collection_format_map = {
             }

@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> LiveStream create(live_stream_create_payload)
+> LiveStream create(live_stream_creation_payload)
 
 Create live stream
 
@@ -314,8 +314,8 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 ```python
 import apivideo
 from apivideo.api import live_streams_api
-from apivideo.model.live_stream_create_payload import LiveStreamCreatePayload
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
 from apivideo.model.live_stream import LiveStream
 from pprint import pprint
 
@@ -323,17 +323,17 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
-    live_stream_create_payload = LiveStreamCreatePayload(
+    live_stream_creation_payload = LiveStreamCreationPayload(
         name="My Live Stream Video",
         record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
-    ) # LiveStreamCreatePayload | 
+    ) # LiveStreamCreationPayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Create live stream
-        api_response = api_instance.create(live_stream_create_payload)
+        api_response = api_instance.create(live_stream_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->create: %s\n" % e)
@@ -344,7 +344,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **live_stream_create_payload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  |
+ **live_stream_creation_payload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  |
 
 ### Return type
 

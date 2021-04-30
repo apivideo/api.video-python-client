@@ -260,7 +260,22 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player.
-    player_update_payload = PlayerUpdatePayload() # PlayerUpdatePayload | 
+    player_update_payload = PlayerUpdatePayload(
+        text="text_example",
+        link="link_example",
+        link_hover="link_hover_example",
+        track_played="track_played_example",
+        track_unplayed="track_unplayed_example",
+        track_background="track_background_example",
+        background_top="background_top_example",
+        background_bottom="background_bottom_example",
+        background_text="background_text_example",
+        enable_api=True,
+        enable_controls=True,
+        force_autoplay=True,
+        hide_title=True,
+        force_loop=True,
+    ) # PlayerUpdatePayload | 
 
     # example passing only required values which don't have defaults set
     try:
@@ -317,7 +332,22 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = player_themes_api.PlayerThemesApi(api_client)
-    player_creation_payload = PlayerCreationPayload() # PlayerCreationPayload | 
+    player_creation_payload = PlayerCreationPayload(
+        text="text_example",
+        link="link_example",
+        link_hover="link_hover_example",
+        track_played="track_played_example",
+        track_unplayed="track_unplayed_example",
+        track_background="track_background_example",
+        background_top="background_top_example",
+        background_bottom="background_bottom_example",
+        background_text="background_text_example",
+        enable_api=True,
+        enable_controls=True,
+        force_autoplay=False,
+        hide_title=False,
+        force_loop=False,
+    ) # PlayerCreationPayload | 
 
     # example passing only required values which don't have defaults set
     try:

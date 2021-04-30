@@ -1,4 +1,4 @@
-# VideoCreatePayload
+# VideoCreationPayload
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# VideostatusEncodingMetadata
+# VideoStatusEncodingMetadata
 
 ## Properties
 Name | Type | Description | Notes

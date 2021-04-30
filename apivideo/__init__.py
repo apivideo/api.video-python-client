@@ -13,7 +13,7 @@
 
 __version__ = "1.0.0"
 
-# import VideoApiClient
+# import ApiVideoClient
 from apivideo.auth_api_client import AuthenticatedApiClient
 
 # import exceptions

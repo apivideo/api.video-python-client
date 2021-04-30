@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_status**
-> Videostatus get_status(video_id)
+> VideoStatus get_status(video_id)
 
 Show video status
 
@@ -138,7 +138,7 @@ This API provides upload status & encoding status to determine when the video is
 ```python
 import apivideo
 from apivideo.api import videos_api
-from apivideo.model.videostatus import Videostatus
+from apivideo.model.video_status import VideoStatus
 from apivideo.model.not_found import NotFound
 from pprint import pprint
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Videostatus**](Videostatus.md)
+[**VideoStatus**](VideoStatus.md)
 
 ### HTTP request headers
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Video create(video_create_payload)
+> Video create(video_creation_payload)
 
 Create a video
 
@@ -477,8 +477,8 @@ To create a video, you create its metadata first, before adding the video file (
 ```python
 import apivideo
 from apivideo.api import videos_api
+from apivideo.model.video_creation_payload import VideoCreationPayload
 from apivideo.model.bad_request import BadRequest
-from apivideo.model.video_create_payload import VideoCreatePayload
 from apivideo.model.video import Video
 from pprint import pprint
 
@@ -486,7 +486,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
-    video_create_payload = VideoCreatePayload(
+    video_creation_payload = VideoCreationPayload(
         title="Maths video",
         description="A video about string theory.",
         source="https://www.myvideo.url.com/video.mp4",
@@ -502,12 +502,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
             ),
         ],
         published_at=dateutil_parser('2020-07-14T23:36:18.598Z'),
-    ) # VideoCreatePayload | video to create
+    ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
     try:
         # Create a video
-        api_response = api_instance.create(video_create_payload)
+        api_response = api_instance.create(video_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->create: %s\n" % e)
@@ -518,7 +518,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_create_payload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create |
+ **video_creation_payload** | [**VideoCreationPayload**](VideoCreationPayload.md)| video to create |
 
 ### Return type
 

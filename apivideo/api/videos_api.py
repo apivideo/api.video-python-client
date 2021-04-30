@@ -27,11 +27,11 @@ from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
-from apivideo.model.video_create_payload import VideoCreatePayload
+from apivideo.model.video_creation_payload import VideoCreationPayload
+from apivideo.model.video_status import VideoStatus
 from apivideo.model.video_thumbnail_pick_payload import VideoThumbnailPickPayload
 from apivideo.model.video_update_payload import VideoUpdatePayload
 from apivideo.model.videos_list_response import VideosListResponse
-from apivideo.model.videostatus import Videostatus
 
 
 class VideosApi(_EndPoint):
@@ -390,7 +390,7 @@ class VideosApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Videostatus
+                VideoStatus
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -498,7 +498,7 @@ class VideosApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Videostatus,),
+                response_type=(VideoStatus,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -1203,7 +1203,7 @@ class VideosApi(_EndPoint):
 
     def create(
             self,
-            video_create_payload,
+            video_creation_payload,
             **kwargs
         ):
             """Create a video  # noqa: E501
@@ -1212,11 +1212,11 @@ class VideosApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create(video_create_payload, async_req=True)
+            >>> thread = api.create(video_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                video_create_payload (VideoCreatePayload): video to create
+                video_creation_payload (VideoCreationPayload): video to create
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -1263,12 +1263,12 @@ class VideosApi(_EndPoint):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['video_create_payload'] = \
-                video_create_payload
+            kwargs['video_creation_payload'] = \
+                video_creation_payload
 
             params_map = {
                 'all': [
-                    'video_create_payload',
+                    'video_creation_payload',
                     'async_req',
                     '_host_index',
                     '_preload_content',
@@ -1278,7 +1278,7 @@ class VideosApi(_EndPoint):
                     '_check_return_type'
                 ],
                 'required': [
-                    'video_create_payload',
+                    'video_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -1293,8 +1293,8 @@ class VideosApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'video_create_payload':
-                    (VideoCreatePayload,),
+                'video_creation_payload':
+                    (VideoCreationPayload,),
                 'async_req': (bool,),
                 '_host_index': (none_type, int),
                 '_preload_content': (bool,),
@@ -1306,7 +1306,7 @@ class VideosApi(_EndPoint):
             attribute_map = {
             }
             location_map = {
-                'video_create_payload': 'body',
+                'video_creation_payload': 'body',
             }
             collection_format_map = {
             }

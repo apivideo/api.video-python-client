@@ -1,4 +1,4 @@
-# VideostatusIngest
+# VideoStatusIngest
 
 Details about the capturing, transferring, and storing of your video for use immediately or in the future.
 ## Properties

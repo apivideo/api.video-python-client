@@ -1,4 +1,4 @@
-# TokenCreatePayload
+# TokenCreationPayload
 
 ## Properties
 Name | Type | Description | Notes
