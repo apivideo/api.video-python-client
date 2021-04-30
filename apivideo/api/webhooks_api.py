@@ -27,7 +27,7 @@ from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.webhook import Webhook
-from apivideo.model.webhooks_create_payload import WebhooksCreatePayload
+from apivideo.model.webhooks_creation_payload import WebhooksCreationPayload
 from apivideo.model.webhooks_list_response import WebhooksListResponse
 
 
@@ -71,9 +71,6 @@ class WebhooksApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -99,7 +96,6 @@ class WebhooksApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['webhook_id'] = \
                 webhook_id
 
@@ -107,7 +103,6 @@ class WebhooksApi(_EndPoint):
                 'all': [
                     'webhook_id',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -133,7 +128,6 @@ class WebhooksApi(_EndPoint):
                 'webhook_id':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -226,9 +220,6 @@ class WebhooksApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -254,7 +245,6 @@ class WebhooksApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['webhook_id'] = \
                 webhook_id
 
@@ -262,7 +252,6 @@ class WebhooksApi(_EndPoint):
                 'all': [
                     'webhook_id',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -288,7 +277,6 @@ class WebhooksApi(_EndPoint):
                 'webhook_id':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -381,9 +369,6 @@ class WebhooksApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -409,7 +394,6 @@ class WebhooksApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
 
             params_map = {
                 'all': [
@@ -417,7 +401,6 @@ class WebhooksApi(_EndPoint):
                     'current_page',
                     'page_size',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -445,7 +428,6 @@ class WebhooksApi(_EndPoint):
                 'page_size':
                     (int,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -511,7 +493,7 @@ class WebhooksApi(_EndPoint):
 
     def create(
             self,
-            webhooks_create_payload,
+            webhooks_creation_payload,
             **kwargs
         ):
             """Create Webhook  # noqa: E501
@@ -520,11 +502,11 @@ class WebhooksApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create(webhooks_create_payload, async_req=True)
+            >>> thread = api.create(webhooks_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                webhooks_create_payload (WebhooksCreatePayload):
+                webhooks_creation_payload (WebhooksCreationPayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -542,9 +524,6 @@ class WebhooksApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -570,15 +549,13 @@ class WebhooksApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['webhooks_create_payload'] = \
-                webhooks_create_payload
+            kwargs['webhooks_creation_payload'] = \
+                webhooks_creation_payload
 
             params_map = {
                 'all': [
-                    'webhooks_create_payload',
+                    'webhooks_creation_payload',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -586,7 +563,7 @@ class WebhooksApi(_EndPoint):
                     '_check_return_type'
                 ],
                 'required': [
-                    'webhooks_create_payload',
+                    'webhooks_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -601,10 +578,9 @@ class WebhooksApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'webhooks_create_payload':
-                    (WebhooksCreatePayload,),
+                'webhooks_creation_payload':
+                    (WebhooksCreationPayload,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -614,7 +590,7 @@ class WebhooksApi(_EndPoint):
             attribute_map = {
             }
             location_map = {
-                'webhooks_create_payload': 'body',
+                'webhooks_creation_payload': 'body',
             }
             collection_format_map = {
             }

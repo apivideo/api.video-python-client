@@ -1,4 +1,4 @@
-# LiveStreamCreatePayload
+# LiveStreamCreationPayload
 
 ## Properties
 Name | Type | Description | Notes

@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_token**
-> UploadToken create_token(token_create_payload)
+> UploadToken create_token(token_creation_payload)
 
 Generate an upload token
 
@@ -194,22 +194,22 @@ Use this endpoint to generate an upload token. You can use this token to authent
 import apivideo
 from apivideo.api import upload_tokens_api
 from apivideo.model.bad_request import BadRequest
-from apivideo.model.token_create_payload import TokenCreatePayload
 from apivideo.model.upload_token import UploadToken
+from apivideo.model.token_creation_payload import TokenCreationPayload
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = upload_tokens_api.UploadTokensApi(api_client)
-    token_create_payload = TokenCreatePayload(
+    token_creation_payload = TokenCreationPayload(
         ttl=0,
-    ) # TokenCreatePayload | 
+    ) # TokenCreationPayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Generate an upload token
-        api_response = api_instance.create_token(token_create_payload)
+        api_response = api_instance.create_token(token_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling UploadTokensApi->create_token: %s\n" % e)
@@ -220,7 +220,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token_create_payload** | [**TokenCreatePayload**](TokenCreatePayload.md)|  |
+ **token_creation_payload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  |
 
 ### Return type
 

@@ -26,7 +26,7 @@ from apivideo.model_utils import (  # noqa: F401
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
-from apivideo.model.token_create_payload import TokenCreatePayload
+from apivideo.model.token_creation_payload import TokenCreationPayload
 from apivideo.model.token_list_response import TokenListResponse
 from apivideo.model.upload_token import UploadToken
 
@@ -71,9 +71,6 @@ class UploadTokensApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -99,7 +96,6 @@ class UploadTokensApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['upload_token'] = \
                 upload_token
 
@@ -107,7 +103,6 @@ class UploadTokensApi(_EndPoint):
                 'all': [
                     'upload_token',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -133,7 +128,6 @@ class UploadTokensApi(_EndPoint):
                 'upload_token':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -227,9 +221,6 @@ class UploadTokensApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -255,7 +246,6 @@ class UploadTokensApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
 
             params_map = {
                 'all': [
@@ -264,7 +254,6 @@ class UploadTokensApi(_EndPoint):
                     'current_page',
                     'page_size',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -306,7 +295,6 @@ class UploadTokensApi(_EndPoint):
                 'page_size':
                     (int,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -405,9 +393,6 @@ class UploadTokensApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -433,7 +418,6 @@ class UploadTokensApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['upload_token'] = \
                 upload_token
 
@@ -441,7 +425,6 @@ class UploadTokensApi(_EndPoint):
                 'all': [
                     'upload_token',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -467,7 +450,6 @@ class UploadTokensApi(_EndPoint):
                 'upload_token':
                     (str,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -529,7 +511,7 @@ class UploadTokensApi(_EndPoint):
 
     def create_token(
             self,
-            token_create_payload,
+            token_creation_payload,
             **kwargs
         ):
             """Generate an upload token  # noqa: E501
@@ -538,11 +520,11 @@ class UploadTokensApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create_token(token_create_payload, async_req=True)
+            >>> thread = api.create_token(token_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                token_create_payload (TokenCreatePayload):
+                token_creation_payload (TokenCreationPayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -560,9 +542,6 @@ class UploadTokensApi(_EndPoint):
                 _check_return_type (bool): specifies if type checking
                     should be done one the data received from the server.
                     Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -588,15 +567,13 @@ class UploadTokensApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['token_create_payload'] = \
-                token_create_payload
+            kwargs['token_creation_payload'] = \
+                token_creation_payload
 
             params_map = {
                 'all': [
-                    'token_create_payload',
+                    'token_creation_payload',
                     'async_req',
-                    '_host_index',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only',
@@ -604,7 +581,7 @@ class UploadTokensApi(_EndPoint):
                     '_check_return_type'
                 ],
                 'required': [
-                    'token_create_payload',
+                    'token_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -619,10 +596,9 @@ class UploadTokensApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'token_create_payload':
-                    (TokenCreatePayload,),
+                'token_creation_payload':
+                    (TokenCreationPayload,),
                 'async_req': (bool,),
-                '_host_index': (none_type, int),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,),
@@ -632,7 +608,7 @@ class UploadTokensApi(_EndPoint):
             attribute_map = {
             }
             location_map = {
-                'token_create_payload': 'body',
+                'token_creation_payload': 'body',
             }
             collection_format_map = {
             }

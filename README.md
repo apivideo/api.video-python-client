@@ -16,7 +16,7 @@ pip install api.video
 
 ## Examples
 
-# Automatic authentification
+### Automatic authentification
 
 list all videos:
 
@@ -36,7 +36,7 @@ with apivideo.AuthenticatedApiClient(api_key) as client:
 
 In this context the client will keep its authentification updated.
 
-# Manual authentification
+### Manual authentification
 
 If you rather update the access token manually:
 
@@ -184,7 +184,7 @@ Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamAssets](docs/LiveStreamAssets.md)
- - [LiveStreamCreatePayload](docs/LiveStreamCreatePayload.md)
+ - [LiveStreamCreationPayload](docs/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](docs/LiveStreamListResponse.md)
  - [LiveStreamSession](docs/LiveStreamSession.md)
  - [LiveStreamSessionClient](docs/LiveStreamSessionClient.md)
@@ -198,12 +198,10 @@ Method | HTTP request | Description
  - [Pagination](docs/Pagination.md)
  - [PaginationLink](docs/PaginationLink.md)
  - [Player](docs/Player.md)
- - [PlayerAllOf](docs/PlayerAllOf.md)
- - [PlayerAllOfAssets](docs/PlayerAllOfAssets.md)
+ - [PlayerAssets](docs/PlayerAssets.md)
  - [PlayerCreationPayload](docs/PlayerCreationPayload.md)
  - [PlayerSessionEvent](docs/PlayerSessionEvent.md)
  - [PlayerUpdatePayload](docs/PlayerUpdatePayload.md)
- - [Playerinput](docs/Playerinput.md)
  - [PlayersListResponse](docs/PlayersListResponse.md)
  - [Quality](docs/Quality.md)
  - [RawStatisticsListLiveStreamAnalyticsResponse](docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
@@ -211,12 +209,12 @@ Method | HTTP request | Description
  - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
  - [Subtitle](docs/Subtitle.md)
- - [TokenCreatePayload](docs/TokenCreatePayload.md)
+ - [TokenCreationPayload](docs/TokenCreationPayload.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [UploadToken](docs/UploadToken.md)
  - [Video](docs/Video.md)
  - [VideoAssets](docs/VideoAssets.md)
- - [VideoCreatePayload](docs/VideoCreatePayload.md)
+ - [VideoCreationPayload](docs/VideoCreationPayload.md)
  - [VideoSession](docs/VideoSession.md)
  - [VideoSessionClient](docs/VideoSessionClient.md)
  - [VideoSessionDevice](docs/VideoSessionDevice.md)
@@ -227,13 +225,13 @@ Method | HTTP request | Description
  - [VideoSource](docs/VideoSource.md)
  - [VideoSourceLiveStream](docs/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](docs/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](docs/VideoStatus.md)
+ - [VideoStatusEncoding](docs/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](docs/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](docs/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
  - [VideosListResponse](docs/VideosListResponse.md)
- - [Videostatus](docs/Videostatus.md)
- - [VideostatusEncoding](docs/VideostatusEncoding.md)
- - [VideostatusEncodingMetadata](docs/VideostatusEncodingMetadata.md)
- - [VideostatusIngest](docs/VideostatusIngest.md)
  - [Webhook](docs/Webhook.md)
- - [WebhooksCreatePayload](docs/WebhooksCreatePayload.md)
+ - [WebhooksCreationPayload](docs/WebhooksCreationPayload.md)
  - [WebhooksListResponse](docs/WebhooksListResponse.md)

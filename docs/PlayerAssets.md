@@ -1,4 +1,4 @@
-# PlayerAllOfAssets
+# PlayerAssets
 
 ## Properties
 Name | Type | Description | Notes

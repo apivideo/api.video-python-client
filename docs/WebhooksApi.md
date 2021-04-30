@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Webhook create(webhooks_create_payload)
+> Webhook create(webhooks_creation_payload)
 
 Create Webhook
 
@@ -191,24 +191,24 @@ import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.webhook import Webhook
-from apivideo.model.webhooks_create_payload import WebhooksCreatePayload
+from apivideo.model.webhooks_creation_payload import WebhooksCreationPayload
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = webhooks_api.WebhooksApi(api_client)
-    webhooks_create_payload = WebhooksCreatePayload(
+    webhooks_creation_payload = WebhooksCreationPayload(
         events=[
             "video.encoding.quality.completed",
         ],
         url="https://example.com/webhooks",
-    ) # WebhooksCreatePayload | 
+    ) # WebhooksCreationPayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Create Webhook
-        api_response = api_instance.create(webhooks_create_payload)
+        api_response = api_instance.create(webhooks_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling WebhooksApi->create: %s\n" % e)
@@ -219,7 +219,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhooks_create_payload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  |
+ **webhooks_creation_payload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  |
 
 ### Return type
 

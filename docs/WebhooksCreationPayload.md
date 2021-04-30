@@ -1,4 +1,4 @@
-# WebhooksCreatePayload
+# WebhooksCreationPayload
 
 ## Properties
 Name | Type | Description | Notes
