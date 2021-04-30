@@ -16,7 +16,7 @@ pip install api.video
 
 ## Examples
 
-### Automatic authentification
+### Automatic authentication
 
 list all videos:
 
@@ -34,9 +34,9 @@ with apivideo.AuthenticatedApiClient(api_key) as client:
     videos = videos_api.list()
 ```
 
-In this context the client will keep its authentification updated.
+In this context the client will keep its authentication updated.
 
-### Manual authentification
+### Manual authentication
 
 If you rather update the access token manually:
 
