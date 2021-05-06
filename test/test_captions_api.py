@@ -3,7 +3,7 @@
 
     api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.  # noqa: E501
 
-    Contact: ecosystem-team@api.video
+    Contact: ecosystem@api.video
 """
 
 from dateutil.parser import parse as dateutil_parser
@@ -13,10 +13,10 @@ from apivideo.api.captions_api import CaptionsApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.caption import Caption
 from apivideo.model.captions_list_response import CaptionsListResponse
 from apivideo.model.captions_update_payload import CaptionsUpdatePayload
 from apivideo.model.not_found import NotFound
-from apivideo.model.subtitle import Subtitle
 
 from helper import MainTest
 

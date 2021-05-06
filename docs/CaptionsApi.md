@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> Subtitle get(video_id, language)
+> Caption get(video_id, language)
 
 Show a caption
 
@@ -148,8 +148,8 @@ Display a caption for a video in a specific language. If the language is availab
 ```python
 import apivideo
 from apivideo.api import captions_api
-from apivideo.model.subtitle import Subtitle
 from apivideo.model.not_found import NotFound
+from apivideo.model.caption import Caption
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### HTTP request headers
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Subtitle update(video_id, language, captions_update_payload)
+> Caption update(video_id, language, captions_update_payload)
 
 Update caption
 
@@ -206,10 +206,10 @@ To have the captions on automatically, use this PATCH to set default: true.
 ```python
 import apivideo
 from apivideo.api import captions_api
-from apivideo.model.subtitle import Subtitle
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.captions_update_payload import CaptionsUpdatePayload
 from apivideo.model.not_found import NotFound
+from apivideo.model.caption import Caption
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload**
-> Subtitle upload(video_id, language, file)
+> Caption upload(video_id, language, file)
 
 Upload a caption
 
@@ -271,9 +271,9 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 ```python
 import apivideo
 from apivideo.api import captions_api
-from apivideo.model.subtitle import Subtitle
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
+from apivideo.model.caption import Caption
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### HTTP request headers
 

@@ -3,7 +3,7 @@
 
     api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.  # noqa: E501
 
-    Contact: ecosystem-team@api.video
+    Contact: ecosystem@api.video
 """
 
 from dateutil.parser import parse as dateutil_parser
@@ -164,7 +164,7 @@ class TestVideosApi(MainTest):
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
                 'video_thumbnail_pick_payload': VideoThumbnailPickPayload(
-        timecode="04:80:07",
+        timecode="04:80:7",
     ),
             }
             url = '/videos/{video_id}/thumbnail'.format(**kwargs)

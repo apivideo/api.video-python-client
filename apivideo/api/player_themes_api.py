@@ -24,10 +24,10 @@ from apivideo.model_utils import (  # noqa: F401
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
-from apivideo.model.player import Player
-from apivideo.model.player_creation_payload import PlayerCreationPayload
-from apivideo.model.player_update_payload import PlayerUpdatePayload
-from apivideo.model.players_list_response import PlayersListResponse
+from apivideo.model.player_theme import PlayerTheme
+from apivideo.model.player_theme_creation_payload import PlayerThemeCreationPayload
+from apivideo.model.player_theme_update_payload import PlayerThemeUpdatePayload
+from apivideo.model.player_themes_list_response import PlayerThemesListResponse
 
 
 class PlayerThemesApi(_EndPoint):
@@ -368,7 +368,7 @@ class PlayerThemesApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                PlayersListResponse
+                PlayerThemesListResponse
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -496,7 +496,7 @@ class PlayerThemesApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(PlayersListResponse,),
+                response_type=(PlayerThemesListResponse,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -540,7 +540,7 @@ class PlayerThemesApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Player
+                PlayerTheme
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -645,7 +645,7 @@ class PlayerThemesApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Player,),
+                response_type=(PlayerTheme,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -656,7 +656,7 @@ class PlayerThemesApi(_EndPoint):
     def update(
             self,
             player_id,
-            player_update_payload,
+            player_theme_update_payload,
             **kwargs
         ):
             """Update a player  # noqa: E501
@@ -665,12 +665,12 @@ class PlayerThemesApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.update(player_id, player_update_payload, async_req=True)
+            >>> thread = api.update(player_id, player_theme_update_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
                 player_id (str): The unique identifier for the player.
-                player_update_payload (PlayerUpdatePayload):
+                player_theme_update_payload (PlayerThemeUpdatePayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -691,7 +691,7 @@ class PlayerThemesApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Player
+                PlayerTheme
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -715,13 +715,13 @@ class PlayerThemesApi(_EndPoint):
             )
             kwargs['player_id'] = \
                 player_id
-            kwargs['player_update_payload'] = \
-                player_update_payload
+            kwargs['player_theme_update_payload'] = \
+                player_theme_update_payload
 
             params_map = {
                 'all': [
                     'player_id',
-                    'player_update_payload',
+                    'player_theme_update_payload',
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
@@ -731,7 +731,7 @@ class PlayerThemesApi(_EndPoint):
                 ],
                 'required': [
                     'player_id',
-                    'player_update_payload',
+                    'player_theme_update_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -748,8 +748,8 @@ class PlayerThemesApi(_EndPoint):
             openapi_types = {
                 'player_id':
                     (str,),
-                'player_update_payload':
-                    (PlayerUpdatePayload,),
+                'player_theme_update_payload':
+                    (PlayerThemeUpdatePayload,),
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
@@ -762,7 +762,7 @@ class PlayerThemesApi(_EndPoint):
             }
             location_map = {
                 'player_id': 'path',
-                'player_update_payload': 'body',
+                'player_theme_update_payload': 'body',
             }
             collection_format_map = {
             }
@@ -803,7 +803,7 @@ class PlayerThemesApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Player,),
+                response_type=(PlayerTheme,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -813,7 +813,7 @@ class PlayerThemesApi(_EndPoint):
 
     def create(
             self,
-            player_creation_payload,
+            player_theme_creation_payload,
             **kwargs
         ):
             """Create a player  # noqa: E501
@@ -822,11 +822,11 @@ class PlayerThemesApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.create(player_creation_payload, async_req=True)
+            >>> thread = api.create(player_theme_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                player_creation_payload (PlayerCreationPayload):
+                player_theme_creation_payload (PlayerThemeCreationPayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -847,7 +847,7 @@ class PlayerThemesApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Player
+                PlayerTheme
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -869,12 +869,12 @@ class PlayerThemesApi(_EndPoint):
             kwargs['_check_return_type'] = kwargs.get(
                 '_check_return_type', True
             )
-            kwargs['player_creation_payload'] = \
-                player_creation_payload
+            kwargs['player_theme_creation_payload'] = \
+                player_theme_creation_payload
 
             params_map = {
                 'all': [
-                    'player_creation_payload',
+                    'player_theme_creation_payload',
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
@@ -883,7 +883,7 @@ class PlayerThemesApi(_EndPoint):
                     '_check_return_type'
                 ],
                 'required': [
-                    'player_creation_payload',
+                    'player_theme_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -898,8 +898,8 @@ class PlayerThemesApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'player_creation_payload':
-                    (PlayerCreationPayload,),
+                'player_theme_creation_payload':
+                    (PlayerThemeCreationPayload,),
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
@@ -910,7 +910,7 @@ class PlayerThemesApi(_EndPoint):
             attribute_map = {
             }
             location_map = {
-                'player_creation_payload': 'body',
+                'player_theme_creation_payload': 'body',
             }
             collection_format_map = {
             }
@@ -951,7 +951,7 @@ class PlayerThemesApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Player,),
+                response_type=(PlayerTheme,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -999,7 +999,7 @@ class PlayerThemesApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Player
+                PlayerTheme
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1120,7 +1120,7 @@ class PlayerThemesApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Player,),
+                response_type=(PlayerTheme,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
