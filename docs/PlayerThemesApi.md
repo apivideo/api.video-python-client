@@ -120,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PlayersListResponse list()
+> PlayerThemesListResponse list()
 
 List all players
 
@@ -132,7 +132,7 @@ Retrieve a list of all the players you created, as well as details about each on
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest
-from apivideo.model.players_list_response import PlayersListResponse
+from apivideo.model.player_themes_list_response import PlayerThemesListResponse
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlayersListResponse**](PlayersListResponse.md)
+[**PlayerThemesListResponse**](PlayerThemesListResponse.md)
 
 ### HTTP request headers
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> Player get(player_id)
+> PlayerTheme get(player_id)
 
 Show a player
 
@@ -195,7 +195,7 @@ Use a player ID to retrieve details about the player and display it for viewers.
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
-from apivideo.model.player import Player
+from apivideo.model.player_theme import PlayerTheme
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### HTTP request headers
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Player update(player_id, player_update_payload)
+> PlayerTheme update(player_id, player_theme_update_payload)
 
 Update a player
 
@@ -250,9 +250,9 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 ```python
 import apivideo
 from apivideo.api import player_themes_api
-from apivideo.model.player_update_payload import PlayerUpdatePayload
 from apivideo.model.not_found import NotFound
-from apivideo.model.player import Player
+from apivideo.model.player_theme import PlayerTheme
+from apivideo.model.player_theme_update_payload import PlayerThemeUpdatePayload
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -260,7 +260,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player.
-    player_update_payload = PlayerUpdatePayload(
+    player_theme_update_payload = PlayerThemeUpdatePayload(
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",
@@ -275,12 +275,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         force_autoplay=True,
         hide_title=True,
         force_loop=True,
-    ) # PlayerUpdatePayload | 
+    ) # PlayerThemeUpdatePayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Update a player
-        api_response = api_instance.update(player_id, player_update_payload)
+        api_response = api_instance.update(player_id, player_theme_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling PlayerThemesApi->update: %s\n" % e)
@@ -292,11 +292,11 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **player_id** | **str**| The unique identifier for the player. |
- **player_update_payload** | [**PlayerUpdatePayload**](PlayerUpdatePayload.md)|  |
+ **player_theme_update_payload** | [**PlayerThemeUpdatePayload**](PlayerThemeUpdatePayload.md)|  |
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### HTTP request headers
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Player create(player_creation_payload)
+> PlayerTheme create(player_theme_creation_payload)
 
 Create a player
 
@@ -324,15 +324,15 @@ Create a player for your video, and customise it.
 ```python
 import apivideo
 from apivideo.api import player_themes_api
-from apivideo.model.player import Player
-from apivideo.model.player_creation_payload import PlayerCreationPayload
+from apivideo.model.player_theme_creation_payload import PlayerThemeCreationPayload
+from apivideo.model.player_theme import PlayerTheme
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = player_themes_api.PlayerThemesApi(api_client)
-    player_creation_payload = PlayerCreationPayload(
+    player_theme_creation_payload = PlayerThemeCreationPayload(
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",
@@ -347,12 +347,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         force_autoplay=False,
         hide_title=False,
         force_loop=False,
-    ) # PlayerCreationPayload | 
+    ) # PlayerThemeCreationPayload | 
 
     # example passing only required values which don't have defaults set
     try:
         # Create a player
-        api_response = api_instance.create(player_creation_payload)
+        api_response = api_instance.create(player_theme_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling PlayerThemesApi->create: %s\n" % e)
@@ -363,11 +363,11 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **player_creation_payload** | [**PlayerCreationPayload**](PlayerCreationPayload.md)|  |
+ **player_theme_creation_payload** | [**PlayerThemeCreationPayload**](PlayerThemeCreationPayload.md)|  |
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### HTTP request headers
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_logo**
-> Player upload_logo(player_id, file, link)
+> PlayerTheme upload_logo(player_id, file, link)
 
 Upload a logo
 
@@ -396,7 +396,7 @@ import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
-from apivideo.model.player import Player
+from apivideo.model.player_theme import PlayerTheme
 from pprint import pprint
 
 # Enter a context with an instance of the API client
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### HTTP request headers
 

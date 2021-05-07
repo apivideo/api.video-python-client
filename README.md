@@ -4,6 +4,10 @@
 
 api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
 
+## Warning
+
+This API client is still in beta. Please feel free to report any issue you may encounter.
+
 ## Requirements.
 
 Python >= 3.6
@@ -177,6 +181,7 @@ Method | HTTP request | Description
  - [AuthenticatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/AuthenticatePayload.md)
  - [BadRequest](https://github.com/apivideo/python-api-client/blob/master/docs/BadRequest.md)
  - [BytesRange](https://github.com/apivideo/python-api-client/blob/master/docs/BytesRange.md)
+ - [Caption](https://github.com/apivideo/python-api-client/blob/master/docs/Caption.md)
  - [CaptionsListResponse](https://github.com/apivideo/python-api-client/blob/master/docs/CaptionsListResponse.md)
  - [CaptionsUpdatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/python-api-client/blob/master/docs/Chapter.md)
@@ -197,18 +202,17 @@ Method | HTTP request | Description
  - [NotFound](https://github.com/apivideo/python-api-client/blob/master/docs/NotFound.md)
  - [Pagination](https://github.com/apivideo/python-api-client/blob/master/docs/Pagination.md)
  - [PaginationLink](https://github.com/apivideo/python-api-client/blob/master/docs/PaginationLink.md)
- - [Player](https://github.com/apivideo/python-api-client/blob/master/docs/Player.md)
- - [PlayerAssets](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerAssets.md)
- - [PlayerCreationPayload](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerCreationPayload.md)
  - [PlayerSessionEvent](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerSessionEvent.md)
- - [PlayerUpdatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerUpdatePayload.md)
- - [PlayersListResponse](https://github.com/apivideo/python-api-client/blob/master/docs/PlayersListResponse.md)
+ - [PlayerTheme](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerTheme.md)
+ - [PlayerThemeAssets](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerThemesListResponse.md)
  - [Quality](https://github.com/apivideo/python-api-client/blob/master/docs/Quality.md)
  - [RawStatisticsListLiveStreamAnalyticsResponse](https://github.com/apivideo/python-api-client/blob/master/docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
  - [RawStatisticsListPlayerSessionEventsResponse](https://github.com/apivideo/python-api-client/blob/master/docs/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](https://github.com/apivideo/python-api-client/blob/master/docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](https://github.com/apivideo/python-api-client/blob/master/docs/RefreshTokenPayload.md)
- - [Subtitle](https://github.com/apivideo/python-api-client/blob/master/docs/Subtitle.md)
  - [TokenCreationPayload](https://github.com/apivideo/python-api-client/blob/master/docs/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/python-api-client/blob/master/docs/TokenListResponse.md)
  - [UploadToken](https://github.com/apivideo/python-api-client/blob/master/docs/UploadToken.md)

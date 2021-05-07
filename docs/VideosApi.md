@@ -355,7 +355,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
     video_thumbnail_pick_payload = VideoThumbnailPickPayload(
-        timecode="04:80:7",
+        timecode="04:80:72",
     ) # VideoThumbnailPickPayload | 
 
     # example passing only required values which don't have defaults set

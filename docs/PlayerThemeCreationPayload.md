@@ -1,4 +1,4 @@
-# Player
+# PlayerThemeCreationPayload
 
 ## Properties
 Name | Type | Description | Notes
@@ -12,21 +12,11 @@ Name | Type | Description | Notes
 **background_top** | **str** | RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7) | [optional] 
 **background_bottom** | **str** | RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7) | [optional] 
 **background_text** | **str** | RGBA color for title text. Default: rgba(255, 255, 255, 1) | [optional] 
-**enable_api** | **bool** | enable/disable player SDK access. Default: true | [optional] 
-**enable_controls** | **bool** | enable/disable player controls. Default: true | [optional] 
-**force_autoplay** | **bool** | enable/disable player autoplay. Default: false | [optional] 
-**hide_title** | **bool** | enable/disable title. Default: false | [optional] 
-**force_loop** | **bool** | enable/disable looping. Default: false | [optional] 
-**player_id** | **str** |  | [optional] 
-**created_at** | **datetime** | When the player was created, presented in ISO-8601 format. | [optional] 
-**updated_at** | **datetime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
-**shape_margin** | **int** | Deprecated | [optional] 
-**shape_radius** | **int** | Deprecated | [optional] 
-**shape_aspect** | **str** | Deprecated | [optional] 
-**shape_background_top** | **str** | Deprecated | [optional] 
-**shape_background_bottom** | **str** | Deprecated | [optional] 
-**link_active** | **str** | Deprecated | [optional] 
-**assets** | [**PlayerAssets**](PlayerAssets.md) |  | [optional] 
+**enable_api** | **bool** | enable/disable player SDK access. Default: true | [optional]  if omitted the server will use the default value of True
+**enable_controls** | **bool** | enable/disable player controls. Default: true | [optional]  if omitted the server will use the default value of True
+**force_autoplay** | **bool** | enable/disable player autoplay. Default: false | [optional]  if omitted the server will use the default value of False
+**hide_title** | **bool** | enable/disable title. Default: false | [optional]  if omitted the server will use the default value of False
+**force_loop** | **bool** | enable/disable looping. Default: false | [optional]  if omitted the server will use the default value of False
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,10 +23,10 @@ from apivideo.model_utils import (  # noqa: F401
 )
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.caption import Caption
 from apivideo.model.captions_list_response import CaptionsListResponse
 from apivideo.model.captions_update_payload import CaptionsUpdatePayload
 from apivideo.model.not_found import NotFound
-from apivideo.model.subtitle import Subtitle
 
 
 class CaptionsApi(_EndPoint):
@@ -391,7 +391,7 @@ class CaptionsApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Subtitle
+                Caption
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -504,7 +504,7 @@ class CaptionsApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Subtitle,),
+                response_type=(Caption,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -552,7 +552,7 @@ class CaptionsApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Subtitle
+                Caption
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -672,7 +672,7 @@ class CaptionsApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Subtitle,),
+                response_type=(Caption,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
@@ -720,7 +720,7 @@ class CaptionsApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Subtitle
+                Caption
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -841,7 +841,7 @@ class CaptionsApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(Subtitle,),
+                response_type=(Caption,),
                 async_req=kwargs['async_req'],
                 _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],

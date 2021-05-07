@@ -3,7 +3,7 @@
 
     api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.  # noqa: E501
 
-    Contact: ecosystem-team@api.video
+    Contact: ecosystem@api.video
 """
 
 from dateutil.parser import parse as dateutil_parser
@@ -14,10 +14,10 @@ from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
-from apivideo.model.player import Player
-from apivideo.model.player_creation_payload import PlayerCreationPayload
-from apivideo.model.player_update_payload import PlayerUpdatePayload
-from apivideo.model.players_list_response import PlayersListResponse
+from apivideo.model.player_theme import PlayerTheme
+from apivideo.model.player_theme_creation_payload import PlayerThemeCreationPayload
+from apivideo.model.player_theme_update_payload import PlayerThemeUpdatePayload
+from apivideo.model.player_themes_list_response import PlayerThemesListResponse
 
 from helper import MainTest
 
@@ -106,7 +106,7 @@ class TestPlayerThemesApi(MainTest):
 
             kwargs = {
                 'player_id': "pl45d5vFFGrfdsdsd156dGhh",
-                'player_update_payload': PlayerUpdatePayload(
+                'player_theme_update_payload': PlayerThemeUpdatePayload(
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",
@@ -145,7 +145,7 @@ class TestPlayerThemesApi(MainTest):
             responses.reset()
 
             kwargs = {
-                'player_creation_payload': PlayerCreationPayload(
+                'player_theme_creation_payload': PlayerThemeCreationPayload(
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",

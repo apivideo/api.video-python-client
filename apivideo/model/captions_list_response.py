@@ -26,10 +26,10 @@ from apivideo.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from apivideo.model.caption import Caption
     from apivideo.model.pagination import Pagination
-    from apivideo.model.subtitle import Subtitle
+    globals()['Caption'] = Caption
     globals()['Pagination'] = Pagination
-    globals()['Subtitle'] = Subtitle
 
 
 class CaptionsListResponse(ModelNormal):
@@ -78,7 +78,7 @@ class CaptionsListResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'data': ([Subtitle],),  # noqa: E501
+            'data': ([Caption],),  # noqa: E501
             'pagination': (Pagination,),  # noqa: E501
         }
 
@@ -138,7 +138,7 @@ class CaptionsListResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            data ([Subtitle]): [optional]  # noqa: E501
+            data ([Caption]): [optional]  # noqa: E501
             pagination (Pagination): [optional]  # noqa: E501
         """
 
