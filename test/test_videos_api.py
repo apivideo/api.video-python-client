@@ -164,7 +164,7 @@ class TestVideosApi(MainTest):
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
                 'video_thumbnail_pick_payload': VideoThumbnailPickPayload(
-        timecode="04:80:7",
+        timecode="04:80:72",
     ),
             }
             url = '/videos/{video_id}/thumbnail'.format(**kwargs)
