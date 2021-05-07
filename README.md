@@ -4,6 +4,10 @@
 
 api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
 
+## Warning
+
+This API client is still in beta. Please feel free to report any issue you may encounter.
+
 ## Requirements.
 
 Python >= 3.6
