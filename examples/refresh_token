@@ -1,6 +1,6 @@
 # Use your api.video api key to retrieve a new refresh token. You can use this token
 # to get a new access token. Access tokens expire after one hour. You can also 
-# use this to cancle an existing refresh token and replace it with a new one. 
+# use this to cancel an existing refresh token and replace it with a new one. 
 # This is useful if your refresh token was compromised.
 
 import apivideo
