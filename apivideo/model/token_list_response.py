@@ -63,7 +63,7 @@ class TokenListResponse(ModelNormal):
     }
 
     additional_properties_type = None
-
+    
     _nullable = False
 
     @cached_property
