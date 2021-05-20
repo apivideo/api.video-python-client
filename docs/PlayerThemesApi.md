@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_logo**
-> PlayerTheme upload_logo(player_id, file, link)
+> PlayerTheme upload_logo(player_id, file)
 
 Upload a logo
 
@@ -405,12 +405,21 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl14Db6oMJRH6SRVoOwORacK" # str | The unique identifier for the player.
     file = open('/path/to/file', 'rb') # file_type | The name of the file you want to use for your logo.
-    link = "path/to/my/logo/mylogo.jpg" # str | The path to the file you want to upload and use as a logo.
+    link = "https://my-company.com" # str | A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Upload a logo
-        api_response = api_instance.upload_logo(player_id, file, link)
+        api_response = api_instance.upload_logo(player_id, file)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling PlayerThemesApi->upload_logo: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Upload a logo
+        api_response = api_instance.upload_logo(player_id, file, link=link)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling PlayerThemesApi->upload_logo: %s\n" % e)
@@ -423,7 +432,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **player_id** | **str**| The unique identifier for the player. |
  **file** | **file_type**| The name of the file you want to use for your logo. |
- **link** | **str**| The path to the file you want to upload and use as a logo. |
+ **link** | **str**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | [optional]
 
 ### Return type
 
