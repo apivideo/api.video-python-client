@@ -6,7 +6,6 @@ from apivideo.exceptions import ApiAuthException
 api_key = "your api key here"
 
 client = apivideo.AuthenticatedApiClient(api_key)
-webhook_id = "webhook_1BZbMTJbngrkH5Rfn9DiV6"
 
 # If you'd rather use the sandbox environment:
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)

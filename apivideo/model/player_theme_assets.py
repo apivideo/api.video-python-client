@@ -71,8 +71,8 @@ class PlayerThemeAssets(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'logo': (str,),  # noqa: E501
-            'link': (str,),  # noqa: E501
+            'logo': (str, none_type),  # noqa: E501
+            'link': (str, none_type),  # noqa: E501
         }
 
     @cached_property
