@@ -11,7 +11,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)
 client.connect()
 
-# Set up to use VideosApi 
 videos_api = VideosApi(client)
 
 # Create the payload with video details 

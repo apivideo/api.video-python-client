@@ -13,8 +13,8 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use Live Streams
 live_stream_api = LiveStreamsApi(client)
+
 live_stream_creation_payload = {
     "record": False,
     "name": "Bob"

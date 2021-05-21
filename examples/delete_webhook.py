@@ -13,7 +13,6 @@ webhook_id = "webhook ID here"
 
 client.connect()
 
-# Set up to use webhooks
 webhooks_api = WebhooksApi(client)
 
 # Create a webhook

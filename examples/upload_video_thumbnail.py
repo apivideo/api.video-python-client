@@ -13,7 +13,9 @@ file = open("your jpg", "rb")
 
 # Authenticate and set up your client 
 client = apivideo.AuthenticatedApiClient(api_key)
+
 client.connect()
+
 videos_api = VideosApi(client)
 
 # Send the thumbnail and video ID to API video. The thumbnail is added to the video associated with the ID 

@@ -12,7 +12,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use live streams
 live_stream_api = LiveStreamsApi(client)
 
 # List all live stream details

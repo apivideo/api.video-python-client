@@ -1,21 +1,20 @@
-# Retrieve details about a webhook using its ID
+# Retrieve details about a player using the ID.
 import apivideo
-from apivideo.apis import WebhooksApi
+from apivideo.apis import PlayerThemesApi
 from apivideo.exceptions import ApiAuthException
 
 api_key = "your api key here"
 
 client = apivideo.AuthenticatedApiClient(api_key)
-webhook_id = "your webhook ID here"
 
 # If you'd rather use the sandbox environment:
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)
 
 client.connect()
 
-# Set up to use webhooks
-webhooks_api = WebhooksApi(client)
+player_api = PlayerThemesApi(client)
 
-# Create a webhook
-response = webhooks_api.get(webhook_id)
+player_id = "your player ID here"
+
+response = player_api.get(player_id)
 print(response)

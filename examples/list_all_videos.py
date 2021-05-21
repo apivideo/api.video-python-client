@@ -11,9 +11,8 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Retrieve a list of all videos. 
-
 videos_api = VideosApi(client)
-videos = videos_api.list()
 
-print(videos)
+# Retrieve a list of all videos. 
+response = videos_api.list()
+print(response)

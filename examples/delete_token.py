@@ -13,7 +13,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use delegated tokens
 tokens_api = UploadTokensApi(client)
 
 response = tokens_api.delete_token(token)

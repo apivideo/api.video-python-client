@@ -1,6 +1,6 @@
-# List all delegated tokens that are active
+# Delete a player
 import apivideo
-from apivideo.apis import UploadTokensApi
+from apivideo.apis import PlayerThemesApi
 from apivideo.exceptions import ApiAuthException
 
 api_key = "your api key here"
@@ -12,8 +12,9 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-tokens_api = UploadTokensApi(client)
+player_api = PlayerThemesApi(client)
 
-# List all delegated tokens
-response = tokens_api.list()
+player_id = "your player ID here"
+
+response = player_api.delete(player_id)
 print(response)

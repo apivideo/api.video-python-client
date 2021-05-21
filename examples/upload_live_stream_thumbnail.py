@@ -13,7 +13,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use live streams
 live_stream_api = LiveStreamsApi(client)
 
 # Open image to use as thumbnail, should be in same directory as your code 

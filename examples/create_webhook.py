@@ -12,7 +12,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use webhooks
 webhooks_api = WebhooksApi(client)
 
 # Create the webhooks payload

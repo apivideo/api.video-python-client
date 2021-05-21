@@ -13,7 +13,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use captions
 captions_api = CaptionsApi(client)
 
 # Set up payload to send 

@@ -13,7 +13,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use raw statistics
 rawstats_api = RawStatisticsApi(client)
 
 # Retrieve all sessions for your video ID

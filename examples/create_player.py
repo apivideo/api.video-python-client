@@ -12,7 +12,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use webhooks
 player_api = PlayerThemesApi(client)
 
 # Create player payload. To use the parameters in the client, change them to have 
@@ -35,6 +34,6 @@ player_theme_creation_payload = {
     "background_text": "rgba(255, 255, 255, .95)"
 }
 
-# Create a webhook
+# Create the player
 response = player_api.create(player_theme_creation_payload)
 print(response)

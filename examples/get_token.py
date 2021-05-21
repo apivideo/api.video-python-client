@@ -15,7 +15,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-# Set up to use tokens
 tokens_api = UploadTokensApi(client)
 
 # Send your request to retrieve information about a specific token

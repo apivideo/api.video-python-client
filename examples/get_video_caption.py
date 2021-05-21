@@ -12,7 +12,6 @@ client = apivideo.AuthenticatedApiClient(api_key)
 # client = apivideo.AuthenticatedApiClient(api_key, production=False)
 client.connect()
 
-# Set up to use captions
 captions_api = CaptionsApi(client)
 
 # Set up language you want to see captions for
