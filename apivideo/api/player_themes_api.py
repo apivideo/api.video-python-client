@@ -963,7 +963,6 @@ class PlayerThemesApi(_EndPoint):
             self,
             player_id,
             file,
-            link,
             **kwargs
         ):
             """Upload a logo  # noqa: E501
@@ -972,15 +971,15 @@ class PlayerThemesApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.upload_logo(player_id, file, link, async_req=True)
+            >>> thread = api.upload_logo(player_id, file, async_req=True)
             >>> result = thread.get()
 
             Args:
                 player_id (str): The unique identifier for the player.
                 file (file_type): The name of the file you want to use for your logo.
-                link (str): The path to the file you want to upload and use as a logo.
 
             Keyword Args:
+                link (str): A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1025,8 +1024,6 @@ class PlayerThemesApi(_EndPoint):
                 player_id
             kwargs['file'] = \
                 file
-            kwargs['link'] = \
-                link
 
             params_map = {
                 'all': [
@@ -1043,7 +1040,6 @@ class PlayerThemesApi(_EndPoint):
                 'required': [
                     'player_id',
                     'file',
-                    'link',
                 ],
                 'nullable': [
                     '_request_timeout'
