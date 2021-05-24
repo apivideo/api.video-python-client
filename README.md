@@ -42,7 +42,8 @@ In this context the client will keep its authentication updated.
 
 ### Manual authentication
 
-If you rather update the access token manually:
+If there is an issue, like you think a refresh token may have been exposed, you can manually retrieve a new one. Otherwise, authentication is handled for you.
+When you retrieve a new refresh token, the old one becomes invalid. Here is the code, where you retrieve a list of videos and then refresh your token:
 
 ```python
 import apivideo
