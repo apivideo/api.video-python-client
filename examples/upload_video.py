@@ -31,7 +31,8 @@ video_id = response["video_id"]
 # Prepare the file you want to upload. Place the file in the same folder as your code.
 file = open("sample-mov-file.mov", "rb")
 
-# Upload your video. This handles videos of any size. If you want to upload from a link online, you need to u
+# Upload your video. This handles videos of any size. The video must be in the same folder as your code. 
+# If you want to upload from a link online, you need to add the source parameter when you create a new video.
 video_response = videos_api.upload(video_id, file)
 
 print("Uploaded Video", video_response)
