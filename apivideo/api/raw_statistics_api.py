@@ -29,8 +29,6 @@ from apivideo.model.raw_statistics_list_sessions_response import RawStatisticsLi
 
 
 class RawStatisticsApi(_EndPoint):
-    """NOTE: This class is auto generated. Do not edit the class manually.
-    """
 
     def list_live_stream_sessions(
             self,
@@ -49,7 +47,7 @@ class RawStatisticsApi(_EndPoint):
                 live_stream_id (str): The unique identifier for the live stream you want to retrieve analytics for.
 
             Keyword Args:
-                period (str): Period must have one of the following formats:   - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\"  For a range period:  -  Date range: \"2018-01-01/2018-01-15\" . [optional]
+                period (str): Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\", - For a month: \"2018-01\" - For a year: \"2018\"  For a range period: -  Date range: \"2018-01-01/2018-01-15\" . [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
                 _return_http_data_only (bool): response data without head status
@@ -61,12 +59,6 @@ class RawStatisticsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -86,12 +78,6 @@ class RawStatisticsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
 
@@ -104,9 +90,7 @@ class RawStatisticsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -135,9 +119,7 @@ class RawStatisticsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -161,11 +143,7 @@ class RawStatisticsApi(_EndPoint):
                         " to method `list_live_stream_sessions`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list_live_stream_sessions`" %
@@ -192,7 +170,6 @@ class RawStatisticsApi(_EndPoint):
                 files=params['file'],
                 response_type=(RawStatisticsListLiveStreamAnalyticsResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -227,12 +204,6 @@ class RawStatisticsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -252,12 +223,6 @@ class RawStatisticsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['session_id'] = \
                 session_id
 
@@ -269,9 +234,7 @@ class RawStatisticsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'session_id',
@@ -298,9 +261,7 @@ class RawStatisticsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'session_id': 'sessionId',
@@ -322,11 +283,7 @@ class RawStatisticsApi(_EndPoint):
                         " to method `list_session_events`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list_session_events`" %
@@ -353,7 +310,6 @@ class RawStatisticsApi(_EndPoint):
                 files=params['file'],
                 response_type=(RawStatisticsListPlayerSessionEventsResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -377,7 +333,7 @@ class RawStatisticsApi(_EndPoint):
                 video_id (str): The unique identifier for the video you want to retrieve session information for.
 
             Keyword Args:
-                period (str): Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15 . [optional]
+                period (str): Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 . [optional]
                 metadata ([str]): Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.. [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
@@ -390,12 +346,6 @@ class RawStatisticsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -415,12 +365,6 @@ class RawStatisticsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
 
@@ -434,9 +378,7 @@ class RawStatisticsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -467,9 +409,7 @@ class RawStatisticsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -496,11 +436,7 @@ class RawStatisticsApi(_EndPoint):
                         " to method `list_video_sessions`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list_video_sessions`" %
@@ -527,7 +463,6 @@ class RawStatisticsApi(_EndPoint):
                 files=params['file'],
                 response_type=(RawStatisticsListSessionsResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],

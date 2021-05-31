@@ -104,8 +104,12 @@ class CaptionsListResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, data, pagination, *args, **kwargs):  # noqa: E501
         """CaptionsListResponse - a model defined in OpenAPI
+
+        Args:
+            data ([Caption]):
+            pagination (Pagination):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -138,8 +142,6 @@ class CaptionsListResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            data ([Caption]): [optional]  # noqa: E501
-            pagination (Pagination): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -165,6 +167,8 @@ class CaptionsListResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.data = data
+        self.pagination = pagination
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -33,8 +33,6 @@ from apivideo.model.videos_list_response import VideosListResponse
 
 
 class VideosApi(_EndPoint):
-    """NOTE: This class is auto generated. Do not edit the class manually.
-    """
 
     def delete(
             self,
@@ -63,12 +61,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -88,12 +80,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
 
@@ -103,9 +89,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -128,9 +112,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -148,11 +130,7 @@ class VideosApi(_EndPoint):
                         " to method `delete`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `delete`" %
@@ -179,7 +157,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=None,
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -212,12 +189,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -237,12 +208,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
 
@@ -252,9 +217,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -277,9 +240,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -297,11 +258,7 @@ class VideosApi(_EndPoint):
                         " to method `get`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `get`" %
@@ -328,7 +285,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(Video,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -361,12 +317,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -386,12 +336,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
 
@@ -401,9 +345,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -426,9 +368,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -446,11 +386,7 @@ class VideosApi(_EndPoint):
                         " to method `get_status`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `get_status`" %
@@ -477,7 +413,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(VideoStatus,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -516,12 +451,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -541,12 +470,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
 
             params_map = {
                 'all': [
@@ -562,9 +485,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [],
                 'nullable': [
@@ -601,9 +522,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'title': 'title',
@@ -638,11 +557,7 @@ class VideosApi(_EndPoint):
                         " to method `list`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list`" %
@@ -669,7 +584,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(VideosListResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -704,12 +618,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -729,12 +637,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['video_update_payload'] = \
@@ -747,9 +649,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -775,9 +675,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -796,11 +694,7 @@ class VideosApi(_EndPoint):
                         " to method `update`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `update`" %
@@ -827,7 +721,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(Video,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -862,12 +755,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -887,12 +774,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['video_thumbnail_pick_payload'] = \
@@ -905,9 +786,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -933,9 +812,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -954,11 +831,7 @@ class VideosApi(_EndPoint):
                         " to method `pick_thumbnail`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `pick_thumbnail`" %
@@ -985,7 +858,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(Video,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -1021,12 +893,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1046,12 +912,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['token'] = \
                 token
             kwargs['file'] = \
@@ -1064,9 +924,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'token',
@@ -1092,9 +950,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'token': 'token',
@@ -1114,11 +970,7 @@ class VideosApi(_EndPoint):
                         " to method `upload_with_upload_token`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `upload_with_upload_token`" %
@@ -1147,7 +999,6 @@ class VideosApi(_EndPoint):
                     files=chunk,
                     response_type=(Video,),
                     async_req=kwargs['async_req'],
-                    _check_type=kwargs['_check_return_type'],
                     _return_http_data_only=kwargs['_return_http_data_only'],
                     _preload_content=kwargs['_preload_content'],
                     _request_timeout=kwargs['_request_timeout'],
@@ -1161,7 +1012,7 @@ class VideosApi(_EndPoint):
         ):
             """Create a video  # noqa: E501
 
-            To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",       \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)   # noqa: E501
+            To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",      \"description\":\"so many details\",      \"mp4Support\":true }' ```  ### Creating a hosted video  You can also create a video directly from one hosted on a third-party server by giving its URI in `source` parameter:  ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ```  In this case, the service will respond `202 Accepted` and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos)   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -1181,12 +1032,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1206,12 +1051,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_creation_payload'] = \
                 video_creation_payload
 
@@ -1221,9 +1060,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_creation_payload',
@@ -1246,9 +1083,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
             }
@@ -1265,11 +1100,7 @@ class VideosApi(_EndPoint):
                         " to method `create`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `create`" %
@@ -1296,7 +1127,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(Video,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -1331,12 +1161,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1356,12 +1180,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['file'] = \
@@ -1374,9 +1192,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -1402,9 +1218,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -1424,11 +1238,7 @@ class VideosApi(_EndPoint):
                         " to method `upload`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `upload`" %
@@ -1457,7 +1267,6 @@ class VideosApi(_EndPoint):
                     files=chunk,
                     response_type=(Video,),
                     async_req=kwargs['async_req'],
-                    _check_type=kwargs['_check_return_type'],
                     _return_http_data_only=kwargs['_return_http_data_only'],
                     _preload_content=kwargs['_preload_content'],
                     _request_timeout=kwargs['_request_timeout'],
@@ -1493,12 +1302,6 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1518,12 +1321,6 @@ class VideosApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['file'] = \
@@ -1536,9 +1333,7 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -1564,9 +1359,7 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -1586,11 +1379,7 @@ class VideosApi(_EndPoint):
                         " to method `upload_thumbnail`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `upload_thumbnail`" %
@@ -1617,7 +1406,6 @@ class VideosApi(_EndPoint):
                 files=params['file'],
                 response_type=(Video,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],

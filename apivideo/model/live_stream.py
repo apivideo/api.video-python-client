@@ -118,8 +118,11 @@ class LiveStream(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, live_stream_id, *args, **kwargs):  # noqa: E501
         """LiveStream - a model defined in OpenAPI
+
+        Args:
+            live_stream_id (str): The unique identifier for the live stream. Live stream IDs begin with \"li.\"
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -152,7 +155,6 @@ class LiveStream(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            live_stream_id (str): The unique identifier for the live stream. Live stream IDs begin with \"li.\". [optional]  # noqa: E501
             name (str): The name of your live stream.. [optional]  # noqa: E501
             stream_key (str): The unique, private stream key that you use to begin streaming.. [optional]  # noqa: E501
             record (bool): Whether you are recording or not.. [optional]  # noqa: E501
@@ -187,6 +189,7 @@ class LiveStream(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.live_stream_id = live_stream_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

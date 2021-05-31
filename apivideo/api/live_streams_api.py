@@ -31,8 +31,6 @@ from apivideo.model.not_found import NotFound
 
 
 class LiveStreamsApi(_EndPoint):
-    """NOTE: This class is auto generated. Do not edit the class manually.
-    """
 
     def delete(
             self,
@@ -60,12 +58,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -85,12 +77,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
 
@@ -100,9 +86,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -125,9 +109,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -145,11 +127,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `delete`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `delete`" %
@@ -176,7 +154,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=None,
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -209,12 +186,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -234,12 +205,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
 
@@ -249,9 +214,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -274,9 +237,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -294,11 +255,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `delete_thumbnail`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `delete_thumbnail`" %
@@ -325,7 +282,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStream,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -361,12 +317,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -386,12 +336,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
 
             params_map = {
                 'all': [
@@ -404,9 +348,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [],
                 'nullable': [
@@ -443,9 +385,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'stream_key': 'streamKey',
@@ -473,11 +413,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `list`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list`" %
@@ -504,7 +440,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStreamListResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -537,12 +472,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -562,12 +491,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
 
@@ -577,9 +500,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -602,9 +523,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -622,11 +541,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `get`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `get`" %
@@ -653,7 +568,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStream,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -688,12 +602,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -713,12 +621,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
             kwargs['live_stream_update_payload'] = \
@@ -731,9 +633,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -759,9 +659,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -780,11 +678,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `update`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `update`" %
@@ -811,7 +705,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStream,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -824,7 +717,7 @@ class LiveStreamsApi(_EndPoint):
         ):
             """Create live stream  # noqa: E501
 
-            A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}  # noqa: E501
+            A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream. The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -844,12 +737,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -869,12 +756,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_creation_payload'] = \
                 live_stream_creation_payload
 
@@ -884,9 +765,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_creation_payload',
@@ -909,9 +788,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
             }
@@ -928,11 +805,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `create`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `create`" %
@@ -959,7 +832,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStream,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -994,12 +866,6 @@ class LiveStreamsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1019,12 +885,6 @@ class LiveStreamsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['live_stream_id'] = \
                 live_stream_id
             kwargs['file'] = \
@@ -1037,9 +897,7 @@ class LiveStreamsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'live_stream_id',
@@ -1065,9 +923,7 @@ class LiveStreamsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'live_stream_id': 'liveStreamId',
@@ -1087,11 +943,7 @@ class LiveStreamsApi(_EndPoint):
                         " to method `upload_thumbnail`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `upload_thumbnail`" %
@@ -1118,7 +970,6 @@ class LiveStreamsApi(_EndPoint):
                 files=params['file'],
                 response_type=(LiveStream,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],

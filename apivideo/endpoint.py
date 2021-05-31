@@ -44,16 +44,13 @@ class EndPoint(object):
                     configuration=self.api_client.configuration
                 )
 
-        if kwargs['_check_input_type'] is False:
-            return
-
         for key, value in kwargs.items():
             fixed_val = validate_and_convert_types(
                 value,
                 openapi_types[key],
                 [key],
                 False,
-                kwargs['_check_input_type'],
+                True,
                 configuration=self.api_client.configuration
             )
             kwargs[key] = fixed_val

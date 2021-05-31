@@ -76,6 +76,7 @@ class PlayerTheme(ModelNormal):
         """
         lazy_import()
         return {
+            'player_id': (str,),  # noqa: E501
             'text': (str,),  # noqa: E501
             'link': (str,),  # noqa: E501
             'link_hover': (str,),  # noqa: E501
@@ -90,7 +91,6 @@ class PlayerTheme(ModelNormal):
             'force_autoplay': (bool,),  # noqa: E501
             'hide_title': (bool,),  # noqa: E501
             'force_loop': (bool,),  # noqa: E501
-            'player_id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
             'shape_margin': (int,),  # noqa: E501
@@ -108,6 +108,7 @@ class PlayerTheme(ModelNormal):
 
 
     attribute_map = {
+        'player_id': 'playerId',  # noqa: E501
         'text': 'text',  # noqa: E501
         'link': 'link',  # noqa: E501
         'link_hover': 'linkHover',  # noqa: E501
@@ -122,7 +123,6 @@ class PlayerTheme(ModelNormal):
         'force_autoplay': 'forceAutoplay',  # noqa: E501
         'hide_title': 'hideTitle',  # noqa: E501
         'force_loop': 'forceLoop',  # noqa: E501
-        'player_id': 'playerId',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'shape_margin': 'shapeMargin',  # noqa: E501
@@ -146,8 +146,11 @@ class PlayerTheme(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, player_id, *args, **kwargs):  # noqa: E501
         """PlayerTheme - a model defined in OpenAPI
+
+        Args:
+            player_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -194,7 +197,6 @@ class PlayerTheme(ModelNormal):
             force_autoplay (bool): enable/disable player autoplay. Default: false. [optional]  # noqa: E501
             hide_title (bool): enable/disable title. Default: false. [optional]  # noqa: E501
             force_loop (bool): enable/disable looping. Default: false. [optional]  # noqa: E501
-            player_id (str): [optional]  # noqa: E501
             created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
             updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
             shape_margin (int): Deprecated. [optional]  # noqa: E501
@@ -229,6 +231,7 @@ class PlayerTheme(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.player_id = player_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

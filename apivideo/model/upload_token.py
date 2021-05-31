@@ -78,7 +78,7 @@ class UploadToken(ModelNormal):
             'token': (str,),  # noqa: E501
             'ttl': (int,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
-            'expires_at': (datetime, none_type),  # noqa: E501
+            'expires_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property

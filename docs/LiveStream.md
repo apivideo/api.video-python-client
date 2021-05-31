@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**live_stream_id** | **str** | The unique identifier for the live stream. Live stream IDs begin with \&quot;li.\&quot; | [optional] 
+**live_stream_id** | **str** | The unique identifier for the live stream. Live stream IDs begin with \&quot;li.\&quot; | 
 **name** | **str** | The name of your live stream. | [optional] 
 **stream_key** | **str** | The unique, private stream key that you use to begin streaming. | [optional] 
 **record** | **bool** | Whether you are recording or not. | [optional] 
