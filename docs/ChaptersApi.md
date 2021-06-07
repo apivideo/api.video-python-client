@@ -27,7 +27,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = chapters_api.ChaptersApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the video you want to delete a chapter from. 
+    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the video you want to delete a chapter from.
     language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
 
     # example passing only required values which don't have defaults set
@@ -43,7 +43,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The unique identifier for the video you want to delete a chapter from.  |
+ **video_id** | **str**| The unique identifier for the video you want to delete a chapter from. |
  **language** | **str**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
 
 ### Return type

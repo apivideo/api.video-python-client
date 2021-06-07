@@ -216,7 +216,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = captions_api.CaptionsApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to have automatic captions for. 
+    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to have automatic captions for.
     language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
     captions_update_payload = CaptionsUpdatePayload(
         default=True,
@@ -236,7 +236,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The unique identifier for the video you want to have automatic captions for.  |
+ **video_id** | **str**| The unique identifier for the video you want to have automatic captions for. |
  **language** | **str**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
  **captions_update_payload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
 

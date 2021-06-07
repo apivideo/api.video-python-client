@@ -30,8 +30,6 @@ from apivideo.model.not_found import NotFound
 
 
 class CaptionsApi(_EndPoint):
-    """NOTE: This class is auto generated. Do not edit the class manually.
-    """
 
     def delete(
             self,
@@ -62,12 +60,6 @@ class CaptionsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -87,12 +79,6 @@ class CaptionsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -105,9 +91,7 @@ class CaptionsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -133,9 +117,7 @@ class CaptionsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -155,11 +137,7 @@ class CaptionsApi(_EndPoint):
                         " to method `delete`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `delete`" %
@@ -186,7 +164,6 @@ class CaptionsApi(_EndPoint):
                 files=params['file'],
                 response_type=None,
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -221,12 +198,6 @@ class CaptionsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -246,12 +217,6 @@ class CaptionsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
 
@@ -263,9 +228,7 @@ class CaptionsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -292,9 +255,7 @@ class CaptionsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -316,11 +277,7 @@ class CaptionsApi(_EndPoint):
                         " to method `list`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `list`" %
@@ -347,7 +304,6 @@ class CaptionsApi(_EndPoint):
                 files=params['file'],
                 response_type=(CaptionsListResponse,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -382,12 +338,6 @@ class CaptionsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -407,12 +357,6 @@ class CaptionsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -425,9 +369,7 @@ class CaptionsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -453,9 +395,7 @@ class CaptionsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -475,11 +415,7 @@ class CaptionsApi(_EndPoint):
                         " to method `get`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `get`" %
@@ -506,7 +442,6 @@ class CaptionsApi(_EndPoint):
                 files=params['file'],
                 response_type=(Caption,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -529,7 +464,7 @@ class CaptionsApi(_EndPoint):
             >>> result = thread.get()
 
             Args:
-                video_id (str): The unique identifier for the video you want to have automatic captions for. 
+                video_id (str): The unique identifier for the video you want to have automatic captions for.
                 language (str): A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
                 captions_update_payload (CaptionsUpdatePayload):
 
@@ -543,12 +478,6 @@ class CaptionsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -568,12 +497,6 @@ class CaptionsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -589,9 +512,7 @@ class CaptionsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -620,9 +541,7 @@ class CaptionsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -643,11 +562,7 @@ class CaptionsApi(_EndPoint):
                         " to method `update`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `update`" %
@@ -674,7 +589,6 @@ class CaptionsApi(_EndPoint):
                 files=params['file'],
                 response_type=(Caption,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
@@ -711,12 +625,6 @@ class CaptionsApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -736,12 +644,6 @@ class CaptionsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
             kwargs['video_id'] = \
                 video_id
             kwargs['language'] = \
@@ -757,9 +659,7 @@ class CaptionsApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only',
-                    '_check_input_type',
-                    '_check_return_type'
+                    '_return_http_data_only'
                 ],
                 'required': [
                     'video_id',
@@ -788,9 +688,7 @@ class CaptionsApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,),
-                '_check_input_type': (bool,),
-                '_check_return_type': (bool,)
+                '_return_http_data_only': (bool,)
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -812,11 +710,7 @@ class CaptionsApi(_EndPoint):
                         " to method `upload`" %
                         (key, )
                     )
-                # only throw this nullable ApiValueError if _check_input_type
-                # is False, if _check_input_type==True we catch this case
-                # in self.__validate_inputs
-                if (key not in params_map['nullable'] and value is None
-                        and kwargs['_check_input_type'] is False):
+                if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
                         " when calling `upload`" %
@@ -843,7 +737,6 @@ class CaptionsApi(_EndPoint):
                 files=params['file'],
                 response_type=(Caption,),
                 async_req=kwargs['async_req'],
-                _check_type=kwargs['_check_return_type'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],

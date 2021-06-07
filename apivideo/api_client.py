@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '"api.video client (python; v:0.0.7; )"'
+        self.user_agent = '"api.video client (python; v:0.0.8; )"'
 
     def __enter__(self):
         return self
@@ -129,8 +129,7 @@ class ApiClient(object):
         collection_formats: typing.Optional[typing.Dict[str, str]] = None,
         _preload_content: bool = True,
         _request_timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        _host: typing.Optional[str] = None,
-        _check_type: typing.Optional[bool] = None
+        _host: typing.Optional[str] = None
     ):
 
         config = self.configuration
@@ -221,8 +220,7 @@ class ApiClient(object):
 
             return_data = self.deserialize(
                 response_data,
-                response_type,
-                _check_type
+                response_type
             )
         else:
             return_data = None
@@ -285,7 +283,7 @@ class ApiClient(object):
             return {key: cls.sanitize_for_serialization(val) for key, val in obj.items()}
         raise ApiValueError('Unable to prepare type {} for serialization'.format(obj.__class__.__name__))
 
-    def deserialize(self, response, response_type, _check_type):
+    def deserialize(self, response, response_type):
         """Deserializes response into an object.
 
         :param response: RESTResponse object to be deserialized.
@@ -299,9 +297,6 @@ class ApiClient(object):
             (float, none_type)
             ([int, none_type],)
             ({str: (bool, str, int, float, date, datetime, str, none_type)},)
-        :param _check_type: boolean, whether to check the types of the data
-            received from the server
-        :type _check_type: bool
 
         :return: deserialized object.
         """
@@ -325,7 +320,7 @@ class ApiClient(object):
             response_type,
             ['received_data'],
             True,
-            _check_type,
+            True,
             configuration=self.configuration
         )
         return deserialized_data
@@ -347,8 +342,7 @@ class ApiClient(object):
         collection_formats: typing.Optional[typing.Dict[str, str]] = None,
         _preload_content: bool = True,
         _request_timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        _host: typing.Optional[str] = None,
-        _check_type: typing.Optional[bool] = None
+        _host: typing.Optional[str] = None
     ):
         """Makes the HTTP request (synchronous) and returns deserialized data.
 
@@ -393,9 +387,6 @@ class ApiClient(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _check_type: boolean describing if the data back from the server
-            should have its type checked.
-        :type _check_type: bool, optional
         :return:
             If async_req parameter is True,
             the request will be called asynchronously.
@@ -409,8 +400,7 @@ class ApiClient(object):
                                    body, post_params, files,
                                    response_type, auth_settings,
                                    _return_http_data_only, collection_formats,
-                                   _preload_content, _request_timeout, _host,
-                                   _check_type)
+                                   _preload_content, _request_timeout, _host)
 
         return self.pool.apply_async(self.__call_api, (resource_path,
                                                        method, path_params,
@@ -423,7 +413,7 @@ class ApiClient(object):
                                                        collection_formats,
                                                        _preload_content,
                                                        _request_timeout,
-                                                       _host, _check_type))
+                                                       _host))
 
     def request(self, method, url, query_params=None, headers=None,
                 post_params=None, body=None, _preload_content=True,
@@ -660,9 +650,7 @@ class Endpoint(object):
             'async_req',
             '_preload_content',
             '_request_timeout',
-            '_return_http_data_only',
-            '_check_input_type',
-            '_check_return_type'
+            '_return_http_data_only'
         ])
         self.params_map['nullable'].extend(['_request_timeout'])
         self.validations = root_map['validations']
@@ -672,9 +660,7 @@ class Endpoint(object):
             'async_req': (bool,),
             '_preload_content': (bool,),
             '_request_timeout': (none_type, int, (int,), [int]),
-            '_return_http_data_only': (bool,),
-            '_check_input_type': (bool,),
-            '_check_return_type': (bool,)
+            '_return_http_data_only': (bool,)
         }
         self.openapi_types.update(extra_types)
         self.attribute_map = root_map['attribute_map']
@@ -702,16 +688,13 @@ class Endpoint(object):
                     configuration=self.api_client.configuration
                 )
 
-        if kwargs['_check_input_type'] is False:
-            return
-
         for key, value in kwargs.items():
             fixed_val = validate_and_convert_types(
                 value,
                 self.openapi_types[key],
                 [key],
                 False,
-                kwargs['_check_input_type'],
+                True,
                 configuration=self.api_client.configuration
             )
             kwargs[key] = fixed_val
@@ -794,11 +777,7 @@ class Endpoint(object):
                     " to method `%s`" %
                     (key, self.settings['operation_id'])
                 )
-            # only throw this nullable ApiValueError if _check_input_type
-            # is False, if _check_input_type==True we catch this case
-            # in self.__validate_inputs
-            if (key not in self.params_map['nullable'] and value is None
-                    and kwargs['_check_input_type'] is False):
+            if (key not in self.params_map['nullable'] and value is None):
                 raise ApiValueError(
                     "Value may not be None for non-nullable parameter `%s`"
                     " when calling `%s`" %
@@ -838,7 +817,6 @@ class Endpoint(object):
             response_type=self.settings['response_type'],
             auth_settings=self.settings['auth'],
             async_req=kwargs['async_req'],
-            _check_type=kwargs['_check_return_type'],
             _return_http_data_only=kwargs['_return_http_data_only'],
             _preload_content=kwargs['_preload_content'],
             _request_timeout=kwargs['_request_timeout'],

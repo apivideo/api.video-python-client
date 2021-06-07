@@ -24,8 +24,7 @@ JSON_SCHEMA_VALIDATION_KEYWORDS = {
 }
 
 class Configuration(object):
-    """NOTE: This class is auto generated. Do not edit the class manually.
-
+    """
     :param host: Base url
     :param api_key: Dict to store API key(s).
       Each entry in the dict specifies an API key.
@@ -385,7 +384,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1\n"\
-               "SDK Package Version: 0.0.7".\
+               "SDK Package Version: 0.0.8".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
