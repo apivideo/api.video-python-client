@@ -987,7 +987,7 @@ class VideosApi(_EndPoint):
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             res = None
-            for content_range, chunk in self._chunk_file(params['file']):
+            for content_range, chunk, isLast in self._chunk_file(params['file']):
                 res = self.api_client.call_api(
                     "/upload",
                     "POST",
@@ -997,7 +997,7 @@ class VideosApi(_EndPoint):
                     body=params['body'],
                     post_params=params['form'],
                     files=chunk,
-                    response_type=(Video,),
+                    response_type=(Video,) if isLast else None,
                     async_req=kwargs['async_req'],
                     _return_http_data_only=kwargs['_return_http_data_only'],
                     _preload_content=kwargs['_preload_content'],
@@ -1255,7 +1255,7 @@ class VideosApi(_EndPoint):
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             res = None
-            for content_range, chunk in self._chunk_file(params['file']):
+            for content_range, chunk, isLast in self._chunk_file(params['file']):
                 res = self.api_client.call_api(
                     "/videos/{videoId}/source",
                     "POST",
@@ -1265,7 +1265,7 @@ class VideosApi(_EndPoint):
                     body=params['body'],
                     post_params=params['form'],
                     files=chunk,
-                    response_type=(Video,),
+                    response_type=(Video,) if isLast else None,
                     async_req=kwargs['async_req'],
                     _return_http_data_only=kwargs['_return_http_data_only'],
                     _preload_content=kwargs['_preload_content'],

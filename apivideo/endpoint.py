@@ -107,5 +107,5 @@ class EndPoint(object):
 
         for chunk in iter(partial(file.read, self.api_client.configuration.chunk_size), b''):
             offset = index + len(chunk)
-            yield 'bytes {}-{}/{}'.format(index, offset - 1, file_size), {file_name: [ChunkIO(chunk, file.name)]}
+            yield 'bytes {}-{}/{}'.format(index, offset - 1, file_size), {file_name: [ChunkIO(chunk, file.name)]}, offset == file_size
             index = offset
