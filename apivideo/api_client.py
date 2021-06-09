@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '"api.video client (python; v:0.0.9; )"'
+        self.user_agent = '"api.video client (python; v:0.0.10; )"'
 
     def __enter__(self):
         return self
@@ -489,7 +489,9 @@ class ApiClient(object):
         for k, v in params.items() if isinstance(params, dict) else params:  # noqa: E501
             if k in collection_formats:
                 collection_format = collection_formats[k]
-                if collection_format == 'multi':
+                if collection_format == 'deepObject':
+                    new_params.extend((k+'['+value+']', v[value]) for value in v)
+                elif collection_format == 'multi':
                     new_params.extend((k, value) for value in v)
                 else:
                     if collection_format == 'ssv':

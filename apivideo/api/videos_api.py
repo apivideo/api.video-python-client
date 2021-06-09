@@ -548,6 +548,7 @@ class VideosApi(_EndPoint):
             }
             collection_format_map = {
                 'tags': 'multi',
+                'metadata': 'deepObject',
             }
 
             for key, value in kwargs.items():

@@ -169,7 +169,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = raw_statistics_api.RawStatisticsApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to retrieve session information for.
     period = "period_example" # str | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  (optional)
-    metadata = [{"key": "Author", "value": "John Doe"}, {"key": "Format", "value": "Tutorial"}] # [str] | Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
+    metadata = {
+        "key": "key_example",
+    } # {str: (str,)} | Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
     page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| The unique identifier for the video you want to retrieve session information for. |
  **period** | **str**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  | [optional]
- **metadata** | **[str]**| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ **metadata** | **{str: (str,)}**| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
  **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
 

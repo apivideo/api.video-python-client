@@ -72,7 +72,7 @@ class VideoSessionLocation(ModelNormal):
         """
         return {
             'country': (str,),  # noqa: E501
-            'city': (str,),  # noqa: E501
+            'city': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -132,7 +132,7 @@ class VideoSessionLocation(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             country (str): The country of the viewer.. [optional]  # noqa: E501
-            city (str): The city of the viewer.. [optional]  # noqa: E501
+            city (str, none_type): The city of the viewer.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
