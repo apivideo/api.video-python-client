@@ -71,7 +71,7 @@ class VideoSessionReferrer(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'url': (str,),  # noqa: E501
+            'url': (str, none_type,),  # noqa: E501
             'medium': (str,),  # noqa: E501
             'source': (str,),  # noqa: E501
             'search_term': (str,),  # noqa: E501
@@ -135,7 +135,7 @@ class VideoSessionReferrer(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            url (str): The link the viewer used to reach the video session.. [optional]  # noqa: E501
+            url (str, none_type): The link the viewer used to reach the video session.. [optional]  # noqa: E501
             medium (str): How they arrived at the site, for example organic or paid. Organic meaning they found it themselves and paid meaning they followed a link from an advertisement.. [optional]  # noqa: E501
             source (str): The source the referrer came from to the video session. For example if they searched through google to find the stream.. [optional]  # noqa: E501
             search_term (str): The search term they typed to arrive at the video session.. [optional]  # noqa: E501

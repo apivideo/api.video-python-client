@@ -1,2 +1,3 @@
 pytest-cov>=2.8.1
 urllib3_mock
+requests

@@ -334,7 +334,7 @@ class RawStatisticsApi(_EndPoint):
 
             Keyword Args:
                 period (str): Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 . [optional]
-                metadata ([str]): Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.. [optional]
+                metadata ({str: (str,)}): Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.. [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
                 _return_http_data_only (bool): response data without head status
@@ -401,7 +401,7 @@ class RawStatisticsApi(_EndPoint):
                 'period':
                     (str,),
                 'metadata':
-                    ([str],),
+                    ({str: (str,)},),
                 'current_page':
                     (int,),
                 'page_size':
@@ -426,7 +426,7 @@ class RawStatisticsApi(_EndPoint):
                 'page_size': 'query',
             }
             collection_format_map = {
-                'metadata': 'multi',
+                'metadata': 'deepObject',
             }
 
             for key, value in kwargs.items():
