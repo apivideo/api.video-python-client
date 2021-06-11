@@ -81,15 +81,3 @@ class TestAuth(unittest.TestCase):
                 client.call_api('/test', 'GET')
 
         self.assertEqual(2, len(responses.calls))
-
-    @responses.activate
-    def test_autorefresh_success(self):
-        responses.add('POST', '/auth/api-key', body=AUTH_RESPONSE, status=200, content_type='application/json')
-        responses.add('POST', '/auth/refresh', body=AUTH_RESPONSE, status=200, content_type='application/json')
-        responses.add('GET', '/test', body="{}", status=200, content_type='application/json')
-
-        with apivideo.AuthenticatedApiClient("__KEY__") as client:
-            time.sleep(1)
-            client.call_api('/test', 'GET')
-
-        self.assertEqual(3, len(responses.calls))
