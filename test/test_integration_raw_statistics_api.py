@@ -31,7 +31,7 @@ class TestVideosApi(TestCase):
     def tearDown(self) -> None:
         self.client.close()
 
-    @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
+    @unittest.skip
     def test_list_video_sessions_metadata(self):
         video = self.videoApi.create(video_creation_payload=VideoCreationPayload(
             title='session',

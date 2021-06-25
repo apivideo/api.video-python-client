@@ -7,6 +7,7 @@
 """
 
 
+import abc
 from datetime import date, datetime  # noqa: F401
 import inspect
 import io
@@ -25,8 +26,29 @@ from apivideo.exceptions import (
 )
 
 none_type = type(None)
-file_type = io.IOBase
 
+class GenericFile(metaclass=abc.ABCMeta):
+    @classmethod
+    def __subclasshook__(cls, subclass):
+        return (hasattr(subclass, 'seek') and
+                callable(subclass.seek) and
+                hasattr(subclass, 'read') and
+                callable(subclass.read) and
+                hasattr(subclass, 'tell') and
+                callable(subclass.tell) or
+                NotImplemented)
+
+    @abc.abstractmethod
+    def seek(self, *args):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def tell(self, *args):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def read(self, *args):
+        raise NotImplementedError
 
 class cached_property(object):
     # this caches the result of the function call for fn with no inputs
@@ -45,6 +67,7 @@ class cached_property(object):
             setattr(self, self.result_key, result)
             return result
 
+file_type = GenericFile
 
 PRIMITIVE_TYPES = (list, float, int, bool, datetime, date, str, file_type)
 
@@ -546,7 +569,7 @@ COERCION_INDEX_BY_TYPE = {
     ModelComposed: 0,
     ModelNormal: 1,
     ModelSimple: 2,
-    none_type: 3,    # The type of 'None'.
+    none_type: 3,           # The type of 'None'.
     list: 4,
     dict: 5,
     float: 6,
@@ -555,7 +578,7 @@ COERCION_INDEX_BY_TYPE = {
     datetime: 9,
     date: 10,
     str: 11,
-    file_type: 12,   # 'file_type' is an alias for the built-in 'file' or 'io.IOBase' type.
+    file_type: 12,          # 'file_type' is an alias for the built-in 'file' or 'io.IOBase' type.
 }
 
 # these are used to limit what type conversions we try to do
@@ -611,7 +634,7 @@ COERCIBLE_TYPE_PAIRS = {
         (str, date),
         # (int, str),
         # (float, str),
-        (str, file_type)
+        (str, file_type),
     ),
 }
 

@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '"api.video client (python; v:0.0.10; )"'
+        self.user_agent = '"api.video client (python; v:0.0.11; )"'
 
     def __enter__(self):
         return self
@@ -538,7 +538,12 @@ class ApiClient(object):
                         "Cannot read a closed file. The passed in file_type "
                         "for %s must be open." % param_name
                     )
-                filename = os.path.basename(file_instance.name)
+
+                if file_instance.name is None or isinstance(file_instance.name, (int, )):
+                    filename = 'no_name'
+                else:
+                    filename = os.path.basename(file_instance.name)
+
                 filedata = self.get_file_data_and_close_file(file_instance)
                 mimetype = (mimetypes.guess_type(filename)[0] or
                             'application/octet-stream')
