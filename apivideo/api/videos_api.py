@@ -9,6 +9,8 @@
 import os  # noqa: F401
 import re  # noqa: F401
 import sys  # noqa: F401
+from types import MethodType
+from types import FunctionType
 
 from apivideo.api_client import ApiClient
 from apivideo.endpoint import EndPoint as _EndPoint
@@ -894,6 +896,9 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
+                _progress_listener (method): method called each time a chunk is uploaded. Takes 2 parameters:
+                    the first one is the number of bytes uploaded, the second one is the total number of bytes.
+                    Default is None.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -925,7 +930,8 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only'
+                    '_return_http_data_only',
+                    '_progress_listener',
                 ],
                 'required': [
                     'token',
@@ -951,7 +957,8 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
+                '_return_http_data_only': (bool,),
+                '_progress_listener': (none_type, MethodType, FunctionType),
             }
             attribute_map = {
                 'token': 'token',
@@ -988,7 +995,10 @@ class VideosApi(_EndPoint):
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             res = None
-            for content_range, chunk, isLast in self._chunk_file(params['file']):
+            progress_listener = kwargs.get('_progress_listener', None)
+            for content_range, chunk, isLast, offset, file_size in self._chunk_file(params['file']):
+                if progress_listener is not None:
+                    progress_listener(offset, file_size)
                 res = self.api_client.call_api(
                     "/upload",
                     "POST",
@@ -1162,6 +1172,9 @@ class VideosApi(_EndPoint):
                     number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
+                _progress_listener (method): method called each time a chunk is uploaded. Takes 2 parameters:
+                    the first one is the number of bytes uploaded, the second one is the total number of bytes.
+                    Default is None.
                 async_req (bool): execute request asynchronously
 
             Returns:
@@ -1193,7 +1206,8 @@ class VideosApi(_EndPoint):
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
-                    '_return_http_data_only'
+                    '_return_http_data_only',
+                    '_progress_listener',
                 ],
                 'required': [
                     'video_id',
@@ -1219,7 +1233,8 @@ class VideosApi(_EndPoint):
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
+                '_return_http_data_only': (bool,),
+                '_progress_listener': (none_type, MethodType, FunctionType),
             }
             attribute_map = {
                 'video_id': 'videoId',
@@ -1256,7 +1271,10 @@ class VideosApi(_EndPoint):
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             res = None
-            for content_range, chunk, isLast in self._chunk_file(params['file']):
+            progress_listener = kwargs.get('_progress_listener', None)
+            for content_range, chunk, isLast, offset, file_size in self._chunk_file(params['file']):
+                if progress_listener is not None:
+                    progress_listener(offset, file_size)
                 res = self.api_client.call_api(
                     "/videos/{videoId}/source",
                     "POST",

@@ -9,6 +9,8 @@
 import os  # noqa: F401
 import re  # noqa: F401
 import sys  # noqa: F401
+from types import MethodType
+from types import FunctionType
 
 from apivideo.api_client import ApiClient
 from apivideo.endpoint import EndPoint as _EndPoint

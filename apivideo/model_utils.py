@@ -15,6 +15,8 @@ import os
 import pprint
 import re
 import tempfile
+from types import MethodType
+from types import FunctionType
 
 from dateutil.parser import parse
 
@@ -579,6 +581,8 @@ COERCION_INDEX_BY_TYPE = {
     date: 10,
     str: 11,
     file_type: 12,          # 'file_type' is an alias for the built-in 'file' or 'io.IOBase' type.
+    MethodType: 13,
+    FunctionType: 14,
 }
 
 # these are used to limit what type conversions we try to do
