@@ -50,15 +50,21 @@ class TestVideosApi(TestCase):
         self.api.delete(video_with_metadata.video_id)
         self.api.delete(video_without_metadata.video_id)
 
+
+
     @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
     def test_upload(self):
+
+        def listener(uploaded, total):
+            print('Progress: {}/{}'.format(uploaded, total))
+
         video = self.api.create(video_creation_payload=VideoCreationPayload(
             title='upload',
             public=True,
             tags=["bunny"]))
 
-        file = open("sample.mp4", "rb")
-        self.api.upload(video.video_id, file, _request_timeout=20)
+        file = open("sample-mp4-file.mp4", "rb")
+        self.api.upload(video.video_id, file, _request_timeout=20, _progress_listener=listener)
         file.close()
         self.api.delete(video.video_id)
 
