@@ -11,8 +11,12 @@ client = apivideo.AuthenticatedApiClient(api_key)
 
 client.connect()
 
-videos_api = VideosApi(client)
-
 # Retrieve a list of all videos. 
-response = videos_api.list()
-print(response)
+
+videos_api = VideosApi(client)
+title = 'Sample AVI Video'
+videos = videos_api.list(title=title)
+
+# You can list all videos by not including any filter terms and just using .list()
+
+print(videos)
