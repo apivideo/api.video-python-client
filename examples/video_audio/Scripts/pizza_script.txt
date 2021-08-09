@@ -1,0 +1,13 @@
+
+
+    <<soundSegment::intro>> 
+    <<sectionName::intro>> 
+    On {{day_of_week}} it's Bring a friend day in {{city}} at Renzo's pizza!
+
+    <<soundSegment::main>> 
+    <<sectionName::main>> 
+    Bring a friend and they will get their pizza for free if you order one or more premium size pizzas, between {{offer_time}}. Only at Renzo's, {{address}} in {{city}}.
+
+    <<soundSegment::outro>> 
+    <<sectionName::outro>> 
+    Renzo's. Eat the best pizza for the least dough.
