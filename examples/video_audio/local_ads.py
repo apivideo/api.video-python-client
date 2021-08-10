@@ -1,5 +1,5 @@
 import apivideo, apiaudio, ffmpeg
-import os, json, csv, time, sys, webbrowser
+import os, json, csv, sys, webbrowser
 from pydub import AudioSegment
 from pydub.playback import play
 from apivideo.apis import VideosApi
@@ -192,7 +192,7 @@ api_video = get_apivideo_key()
 # Authenticate
 av_client = apivideo.AuthenticatedApiClient(api_video)
 av_client.connect()
-apiaudio.api_key = aflo
+apiaudio.api_key = aflo_key
 
 print("Thanks! Now you're ready to choose your video. Your video must be in the same folder as this application.")
 print("Pick your video. \n")
@@ -242,7 +242,7 @@ while True:
         print("Okay, try again.")
 
 for item in audience_combinations:
-    time.sleep(1)
+   
     r = apiaudio.Speech().create(
         scriptId=script.get("scriptId"),
         voice="Aria",
@@ -286,6 +286,7 @@ for item in audience_combinations:
             answer = input("Are the video and audio correct? You will have to start over if not. Type YES or NO. \n")
             if answer.upper() == "YES":
                 print("Great, we'll start creating the videos in bulk and uploading to api.video now.")
+                i += 1
                 break
             if answer.upper() == "NO":
                 print("You will have to go back and figure out what's wrong with the video or audio. Exiting now.")
@@ -297,7 +298,7 @@ for item in audience_combinations:
         # Convert the audio file so we can combine it. 
         counter = str(i)
         vid_list = video.split('.')
-        audio_title = "Audio/" + vid_list[0] + "-audio" + ".wav"
+        audio_title = "Audio/" + vid_list[0] + counter + "-audio" + ".wav"
         wav_track = AudioSegment.from_mp3(file)
         wav_track.export(audio_title, format="wav")
 
@@ -312,6 +313,7 @@ for item in audience_combinations:
             
         # Upload the video and delete it from here
         os.remove(video_title + ".mp4")
-        print("Video " + video_title "added!")
+        print("Video " + video_title + "added!")
+        i += 1
 
 
