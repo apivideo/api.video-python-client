@@ -295,7 +295,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """List all players  # noqa: E501
 
-            Retrieve a list of all the players you created, as well as details about each one.  # noqa: E501
+            Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
