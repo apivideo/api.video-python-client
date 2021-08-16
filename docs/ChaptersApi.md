@@ -138,6 +138,8 @@ Name | Type | Description  | Notes
 
 Show a chapter
 
+Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+
 ### Example
 
 ```python

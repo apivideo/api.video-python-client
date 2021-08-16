@@ -317,6 +317,7 @@ class ChaptersApi(_EndPoint):
         ):
             """Show a chapter  # noqa: E501
 
+            Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

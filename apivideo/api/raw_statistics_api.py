@@ -324,7 +324,7 @@ class RawStatisticsApi(_EndPoint):
         ):
             """List video player sessions  # noqa: E501
 
-            Retrieve all available user sessions for a specific video.  # noqa: E501
+            Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
