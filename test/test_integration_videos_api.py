@@ -63,7 +63,7 @@ class TestVideosApi(TestCase):
             public=True,
             tags=["bunny"]))
 
-        file = open("sample-mp4-file.mp4", "rb")
+        file = open("10m.mp4", "rb")
         self.api.upload(video.video_id, file, _request_timeout=20, _progress_listener=listener)
         file.close()
         self.api.delete(video.video_id)
@@ -75,7 +75,7 @@ class TestVideosApi(TestCase):
             public=True,
             tags=["bunny"]))
 
-        file = open("sample.mp4", "rb")
+        file = open("558k.mp4", "rb")
         with tempfile.SpooledTemporaryFile(mode="wb") as temp:
             temp.write(file.read())
             self.api.upload(video.video_id, temp, _request_timeout=20)
@@ -89,7 +89,7 @@ class TestVideosApi(TestCase):
             public=True,
             tags=["bunny"]))
 
-        file = open("sample-mp4-file.mp4", "rb")
+        file = open("10m.mp4", "rb")
         self.api.upload(video.video_id, file, _request_timeout=20)
         file.close()
         self.api.delete(video.video_id)

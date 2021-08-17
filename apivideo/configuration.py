@@ -23,6 +23,10 @@ JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'minLength', 'pattern', 'maxItems', 'minItems'
 }
 
+DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024
+MIN_CHUNK_SIZE = 5 * 1024 * 1024
+MAX_CHUNK_SIZE = 128 * 1024 * 1024
+
 class Configuration(object):
     """
     :param host: Base url
@@ -85,7 +89,7 @@ class Configuration(object):
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
                  ssl_ca_cert=None,
-                 chunk_size=1024 * 1024,
+                 chunk_size=DEFAULT_CHUNK_SIZE,
                  ):
         """Constructor
         """
@@ -192,6 +196,9 @@ class Configuration(object):
         self.socket_options = None
 
         # chunk size for upload
+        if chunk_size < MIN_CHUNK_SIZE or chunk_size > MAX_CHUNK_SIZE:
+            raise ValueError(
+                    "Invalid chunk size value. Must be greater than {0} bytes and lower than {1} bytes.".format(MIN_CHUNK_SIZE, MAX_CHUNK_SIZE))
         self.chunk_size = chunk_size
 
     def __deepcopy__(self, memo):
@@ -384,7 +391,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1\n"\
-               "SDK Package Version: 0.0.12".\
+               "SDK Package Version: 0.0.13".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

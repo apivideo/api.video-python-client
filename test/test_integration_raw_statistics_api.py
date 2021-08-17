@@ -39,7 +39,7 @@ class TestVideosApi(TestCase):
                 Metadata(key="user", value='__user__')
             ]))
 
-        file = open("sample.mp4", "rb")
+        file = open("558k.mp4", "rb")
         self.videoApi.upload(video.video_id, file, _request_timeout=20)
         file.close()
 
