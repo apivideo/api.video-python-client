@@ -93,11 +93,6 @@ class PlayerTheme(ModelNormal):
             'force_loop': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'shape_margin': (int,),  # noqa: E501
-            'shape_radius': (int,),  # noqa: E501
-            'shape_aspect': (str,),  # noqa: E501
-            'shape_background_top': (str,),  # noqa: E501
-            'shape_background_bottom': (str,),  # noqa: E501
             'link_active': (str,),  # noqa: E501
             'assets': (PlayerThemeAssets,),  # noqa: E501
         }
@@ -125,11 +120,6 @@ class PlayerTheme(ModelNormal):
         'force_loop': 'forceLoop',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'shape_margin': 'shapeMargin',  # noqa: E501
-        'shape_radius': 'shapeRadius',  # noqa: E501
-        'shape_aspect': 'shapeAspect',  # noqa: E501
-        'shape_background_top': 'shapeBackgroundTop',  # noqa: E501
-        'shape_background_bottom': 'shapeBackgroundBottom',  # noqa: E501
         'link_active': 'linkActive',  # noqa: E501
         'assets': 'assets',  # noqa: E501
     }
@@ -199,11 +189,6 @@ class PlayerTheme(ModelNormal):
             force_loop (bool): enable/disable looping. Default: false. [optional]  # noqa: E501
             created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
             updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
-            shape_margin (int): Deprecated. [optional]  # noqa: E501
-            shape_radius (int): Deprecated. [optional]  # noqa: E501
-            shape_aspect (str): Deprecated. [optional]  # noqa: E501
-            shape_background_top (str): Deprecated. [optional]  # noqa: E501
-            shape_background_bottom (str): Deprecated. [optional]  # noqa: E501
             link_active (str): Deprecated. [optional]  # noqa: E501
             assets (PlayerThemeAssets): [optional]  # noqa: E501
         """
