@@ -97,9 +97,7 @@ class TestWebhooksApi(MainTest):
 
             kwargs = {
                 'webhooks_creation_payload': WebhooksCreationPayload(
-        events=[
-            "video.encoding.quality.completed",
-        ],
+        events=["video.encoding.quality.completed"],
         url="https://example.com/webhooks",
     ),
             }
