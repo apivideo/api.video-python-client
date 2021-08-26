@@ -199,9 +199,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = webhooks_api.WebhooksApi(api_client)
     webhooks_creation_payload = WebhooksCreationPayload(
-        events=[
-            "video.encoding.quality.completed",
-        ],
+        events=["video.encoding.quality.completed"],
         url="https://example.com/webhooks",
     ) # WebhooksCreationPayload | 
 
