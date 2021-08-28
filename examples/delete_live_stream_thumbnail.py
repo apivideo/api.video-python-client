@@ -15,6 +15,6 @@ client.connect()
 
 live_stream_api = LiveStreamsApi(client)
 
-# List all live stream details
-response = live_stream_api.list()
+# Delete live stream thumbnail
+response = live_stream_api.delete_thumbnail(live_stream)
 print(response)
