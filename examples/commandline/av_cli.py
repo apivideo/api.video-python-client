@@ -1,4 +1,4 @@
-import click, json, os, re 
+import click, json, os, re, csv 
 import apivideo
 from apivideo.apis import VideosApi
 from apivideo.apis import UploadTokensApi
@@ -755,9 +755,10 @@ def deletelogo(ctx, playerid):
 # list video player sessions 
 @main.command()
 @click.option('--payload', default={}, help="""Add a JSON dictionary containing all the search features you want to use. The format would be: '{"sort_by":"asc"} '""")
+@click.option('--csvfile', default=False, help="""Put true if you want a csv file of the output.""")
 @click.argument('videoid')
 @click.pass_context
-def listvideosessions(ctx, videoid, payload):
+def listvideosessions(ctx, videoid, payload, csvfile):
     """
         Retrieve all or a filtered list of video sessions by video ID and other attributes.
     """
@@ -774,12 +775,23 @@ def listvideosessions(ctx, videoid, payload):
         response = rawstats_api.list_video_sessions(videoid)
     print(response)
 
+    if csvfile:
+        response = response['data']
+        with open('video_sessions_file.csv', 'w', newline='') as csv_file:
+            fieldnames = ['Client Name', 'Client Type', 'Client Version', 'Device Model', 'Device Type', 'Device Vendor', 'City', 'Country', 'OS Name', 'OS Shortname', 'OS Version', 'Ref Medium', 'Ref Search Term', 'Ref Source', 'Ref URL', 'Session End', 'Session Loaded At', 'Session ID']
+            writer = csv.DictWriter(csv_file, fieldnames)
+            writer.writeheader()
+            for item in response:
+                writer.writerow({'Client Name':item['client']['name'], 'Client Type':item['client']['type'], 'Client Version':item['client']['version'], 'Device Model':item['device']['model'], 'Device Type':item['device']['type'], 'Device Vendor':item['device']['vendor'], 'City':item['location']['city'], 'Country':item['location']['country'], 'OS Name':item['os']['name'], 'OS Shortname':item['os']['shortname'], 'OS Version':item['os']['version'], 'Ref Medium':item['referrer']['medium'], 'Ref Search Term':item['referrer']['search_term'], 'Ref Source':item['referrer']['source'], 'Ref URL':item['referrer']['url'], 'Session End':item['session']['ended_at'], 'Session Loaded At':item['session']['loaded_at'], 'Session ID':item['session']['session_id']})
+
+
 # list live stream sessions
 @main.command()
 @click.option('--payload', default={}, help="""Add a JSON dictionary containing all the search features you want to use. The format would be: '{"sort_by":"asc"} """)
+@click.option('--csvfile', default=False, help="""Put true if you want a csv file of the output.""")
 @click.argument('videoid')
 @click.pass_context
-def listlivesessions(ctx, videoid, payload):
+def listlivesessions(ctx, videoid, payload, csvfile):
     """
         Retrieve all or a filtered list of live stream sessions by live stream ID and other attributes.
     """
@@ -795,9 +807,19 @@ def listlivesessions(ctx, videoid, payload):
         response = rawstats_api.list_live_stream_sessions(videoid)
     print(response)
 
+    if csvfile:
+        response = response['data']
+        with open('live_sessions_file.csv', 'w', newline='') as csv_file:
+            fieldnames = ['Client Name', 'Client Type', 'Client Version', 'Device Model', 'Device Type', 'Device Vendor', 'City', 'Country', 'OS Name', 'OS Shortname', 'OS Version', 'Ref Medium', 'Ref Search Term', 'Ref Source', 'Ref URL', 'Session End', 'Session Loaded At', 'Session ID']
+            writer = csv.DictWriter(csv_file, fieldnames)
+            writer.writeheader()
+            for item in response:
+                writer.writerow({'Client Name':item['client']['name'], 'Client Type':item['client']['type'], 'Client Version':item['client']['version'], 'Device Model':item['device']['model'], 'Device Type':item['device']['type'], 'Device Vendor':item['device']['vendor'], 'City':item['location']['city'], 'Country':item['location']['country'], 'OS Name':item['os']['name'], 'OS Shortname':item['os']['shortname'], 'OS Version':item['os']['version'], 'Ref Medium':item['referrer']['medium'], 'Ref Search Term':item['referrer']['search_term'], 'Ref Source':item['referrer']['source'], 'Ref URL':item['referrer']['url'], 'Session End':item['session']['ended_at'], 'Session Loaded At':item['session']['loaded_at'], 'Session ID':item['session']['session_id']})
+
 # list player sessions 
 @main.command()
 @click.option('--payload', default={}, help="""Add a JSON dictionary containing all the search features you want to use. The format would be: '{"sort_by":"asc"} """)
+@click.option('--csvfile', default=False, help="""Put true if you want a csv file of the output.""")
 @click.argument('sessionid')
 @click.pass_context
 def listplayersessions(ctx, sessionid, payload):
@@ -812,6 +834,27 @@ def listplayersessions(ctx, sessionid, payload):
     else:
         response = rawstats_api.list_session_events(sessionid)
     print(response)
+
+    if csvfile:
+        response = response['data']
+        with open('player_sessions_file.csv', 'w', newline='') as csv_file:
+            fieldnames = ['Type', 'Emitted At', 'At', 'From', 'To']
+            writer = csv.DictWriter(csv_file, fieldnames)
+            writer.writeheader()
+            for item in response:
+                if 'at' in item: 
+                    AT = item['at']
+                if 'at' not in item:
+                    AT = 'not'
+                if 'from' in item:
+                    FROM = item['from']
+                if 'from' not in item:
+                    FROM = 'not'
+                if 'to' in item:
+                    TO = item['to']
+                if 'to' not in item:
+                    TO = 'not'
+                writer.writerow({'Type':item['type'], 'Emitted At':item['emittedAt'], 'At':AT, 'From':FROM, 'To':TO})
 
 # WEBHOOKS 
 
@@ -891,4 +934,3 @@ def deletewebhook(ctx, webhookid):
 
 if __name__ == "__main__":
     main()
-
