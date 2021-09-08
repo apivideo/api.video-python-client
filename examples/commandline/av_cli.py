@@ -224,6 +224,26 @@ def deletevideo(ctx, videoid):
     response = videos_api.delete(videoid)
     click.echo(response)
 
+## bulk delete videos
+@main.command()
+@click.argument('vidlist')
+@click.pass_context
+def bulkdelete(ctx, vidlist):
+    """
+        Delete list of videos presented by ID in a comma separated string.
+    """
+    vidlist = vidlist.replace(" ", "")
+    del_list = vidlist.split(',')
+    api_key = ctx.obj['api_key']
+    client = setClient(api_key)
+    client.connect()
+
+    videos_api = VideosApi(client)
+
+    for item in del_list:
+        response = videos_api.delete(item)
+        print(response)
+    
 ## update a video
 @main.command()
 @click.argument('videoid')
