@@ -146,6 +146,62 @@ def uploadvideo(ctx, payload, filepath):
     video_response = videos_api.upload(video_id, file)
     print("Video Upload Info", video_response)
 
+## bulk upload 
+@main.command()
+@click.argument('vidfolderpath')
+@click.argument('pathtocsv')
+@click.pass_context
+def bulkdetailupload(ctx, vidfolderpath, pathtocsv):
+    """
+        Upload in bulk. Provide the path to the folder containing your videos. Provide a path to a .csv file
+        with header filename,title,description,public,panoramic,mp4_support,player_id
+        For file name, put the complete name of the file as it appears in the folder containing your videos. 
+        This command will read the file, add all the details for each video and upload them from the specified folder
+        using the information contained in the csv.
+    """
+
+    api_key = ctx.obj['api_key']
+    client = setClient(api_key)
+    client.connect()
+
+    videos_api = VideosApi(client)
+
+    with open(pathtocsv, mode='r') as readfile:
+        reader = csv.DictReader(readfile) 
+        for row in reader:
+            fpath = row.pop('filename')
+            upload = vidfolderpath + '/' + fpath
+            if 'false' in row['public']:
+                row['public'] = False
+            elif 'False' in row['public']:
+                row['public'] = False
+            else:
+                row['public'] = True
+
+            if 'false' in row['panoramic']:
+                row['panoramic'] = False
+            elif 'False' in row['panoramic']:
+                row['panoramic'] = False
+            else:
+                row['panoramic'] = True
+
+            if 'false' in row['mp4_support']:
+                row['mp4_support'] = False
+            elif 'False' in row['mp4_support']:
+                row['mp4_support'] = False
+            else:
+                row['mp4_support'] = True
+
+            placeholder = {k: v for k, v in row.items() if v is not None}
+            payload = {k: v for k, v in placeholder.items() if v != ""}
+
+            response = videos_api.create(payload)
+            print("Video container for ", fpath, " created!")
+            video_id = response["video_id"]
+            file = open(upload, "rb")
+            video_response = videos_api.upload(video_id, file)
+            print("Video ", fpath, " uploaded! ", video_response)
+    
 ## upload thumbnail for a video
 @main.command()
 @click.argument('videoid')
