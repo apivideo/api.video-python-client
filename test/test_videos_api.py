@@ -229,7 +229,6 @@ class TestVideosApi(MainTest):
                 value="Green",
             ),
         ],
-        published_at=dateutil_parser('2020-07-14T23:36:18.598Z'),
     ),
             }
             url = '/videos'.format(**kwargs)

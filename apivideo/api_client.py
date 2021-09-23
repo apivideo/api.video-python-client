@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '"api.video client (python; v:0.0.14; )"'
+        self.user_agent = '"api.video client (python; v:0.0.15; )"'
 
     def __enter__(self):
         return self
