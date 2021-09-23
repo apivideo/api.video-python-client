@@ -85,7 +85,6 @@ class VideoCreationPayload(ModelNormal):
             'player_id': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'metadata': ([Metadata],),  # noqa: E501
-            'published_at': (datetime,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +102,6 @@ class VideoCreationPayload(ModelNormal):
         'player_id': 'playerId',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
-        'published_at': 'publishedAt',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -163,7 +161,6 @@ class VideoCreationPayload(ModelNormal):
             player_id (str): The unique identification number for your video player.. [optional]  # noqa: E501
             tags ([str]): A list of tags you want to use to describe your video.. [optional]  # noqa: E501
             metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.. [optional]  # noqa: E501
-            published_at (datetime): The API uses ISO-8601 format for time, and includes 3 places for milliseconds.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

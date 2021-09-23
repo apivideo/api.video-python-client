@@ -501,7 +501,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
-        published_at=dateutil_parser('2020-07-14T23:36:18.598Z'),
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
