@@ -240,3 +240,11 @@ Method | HTTP request | Description
  - [Webhook](https://github.com/apivideo/python-api-client/blob/master/docs/Webhook.md)
  - [WebhooksCreationPayload](https://github.com/apivideo/python-api-client/blob/master/docs/WebhooksCreationPayload.md)
  - [WebhooksListResponse](https://github.com/apivideo/python-api-client/blob/master/docs/WebhooksListResponse.md)
+
+
+
+## Have you gotten use from this API client?
+
+Please take a moment to leave a star on the client ⭐
+
+This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
