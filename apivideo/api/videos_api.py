@@ -426,7 +426,7 @@ class VideosApi(_EndPoint):
         ):
             """List all videos  # noqa: E501
 
-            Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.  # noqa: E501
+            Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint..  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
