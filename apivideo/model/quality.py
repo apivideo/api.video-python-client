@@ -51,6 +51,10 @@ class Quality(ModelNormal):
     """
 
     allowed_values = {
+        ('type',): {
+            'HLS': "hls",
+            'MP4': "mp4",
+        },
         ('quality',): {
             '240P': "240p",
             '360P': "360p",
@@ -85,6 +89,7 @@ class Quality(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'type': (str,),  # noqa: E501
             'quality': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
         }
@@ -95,6 +100,7 @@ class Quality(ModelNormal):
 
 
     attribute_map = {
+        'type': 'type',  # noqa: E501
         'quality': 'quality',  # noqa: E501
         'status': 'status',  # noqa: E501
     }
@@ -145,6 +151,7 @@ class Quality(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            type (str): The type of video (hls or mp4).. [optional]  # noqa: E501
             quality (str): The quality of the video you have, in pixels. Choices include 360p, 480p, 720p, 1080p, and 2160p.. [optional]  # noqa: E501
             status (str): The status of your video. Statuses include waiting - the video is waiting to be encoded. encoding - the video is in the process of being encoded. encoded - the video was successfully encoded. failed - the video failed to be encoded.. [optional]  # noqa: E501
         """
