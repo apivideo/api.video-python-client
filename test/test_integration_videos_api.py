@@ -9,6 +9,11 @@ from pprint import pprint
 from unittest import TestCase
 import tempfile
 import unittest
+
+from apivideo.model.token_creation_payload import TokenCreationPayload
+
+from apivideo.api.upload_tokens_api import UploadTokensApi
+
 import apivideo
 import string
 import os
@@ -26,6 +31,7 @@ class TestVideosApi(TestCase):
         self.client = apivideo.AuthenticatedApiClient(os.getenv("API_KEY"))
         self.client.connect()
         self.api = VideosApi(self.client)  # noqa: E501
+        self.token_api = UploadTokensApi(self.client)  # noqa: E501
 
     def tearDown(self) -> None:
         self.client.close()
@@ -67,6 +73,47 @@ class TestVideosApi(TestCase):
         self.api.upload(video.video_id, file, _request_timeout=20, _progress_listener=listener)
         file.close()
         self.api.delete(video.video_id)
+
+
+    @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
+    def test_upload_stream(self):
+        video = self.api.create(video_creation_payload=VideoCreationPayload(title='upload stream'))
+
+        part1 = open('10m.mp4.part.a', 'rb')
+        part2 = open('10m.mp4.part.a', 'rb')
+        part3 = open('10m.mp4.part.a', 'rb')
+
+        session = self.api.create_upload_progressive_session(video.video_id)
+        session.uploadPart(part1)
+        session.uploadPart(part2)
+        session.uploadLastPart(part3)
+
+        part1.close()
+        part2.close()
+        part3.close()
+
+        self.api.delete(video.video_id)
+
+
+    @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
+    def test_upload_token_stream(self):
+        token = self.token_api.create_token(TokenCreationPayload()).token
+
+        part1 = open('10m.mp4.part.a', 'rb')
+        part2 = open('10m.mp4.part.a', 'rb')
+        part3 = open('10m.mp4.part.a', 'rb')
+
+        session = self.api.create_upload_with_upload_token_progressive_session(token)
+        session.uploadPart(part1)
+        session.uploadPart(part2)
+        res = session.uploadLastPart(part3)
+
+        part1.close()
+        part2.close()
+        part3.close()
+
+        self.api.delete(res.video_id)
+        self.token_api.delete_token(token)
 
     @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
     def test_upload_temporary_file(self):

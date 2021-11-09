@@ -151,7 +151,7 @@ class VideoStatusEncodingMetadata(ModelNormal):
             duration (int): The length of the video.. [optional]  # noqa: E501
             framerate (int): The frequency with which consecutive images or frames appear on a display. Shown in this API as frames per second (fps).. [optional]  # noqa: E501
             samplerate (int): How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz.. [optional]  # noqa: E501
-            video_codec (str): The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library.. [optional]  # noqa: E501
+            video_codec (str): The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. . [optional]  # noqa: E501
             audio_codec (str): The method used to compress and decompress digital audio for your video.. [optional]  # noqa: E501
             aspect_ratio (str): [optional]  # noqa: E501
         """

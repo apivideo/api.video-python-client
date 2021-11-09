@@ -50,6 +50,7 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -119,6 +120,7 @@ Name | Type | Description  | Notes
 
 [**ChaptersListResponse**](ChaptersListResponse.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -176,6 +178,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Chapter**](Chapter.md)
+
 
 ### HTTP request headers
 
@@ -237,6 +240,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Chapter**](Chapter.md)
+
 
 ### HTTP request headers
 

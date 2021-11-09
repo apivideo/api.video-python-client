@@ -13,7 +13,8 @@ from types import MethodType
 from types import FunctionType
 
 from apivideo.api_client import ApiClient
-from apivideo.endpoint import EndPoint as _EndPoint
+from apivideo.endpoint import EndPoint as _EndPoint, ChunkIO
+from apivideo.model.video_id import VideoId
 from apivideo.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -841,7 +842,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Upload a logo  # noqa: E501
 
-            The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.  # noqa: E501
+            The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

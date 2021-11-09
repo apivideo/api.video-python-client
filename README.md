@@ -186,8 +186,6 @@ Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccessToken](https://github.com/apivideo/python-api-client/blob/master/docs/AccessToken.md)
- - [Account](https://github.com/apivideo/python-api-client/blob/master/docs/Account.md)
- - [AccountQuota](https://github.com/apivideo/python-api-client/blob/master/docs/AccountQuota.md)
  - [AuthenticatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/AuthenticatePayload.md)
  - [BadRequest](https://github.com/apivideo/python-api-client/blob/master/docs/BadRequest.md)
  - [BytesRange](https://github.com/apivideo/python-api-client/blob/master/docs/BytesRange.md)

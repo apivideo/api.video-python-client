@@ -8,6 +8,7 @@
 
 from functools import partial
 import io
+import math
 
 from apivideo.model_utils import check_allowed_values
 from apivideo.model_utils import check_validations
@@ -104,8 +105,11 @@ class EndPoint(object):
         file.seek(0, 2)
         file_size = file.tell()
         file.seek(0, 0)
+        partsCount = math.ceil(file_size/self.api_client.configuration.chunk_size)
+        part = 1
 
         for chunk in iter(partial(file.read, self.api_client.configuration.chunk_size), b''):
             offset = index + len(chunk)
-            yield 'bytes {}-{}/{}'.format(index, offset - 1, file_size), {file_name: [ChunkIO(chunk, file.name)]}, offset == file_size, offset, file_size
+            yield 'part {}/{}'.format(part, partsCount), {file_name: [ChunkIO(chunk, file.name)]}, offset == file_size, offset, file_size
             index = offset
+            part = part + 1

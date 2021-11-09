@@ -53,6 +53,7 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -104,6 +105,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
 
 ### HTTP request headers
 
@@ -168,6 +170,7 @@ Name | Type | Description  | Notes
 
 [**PlayerThemesListResponse**](PlayerThemesListResponse.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -223,6 +226,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PlayerTheme**](PlayerTheme.md)
+
 
 ### HTTP request headers
 
@@ -298,6 +302,7 @@ Name | Type | Description  | Notes
 
 [**PlayerTheme**](PlayerTheme.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -369,6 +374,7 @@ Name | Type | Description  | Notes
 
 [**PlayerTheme**](PlayerTheme.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -387,7 +393,7 @@ Name | Type | Description  | Notes
 
 Upload a logo
 
-The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
 ### Example
 
@@ -437,6 +443,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PlayerTheme**](PlayerTheme.md)
+
 
 ### HTTP request headers
 
