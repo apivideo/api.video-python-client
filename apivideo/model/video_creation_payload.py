@@ -155,12 +155,12 @@ class VideoCreationPayload(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             description (str): A brief description of your video.. [optional]  # noqa: E501
             source (str): If you add a video already on the web, this is where you enter the url for the video.. [optional]  # noqa: E501
-            public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.. [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).. [optional] if omitted the server will use the default value of True  # noqa: E501
             panoramic (bool): Indicates if your video is a 360/immersive video.. [optional] if omitted the server will use the default value of False  # noqa: E501
             mp4_support (bool): Enables mp4 version in addition to streamed version.. [optional] if omitted the server will use the default value of True  # noqa: E501
             player_id (str): The unique identification number for your video player.. [optional]  # noqa: E501
             tags ([str]): A list of tags you want to use to describe your video.. [optional]  # noqa: E501
-            metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.. [optional]  # noqa: E501
+            metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

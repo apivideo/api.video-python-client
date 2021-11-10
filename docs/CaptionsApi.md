@@ -53,6 +53,7 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -122,6 +123,7 @@ Name | Type | Description  | Notes
 
 [**CaptionsListResponse**](CaptionsListResponse.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -179,6 +181,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Caption**](Caption.md)
+
 
 ### HTTP request headers
 
@@ -244,6 +247,7 @@ Name | Type | Description  | Notes
 
 [**Caption**](Caption.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -305,6 +309,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Caption**](Caption.md)
+
 
 ### HTTP request headers
 

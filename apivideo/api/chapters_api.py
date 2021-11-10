@@ -13,7 +13,8 @@ from types import MethodType
 from types import FunctionType
 
 from apivideo.api_client import ApiClient
-from apivideo.endpoint import EndPoint as _EndPoint
+from apivideo.endpoint import EndPoint as _EndPoint, ChunkIO
+from apivideo.model.video_id import VideoId
 from apivideo.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,

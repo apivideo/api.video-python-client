@@ -28,7 +28,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = raw_statistics_api.RawStatisticsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the live stream you want to retrieve analytics for.
-    period = "2019-01-01" # str | Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\", - For a month: \"2018-01\" - For a year: \"2018\"  For a range period: -  Date range: \"2018-01-01/2018-01-15\"  (optional)
+    period = "2019-01-01" # str | Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\"  (optional)
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
     page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
@@ -56,13 +56,14 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **live_stream_id** | **str**| The unique identifier for the live stream you want to retrieve analytics for. |
- **period** | **str**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period: -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  | [optional]
+ **period** | **str**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  | [optional]
  **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
  **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
 
 ### Return type
 
 [**RawStatisticsListLiveStreamAnalyticsResponse**](RawStatisticsListLiveStreamAnalyticsResponse.md)
+
 
 ### HTTP request headers
 
@@ -133,6 +134,7 @@ Name | Type | Description  | Notes
 
 [**RawStatisticsListPlayerSessionEventsResponse**](RawStatisticsListPlayerSessionEventsResponse.md)
 
+
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -168,10 +170,10 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = raw_statistics_api.RawStatisticsApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to retrieve session information for.
-    period = "period_example" # str | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  (optional)
+    period = "period_example" # str | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)
     metadata = {
         "key": "key_example",
-    } # {str: (str,)} | Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
+    } # {str: (str,)} | Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. (optional)
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
     page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
@@ -199,14 +201,15 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| The unique identifier for the video you want to retrieve session information for. |
- **period** | **str**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  | [optional]
- **metadata** | **{str: (str,)}**| Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. | [optional]
+ **period** | **str**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  | [optional]
+ **metadata** | **{str: (str,)}**| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
  **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
 
 ### Return type
 
 [**RawStatisticsListSessionsResponse**](RawStatisticsListSessionsResponse.md)
+
 
 ### HTTP request headers
 

@@ -13,7 +13,8 @@ from types import MethodType
 from types import FunctionType
 
 from apivideo.api_client import ApiClient
-from apivideo.endpoint import EndPoint as _EndPoint
+from apivideo.endpoint import EndPoint as _EndPoint, ChunkIO
+from apivideo.model.video_id import VideoId
 from apivideo.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -299,7 +300,7 @@ class VideosApi(_EndPoint):
         ):
             """Show video status  # noqa: E501
 
-            This API provides upload status & encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).  # noqa: E501
+            This API provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -426,7 +427,7 @@ class VideosApi(_EndPoint):
         ):
             """List all videos  # noqa: E501
 
-            Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.  # noqa: E501
+            Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -437,7 +438,7 @@ class VideosApi(_EndPoint):
             Keyword Args:
                 title (str): The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.. [optional]
                 tags ([str]): A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.. [optional]
-                metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.. [optional]
+                metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.. [optional]
                 description (str): If you described a video with a term or sentence, you can add it here to return videos containing this string.. [optional]
                 live_stream_id (str): If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.. [optional]
                 sort_by (str): Allowed: publishedAt, title. You can search by the time videos were published at, or by title.. [optional]
@@ -1016,6 +1017,160 @@ class VideosApi(_EndPoint):
                     collection_formats=params['collection_format'])
             return res  # return the last response
 
+
+    def create_upload_with_upload_token_progressive_session(self, token, video_id=None):
+        class ProgressiveSession:
+            current_part = 1
+            parent = None
+            token = None
+            video_id = None
+
+            def __init__(self, parent, token, video_id=None):
+                self.token = token
+                self.video_id = video_id
+                self.parent = parent
+
+            def uploadPart(self, file):
+                return self.__upload(file, False)
+
+            def uploadLastPart(self, file):
+                return self.__upload(file, True)
+
+            def __upload(self, file, is_last):
+                kwargs = {}
+                file.seek(0, 2)
+                file_size = file.tell()
+                file.seek(0, 0)
+                kwargs['async_req'] = kwargs.get(
+                    'async_req', False
+                )
+                kwargs['_return_http_data_only'] = kwargs.get(
+                    '_return_http_data_only', True
+                )
+                kwargs['_preload_content'] = kwargs.get(
+                    '_preload_content', True
+                )
+                kwargs['_request_timeout'] = kwargs.get(
+                    '_request_timeout', None
+                )
+                if self.video_id:
+                    kwargs['video_id'] = \
+                        self.video_id
+
+    
+                kwargs['token'] = \
+                    self.token
+    
+                kwargs['file'] = \
+                    file
+
+                params_map = {
+                    'all': [
+                        'token',
+                            'file',
+    
+                        'video_id',
+                        'async_req',
+                        '_preload_content',
+                        '_request_timeout',
+                        '_return_http_data_only',
+                        '_progress_listener',
+                    ],
+                    'required': [
+                        'token',
+                        'file',
+                    ],
+                    'nullable': [
+                        '_request_timeout'
+                    ],
+                    'enum': [
+                    ],
+                    'validation': [
+                    ]
+                }
+                validations = {
+                }
+                allowed_values = {
+                }
+                openapi_types = {
+                    'token':
+                        (str,),
+                        'file':
+                        (file_type,),
+    
+                    'video_id':
+                        (str,),
+                    'async_req': (bool,),
+                    '_preload_content': (bool,),
+                    '_request_timeout': (none_type, int, (int,), [int]),
+                    '_return_http_data_only': (bool,),
+                    '_progress_listener': (none_type, MethodType, FunctionType),
+                }
+                attribute_map = {
+                    'token': 'token',
+                        'file': 'file',
+    
+                    'video_id': 'videoId',
+                }
+                location_map = {
+                    'token': 'query',
+                        'file': 'form',
+    
+                    'video_id': 'form',
+                }
+                collection_format_map = {
+                }
+
+                for key, value in kwargs.items():
+                    if key not in params_map['all']:
+                        raise ApiTypeError(
+                            "Got an unexpected parameter '%s'"
+                            " to method `upload_with_upload_token`" %
+                            (key, )
+                        )
+                    if (key not in params_map['nullable'] and value is None):
+                        raise ApiValueError(
+                            "Value may not be None for non-nullable parameter `%s`"
+                            " when calling `upload_with_upload_token`" %
+                            (key, )
+                        )
+
+                for key in params_map['required']:
+                    if key not in kwargs.keys():
+                        raise ApiValueError(
+                            "Missing the required parameter `%s` when calling "
+                            "`upload_with_upload_token`" % (key, )
+                        )
+
+                self.parent._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+                params = self.parent._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+
+                part = self.current_part
+                self.current_part = self.current_part + 1
+
+                res = self.parent.api_client.call_api(
+                    "/upload",
+                    "POST",
+                    params['path'],
+                    params['query'],
+                    {**params['header'], 'Content-Range': "part " + str(part) + "/" + ("*" if not is_last else str(part))},
+                    body=params['body'],
+                    post_params=params['form'],
+                    files={"file": [ChunkIO(file.read(), file.name)]},
+                    response_type=(Video,) if is_last else (VideoId,),
+                    async_req=kwargs['async_req'],
+                    _return_http_data_only=kwargs['_return_http_data_only'],
+                    _preload_content=kwargs['_preload_content'],
+                    _request_timeout=kwargs['_request_timeout'],
+                    collection_formats=params['collection_format'])
+
+                if res.video_id is not None:
+                    self.video_id = res.video_id
+
+                return res
+
+        return ProgressiveSession(self, token, video_id)
+
     def create(
             self,
             video_creation_payload,
@@ -1023,7 +1178,7 @@ class VideosApi(_EndPoint):
         ):
             """Create a video  # noqa: E501
 
-            To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source). * Videos are public by default. [Learn about Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. * Panoramic videos are for videos recorded in 360 degrees.  You can toggle this after your 360 video upload. * Searchable parameters: title, description, tags and metadata   ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",      \"description\":\"so many details\",      \"mp4Support\":true }' ``` ### add an URL to upload on creation You can also create a video directly from a video hosted on a third-party server by giving its URI in `source` parameter: ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ``` In this case, the service will respond `202 Accepted` and download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key.  To defined a dynamic metadata pair use: ``` \"metadata\":[{\"dynamicKey\": \"__dynamicKey__\"}] ``` The double underscore on both sides of the value allows any variable to be added for a given video session. Added the the url you might have: ``` <iframe type=\"text/html\" src=\"https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]=Doug\" width=\"960\" height=\"320\" frameborder=\"0\" scrollling=\"no\"></iframe> ``` This video session will be tagged as watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.   # noqa: E501
+             ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -1151,7 +1306,7 @@ class VideosApi(_EndPoint):
         ):
             """Upload a video  # noqa: E501
 
-            To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4   ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload)  # noqa: E501
+            To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4    ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -1292,6 +1447,142 @@ class VideosApi(_EndPoint):
                     collection_formats=params['collection_format'])
             return res  # return the last response
 
+
+    def create_upload_progressive_session(self, video_id):
+        class ProgressiveSession:
+            current_part = 1
+            parent = None
+            video_id = None
+
+            def __init__(self, parent, video_id):
+                self.video_id = video_id
+                self.parent = parent
+
+            def uploadPart(self, file):
+                return self.__upload(file, False)
+
+            def uploadLastPart(self, file):
+                return self.__upload(file, True)
+
+            def __upload(self, file, is_last):
+                kwargs = {}
+                file.seek(0, 2)
+                file_size = file.tell()
+                file.seek(0, 0)
+                kwargs['async_req'] = kwargs.get(
+                    'async_req', False
+                )
+                kwargs['_return_http_data_only'] = kwargs.get(
+                    '_return_http_data_only', True
+                )
+                kwargs['_preload_content'] = kwargs.get(
+                    '_preload_content', True
+                )
+                kwargs['_request_timeout'] = kwargs.get(
+                    '_request_timeout', None
+                )
+
+    
+                kwargs['video_id'] = \
+                    self.video_id
+    
+                kwargs['file'] = \
+                    file
+
+                params_map = {
+                    'all': [
+                        'video_id',
+                            'file',
+                            'async_req',
+                        '_preload_content',
+                        '_request_timeout',
+                        '_return_http_data_only',
+                        '_progress_listener',
+                    ],
+                    'required': [
+                        'video_id',
+                        'file',
+                    ],
+                    'nullable': [
+                        '_request_timeout'
+                    ],
+                    'enum': [
+                    ],
+                    'validation': [
+                    ]
+                }
+                validations = {
+                }
+                allowed_values = {
+                }
+                openapi_types = {
+                    'video_id':
+                        (str,),
+                        'file':
+                        (file_type,),
+                        'async_req': (bool,),
+                    '_preload_content': (bool,),
+                    '_request_timeout': (none_type, int, (int,), [int]),
+                    '_return_http_data_only': (bool,),
+                    '_progress_listener': (none_type, MethodType, FunctionType),
+                }
+                attribute_map = {
+                    'video_id': 'videoId',
+                        'file': 'file',
+                    }
+                location_map = {
+                    'video_id': 'path',
+                        'file': 'form',
+                    }
+                collection_format_map = {
+                }
+
+                for key, value in kwargs.items():
+                    if key not in params_map['all']:
+                        raise ApiTypeError(
+                            "Got an unexpected parameter '%s'"
+                            " to method `upload`" %
+                            (key, )
+                        )
+                    if (key not in params_map['nullable'] and value is None):
+                        raise ApiValueError(
+                            "Value may not be None for non-nullable parameter `%s`"
+                            " when calling `upload`" %
+                            (key, )
+                        )
+
+                for key in params_map['required']:
+                    if key not in kwargs.keys():
+                        raise ApiValueError(
+                            "Missing the required parameter `%s` when calling "
+                            "`upload`" % (key, )
+                        )
+
+                self.parent._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+                params = self.parent._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+
+                part = self.current_part
+                self.current_part = self.current_part + 1
+
+                res = self.parent.api_client.call_api(
+                    "/videos/{videoId}/source",
+                    "POST",
+                    params['path'],
+                    params['query'],
+                    {**params['header'], 'Content-Range': "part " + str(part) + "/" + ("*" if not is_last else str(part))},
+                    body=params['body'],
+                    post_params=params['form'],
+                    files={"file": [ChunkIO(file.read(), file.name)]},
+                    response_type=(Video,) if is_last else (VideoId,),
+                    async_req=kwargs['async_req'],
+                    _return_http_data_only=kwargs['_return_http_data_only'],
+                    _preload_content=kwargs['_preload_content'],
+                    _request_timeout=kwargs['_request_timeout'],
+                    collection_formats=params['collection_format'])
+                return res
+
+        return ProgressiveSession(self, video_id)
+
     def upload_thumbnail(
             self,
             video_id,
@@ -1300,7 +1591,7 @@ class VideosApi(_EndPoint):
         ):
             """Upload a thumbnail  # noqa: E501
 
-            The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video. Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).  # noqa: E501
+            The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

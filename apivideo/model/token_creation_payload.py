@@ -133,7 +133,7 @@ class TokenCreationPayload(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            ttl (int): Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.. [optional] if omitted the server will use the default value of 0  # noqa: E501
+            ttl (int): Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.. [optional] if omitted the server will use the default value of 0  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
