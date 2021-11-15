@@ -1,23 +1,42 @@
-[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video)
-
-[![badge](https://img.shields.io/github/stars/apivideo/python-api-client?style=social)](https://github.com/apivideo/python-api-client)
-
-[![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
-
+[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-python-client?style=social)](https://github.com/apivideo/api.video-python-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
+<h1 align="center">api.video Python client</h1>
 
-[api.video](https://api.video) is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+[api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
+
+# Table of contents
+
+- [Table of contents](#table-of-contents)
+- [Project description](#project-description)
+- [Getting started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Code samples](#code-samples)
+    - [Automatic authentication](#automatic-authentication)
+    - [Manual authentication](#manual-authentication)
+- [Documentation](#documentation)
+  - [API Endpoints](#api-endpoints)
+    - [CaptionsApi](#CaptionsApi)
+    - [ChaptersApi](#ChaptersApi)
+    - [LiveStreamsApi](#LiveStreamsApi)
+    - [PlayerThemesApi](#PlayerThemesApi)
+    - [RawStatisticsApi](#RawStatisticsApi)
+    - [UploadTokensApi](#UploadTokensApi)
+    - [VideosApi](#VideosApi)
+    - [WebhooksApi](#WebhooksApi)
+  - [Models](#models)
+- [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
+- [Contribution](#contribution)
 
 
-# api.video Python API client
 
-api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+# Project description
 
-## Warning
+api.video's Python API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
 
-This API client is still in beta. Please feel free to report any issue you may encounter.
+# Getting started
 
-## Requirements.
+## Requirements
 
 Python >= 3.6
 
@@ -27,7 +46,7 @@ Python >= 3.6
 pip install api.video
 ```
 
-## Examples
+## Code samples
 
 ### Automatic authentication
 
@@ -76,12 +95,14 @@ except ApiAuthException:
 ...
 ```
 
-## Documentation for API Endpoints
+# Documentation
+
+## API Endpoints
 
 All URIs are relative to *https://ws.api.video*
 
 
-### CaptionsApi API endpoints
+### CaptionsApi
 
 
 Method | HTTP request | Description
@@ -93,7 +114,7 @@ Method | HTTP request | Description
 [**upload**](https://github.com/apivideo/python-api-client/blob/master/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
-### ChaptersApi API endpoints
+### ChaptersApi
 
 
 Method | HTTP request | Description
@@ -104,7 +125,7 @@ Method | HTTP request | Description
 [**upload**](https://github.com/apivideo/python-api-client/blob/master/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
-### LiveStreamsApi API endpoints
+### LiveStreamsApi
 
 
 Method | HTTP request | Description
@@ -118,7 +139,7 @@ Method | HTTP request | Description
 [**upload_thumbnail**](https://github.com/apivideo/python-api-client/blob/master/docs/LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
-### PlayerThemesApi API endpoints
+### PlayerThemesApi
 
 
 Method | HTTP request | Description
@@ -132,7 +153,7 @@ Method | HTTP request | Description
 [**upload_logo**](https://github.com/apivideo/python-api-client/blob/master/docs/PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
-### RawStatisticsApi API endpoints
+### RawStatisticsApi
 
 
 Method | HTTP request | Description
@@ -142,7 +163,7 @@ Method | HTTP request | Description
 [**list_video_sessions**](https://github.com/apivideo/python-api-client/blob/master/docs/RawStatisticsApi.md#list_video_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
-### UploadTokensApi API endpoints
+### UploadTokensApi
 
 
 Method | HTTP request | Description
@@ -153,7 +174,7 @@ Method | HTTP request | Description
 [**create_token**](https://github.com/apivideo/python-api-client/blob/master/docs/UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
 
 
-### VideosApi API endpoints
+### VideosApi
 
 
 Method | HTTP request | Description
@@ -170,7 +191,7 @@ Method | HTTP request | Description
 [**upload_thumbnail**](https://github.com/apivideo/python-api-client/blob/master/docs/VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 
 
-### WebhooksApi API endpoints
+### WebhooksApi
 
 
 Method | HTTP request | Description
@@ -183,7 +204,7 @@ Method | HTTP request | Description
 
 
 
-## Documentation For Models
+## Models
 
  - [AccessToken](https://github.com/apivideo/python-api-client/blob/master/docs/AccessToken.md)
  - [AuthenticatePayload](https://github.com/apivideo/python-api-client/blob/master/docs/AuthenticatePayload.md)
@@ -250,8 +271,12 @@ Method | HTTP request | Description
 
 
 
-## Have you gotten use from this API client?
+# Have you gotten use from this API client?
 
 Please take a moment to leave a star on the client ⭐
 
 This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
+
+# Contribution
+
+Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
