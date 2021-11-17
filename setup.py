@@ -37,7 +37,7 @@ setup(
     description="api.video Python API client",
     author="api.video ecosystem team",
     author_email="ecosystem@api.video",
-    url="https://github.com/apivideo/python-api-client",
+    url="https://github.com/apivideo/api.video-python-client",
     keywords=["api.video", "sdk", "api client", "video", "live", "hls"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
