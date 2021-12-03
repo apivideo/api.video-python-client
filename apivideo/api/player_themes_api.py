@@ -294,9 +294,9 @@ class PlayerThemesApi(_EndPoint):
             self,
             **kwargs
         ):
-            """List all players  # noqa: E501
+            """List all player themes  # noqa: E501
 
-            Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).  # noqa: E501
+            Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -365,6 +365,7 @@ class PlayerThemesApi(_EndPoint):
             allowed_values = {
                 ('sort_by',): {
 
+                    "NAME": "name",
                     "CREATEDAT": "createdAt",
                     "UPDATEDAT": "updatedAt"
                 },

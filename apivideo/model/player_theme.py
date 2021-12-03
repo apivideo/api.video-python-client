@@ -77,6 +77,7 @@ class PlayerTheme(ModelNormal):
         lazy_import()
         return {
             'player_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'text': (str,),  # noqa: E501
             'link': (str,),  # noqa: E501
             'link_hover': (str,),  # noqa: E501
@@ -104,6 +105,7 @@ class PlayerTheme(ModelNormal):
 
     attribute_map = {
         'player_id': 'playerId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'text': 'text',  # noqa: E501
         'link': 'link',  # noqa: E501
         'link_hover': 'linkHover',  # noqa: E501
@@ -173,6 +175,7 @@ class PlayerTheme(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            name (str): The name of the player theme. [optional]  # noqa: E501
             text (str): RGBA color for timer text. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link (str): RGBA color for all controls. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link_hover (str): RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
