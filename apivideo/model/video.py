@@ -81,8 +81,8 @@ class Video(ModelNormal):
         lazy_import()
         return {
             'video_id': (str,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'published_at': (str,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
@@ -103,8 +103,8 @@ class Video(ModelNormal):
 
     attribute_map = {
         'video_id': 'videoId',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'description': 'description',  # noqa: E501
         'published_at': 'publishedAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
@@ -130,12 +130,11 @@ class Video(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, video_id, title, *args, **kwargs):  # noqa: E501
+    def __init__(self, video_id, *args, **kwargs):  # noqa: E501
         """Video - a model defined in OpenAPI
 
         Args:
             video_id (str): The unique identifier of the video object.
-            title (str): The title of the video content. 
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -169,6 +168,7 @@ class Video(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): When a video was created, presented in ISO-8601 format.. [optional]  # noqa: E501
+            title (str): The title of the video content. . [optional]  # noqa: E501
             description (str): A description for the video content. . [optional]  # noqa: E501
             published_at (str): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
             updated_at (datetime): The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
@@ -206,7 +206,6 @@ class Video(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.video_id = video_id
-        self.title = title
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
