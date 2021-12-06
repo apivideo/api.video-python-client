@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **video_id** | **str** | The unique identifier of the video object. | 
-**title** | **str** | The title of the video content.  | 
 **created_at** | **datetime** | When a video was created, presented in ISO-8601 format. | [optional] 
+**title** | **str** | The title of the video content.  | [optional] 
 **description** | **str** | A description for the video content.  | [optional] 
 **published_at** | **str** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. | [optional] 
 **updated_at** | **datetime** | The date and time the video was updated. Date and time are provided using ISO-8601 UTC format. | [optional] 
