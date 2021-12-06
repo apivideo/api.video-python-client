@@ -80,8 +80,8 @@ class TestVideosApi(TestCase):
         video = self.api.create(video_creation_payload=VideoCreationPayload(title='upload stream'))
 
         part1 = open('10m.mp4.part.a', 'rb')
-        part2 = open('10m.mp4.part.a', 'rb')
-        part3 = open('10m.mp4.part.a', 'rb')
+        part2 = open('10m.mp4.part.b', 'rb')
+        part3 = open('10m.mp4.part.c', 'rb')
 
         session = self.api.create_upload_progressive_session(video.video_id)
         session.uploadPart(part1)
@@ -100,8 +100,8 @@ class TestVideosApi(TestCase):
         token = self.token_api.create_token(TokenCreationPayload()).token
 
         part1 = open('10m.mp4.part.a', 'rb')
-        part2 = open('10m.mp4.part.a', 'rb')
-        part3 = open('10m.mp4.part.a', 'rb')
+        part2 = open('10m.mp4.part.b', 'rb')
+        part3 = open('10m.mp4.part.c', 'rb')
 
         session = self.api.create_upload_with_upload_token_progressive_session(token)
         session.uploadPart(part1)

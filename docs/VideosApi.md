@@ -467,8 +467,8 @@ The last chunk is sent by calling a different method, so api.video knows that it
 token = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want to use to upload a video.;
 
 part1 = open('10m.mp4.part.a', 'rb')
-part2 = open('10m.mp4.part.a', 'rb')
-part3 = open('10m.mp4.part.a', 'rb')
+part2 = open('10m.mp4.part.b', 'rb')
+part3 = open('10m.mp4.part.c', 'rb')
 
 session = api_instance.create_upload_with_upload_token_progressive_session(token)
 
@@ -629,8 +629,8 @@ The last chunk is sent by calling a different method, so api.video knows that it
 video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // Enter the videoId you want to use to upload your video.;
 
 part1 = open('10m.mp4.part.a', 'rb')
-part2 = open('10m.mp4.part.a', 'rb')
-part3 = open('10m.mp4.part.a', 'rb')
+part2 = open('10m.mp4.part.b', 'rb')
+part3 = open('10m.mp4.part.c', 'rb')
 
 session = api_instance.create_upload_progressive_session(video_id)
 
