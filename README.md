@@ -146,7 +146,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player

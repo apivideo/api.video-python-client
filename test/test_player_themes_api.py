@@ -52,7 +52,7 @@ class TestPlayerThemesApi(MainTest):
     def test_list(self):
         """Test case for list
 
-        List all players  # noqa: E501
+        List all player themes  # noqa: E501
         """
         for status, json in self.load_json('player_themes', 'list'):
             responses.reset()
@@ -107,6 +107,7 @@ class TestPlayerThemesApi(MainTest):
             kwargs = {
                 'player_id': "pl45d5vFFGrfdsdsd156dGhh",
                 'player_theme_update_payload': PlayerThemeUpdatePayload(
+        name="name_example",
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",
@@ -146,6 +147,7 @@ class TestPlayerThemesApi(MainTest):
 
             kwargs = {
                 'player_theme_creation_payload': PlayerThemeCreationPayload(
+        name="name_example",
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",

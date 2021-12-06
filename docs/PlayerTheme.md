@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **player_id** | **str** |  | 
+**name** | **str** | The name of the player theme | [optional] 
 **text** | **str** | RGBA color for timer text. Default: rgba(255, 255, 255, 1) | [optional] 
 **link** | **str** | RGBA color for all controls. Default: rgba(255, 255, 255, 1) | [optional] 
 **link_hover** | **str** | RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1) | [optional] 

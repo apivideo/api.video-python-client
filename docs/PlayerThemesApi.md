@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**delete_logo**](PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
@@ -124,9 +124,9 @@ void (empty response body)
 # **list**
 > PlayerThemesListResponse list()
 
-List all players
+List all player themes
 
-Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
 ### Example
 
@@ -149,7 +149,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # List all players
+        # List all player themes
         api_response = api_instance.list(sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
@@ -265,6 +265,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_id = "pl45d5vFFGrfdsdsd156dGhh" # str | The unique identifier for the player.
     player_theme_update_payload = PlayerThemeUpdatePayload(
+        name="name_example",
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",
@@ -338,6 +339,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = player_themes_api.PlayerThemesApi(api_client)
     player_theme_creation_payload = PlayerThemeCreationPayload(
+        name="name_example",
         text="text_example",
         link="link_example",
         link_hover="link_hover_example",

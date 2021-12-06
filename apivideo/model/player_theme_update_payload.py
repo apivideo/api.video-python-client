@@ -54,6 +54,9 @@ class PlayerThemeUpdatePayload(ModelNormal):
     }
 
     validations = {
+        ('name',): {
+            'max_length': 100,
+        },
     }
 
     additional_properties_type = None
@@ -71,6 +74,7 @@ class PlayerThemeUpdatePayload(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'name': (str,),  # noqa: E501
             'text': (str,),  # noqa: E501
             'link': (str,),  # noqa: E501
             'link_hover': (str,),  # noqa: E501
@@ -93,6 +97,7 @@ class PlayerThemeUpdatePayload(ModelNormal):
 
 
     attribute_map = {
+        'name': 'name',  # noqa: E501
         'text': 'text',  # noqa: E501
         'link': 'link',  # noqa: E501
         'link_hover': 'linkHover',  # noqa: E501
@@ -155,6 +160,7 @@ class PlayerThemeUpdatePayload(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            name (str): Add a name for your player theme here.. [optional]  # noqa: E501
             text (str): RGBA color for timer text. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link (str): RGBA color for all controls. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link_hover (str): RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
