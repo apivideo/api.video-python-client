@@ -843,7 +843,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Upload a logo  # noqa: E501
 
-            The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.  # noqa: E501
+            The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
