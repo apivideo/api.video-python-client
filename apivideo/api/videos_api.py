@@ -1600,7 +1600,7 @@ class VideosApi(_EndPoint):
 
             Args:
                 video_id (str): Unique identifier of the chosen video 
-                file (file_type): The image to be added as a thumbnail.
+                file (file_type): The .jpg image to be added as a thumbnail.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
