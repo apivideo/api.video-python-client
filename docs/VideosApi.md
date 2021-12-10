@@ -682,7 +682,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "videoId_example" # str | Unique identifier of the chosen video 
-    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
+    file = open('/path/to/file', 'rb') # file_type | The .jpg image to be added as a thumbnail.
 
     # example passing only required values which don't have defaults set
     try:
@@ -699,7 +699,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| Unique identifier of the chosen video  |
- **file** | **file_type**| The image to be added as a thumbnail. |
+ **file** | **file_type**| The .jpg image to be added as a thumbnail. |
 
 ### Return type
 
