@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **force_loop** | **bool** | enable/disable looping. Default: false | [optional] 
 **created_at** | **datetime** | When the player was created, presented in ISO-8601 format. | [optional] 
 **updated_at** | **datetime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
-**link_active** | **str** | Deprecated | [optional] 
+**link_active** | **str** | RGBA color for the play button when hovered. | [optional] 
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
