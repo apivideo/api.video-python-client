@@ -192,7 +192,7 @@ class PlayerTheme(ModelNormal):
             force_loop (bool): enable/disable looping. Default: false. [optional]  # noqa: E501
             created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
             updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
-            link_active (str): Deprecated. [optional]  # noqa: E501
+            link_active (str): RGBA color for the play button when hovered.. [optional]  # noqa: E501
             assets (PlayerThemeAssets): [optional]  # noqa: E501
         """
 
