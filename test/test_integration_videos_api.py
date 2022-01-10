@@ -57,6 +57,24 @@ class TestVideosApi(TestCase):
         self.api.delete(video_without_metadata.video_id)
 
 
+    @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
+    def test_tags(self):
+
+        video_with_tags = self.api.create(video_creation_payload=VideoCreationPayload(
+            tags=["aa", "bb"],
+            title='with tags'
+            ))
+
+        videos_list_two_tags = self.api.list(**{'tags': ["aa", "bb"]})
+        videos_list_one_tag = self.api.list(**{'tags': ["aa"]})
+        videos_list_wrong_tag = self.api.list(**{'tags': ["cc"]})
+
+        self.api.delete(video_with_tags.video_id)
+
+        self.assertGreaterEqual(len(videos_list_two_tags.data), 1)
+        self.assertGreaterEqual(len(videos_list_one_tag.data), 1)
+        self.assertEqual(len(videos_list_wrong_tag.data), 0)
+
 
     @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
     def test_upload(self):

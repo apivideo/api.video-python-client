@@ -529,7 +529,7 @@ class VideosApi(_EndPoint):
             }
             attribute_map = {
                 'title': 'title',
-                'tags': 'tags',
+                'tags': 'tags[]',
                 'metadata': 'metadata',
                 'description': 'description',
                 'live_stream_id': 'liveStreamId',
