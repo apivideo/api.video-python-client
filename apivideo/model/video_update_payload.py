@@ -76,7 +76,7 @@ class VideoUpdatePayload(ModelNormal):
         """
         lazy_import()
         return {
-            'player_id': (str,),  # noqa: E501
+            'player_id': (str, type(None),),  # noqa: E501
             'title': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'public': (bool,),  # noqa: E501
