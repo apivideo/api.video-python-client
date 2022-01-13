@@ -12,6 +12,8 @@ from urllib3_mock import Responses
 from apivideo.api.live_streams_api import LiveStreamsApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
+from apivideo.model.video_clip import VideoClip
+from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream import LiveStream
 from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload

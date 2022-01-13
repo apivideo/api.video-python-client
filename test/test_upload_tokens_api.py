@@ -12,6 +12,8 @@ from urllib3_mock import Responses
 from apivideo.api.upload_tokens_api import UploadTokensApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
+from apivideo.model.video_clip import VideoClip
+from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.token_creation_payload import TokenCreationPayload

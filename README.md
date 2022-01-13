@@ -23,6 +23,7 @@
     - [RawStatisticsApi](#)
     - [UploadTokensApi](#)
     - [VideosApi](#)
+    - [WatermarksApi](#)
     - [WebhooksApi](#)
   - [Models](#models)
 - [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
@@ -107,11 +108,11 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
-[**upload**](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
+[**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
 ### ChaptersApi
@@ -119,10 +120,10 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
-[**upload**](https://github.com/apivideo/api.video-python-client/blob/master/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
+[**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
 ### LiveStreamsApi
@@ -130,13 +131,13 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**delete_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
-[**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**delete_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
 ### PlayerThemesApi
@@ -144,13 +145,13 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
-[**update**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
-[**upload_logo**](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**upload_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 ### RawStatisticsApi
@@ -158,9 +159,9 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_live_stream_sessions**](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsApi.md#list_live_stream_sessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**list_session_events**](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsApi.md#list_session_events) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**list_video_sessions**](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsApi.md#list_video_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**list_live_stream_sessions**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_live_stream_sessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**list_session_events**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_session_events) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**list_video_sessions**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_video_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
 ### UploadTokensApi
@@ -168,10 +169,10 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_token**](https://github.com/apivideo/api.video-python-client/blob/master/docs/UploadTokensApi.md#delete_token) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**get_token**](https://github.com/apivideo/api.video-python-client/blob/master/docs/UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Show upload token
-[**create_token**](https://github.com/apivideo/api.video-python-client/blob/master/docs/UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
+[**delete_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#delete_token) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**get_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**create_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
 
 
 ### VideosApi
@@ -179,16 +180,26 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**get_status**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Show video status
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#list) | **GET** /videos | List all videos
-[**update**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**upload_with_upload_token**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an upload token
-[**create**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#create) | **POST** /videos | Create a video
-[**upload**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
+[**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Show video status
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all videos
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
+[**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**upload_with_upload_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an upload token
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#create) | **POST** /videos | Create a video
+[**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
+[**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
+
+
+### WatermarksApi
+
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
 
 
 ### WebhooksApi
@@ -196,78 +207,82 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get**](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Show Webhook details
-[**list**](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
-[**create**](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Show Webhook details
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
 
 
 
 
 ## Models
 
- - [AccessToken](https://github.com/apivideo/api.video-python-client/blob/master/docs/AccessToken.md)
- - [AuthenticatePayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/AuthenticatePayload.md)
- - [BadRequest](https://github.com/apivideo/api.video-python-client/blob/master/docs/BadRequest.md)
- - [BytesRange](https://github.com/apivideo/api.video-python-client/blob/master/docs/BytesRange.md)
- - [Caption](https://github.com/apivideo/api.video-python-client/blob/master/docs/Caption.md)
- - [CaptionsListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsListResponse.md)
- - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/CaptionsUpdatePayload.md)
- - [Chapter](https://github.com/apivideo/api.video-python-client/blob/master/docs/Chapter.md)
- - [ChaptersListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/ChaptersListResponse.md)
- - [Link](https://github.com/apivideo/api.video-python-client/blob/master/docs/Link.md)
- - [LiveStream](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStream.md)
- - [LiveStreamAssets](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamAssets.md)
- - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamCreationPayload.md)
- - [LiveStreamListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamListResponse.md)
- - [LiveStreamSession](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSession.md)
- - [LiveStreamSessionClient](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSessionClient.md)
- - [LiveStreamSessionDevice](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSessionDevice.md)
- - [LiveStreamSessionLocation](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSessionLocation.md)
- - [LiveStreamSessionReferrer](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSessionReferrer.md)
- - [LiveStreamSessionSession](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamSessionSession.md)
- - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/LiveStreamUpdatePayload.md)
- - [Metadata](https://github.com/apivideo/api.video-python-client/blob/master/docs/Metadata.md)
- - [NotFound](https://github.com/apivideo/api.video-python-client/blob/master/docs/NotFound.md)
- - [Pagination](https://github.com/apivideo/api.video-python-client/blob/master/docs/Pagination.md)
- - [PaginationLink](https://github.com/apivideo/api.video-python-client/blob/master/docs/PaginationLink.md)
- - [PlayerSessionEvent](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerSessionEvent.md)
- - [PlayerTheme](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerTheme.md)
- - [PlayerThemeAssets](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemeAssets.md)
- - [PlayerThemeCreationPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemeCreationPayload.md)
- - [PlayerThemeUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemeUpdatePayload.md)
- - [PlayerThemesListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/PlayerThemesListResponse.md)
- - [Quality](https://github.com/apivideo/api.video-python-client/blob/master/docs/Quality.md)
- - [RawStatisticsListLiveStreamAnalyticsResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
- - [RawStatisticsListPlayerSessionEventsResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsListPlayerSessionEventsResponse.md)
- - [RawStatisticsListSessionsResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/RawStatisticsListSessionsResponse.md)
- - [RefreshTokenPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/RefreshTokenPayload.md)
- - [TokenCreationPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/TokenCreationPayload.md)
- - [TokenListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/TokenListResponse.md)
- - [UploadToken](https://github.com/apivideo/api.video-python-client/blob/master/docs/UploadToken.md)
- - [Video](https://github.com/apivideo/api.video-python-client/blob/master/docs/Video.md)
- - [VideoAssets](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoAssets.md)
- - [VideoCreationPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoCreationPayload.md)
- - [VideoSession](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSession.md)
- - [VideoSessionClient](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionClient.md)
- - [VideoSessionDevice](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionDevice.md)
- - [VideoSessionLocation](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionLocation.md)
- - [VideoSessionOs](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionOs.md)
- - [VideoSessionReferrer](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionReferrer.md)
- - [VideoSessionSession](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSessionSession.md)
- - [VideoSource](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSource.md)
- - [VideoSourceLiveStream](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSourceLiveStream.md)
- - [VideoSourceLiveStreamLink](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoSourceLiveStreamLink.md)
- - [VideoStatus](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoStatus.md)
- - [VideoStatusEncoding](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoStatusEncoding.md)
- - [VideoStatusEncodingMetadata](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoStatusEncodingMetadata.md)
- - [VideoStatusIngest](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoStatusIngest.md)
- - [VideoThumbnailPickPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoThumbnailPickPayload.md)
- - [VideoUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideoUpdatePayload.md)
- - [VideosListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/VideosListResponse.md)
- - [Webhook](https://github.com/apivideo/api.video-python-client/blob/master/docs/Webhook.md)
- - [WebhooksCreationPayload](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksCreationPayload.md)
- - [WebhooksListResponse](https://github.com/apivideo/api.video-python-client/blob/master/docs/WebhooksListResponse.md)
+ - [AccessToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/AccessToken.md)
+ - [AuthenticatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/AuthenticatePayload.md)
+ - [BadRequest](https://github.com/apivideo/api.video-python-client/blob/main/docs/BadRequest.md)
+ - [BytesRange](https://github.com/apivideo/api.video-python-client/blob/main/docs/BytesRange.md)
+ - [Caption](https://github.com/apivideo/api.video-python-client/blob/main/docs/Caption.md)
+ - [CaptionsListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsListResponse.md)
+ - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsUpdatePayload.md)
+ - [Chapter](https://github.com/apivideo/api.video-python-client/blob/main/docs/Chapter.md)
+ - [ChaptersListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersListResponse.md)
+ - [Link](https://github.com/apivideo/api.video-python-client/blob/main/docs/Link.md)
+ - [LiveStream](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStream.md)
+ - [LiveStreamAssets](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamAssets.md)
+ - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamCreationPayload.md)
+ - [LiveStreamListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamListResponse.md)
+ - [LiveStreamSession](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSession.md)
+ - [LiveStreamSessionClient](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionClient.md)
+ - [LiveStreamSessionDevice](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionDevice.md)
+ - [LiveStreamSessionLocation](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionLocation.md)
+ - [LiveStreamSessionReferrer](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionReferrer.md)
+ - [LiveStreamSessionSession](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionSession.md)
+ - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamUpdatePayload.md)
+ - [Metadata](https://github.com/apivideo/api.video-python-client/blob/main/docs/Metadata.md)
+ - [NotFound](https://github.com/apivideo/api.video-python-client/blob/main/docs/NotFound.md)
+ - [Pagination](https://github.com/apivideo/api.video-python-client/blob/main/docs/Pagination.md)
+ - [PaginationLink](https://github.com/apivideo/api.video-python-client/blob/main/docs/PaginationLink.md)
+ - [PlayerSessionEvent](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerSessionEvent.md)
+ - [PlayerTheme](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerTheme.md)
+ - [PlayerThemeAssets](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesListResponse.md)
+ - [Quality](https://github.com/apivideo/api.video-python-client/blob/main/docs/Quality.md)
+ - [RawStatisticsListLiveStreamAnalyticsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
+ - [RawStatisticsListPlayerSessionEventsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListPlayerSessionEventsResponse.md)
+ - [RawStatisticsListSessionsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListSessionsResponse.md)
+ - [RefreshTokenPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/RefreshTokenPayload.md)
+ - [TokenCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/TokenCreationPayload.md)
+ - [TokenListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/TokenListResponse.md)
+ - [UploadToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadToken.md)
+ - [Video](https://github.com/apivideo/api.video-python-client/blob/main/docs/Video.md)
+ - [VideoAssets](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoAssets.md)
+ - [VideoClip](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoClip.md)
+ - [VideoCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoCreationPayload.md)
+ - [VideoSession](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSession.md)
+ - [VideoSessionClient](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionClient.md)
+ - [VideoSessionDevice](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionDevice.md)
+ - [VideoSessionLocation](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionLocation.md)
+ - [VideoSessionOs](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionOs.md)
+ - [VideoSessionReferrer](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionReferrer.md)
+ - [VideoSessionSession](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSessionSession.md)
+ - [VideoSource](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSource.md)
+ - [VideoSourceLiveStream](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSourceLiveStream.md)
+ - [VideoSourceLiveStreamLink](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatus.md)
+ - [VideoStatusEncoding](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusIngest.md)
+ - [VideoThumbnailPickPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoThumbnailPickPayload.md)
+ - [VideoUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoUpdatePayload.md)
+ - [VideoWatermark](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoWatermark.md)
+ - [VideosListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosListResponse.md)
+ - [Watermark](https://github.com/apivideo/api.video-python-client/blob/main/docs/Watermark.md)
+ - [WatermarksListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/WatermarksListResponse.md)
+ - [Webhook](https://github.com/apivideo/api.video-python-client/blob/main/docs/Webhook.md)
+ - [WebhooksCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksCreationPayload.md)
+ - [WebhooksListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksListResponse.md)
 
 
 

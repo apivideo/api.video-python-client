@@ -12,6 +12,8 @@ from urllib3_mock import Responses
 from apivideo.api.captions_api import CaptionsApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
+from apivideo.model.video_clip import VideoClip
+from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.caption import Caption
 from apivideo.model.captions_list_response import CaptionsListResponse
