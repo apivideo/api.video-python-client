@@ -12,6 +12,8 @@ from urllib3_mock import Responses
 from apivideo.api.raw_statistics_api import RawStatisticsApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
+from apivideo.model.video_clip import VideoClip
+from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.not_found import NotFound
 from apivideo.model.raw_statistics_list_live_stream_analytics_response import RawStatisticsListLiveStreamAnalyticsResponse
 from apivideo.model.raw_statistics_list_player_session_events_response import RawStatisticsListPlayerSessionEventsResponse

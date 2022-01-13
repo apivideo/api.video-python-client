@@ -533,6 +533,20 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
+        clip=VideoClip(
+            start_timecode="8072",
+            end_timecode="8072",
+        ),
+        watermark=VideoWatermark(
+            id="watermark_1BWr2L5MTQwxGkuxKjzh6i",
+            top="10px",
+            left="10px",
+            bottom="10px",
+            right="10px",
+            width="50%",
+            height="50%",
+            opacity="70%",
+        ),
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set

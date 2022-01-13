@@ -21,4 +21,5 @@ from apivideo.api.player_themes_api import PlayerThemesApi
 from apivideo.api.raw_statistics_api import RawStatisticsApi
 from apivideo.api.upload_tokens_api import UploadTokensApi
 from apivideo.api.videos_api import VideosApi
+from apivideo.api.watermarks_api import WatermarksApi
 from apivideo.api.webhooks_api import WebhooksApi

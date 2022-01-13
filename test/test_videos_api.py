@@ -12,6 +12,8 @@ from urllib3_mock import Responses
 from apivideo.api.videos_api import VideosApi  # noqa: E501
 from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
+from apivideo.model.video_clip import VideoClip
+from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.video import Video
@@ -229,6 +231,20 @@ class TestVideosApi(MainTest):
                 value="Green",
             ),
         ],
+        clip=VideoClip(
+            start_timecode="8072",
+            end_timecode="8072",
+        ),
+        watermark=VideoWatermark(
+            id="watermark_1BWr2L5MTQwxGkuxKjzh6i",
+            top="10px",
+            left="10px",
+            bottom="10px",
+            right="10px",
+            width="50%",
+            height="50%",
+            opacity="70%",
+        ),
     ),
             }
             url = '/videos'.format(**kwargs)
