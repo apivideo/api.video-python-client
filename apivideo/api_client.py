@@ -37,6 +37,7 @@ from apivideo.model_utils import (
     validate_and_convert_types
 )
 
+DEFAULT_USER_AGENT = "api.video client (python; v:1.2.1; )"
 
 class ApiClient(object):
     """Generic API client for OpenAPI client library builds.
@@ -75,7 +76,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '"api.video client (python; v:1.2.0; )"'
+        self.user_agent = DEFAULT_USER_AGENT
 
     def __enter__(self):
         return self
@@ -90,6 +91,16 @@ class ApiClient(object):
             self._pool = None
             if hasattr(atexit, 'unregister'):
                 atexit.unregister(self.close)
+
+    def set_application_name(self, application_name):
+        if application_name == "" or application_name is None:
+            self.user_agent = DEFAULT_USER_AGENT
+            return
+
+        if re.match(r"^[\w\-.\/]{1,50}$", application_name) is None:
+            raise Exception("Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50.")
+
+        self.user_agent = DEFAULT_USER_AGENT + " " + application_name
 
     @property
     def pool(self):
