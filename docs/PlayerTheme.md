@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **text** | **str** | RGBA color for timer text. Default: rgba(255, 255, 255, 1) | [optional] 
 **link** | **str** | RGBA color for all controls. Default: rgba(255, 255, 255, 1) | [optional] 
 **link_hover** | **str** | RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1) | [optional] 
+**link_active** | **str** | RGBA color for the play button when hovered. | [optional] 
 **track_played** | **str** | RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95) | [optional] 
 **track_unplayed** | **str** | RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35) | [optional] 
 **track_background** | **str** | RGBA color playback bar: background. Default: rgba(255, 255, 255, .2) | [optional] 
@@ -21,7 +22,6 @@ Name | Type | Description | Notes
 **force_loop** | **bool** | enable/disable looping. Default: false | [optional] 
 **created_at** | **datetime** | When the player was created, presented in ISO-8601 format. | [optional] 
 **updated_at** | **datetime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
-**link_active** | **str** | RGBA color for the play button when hovered. | [optional] 
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

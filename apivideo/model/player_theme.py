@@ -81,6 +81,7 @@ class PlayerTheme(ModelNormal):
             'text': (str,),  # noqa: E501
             'link': (str,),  # noqa: E501
             'link_hover': (str,),  # noqa: E501
+            'link_active': (str,),  # noqa: E501
             'track_played': (str,),  # noqa: E501
             'track_unplayed': (str,),  # noqa: E501
             'track_background': (str,),  # noqa: E501
@@ -94,7 +95,6 @@ class PlayerTheme(ModelNormal):
             'force_loop': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'link_active': (str,),  # noqa: E501
             'assets': (PlayerThemeAssets,),  # noqa: E501
         }
 
@@ -109,6 +109,7 @@ class PlayerTheme(ModelNormal):
         'text': 'text',  # noqa: E501
         'link': 'link',  # noqa: E501
         'link_hover': 'linkHover',  # noqa: E501
+        'link_active': 'linkActive',  # noqa: E501
         'track_played': 'trackPlayed',  # noqa: E501
         'track_unplayed': 'trackUnplayed',  # noqa: E501
         'track_background': 'trackBackground',  # noqa: E501
@@ -122,7 +123,6 @@ class PlayerTheme(ModelNormal):
         'force_loop': 'forceLoop',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'link_active': 'linkActive',  # noqa: E501
         'assets': 'assets',  # noqa: E501
     }
 
@@ -179,6 +179,7 @@ class PlayerTheme(ModelNormal):
             text (str): RGBA color for timer text. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link (str): RGBA color for all controls. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
             link_hover (str): RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1). [optional]  # noqa: E501
+            link_active (str): RGBA color for the play button when hovered.. [optional]  # noqa: E501
             track_played (str): RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95). [optional]  # noqa: E501
             track_unplayed (str): RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35). [optional]  # noqa: E501
             track_background (str): RGBA color playback bar: background. Default: rgba(255, 255, 255, .2). [optional]  # noqa: E501
@@ -192,7 +193,6 @@ class PlayerTheme(ModelNormal):
             force_loop (bool): enable/disable looping. Default: false. [optional]  # noqa: E501
             created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
             updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
-            link_active (str): RGBA color for the play button when hovered.. [optional]  # noqa: E501
             assets (PlayerThemeAssets): [optional]  # noqa: E501
         """
 
