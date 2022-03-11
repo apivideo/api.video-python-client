@@ -2,7 +2,7 @@ name: Create draft release if needed
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   update-documentation:
     runs-on: ubuntu-latest
