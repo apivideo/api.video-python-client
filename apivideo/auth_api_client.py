@@ -55,7 +55,10 @@ class AuthenticatedApiClient(ApiClient):
 
     def _update_connection(self, resource_path, body):
         url = self.configuration.host + resource_path
-        resp = self.rest_client.POST(url, body=body, headers=self.default_headers)
+        headers = { 'AV-Origin-Client': self.default_headers['AV-Origin-Client'] }
+        if self.default_headers.__contains__('AV-Origin-App') and len(self.default_headers.get('AV-Origin-App')):
+            headers['AV-Origin-App'] = self.default_headers['AV-Origin-App']
+        resp = self.rest_client.POST(url, body=body, headers=headers)
         data = json.loads(resp.data)
         try:
             self._access_token = data['access_token']
