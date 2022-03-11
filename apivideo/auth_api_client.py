@@ -55,7 +55,7 @@ class AuthenticatedApiClient(ApiClient):
 
     def _update_connection(self, resource_path, body):
         url = self.configuration.host + resource_path
-        resp = self.rest_client.POST(url, body=body, headers={'User-Agent': self.user_agent})
+        resp = self.rest_client.POST(url, body=body, headers=self.default_headers)
         data = json.loads(resp.data)
         try:
             self._access_token = data['access_token']
