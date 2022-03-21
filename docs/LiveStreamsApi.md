@@ -392,7 +392,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique ID for the live stream you want to upload.
-    file = open('/path/to/file', 'rb') # file_type | The .jpg image to be added as a thumbnail.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     # example passing only required values which don't have defaults set
     try:
@@ -409,7 +409,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **live_stream_id** | **str**| The unique ID for the live stream you want to upload. |
- **file** | **file_type**| The .jpg image to be added as a thumbnail. |
+ **file** | **file_type**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
 
 ### Return type
 

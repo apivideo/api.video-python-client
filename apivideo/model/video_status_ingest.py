@@ -27,7 +27,9 @@ from apivideo.model_utils import (  # noqa: F401
 
 def lazy_import():
     from apivideo.model.bytes_range import BytesRange
+    from apivideo.model.video_status_ingest_received_parts import VideoStatusIngestReceivedParts
     globals()['BytesRange'] = BytesRange
+    globals()['VideoStatusIngestReceivedParts'] = VideoStatusIngestReceivedParts
 
 
 class VideoStatusIngest(ModelNormal):
@@ -84,6 +86,7 @@ class VideoStatusIngest(ModelNormal):
             'status': (str,),  # noqa: E501
             'filesize': (int,),  # noqa: E501
             'received_bytes': ([BytesRange],),  # noqa: E501
+            'received_parts': (VideoStatusIngestReceivedParts,),  # noqa: E501
         }
 
     @cached_property
@@ -95,6 +98,7 @@ class VideoStatusIngest(ModelNormal):
         'status': 'status',  # noqa: E501
         'filesize': 'filesize',  # noqa: E501
         'received_bytes': 'receivedBytes',  # noqa: E501
+        'received_parts': 'receivedParts',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -146,6 +150,7 @@ class VideoStatusIngest(ModelNormal):
             status (str): There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.. [optional]  # noqa: E501
             filesize (int): The size of your file in bytes.. [optional]  # noqa: E501
             received_bytes ([BytesRange]): The total number of bytes received, listed for each chunk of the upload.. [optional]  # noqa: E501
+            received_parts (VideoStatusIngestReceivedParts): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -274,6 +274,7 @@ Method | HTTP request | Description
  - [VideoStatusEncoding](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusEncoding.md)
  - [VideoStatusEncodingMetadata](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusEncodingMetadata.md)
  - [VideoStatusIngest](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoStatusIngestReceivedParts.md)
  - [VideoThumbnailPickPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoUpdatePayload.md)
  - [VideoWatermark](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoWatermark.md)

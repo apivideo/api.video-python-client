@@ -521,7 +521,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     video_creation_payload = VideoCreationPayload(
         title="Maths video",
         description="A video about string theory.",
-        source="https://www.myvideo.url.com/video.mp4",
+        source="https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl",
         public=True,
         panoramic=False,
         mp4_support=True,
@@ -543,8 +543,8 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
             left="10px",
             bottom="10px",
             right="10px",
-            width="50%",
-            height="50%",
+            width="initial",
+            height="initial",
             opacity="70%",
         ),
     ) # VideoCreationPayload | video to create
@@ -696,7 +696,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "videoId_example" # str | Unique identifier of the chosen video 
-    file = open('/path/to/file', 'rb') # file_type | The .jpg image to be added as a thumbnail.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     # example passing only required values which don't have defaults set
     try:
@@ -713,7 +713,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **video_id** | **str**| Unique identifier of the chosen video  |
- **file** | **file_type**| The .jpg image to be added as a thumbnail. |
+ **file** | **file_type**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
 
 ### Return type
 
