@@ -1600,7 +1600,7 @@ class VideosApi(_EndPoint):
 
             Args:
                 video_id (str): Unique identifier of the chosen video 
-                file (file_type): The .jpg image to be added as a thumbnail.
+                file (file_type): The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status

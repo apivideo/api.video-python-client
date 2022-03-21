@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Delete a watermark
 
-Delete a watermark. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Delete a watermark. A watermark is a static image, directly burnt-into a video.
 
 ### Example
 
@@ -69,7 +69,7 @@ void (empty response body)
 
 List all watermarks
 
-List all watermarks. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 ### Example
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 Upload a watermark
 
-Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 ### Example
 
@@ -148,7 +148,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = watermarks_api.WatermarksApi(api_client)
-    file = open('/path/to/file', 'rb') # file_type | The .jpg or .png image to be added as a watermark.
+    file = open('/path/to/file', 'rb') # file_type | The `.jpg` or `.png` image to be added as a watermark.
 
     # example passing only required values which don't have defaults set
     try:
@@ -164,7 +164,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **file_type**| The .jpg or .png image to be added as a watermark. |
+ **file** | **file_type**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
 
 ### Return type
 

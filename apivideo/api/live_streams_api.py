@@ -857,7 +857,7 @@ class LiveStreamsApi(_EndPoint):
 
             Args:
                 live_stream_id (str): The unique ID for the live stream you want to upload.
-                file (file_type): The .jpg image to be added as a thumbnail.
+                file (file_type): The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status

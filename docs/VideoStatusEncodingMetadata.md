@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **samplerate** | **int** | How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz. | [optional] 
 **video_codec** | **str** | The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library.  | [optional] 
 **audio_codec** | **str** | The method used to compress and decompress digital audio for your video. | [optional] 
-**aspect_ratio** | **str** |  | [optional] 
+**aspect_ratio** | **str, none_type** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
