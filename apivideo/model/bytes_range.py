@@ -135,7 +135,7 @@ class BytesRange(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             _from (int): The starting point for the range of bytes for a chunk of a video.. [optional]  # noqa: E501
             to (int): The ending point for the range of bytes for a chunk of a video.. [optional]  # noqa: E501
-            total (int): The total number of bytes in the provided range.. [optional]  # noqa: E501
+            total (int): The total number of expected bytes.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
