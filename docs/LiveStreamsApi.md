@@ -19,8 +19,9 @@ Method | HTTP request | Description
 Delete a live stream
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from pprint import pprint
@@ -38,7 +39,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->delete: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -72,8 +72,9 @@ Delete a thumbnail
 Send the unique identifier for a live stream to delete it from the system.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.not_found import NotFound
@@ -92,9 +93,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.delete_thumbnail(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->delete_thumbnail: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->delete_thumbnail: %s\
+" % e)
 ```
-
 
 ### Parameters
 
@@ -129,34 +130,28 @@ List all live streams
 With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
-from apivideo.model.live_stream_list_response import LiveStreamListResponse
+from apivideo.model.live_stream import LiveStream
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
-    stream_key = "30087931-229e-42cf-b5f9-e91bcc1f7332" # str | The unique stream key that allows you to stream videos. (optional)
-    name = "My Video" # str | You can filter live streams by their name or a part of their name. (optional)
-    sort_by = "createdAt" # str | Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
-    sort_order = "desc" # str | Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
-    current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
-    page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
+    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream you want to watch.
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        # List all live streams
-        api_response = api_instance.list(stream_key=stream_key, name=name, sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
+        # Show live stream
+        api_response = api_instance.get(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->list: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->get: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -195,8 +190,9 @@ Show live stream
 Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
@@ -216,7 +212,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->get: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -250,8 +245,9 @@ Update a live stream
 Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -277,9 +273,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(live_stream_id, live_stream_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->update: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->update: %s\
+" % e)
 ```
-
 
 ### Parameters
 
@@ -315,8 +311,9 @@ Create live stream
 A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -341,9 +338,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.create(live_stream_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->create: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->create: %s\
+" % e)
 ```
-
 
 ### Parameters
 
@@ -378,8 +375,9 @@ Upload a thumbnail
 Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -392,7 +390,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique ID for the live stream you want to upload.
-    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
 
     # example passing only required values which don't have defaults set
     try:
@@ -402,7 +400,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->upload_thumbnail: %s\n" % e)
 ```
-
 
 ### Parameters
 

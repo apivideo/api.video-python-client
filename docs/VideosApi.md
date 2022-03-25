@@ -21,22 +21,21 @@ Method | HTTP request | Description
 
 Delete a video
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. Tutorials using [video deletion](https://api.video/blog/endpoints/video-delete).
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
-
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The video ID for the video you want to delete.
-
     # example passing only required values which don't have defaults set
     try:
         # Delete a video
@@ -44,7 +43,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->delete: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -76,11 +74,12 @@ void (empty response body)
 
 Show a video
 
-This call provides the same JSON information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL. Tutorials using [video GET](https://api.video/blog/endpoints/video-get).
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
@@ -101,7 +100,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->get: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -133,11 +131,12 @@ Name | Type | Description  | Notes
 
 Show video status
 
-This API provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
+This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_status import VideoStatus
@@ -158,7 +157,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->get_status: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -190,7 +188,7 @@ Name | Type | Description  | Notes
 
 List all videos
 
-Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
 
 ### Example
 
@@ -266,11 +264,15 @@ Name | Type | Description  | Notes
 
 Update a video
 
-Use this endpoint to update the parameters associated with your video. The video you are updating is determined by the video ID you provide in the path. For each parameter you want to update, include the update in the request body. NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it. Tutorials using [video update](https://api.video/blog/endpoints/video-update).
+Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+
+NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_update_payload import VideoUpdatePayload
@@ -306,9 +308,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(video_id, video_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->update: %s\n" % e)
+        print("Exception when calling VideosApi->update: %s\
+" % e)              
 ```
-
 
 ### Parameters
 
@@ -342,11 +344,17 @@ Name | Type | Description  | Notes
 
 Pick a thumbnail
 
-Pick a thumbnail from the given time code. If you'd like to upload an image for your thumbnail, use the [Upload a Thumbnail](https://docs.api.video/reference#post_videos-videoid-thumbnail) endpoint. There may be a short delay for the thumbnail to update. Tutorials using [Thumbnail picking](https://api.video/blog/endpoints/video-pick-a-thumbnail).
+Pick a thumbnail from the given time code. 
+
+If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+
+There may be a short delay for the thumbnail to update.
+
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_thumbnail_pick_payload import VideoThumbnailPickPayload
@@ -369,9 +377,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.pick_thumbnail(video_id, video_thumbnail_pick_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->pick_thumbnail: %s\n" % e)
+        print("Exception when calling VideosApi->pick_thumbnail: %s\
+" % e)
 ```
-
 
 ### Parameters
 
@@ -404,46 +412,14 @@ Name | Type | Description  | Notes
 
 Upload with an upload token
 
-When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  You can upload large files on api.video with <a href='https://docs.api.video/reference/post_videos-videoid-source'>Progressive Upload</a>. Alternatively, if you want to use regular upload, we have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
 
 ### Example
-
 ```python
-import apivideo
-from apivideo.api import videos_api
-from apivideo.model.bad_request import BadRequest
-from apivideo.model.video import Video
-from apivideo.configuration import Configuration
-from pprint import pprint
-
-# Enter a context with an instance of the API client
-# When uploading a file you can change the chunk size (in octet)
-configuration = Configuration(chunk_size=10 * 1024 * 1024)
-with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = videos_api.VideosApi(api_client)
-    token = "to1tcmSFHeYY5KzyhOqVKMKb" # str | The unique identifier for the token you want to use to upload a video.
-    file = open('/path/to/file', 'rb') # file_type | The path to the video you want to upload.
-    video_id = "video_id_example" # str | The video id returned by the first call to this endpoint in a large video upload scenario. (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Upload with an upload token
-        api_response = api_instance.upload_with_upload_token(token, file)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->upload_with_upload_token: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Upload with an upload token
-        api_response = api_instance.upload_with_upload_token(token, file, video_id=video_id)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->upload_with_upload_token: %s\n" % e)
+#The upload will happen on the front end, and not on the backend code.  
+#Our [JavaScript uploader(https://docs.api.video/docs/video-uploader) is a great place to look for uploading videos with the delegated token.
+#We also have uploaders for a number of [mobile languages](https://docs.api.video/docs/flutter-uploader).
 ```
-
 
 ### Parameters
 
@@ -502,11 +478,12 @@ part3.close()
 
 Create a video
 
- ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_creation_payload import VideoCreationPayload
@@ -521,7 +498,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     video_creation_payload = VideoCreationPayload(
         title="Maths video",
         description="A video about string theory.",
-        source="https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl",
+        source="https://www.myvideo.url.com/video.mp4",
         public=True,
         panoramic=False,
         mp4_support=True,
@@ -533,20 +510,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
-        clip=VideoClip(
-            start_timecode="8072",
-            end_timecode="8072",
-        ),
-        watermark=VideoWatermark(
-            id="watermark_1BWr2L5MTQwxGkuxKjzh6i",
-            top="10px",
-            left="10px",
-            bottom="10px",
-            right="10px",
-            width="initial",
-            height="initial",
-            opacity="70%",
-        ),
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
@@ -557,7 +520,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->create: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -590,11 +552,22 @@ Name | Type | Description  | Notes
 
 Upload a video
 
-To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. We offer 2 types of upload:  * Regular upload  * Progressive upload The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to   * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)   * allow to send a video source \"progressively\", i.e., before before knowing the total size of the video.   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as \"completely sent\" when the \"last\" chunk is sent (i.e., the chunk that \"completes\" the upload). ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4    ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).
+To upload a video to the videoId you created. You can only upload your video to the videoId once.
+
+We offer 2 types of upload: 
+* Regular upload 
+* Progressive upload
+The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+  * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+  * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+  Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
+
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
@@ -610,7 +583,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | Enter the videoId you want to use to upload your video.
-    file = open('/path/to/file', 'rb') # file_type | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
+    file = open('/path/to/file', 'rb') # file_type | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
 
     # example passing only required values which don't have defaults set
     try:
@@ -620,7 +593,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->upload: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -679,11 +651,19 @@ part3.close()
 
 Upload a thumbnail
 
-The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
+The thumbnail is the poster that appears in the player window before video playback begins.
+
+This endpoint allows you to upload an image for the thumbnail.
+
+To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+Note: There may be a short delay before the new thumbnail is delivered to our CDN.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
+
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
@@ -696,7 +676,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "videoId_example" # str | Unique identifier of the chosen video 
-    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
 
     # example passing only required values which don't have defaults set
     try:
@@ -704,9 +684,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.upload_thumbnail(video_id, file)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->upload_thumbnail: %s\n" % e)
+        print("Exception when calling VideosApi->upload_thumbnail: %s\
+" % e)
 ```
-
 
 ### Parameters
 
