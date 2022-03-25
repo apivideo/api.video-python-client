@@ -19,8 +19,9 @@ Delete a caption
 Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
@@ -40,7 +41,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling CaptionsApi->delete: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -76,40 +76,30 @@ List video captions
 Retrieve a list of available captions for the videoId you provide.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
-from apivideo.model.captions_list_response import CaptionsListResponse
+from apivideo.model.caption import Caption
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = captions_api.CaptionsApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to retrieve a list of captions for.
-    current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
-    page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
+    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want captions for.
+    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
 
     # example passing only required values which don't have defaults set
     try:
-        # List video captions
-        api_response = api_instance.list(video_id)
+        # Show a caption
+        api_response = api_instance.get(video_id, language)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->list: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # List video captions
-        api_response = api_instance.list(video_id, current_page=current_page, page_size=page_size)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->list: %s\n" % e)
+        print("Exception when calling CaptionsApi->get: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -146,8 +136,9 @@ Show a caption
 Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
@@ -169,7 +160,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling CaptionsApi->get: %s\n" % e)
 ```
-
 
 ### Parameters
 
@@ -205,8 +195,9 @@ Update caption
 To have the captions on automatically, use this PATCH to set default: true.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import captions_api
 from apivideo.model.bad_request import BadRequest
@@ -231,9 +222,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(video_id, language, captions_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->update: %s\n" % e)
+        print("Exception when calling CaptionsApi->update: %s\
+" % e)
 ```
-
 
 ### Parameters
 
@@ -271,8 +262,9 @@ Upload a caption
 Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
 import apivideo
 from apivideo.api import captions_api
 from apivideo.model.bad_request import BadRequest
@@ -296,7 +288,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling CaptionsApi->upload: %s\n" % e)
 ```
-
 
 ### Parameters
 

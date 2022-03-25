@@ -136,19 +136,21 @@ Upload a watermark
 Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 ### Example
-
 ```python
+#install the api.video API client library
+#pip install api.video
+
 import apivideo
-from apivideo.api import watermarks_api
+from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
-from apivideo.model.watermark import Watermark
+from apivideo.model.not_found import NotFound
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
-    api_instance = watermarks_api.WatermarksApi(api_client)
-    file = open('/path/to/file', 'rb') # file_type | The `.jpg` or `.png` image to be added as a watermark.
+    api_instance = videos_api.WatermarksApi(api_client)
+    file = open('/path/to/file', 'rb') # file_type | The watermark image.
 
     # example passing only required values which don't have defaults set
     try:
@@ -156,9 +158,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.upload(file)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling WatermarksApi->upload: %s\n" % e)
+        print("Exception when calling WatermarksApi->upload: %s\
+" % e)
 ```
-
 
 ### Parameters
 
