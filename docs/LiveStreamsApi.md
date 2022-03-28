@@ -312,34 +312,26 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
-import apivideo
-from apivideo.api import live_streams_api
-from apivideo.model.bad_request import BadRequest
-from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
-from apivideo.model.live_stream import LiveStream
-from pprint import pprint
+# First install the api client with "pip install api.video"
+# Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#create
 
-# Enter a context with an instance of the API client
-with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
-    # Create an instance of the API class
-    api_instance = live_streams_api.LiveStreamsApi(api_client)
+from apivideo.api.live_streams_api import LiveStreamsApi
+from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
+from apivideo import AuthenticatedApiClient, ApiException
+
+with AuthenticatedApiClient("YOUR_API_KEY") as api_client:
     live_stream_creation_payload = LiveStreamCreationPayload(
+        record=False,
         name="My Live Stream Video",
-        record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
-    ) # LiveStreamCreationPayload | 
+    ) 
 
-    # example passing only required values which don't have defaults set
     try:
-        # Create live stream
-        api_response = api_instance.create(live_stream_creation_payload)
-        pprint(api_response)
-    except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->create: %s\
-" % e)
+        live_stream = LiveStreamsApi(api_client).create(live_stream_creation_payload)
+        print(live_stream)
+    except ApiException as e:
+        print("Exception when calling LiveStreamsApi->create: %s" % e)
 ```
 
 ### Parameters
