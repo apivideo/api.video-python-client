@@ -137,8 +137,8 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/WatermarksApi.md#upload
 
 import apivideo
 from apivideo.api import videos_api

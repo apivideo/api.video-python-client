@@ -170,7 +170,7 @@ class VideosApi(_EndPoint):
             video_id,
             **kwargs
         ):
-            """Show a video  # noqa: E501
+            """Retrieve a video  # noqa: E501
 
             This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -298,7 +298,7 @@ class VideosApi(_EndPoint):
             video_id,
             **kwargs
         ):
-            """Show video status  # noqa: E501
+            """Retrieve video status  # noqa: E501
 
             This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -603,7 +603,10 @@ class VideosApi(_EndPoint):
 
             Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
 
+
+
 NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -743,9 +746,14 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
             Pick a thumbnail from the given time code. 
 
+
+
 If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
 
+
+
 There may be a short delay for the thumbnail to update.
+
   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -1316,13 +1324,22 @@ There may be a short delay for the thumbnail to update.
 
             To upload a video to the videoId you created. You can only upload your video to the videoId once.
 
+
+
 We offer 2 types of upload: 
+
 * Regular upload 
+
 * Progressive upload
+
 The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+
   * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+
   * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+
   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -1610,9 +1627,15 @@ The latter allows you to split a video source into X chunks and send those chunk
 
             The thumbnail is the poster that appears in the player window before video playback begins.
 
+
+
 This endpoint allows you to upload an image for the thumbnail.
 
+
+
 To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+
 
 Note: There may be a short delay before the new thumbnail is delivered to our CDN.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an

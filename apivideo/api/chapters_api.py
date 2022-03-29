@@ -41,6 +41,7 @@ class ChaptersApi(_EndPoint):
         ):
             """Delete a chapter  # noqa: E501
 
+            Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -316,9 +317,9 @@ class ChaptersApi(_EndPoint):
             language,
             **kwargs
         ):
-            """Show a chapter  # noqa: E501
+            """Retrieve a chapter  # noqa: E501
 
-            Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).  # noqa: E501
+            Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -457,7 +458,7 @@ class ChaptersApi(_EndPoint):
         ):
             """Upload a chapter  # noqa: E501
 
-            Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.  # noqa: E501
+            Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

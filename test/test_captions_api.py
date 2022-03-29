@@ -69,7 +69,7 @@ class TestCaptionsApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show a caption  # noqa: E501
+        Retrieve a caption  # noqa: E501
         """
         for status, json in self.load_json('captions', 'get'):
             responses.reset()
@@ -94,7 +94,7 @@ class TestCaptionsApi(MainTest):
     def test_update(self):
         """Test case for update
 
-        Update caption  # noqa: E501
+        Update a caption  # noqa: E501
         """
         for status, json in self.load_json('captions', 'update'):
             responses.reset()

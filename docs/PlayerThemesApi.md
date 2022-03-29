@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**delete_logo**](PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
 [**list**](PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
 [**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
 [**upload_logo**](PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
@@ -22,8 +22,9 @@ Delete a player if you no longer need it. You can delete any player that you hav
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
@@ -73,10 +74,13 @@ void (empty response body)
 
 Delete logo
 
+Delete the logo associated to a player.
+
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#deleteLogo
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
@@ -130,8 +134,9 @@ Retrieve a list of all the player themes you created, as well as details about e
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#list
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest
@@ -188,14 +193,15 @@ Name | Type | Description  | Notes
 # **get**
 > PlayerTheme get(player_id)
 
-Show a player
+Retrieve a player
 
 Use a player ID to retrieve details about the player and display it for viewers.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#get
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
@@ -248,12 +254,13 @@ Name | Type | Description  | Notes
 
 Update a player
 
-Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#update
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.not_found import NotFound
@@ -328,8 +335,9 @@ Create a player for your video, and customise it.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#create
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.player_theme_creation_payload import PlayerThemeCreationPayload
@@ -400,8 +408,9 @@ The uploaded image maximum size should be 200x100 and its weight should be 100KB
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#uploadLogo
+
 import apivideo
 from apivideo.api import player_themes_api
 from apivideo.model.bad_request import BadRequest

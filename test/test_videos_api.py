@@ -48,7 +48,7 @@ class TestVideosApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show a video  # noqa: E501
+        Retrieve a video  # noqa: E501
         """
         for status, json in self.load_json('videos', 'get'):
             responses.reset()
@@ -72,7 +72,7 @@ class TestVideosApi(MainTest):
     def test_get_status(self):
         """Test case for get_status
 
-        Show video status  # noqa: E501
+        Retrieve video status  # noqa: E501
         """
         for status, json in self.load_json('videos', 'get_status'):
             responses.reset()

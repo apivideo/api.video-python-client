@@ -110,8 +110,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
 [**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
@@ -122,7 +122,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
 [**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
@@ -134,7 +134,7 @@ Method | HTTP request | Description
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
 [**delete_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
 [**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
 [**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
 [**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
@@ -148,7 +148,7 @@ Method | HTTP request | Description
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
 [**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
 [**upload_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#upload_logo) | **POST** /players/{playerId}/logo | Upload a logo
@@ -171,7 +171,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#delete_token) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**get_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**get_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**create_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
 
 
@@ -181,8 +181,8 @@ Method | HTTP request | Description
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Show video status
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
+[**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
@@ -208,7 +208,7 @@ Method | HTTP request | Description
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Show Webhook details
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
 [**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
 

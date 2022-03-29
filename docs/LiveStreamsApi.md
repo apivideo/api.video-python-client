@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete**](LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
 [**delete_thumbnail**](LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 [**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**get**](LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
 [**update**](LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
 [**create**](LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
 [**upload_thumbnail**](LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
@@ -18,10 +18,13 @@ Method | HTTP request | Description
 
 Delete a live stream
 
+If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#delete
+
 import apivideo
 from apivideo.api import live_streams_api
 from pprint import pprint
@@ -69,12 +72,13 @@ void (empty response body)
 
 Delete a thumbnail
 
-Send the unique identifier for a live stream to delete it from the system.
+Send the unique identifier for a live stream to delete its thumbnail.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#deleteThumbnail
+
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.not_found import NotFound
@@ -101,7 +105,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **live_stream_id** | **str**| The unique identifier for the live stream you want to delete.  |
+ **live_stream_id** | **str**| The unique identifier of the live stream whose thumbnail you want to delete. |
 
 ### Return type
 
@@ -131,8 +135,9 @@ With no parameters added to the url, this will return all livestreams. Query by 
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#list
+
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
@@ -185,14 +190,15 @@ Name | Type | Description  | Notes
 # **get**
 > LiveStream get(live_stream_id)
 
-Show live stream
+Retrieve live stream
 
-Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#get
+
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
@@ -242,12 +248,13 @@ Name | Type | Description  | Notes
 
 Update a live stream
 
-Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public=false \"private livestream\" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#update
+
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -308,12 +315,12 @@ Name | Type | Description  | Notes
 
 Create live stream
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-# Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#create
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#create
 
 from apivideo.api.live_streams_api import LiveStreamsApi
 from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
@@ -368,8 +375,9 @@ Upload an image to use as a backdrop for your livestream. Tutorials that [update
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamsApi.md#uploadThumbnail
+
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
