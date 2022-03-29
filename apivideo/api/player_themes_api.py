@@ -170,6 +170,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Delete logo  # noqa: E501
 
+            Delete the logo associated to a player.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -448,7 +449,7 @@ class PlayerThemesApi(_EndPoint):
             player_id,
             **kwargs
         ):
-            """Show a player  # noqa: E501
+            """Retrieve a player  # noqa: E501
 
             Use a player ID to retrieve details about the player and display it for viewers.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -579,7 +580,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Update a player  # noqa: E501
 
-            Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.  # noqa: E501
+            Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

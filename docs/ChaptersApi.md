@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
 [**list**](ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
+[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
 [**upload**](ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
@@ -15,10 +15,13 @@ Method | HTTP request | Description
 
 Delete a chapter
 
+Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
+
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#delete
+
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
@@ -74,8 +77,9 @@ Retrieve a list of all chapters for a specified video.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#list
+
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
@@ -128,14 +132,15 @@ Name | Type | Description  | Notes
 # **get**
 > Chapter get(video_id, language)
 
-Show a chapter
+Retrieve a chapter
 
-Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#get
+
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
@@ -189,12 +194,13 @@ Name | Type | Description  | Notes
 
 Upload a chapter
 
-Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersApi.md#upload
+
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.bad_request import BadRequest

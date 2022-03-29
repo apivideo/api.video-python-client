@@ -45,7 +45,7 @@ class TestWebhooksApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show Webhook details  # noqa: E501
+        Retrieve Webhook details  # noqa: E501
         """
         for status, json in self.load_json('webhooks', 'get'):
             responses.reset()

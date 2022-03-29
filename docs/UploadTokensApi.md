@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_token**](UploadTokensApi.md#delete_token) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**get_token**](UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**get_token**](UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**create_token**](UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
 
 
@@ -19,8 +19,9 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#deleteToken
+
 import apivideo
 from apivideo.api import upload_tokens_api
 from apivideo.model.not_found import NotFound
@@ -74,8 +75,9 @@ A delegated token is used to allow secure uploads without exposing your API key.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#list
+
 import apivideo
 from apivideo.api import upload_tokens_api
 from apivideo.model.not_found import NotFound
@@ -127,14 +129,15 @@ Name | Type | Description  | Notes
 # **get_token**
 > UploadToken get_token(upload_token)
 
-Show upload token
+Retrieve upload token
 
 You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#getToken
+
 import apivideo
 from apivideo.api import upload_tokens_api
 from apivideo.model.not_found import NotFound
@@ -190,8 +193,9 @@ Use this endpoint to generate an upload token. You can use this token to authent
 
 ### Example
 ```python
-#install the api.video API client library
-#pip install api.video
+# First install the api client with "pip install api.video"
+// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#createToken
+
 import apivideo
 from apivideo.api import upload_tokens_api
 from apivideo.model.bad_request import BadRequest

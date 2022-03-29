@@ -77,7 +77,7 @@ class TestPlayerThemesApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show a player  # noqa: E501
+        Retrieve a player  # noqa: E501
         """
         for status, json in self.load_json('player_themes', 'get'):
             responses.reset()

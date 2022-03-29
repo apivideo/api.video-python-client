@@ -319,7 +319,7 @@ class UploadTokensApi(_EndPoint):
             upload_token,
             **kwargs
         ):
-            """Show upload token  # noqa: E501
+            """Retrieve upload token  # noqa: E501
 
             You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an

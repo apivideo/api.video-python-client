@@ -42,6 +42,7 @@ class LiveStreamsApi(_EndPoint):
         ):
             """Delete a live stream  # noqa: E501
 
+            If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -169,7 +170,7 @@ class LiveStreamsApi(_EndPoint):
         ):
             """Delete a thumbnail  # noqa: E501
 
-            Send the unique identifier for a live stream to delete it from the system.  # noqa: E501
+            Send the unique identifier for a live stream to delete its thumbnail.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -177,7 +178,7 @@ class LiveStreamsApi(_EndPoint):
             >>> result = thread.get()
 
             Args:
-                live_stream_id (str): The unique identifier for the live stream you want to delete. 
+                live_stream_id (str): The unique identifier of the live stream whose thumbnail you want to delete.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -453,9 +454,9 @@ class LiveStreamsApi(_EndPoint):
             live_stream_id,
             **kwargs
         ):
-            """Show live stream  # noqa: E501
+            """Retrieve live stream  # noqa: E501
 
-            Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).  # noqa: E501
+            Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -584,7 +585,7 @@ class LiveStreamsApi(_EndPoint):
         ):
             """Update a live stream  # noqa: E501
 
-            Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  # noqa: E501
+            Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public=false \"private livestream\" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -720,7 +721,7 @@ class LiveStreamsApi(_EndPoint):
         ):
             """Create live stream  # noqa: E501
 
-            A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).  # noqa: E501
+            A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

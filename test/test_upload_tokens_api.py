@@ -68,7 +68,7 @@ class TestUploadTokensApi(MainTest):
     def test_get_token(self):
         """Test case for get_token
 
-        Show upload token  # noqa: E501
+        Retrieve upload token  # noqa: E501
         """
         for status, json in self.load_json('upload_tokens', 'get_token'):
             responses.reset()

@@ -77,7 +77,7 @@ class TestLiveStreamsApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show live stream  # noqa: E501
+        Retrieve live stream  # noqa: E501
         """
         for status, json in self.load_json('live_streams', 'get'):
             responses.reset()

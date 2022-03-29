@@ -68,7 +68,7 @@ class TestChaptersApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Show a chapter  # noqa: E501
+        Retrieve a chapter  # noqa: E501
         """
         for status, json in self.load_json('chapters', 'get'):
             responses.reset()
