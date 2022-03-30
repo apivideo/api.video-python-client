@@ -35,43 +35,45 @@ class TestPlayerThemesApi(MainTest):
         self.api = PlayerThemesApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_delete(self):
-        """Test case for delete
+    def test_create(self):
+        """Test case for create
 
-        Delete a player  # noqa: E501
+        Create a player  # noqa: E501
         """
-        pass
-
-    @responses.activate
-    def test_delete_logo(self):
-        """Test case for delete_logo
-
-        Delete logo  # noqa: E501
-        """
-        pass
-
-    @responses.activate
-    def test_list(self):
-        """Test case for list
-
-        List all player themes  # noqa: E501
-        """
-        for status, json in self.load_json('player_themes', 'list'):
+        for status, json in self.load_json('player_themes', 'create'):
             responses.reset()
 
             kwargs = {
+                'player_theme_creation_payload': PlayerThemeCreationPayload(
+        name="name_example",
+        text="text_example",
+        link="link_example",
+        link_hover="link_hover_example",
+        link_active="link_active_example",
+        track_played="track_played_example",
+        track_unplayed="track_unplayed_example",
+        track_background="track_background_example",
+        background_top="background_top_example",
+        background_bottom="background_bottom_example",
+        background_text="background_text_example",
+        enable_api=True,
+        enable_controls=True,
+        force_autoplay=False,
+        hide_title=False,
+        force_loop=False,
+    ),
             }
             url = '/players'.format(**kwargs)
 
-            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list(**kwargs)
+                    self.api.create(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list(**kwargs)
+                self.api.create(**kwargs)
 
     @responses.activate
     def test_get(self):
@@ -140,51 +142,49 @@ class TestPlayerThemesApi(MainTest):
                 self.api.update(**kwargs)
 
     @responses.activate
-    def test_create(self):
-        """Test case for create
+    def test_delete(self):
+        """Test case for delete
 
-        Create a player  # noqa: E501
+        Delete a player  # noqa: E501
         """
-        for status, json in self.load_json('player_themes', 'create'):
+        pass
+
+    @responses.activate
+    def test_list(self):
+        """Test case for list
+
+        List all player themes  # noqa: E501
+        """
+        for status, json in self.load_json('player_themes', 'list'):
             responses.reset()
 
             kwargs = {
-                'player_theme_creation_payload': PlayerThemeCreationPayload(
-        name="name_example",
-        text="text_example",
-        link="link_example",
-        link_hover="link_hover_example",
-        link_active="link_active_example",
-        track_played="track_played_example",
-        track_unplayed="track_unplayed_example",
-        track_background="track_background_example",
-        background_top="background_top_example",
-        background_bottom="background_bottom_example",
-        background_text="background_text_example",
-        enable_api=True,
-        enable_controls=True,
-        force_autoplay=False,
-        hide_title=False,
-        force_loop=False,
-    ),
             }
             url = '/players'.format(**kwargs)
 
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.create(**kwargs)
+                    self.api.list(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.create(**kwargs)
+                self.api.list(**kwargs)
 
     @responses.activate
     def test_upload_logo(self):
         """Test case for upload_logo
 
         Upload a logo  # noqa: E501
+        """
+        pass
+
+    @responses.activate
+    def test_delete_logo(self):
+        """Test case for delete_logo
+
+        Delete logo  # noqa: E501
         """
         pass
 

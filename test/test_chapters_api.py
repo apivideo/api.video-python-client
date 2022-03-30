@@ -33,6 +33,57 @@ class TestChaptersApi(MainTest):
         self.api = ChaptersApi(self.client)  # noqa: E501
 
     @responses.activate
+    def test_upload(self):
+        """Test case for upload
+
+        Upload a chapter  # noqa: E501
+        """
+        for status, json in self.load_json('chapters', 'upload'):
+            responses.reset()
+
+            kwargs = {
+                'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'language': "en",
+                'file': open('test_file', 'rb'),
+            }
+            url = '/videos/{video_id}/chapters/{language}'.format(**kwargs)
+
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.upload(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.upload(**kwargs)
+
+    @responses.activate
+    def test_get(self):
+        """Test case for get
+
+        Retrieve a chapter  # noqa: E501
+        """
+        for status, json in self.load_json('chapters', 'get'):
+            responses.reset()
+
+            kwargs = {
+                'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'language': "en",
+            }
+            url = '/videos/{video_id}/chapters/{language}'.format(**kwargs)
+
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.get(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.get(**kwargs)
+
+    @responses.activate
     def test_delete(self):
         """Test case for delete
 
@@ -63,55 +114,4 @@ class TestChaptersApi(MainTest):
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
                 self.api.list(**kwargs)
-
-    @responses.activate
-    def test_get(self):
-        """Test case for get
-
-        Retrieve a chapter  # noqa: E501
-        """
-        for status, json in self.load_json('chapters', 'get'):
-            responses.reset()
-
-            kwargs = {
-                'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
-                'language': "en",
-            }
-            url = '/videos/{video_id}/chapters/{language}'.format(**kwargs)
-
-            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
-
-            if status[0] == '4':
-                with self.assertRaises(ApiException) as context:
-                    self.api.get(**kwargs)
-                if status == '404':
-                    self.assertIsInstance(context.exception, NotFoundException)
-            else:
-                self.api.get(**kwargs)
-
-    @responses.activate
-    def test_upload(self):
-        """Test case for upload
-
-        Upload a chapter  # noqa: E501
-        """
-        for status, json in self.load_json('chapters', 'upload'):
-            responses.reset()
-
-            kwargs = {
-                'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
-                'language': "en",
-                'file': open('test_file', 'rb'),
-            }
-            url = '/videos/{video_id}/chapters/{language}'.format(**kwargs)
-
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
-
-            if status[0] == '4':
-                with self.assertRaises(ApiException) as context:
-                    self.api.upload(**kwargs)
-                if status == '404':
-                    self.assertIsInstance(context.exception, NotFoundException)
-            else:
-                self.api.upload(**kwargs)
 

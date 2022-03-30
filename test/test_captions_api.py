@@ -34,36 +34,30 @@ class TestCaptionsApi(MainTest):
         self.api = CaptionsApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_delete(self):
-        """Test case for delete
+    def test_upload(self):
+        """Test case for upload
 
-        Delete a caption  # noqa: E501
+        Upload a caption  # noqa: E501
         """
-        pass
-
-    @responses.activate
-    def test_list(self):
-        """Test case for list
-
-        List video captions  # noqa: E501
-        """
-        for status, json in self.load_json('captions', 'list'):
+        for status, json in self.load_json('captions', 'upload'):
             responses.reset()
 
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Prklg",
+                'language': "en",
+                'file': open('test_file', 'rb'),
             }
-            url = '/videos/{video_id}/captions'.format(**kwargs)
+            url = '/videos/{video_id}/captions/{language}'.format(**kwargs)
 
-            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list(**kwargs)
+                    self.api.upload(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list(**kwargs)
+                self.api.upload(**kwargs)
 
     @responses.activate
     def test_get(self):
@@ -119,28 +113,34 @@ class TestCaptionsApi(MainTest):
                 self.api.update(**kwargs)
 
     @responses.activate
-    def test_upload(self):
-        """Test case for upload
+    def test_delete(self):
+        """Test case for delete
 
-        Upload a caption  # noqa: E501
+        Delete a caption  # noqa: E501
         """
-        for status, json in self.load_json('captions', 'upload'):
+        pass
+
+    @responses.activate
+    def test_list(self):
+        """Test case for list
+
+        List video captions  # noqa: E501
+        """
+        for status, json in self.load_json('captions', 'list'):
             responses.reset()
 
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Prklg",
-                'language': "en",
-                'file': open('test_file', 'rb'),
             }
-            url = '/videos/{video_id}/captions/{language}'.format(**kwargs)
+            url = '/videos/{video_id}/captions'.format(**kwargs)
 
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.upload(**kwargs)
+                    self.api.list(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.upload(**kwargs)
+                self.api.list(**kwargs)
 

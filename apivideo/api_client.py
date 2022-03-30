@@ -767,10 +767,10 @@ class Endpoint(object):
         Example:
 
         api_instance = CaptionsApi()
-        api_instance.delete  # this is an instance of the class Endpoint
-        api_instance.delete()  # this invokes api_instance.delete.__call__()
+        api_instance.upload  # this is an instance of the class Endpoint
+        api_instance.upload()  # this invokes api_instance.upload.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.delete.callable or self.callable in this class
+        api_instance.upload.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

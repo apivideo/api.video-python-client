@@ -33,6 +33,134 @@ from apivideo.model.watermarks_list_response import WatermarksListResponse
 
 class WatermarksApi(_EndPoint):
 
+    def upload(
+            self,
+            file,
+            **kwargs
+        ):
+            """Upload a watermark  # noqa: E501
+
+            Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.upload(file, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                file (file_type): The `.jpg` or `.png` image to be added as a watermark.
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                Watermark
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['file'] = \
+                file
+
+            params_map = {
+                'all': [
+                    'file',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'file',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'file':
+                    (file_type,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+                'file': 'file',
+            }
+            location_map = {
+                'file': 'form',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `upload`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `upload`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`upload`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/watermarks",
+                "POST",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=(Watermark,),
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+
     def delete(
             self,
             watermark_id,
@@ -295,134 +423,6 @@ class WatermarksApi(_EndPoint):
                 post_params=params['form'],
                 files=params['file'],
                 response_type=(WatermarksListResponse,),
-                async_req=kwargs['async_req'],
-                _return_http_data_only=kwargs['_return_http_data_only'],
-                _preload_content=kwargs['_preload_content'],
-                _request_timeout=kwargs['_request_timeout'],
-                collection_formats=params['collection_format'])
-
-    def upload(
-            self,
-            file,
-            **kwargs
-        ):
-            """Upload a watermark  # noqa: E501
-
-            Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.upload(file, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                file (file_type): The `.jpg` or `.png` image to be added as a watermark.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Watermark
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['file'] = \
-                file
-
-            params_map = {
-                'all': [
-                    'file',
-                    'async_req',
-                    '_preload_content',
-                    '_request_timeout',
-                    '_return_http_data_only'
-                ],
-                'required': [
-                    'file',
-                ],
-                'nullable': [
-                    '_request_timeout'
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            }
-            validations = {
-            }
-            allowed_values = {
-            }
-            openapi_types = {
-                'file':
-                    (file_type,),
-                'async_req': (bool,),
-                '_preload_content': (bool,),
-                '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
-            }
-            attribute_map = {
-                'file': 'file',
-            }
-            location_map = {
-                'file': 'form',
-            }
-            collection_format_map = {
-            }
-
-            for key, value in kwargs.items():
-                if key not in params_map['all']:
-                    raise ApiTypeError(
-                        "Got an unexpected parameter '%s'"
-                        " to method `upload`" %
-                        (key, )
-                    )
-                if (key not in params_map['nullable'] and value is None):
-                    raise ApiValueError(
-                        "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `upload`" %
-                        (key, )
-                    )
-
-            for key in params_map['required']:
-                if key not in kwargs.keys():
-                    raise ApiValueError(
-                        "Missing the required parameter `%s` when calling "
-                        "`upload`" % (key, )
-                    )
-
-            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
-            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
-            return self.api_client.call_api(
-                "/watermarks",
-                "POST",
-                params['path'],
-                params['query'],
-                params['header'],
-                body=params['body'],
-                post_params=params['form'],
-                files=params['file'],
-                response_type=(Watermark,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],

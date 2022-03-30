@@ -34,22 +34,22 @@ from apivideo.model.webhooks_list_response import WebhooksListResponse
 
 class WebhooksApi(_EndPoint):
 
-    def delete(
+    def create(
             self,
-            webhook_id,
+            webhooks_creation_payload,
             **kwargs
         ):
-            """Delete a Webhook  # noqa: E501
+            """Create Webhook  # noqa: E501
 
-            This method will delete the indicated webhook.  # noqa: E501
+            Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.delete(webhook_id, async_req=True)
+            >>> thread = api.create(webhooks_creation_payload, async_req=True)
             >>> result = thread.get()
 
             Args:
-                webhook_id (str): The webhook you wish to delete.
+                webhooks_creation_payload (WebhooksCreationPayload):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -64,7 +64,7 @@ class WebhooksApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                None
+                Webhook
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -80,19 +80,19 @@ class WebhooksApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['webhook_id'] = \
-                webhook_id
+            kwargs['webhooks_creation_payload'] = \
+                webhooks_creation_payload
 
             params_map = {
                 'all': [
-                    'webhook_id',
+                    'webhooks_creation_payload',
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only'
                 ],
                 'required': [
-                    'webhook_id',
+                    'webhooks_creation_payload',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -107,18 +107,17 @@ class WebhooksApi(_EndPoint):
             allowed_values = {
             }
             openapi_types = {
-                'webhook_id':
-                    (str,),
+                'webhooks_creation_payload':
+                    (WebhooksCreationPayload,),
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,)
             }
             attribute_map = {
-                'webhook_id': 'webhookId',
             }
             location_map = {
-                'webhook_id': 'path',
+                'webhooks_creation_payload': 'body',
             }
             collection_format_map = {
             }
@@ -127,13 +126,13 @@ class WebhooksApi(_EndPoint):
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `delete`" %
+                        " to method `create`" %
                         (key, )
                     )
                 if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `delete`" %
+                        " when calling `create`" %
                         (key, )
                     )
 
@@ -141,21 +140,21 @@ class WebhooksApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`delete`" % (key, )
+                        "`create`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             return self.api_client.call_api(
-                "/webhooks/{webhookId}",
-                "DELETE",
+                "/webhooks",
+                "POST",
                 params['path'],
                 params['query'],
                 params['header'],
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=None,
+                response_type=(Webhook,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
@@ -284,6 +283,134 @@ class WebhooksApi(_EndPoint):
                 post_params=params['form'],
                 files=params['file'],
                 response_type=(Webhook,),
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+
+    def delete(
+            self,
+            webhook_id,
+            **kwargs
+        ):
+            """Delete a Webhook  # noqa: E501
+
+            This method will delete the indicated webhook.  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.delete(webhook_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                webhook_id (str): The webhook you wish to delete.
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['webhook_id'] = \
+                webhook_id
+
+            params_map = {
+                'all': [
+                    'webhook_id',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'webhook_id',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'webhook_id':
+                    (str,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+                'webhook_id': 'webhookId',
+            }
+            location_map = {
+                'webhook_id': 'path',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `delete`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `delete`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`delete`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/webhooks/{webhookId}",
+                "DELETE",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=None,
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
@@ -420,133 +547,6 @@ You can filter what the webhook list that the API returns using the parameters d
                 post_params=params['form'],
                 files=params['file'],
                 response_type=(WebhooksListResponse,),
-                async_req=kwargs['async_req'],
-                _return_http_data_only=kwargs['_return_http_data_only'],
-                _preload_content=kwargs['_preload_content'],
-                _request_timeout=kwargs['_request_timeout'],
-                collection_formats=params['collection_format'])
-
-    def create(
-            self,
-            webhooks_creation_payload,
-            **kwargs
-        ):
-            """Create Webhook  # noqa: E501
-
-            Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.create(webhooks_creation_payload, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                webhooks_creation_payload (WebhooksCreationPayload):
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Webhook
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['webhooks_creation_payload'] = \
-                webhooks_creation_payload
-
-            params_map = {
-                'all': [
-                    'webhooks_creation_payload',
-                    'async_req',
-                    '_preload_content',
-                    '_request_timeout',
-                    '_return_http_data_only'
-                ],
-                'required': [
-                    'webhooks_creation_payload',
-                ],
-                'nullable': [
-                    '_request_timeout'
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            }
-            validations = {
-            }
-            allowed_values = {
-            }
-            openapi_types = {
-                'webhooks_creation_payload':
-                    (WebhooksCreationPayload,),
-                'async_req': (bool,),
-                '_preload_content': (bool,),
-                '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
-            }
-            attribute_map = {
-            }
-            location_map = {
-                'webhooks_creation_payload': 'body',
-            }
-            collection_format_map = {
-            }
-
-            for key, value in kwargs.items():
-                if key not in params_map['all']:
-                    raise ApiTypeError(
-                        "Got an unexpected parameter '%s'"
-                        " to method `create`" %
-                        (key, )
-                    )
-                if (key not in params_map['nullable'] and value is None):
-                    raise ApiValueError(
-                        "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `create`" %
-                        (key, )
-                    )
-
-            for key in params_map['required']:
-                if key not in kwargs.keys():
-                    raise ApiValueError(
-                        "Missing the required parameter `%s` when calling "
-                        "`create`" % (key, )
-                    )
-
-            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
-            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
-            return self.api_client.call_api(
-                "/webhooks",
-                "POST",
-                params['path'],
-                params['query'],
-                params['header'],
-                body=params['body'],
-                post_params=params['form'],
-                files=params['file'],
-                response_type=(Webhook,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],

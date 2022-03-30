@@ -34,12 +34,31 @@ class TestWebhooksApi(MainTest):
         self.api = WebhooksApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_delete(self):
-        """Test case for delete
+    def test_create(self):
+        """Test case for create
 
-        Delete a Webhook  # noqa: E501
+        Create Webhook  # noqa: E501
         """
-        pass
+        for status, json in self.load_json('webhooks', 'create'):
+            responses.reset()
+
+            kwargs = {
+                'webhooks_creation_payload': WebhooksCreationPayload(
+        events=["video.encoding.quality.completed"],
+        url="https://example.com/webhooks",
+    ),
+            }
+            url = '/webhooks'.format(**kwargs)
+
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.create(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.create(**kwargs)
 
     @responses.activate
     def test_get(self):
@@ -66,6 +85,14 @@ class TestWebhooksApi(MainTest):
                 self.api.get(**kwargs)
 
     @responses.activate
+    def test_delete(self):
+        """Test case for delete
+
+        Delete a Webhook  # noqa: E501
+        """
+        pass
+
+    @responses.activate
     def test_list(self):
         """Test case for list
 
@@ -87,31 +114,4 @@ class TestWebhooksApi(MainTest):
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
                 self.api.list(**kwargs)
-
-    @responses.activate
-    def test_create(self):
-        """Test case for create
-
-        Create Webhook  # noqa: E501
-        """
-        for status, json in self.load_json('webhooks', 'create'):
-            responses.reset()
-
-            kwargs = {
-                'webhooks_creation_payload': WebhooksCreationPayload(
-        events=["video.encoding.quality.completed"],
-        url="https://example.com/webhooks",
-    ),
-            }
-            url = '/webhooks'.format(**kwargs)
-
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
-
-            if status[0] == '4':
-                with self.assertRaises(ApiException) as context:
-                    self.api.create(**kwargs)
-                if status == '404':
-                    self.assertIsInstance(context.exception, NotFoundException)
-            else:
-                self.api.create(**kwargs)
 
