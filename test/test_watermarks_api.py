@@ -33,6 +33,30 @@ class TestWatermarksApi(MainTest):
         self.api = WatermarksApi(self.client)  # noqa: E501
 
     @responses.activate
+    def test_upload(self):
+        """Test case for upload
+
+        Upload a watermark  # noqa: E501
+        """
+        for status, json in self.load_json('watermarks', 'upload'):
+            responses.reset()
+
+            kwargs = {
+                'file': open('test_file', 'rb'),
+            }
+            url = '/watermarks'.format(**kwargs)
+
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.upload(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.upload(**kwargs)
+
+    @responses.activate
     def test_delete(self):
         """Test case for delete
 
@@ -62,28 +86,4 @@ class TestWatermarksApi(MainTest):
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
                 self.api.list(**kwargs)
-
-    @responses.activate
-    def test_upload(self):
-        """Test case for upload
-
-        Upload a watermark  # noqa: E501
-        """
-        for status, json in self.load_json('watermarks', 'upload'):
-            responses.reset()
-
-            kwargs = {
-                'file': open('test_file', 'rb'),
-            }
-            url = '/watermarks'.format(**kwargs)
-
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
-
-            if status[0] == '4':
-                with self.assertRaises(ApiException) as context:
-                    self.api.upload(**kwargs)
-                if status == '404':
-                    self.assertIsInstance(context.exception, NotFoundException)
-            else:
-                self.api.upload(**kwargs)
 

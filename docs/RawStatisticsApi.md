@@ -17,7 +17,6 @@ List live stream player sessions
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#listLiveStreamSessions
 
 import apivideo
 from apivideo.api import raw_statistics_api
@@ -90,7 +89,6 @@ Useful to track and measure video's engagement.
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#listSessionEvents
 
 import apivideo
 from apivideo.api import raw_statistics_api
@@ -161,7 +159,6 @@ Retrieve all available user sessions for a specific video. Tutorials that use th
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#listVideoSessions
 
 import apivideo
 from apivideo.api import raw_statistics_api

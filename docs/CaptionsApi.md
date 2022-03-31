@@ -4,85 +4,27 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**upload**](CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 [**get**](CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
 [**update**](CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
-[**upload**](CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**delete**](CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
+[**list**](CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
 
 
-# **delete**
-> delete(video_id, language)
+# **upload**
+> Caption upload(video_id, language, file)
 
-Delete a caption
+Upload a caption
 
-Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
-
-### Example
-```python
-# First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#delete
-
-import apivideo
-from apivideo.api import captions_api
-from apivideo.model.not_found import NotFound
-from pprint import pprint
-
-# Enter a context with an instance of the API client
-with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
-    # Create an instance of the API class
-    api_instance = captions_api.CaptionsApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Prklgc" # str | The unique identifier for the video you want to delete a caption from.
-    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Delete a caption
-        api_instance.delete(video_id, language)
-    except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The unique identifier for the video you want to delete a caption from. |
- **language** | **str**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
-
-### Return type
-
-void (empty response body)
-
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list**
-> CaptionsListResponse list(video_id)
-
-List video captions
-
-Retrieve a list of available captions for the videoId you provide.
+Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
 
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#list
 
 import apivideo
 from apivideo.api import captions_api
+from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.caption import Caption
 from pprint import pprint
@@ -91,34 +33,35 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = captions_api.CaptionsApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want captions for.
-    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
+    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to add a caption to.
+    language = "en" # str | A valid BCP 47 language representation.
+    file = open('/path/to/file', 'rb') # file_type | The video text track (VTT) you want to upload.
 
     # example passing only required values which don't have defaults set
     try:
-        # Show a caption
-        api_response = api_instance.get(video_id, language)
+        # Upload a caption
+        api_response = api_instance.upload(video_id, language, file)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->get: %s\n" % e)
+        print("Exception when calling CaptionsApi->upload: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The unique identifier for the video you want to retrieve a list of captions for. |
- **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
- **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
+ **video_id** | **str**| The unique identifier for the video you want to add a caption to. |
+ **language** | **str**| A valid BCP 47 language representation. |
+ **file** | **file_type**| The video text track (VTT) you want to upload. |
 
 ### Return type
 
-[**CaptionsListResponse**](CaptionsListResponse.md)
+[**Caption**](Caption.md)
 
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
@@ -126,6 +69,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
+**400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -142,7 +86,6 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#get
 
 import apivideo
 from apivideo.api import captions_api
@@ -202,7 +145,6 @@ To have the captions on automatically, use this method to set default: true.
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#update
 
 import apivideo
 from apivideo.api import captions_api
@@ -260,21 +202,76 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **upload**
-> Caption upload(video_id, language, file)
+# **delete**
+> delete(video_id, language)
 
-Upload a caption
+Delete a caption
 
-Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
 
 ### Example
 ```python
 # First install the api client with "pip install api.video"
-// Documentation: https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsApi.md#upload
 
 import apivideo
 from apivideo.api import captions_api
-from apivideo.model.bad_request import BadRequest
+from apivideo.model.not_found import NotFound
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = captions_api.CaptionsApi(api_client)
+    video_id = "vi4k0jvEUuaTdRAEjQ4Prklgc" # str | The unique identifier for the video you want to delete a caption from.
+    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete a caption
+        api_instance.delete(video_id, language)
+    except apivideo.ApiException as e:
+        print("Exception when calling CaptionsApi->delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **video_id** | **str**| The unique identifier for the video you want to delete a caption from. |
+ **language** | **str**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+
+### Return type
+
+void (empty response body)
+
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> CaptionsListResponse list(video_id)
+
+List video captions
+
+Retrieve a list of available captions for the videoId you provide.
+
+### Example
+```python
+# First install the api client with "pip install api.video"
+
+import apivideo
+from apivideo.api import captions_api
 from apivideo.model.not_found import NotFound
 from apivideo.model.caption import Caption
 from pprint import pprint
@@ -283,35 +280,34 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = captions_api.CaptionsApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to add a caption to.
-    language = "en" # str | A valid BCP 47 language representation.
-    file = open('/path/to/file', 'rb') # file_type | The video text track (VTT) you want to upload.
+    video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want captions for.
+    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
 
     # example passing only required values which don't have defaults set
     try:
-        # Upload a caption
-        api_response = api_instance.upload(video_id, language, file)
+        # Show a caption
+        api_response = api_instance.get(video_id, language)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling CaptionsApi->upload: %s\n" % e)
+        print("Exception when calling CaptionsApi->get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The unique identifier for the video you want to add a caption to. |
- **language** | **str**| A valid BCP 47 language representation. |
- **file** | **file_type**| The video text track (VTT) you want to upload. |
+ **video_id** | **str**| The unique identifier for the video you want to retrieve a list of captions for. |
+ **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
+ **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
 
 ### Return type
 
-[**Caption**](Caption.md)
+[**CaptionsListResponse**](CaptionsListResponse.md)
 
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -319,7 +315,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

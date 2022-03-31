@@ -34,6 +34,261 @@ from apivideo.model.upload_token import UploadToken
 
 class UploadTokensApi(_EndPoint):
 
+    def create_token(
+            self,
+            token_creation_payload,
+            **kwargs
+        ):
+            """Generate an upload token  # noqa: E501
+
+            Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.create_token(token_creation_payload, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                token_creation_payload (TokenCreationPayload):
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                UploadToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['token_creation_payload'] = \
+                token_creation_payload
+
+            params_map = {
+                'all': [
+                    'token_creation_payload',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'token_creation_payload',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'token_creation_payload':
+                    (TokenCreationPayload,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+            }
+            location_map = {
+                'token_creation_payload': 'body',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `create_token`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `create_token`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`create_token`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/upload-tokens",
+                "POST",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=(UploadToken,),
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+
+    def get_token(
+            self,
+            upload_token,
+            **kwargs
+        ):
+            """Retrieve upload token  # noqa: E501
+
+            You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_token(upload_token, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                upload_token (str): The unique identifier for the token you want information about.
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                UploadToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['upload_token'] = \
+                upload_token
+
+            params_map = {
+                'all': [
+                    'upload_token',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'upload_token',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'upload_token':
+                    (str,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+                'upload_token': 'uploadToken',
+            }
+            location_map = {
+                'upload_token': 'path',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `get_token`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `get_token`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`get_token`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/upload-tokens/{uploadToken}",
+                "GET",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=(UploadToken,),
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+
     def delete_token(
             self,
             upload_token,
@@ -308,261 +563,6 @@ class UploadTokensApi(_EndPoint):
                 post_params=params['form'],
                 files=params['file'],
                 response_type=(TokenListResponse,),
-                async_req=kwargs['async_req'],
-                _return_http_data_only=kwargs['_return_http_data_only'],
-                _preload_content=kwargs['_preload_content'],
-                _request_timeout=kwargs['_request_timeout'],
-                collection_formats=params['collection_format'])
-
-    def get_token(
-            self,
-            upload_token,
-            **kwargs
-        ):
-            """Retrieve upload token  # noqa: E501
-
-            You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_token(upload_token, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                upload_token (str): The unique identifier for the token you want information about.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                UploadToken
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['upload_token'] = \
-                upload_token
-
-            params_map = {
-                'all': [
-                    'upload_token',
-                    'async_req',
-                    '_preload_content',
-                    '_request_timeout',
-                    '_return_http_data_only'
-                ],
-                'required': [
-                    'upload_token',
-                ],
-                'nullable': [
-                    '_request_timeout'
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            }
-            validations = {
-            }
-            allowed_values = {
-            }
-            openapi_types = {
-                'upload_token':
-                    (str,),
-                'async_req': (bool,),
-                '_preload_content': (bool,),
-                '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
-            }
-            attribute_map = {
-                'upload_token': 'uploadToken',
-            }
-            location_map = {
-                'upload_token': 'path',
-            }
-            collection_format_map = {
-            }
-
-            for key, value in kwargs.items():
-                if key not in params_map['all']:
-                    raise ApiTypeError(
-                        "Got an unexpected parameter '%s'"
-                        " to method `get_token`" %
-                        (key, )
-                    )
-                if (key not in params_map['nullable'] and value is None):
-                    raise ApiValueError(
-                        "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `get_token`" %
-                        (key, )
-                    )
-
-            for key in params_map['required']:
-                if key not in kwargs.keys():
-                    raise ApiValueError(
-                        "Missing the required parameter `%s` when calling "
-                        "`get_token`" % (key, )
-                    )
-
-            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
-            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
-            return self.api_client.call_api(
-                "/upload-tokens/{uploadToken}",
-                "GET",
-                params['path'],
-                params['query'],
-                params['header'],
-                body=params['body'],
-                post_params=params['form'],
-                files=params['file'],
-                response_type=(UploadToken,),
-                async_req=kwargs['async_req'],
-                _return_http_data_only=kwargs['_return_http_data_only'],
-                _preload_content=kwargs['_preload_content'],
-                _request_timeout=kwargs['_request_timeout'],
-                collection_formats=params['collection_format'])
-
-    def create_token(
-            self,
-            token_creation_payload,
-            **kwargs
-        ):
-            """Generate an upload token  # noqa: E501
-
-            Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.create_token(token_creation_payload, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                token_creation_payload (TokenCreationPayload):
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                UploadToken
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['token_creation_payload'] = \
-                token_creation_payload
-
-            params_map = {
-                'all': [
-                    'token_creation_payload',
-                    'async_req',
-                    '_preload_content',
-                    '_request_timeout',
-                    '_return_http_data_only'
-                ],
-                'required': [
-                    'token_creation_payload',
-                ],
-                'nullable': [
-                    '_request_timeout'
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            }
-            validations = {
-            }
-            allowed_values = {
-            }
-            openapi_types = {
-                'token_creation_payload':
-                    (TokenCreationPayload,),
-                'async_req': (bool,),
-                '_preload_content': (bool,),
-                '_request_timeout': (none_type, int, (int,), [int]),
-                '_return_http_data_only': (bool,)
-            }
-            attribute_map = {
-            }
-            location_map = {
-                'token_creation_payload': 'body',
-            }
-            collection_format_map = {
-            }
-
-            for key, value in kwargs.items():
-                if key not in params_map['all']:
-                    raise ApiTypeError(
-                        "Got an unexpected parameter '%s'"
-                        " to method `create_token`" %
-                        (key, )
-                    )
-                if (key not in params_map['nullable'] and value is None):
-                    raise ApiValueError(
-                        "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `create_token`" %
-                        (key, )
-                    )
-
-            for key in params_map['required']:
-                if key not in kwargs.keys():
-                    raise ApiValueError(
-                        "Missing the required parameter `%s` when calling "
-                        "`create_token`" % (key, )
-                    )
-
-            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
-            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
-            return self.api_client.call_api(
-                "/upload-tokens",
-                "POST",
-                params['path'],
-                params['query'],
-                params['header'],
-                body=params['body'],
-                post_params=params['form'],
-                files=params['file'],
-                response_type=(UploadToken,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],

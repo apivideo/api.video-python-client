@@ -35,43 +35,33 @@ class TestLiveStreamsApi(MainTest):
         self.api = LiveStreamsApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_delete(self):
-        """Test case for delete
+    def test_create(self):
+        """Test case for create
 
-        Delete a live stream  # noqa: E501
+        Create live stream  # noqa: E501
         """
-        pass
-
-    @responses.activate
-    def test_delete_thumbnail(self):
-        """Test case for delete_thumbnail
-
-        Delete a thumbnail  # noqa: E501
-        """
-        pass
-
-    @responses.activate
-    def test_list(self):
-        """Test case for list
-
-        List all live streams  # noqa: E501
-        """
-        for status, json in self.load_json('live_streams', 'list'):
+        for status, json in self.load_json('live_streams', 'create'):
             responses.reset()
 
             kwargs = {
+                'live_stream_creation_payload': LiveStreamCreationPayload(
+        name="My Live Stream Video",
+        record=True,
+        public=True,
+        player_id="pl4f4ferf5erfr5zed4fsdd",
+    ),
             }
             url = '/live-streams'.format(**kwargs)
 
-            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.list(**kwargs)
+                    self.api.create(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.list(**kwargs)
+                self.api.create(**kwargs)
 
     @responses.activate
     def test_get(self):
@@ -128,39 +118,49 @@ class TestLiveStreamsApi(MainTest):
                 self.api.update(**kwargs)
 
     @responses.activate
-    def test_create(self):
-        """Test case for create
+    def test_delete(self):
+        """Test case for delete
 
-        Create live stream  # noqa: E501
+        Delete a live stream  # noqa: E501
         """
-        for status, json in self.load_json('live_streams', 'create'):
+        pass
+
+    @responses.activate
+    def test_list(self):
+        """Test case for list
+
+        List all live streams  # noqa: E501
+        """
+        for status, json in self.load_json('live_streams', 'list'):
             responses.reset()
 
             kwargs = {
-                'live_stream_creation_payload': LiveStreamCreationPayload(
-        name="My Live Stream Video",
-        record=True,
-        public=True,
-        player_id="pl4f4ferf5erfr5zed4fsdd",
-    ),
             }
             url = '/live-streams'.format(**kwargs)
 
-            responses.add('POST', url, body=json, status=int(status), content_type='application/json')
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.create(**kwargs)
+                    self.api.list(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.create(**kwargs)
+                self.api.list(**kwargs)
 
     @responses.activate
     def test_upload_thumbnail(self):
         """Test case for upload_thumbnail
 
         Upload a thumbnail  # noqa: E501
+        """
+        pass
+
+    @responses.activate
+    def test_delete_thumbnail(self):
+        """Test case for delete_thumbnail
+
+        Delete a thumbnail  # noqa: E501
         """
         pass
 
