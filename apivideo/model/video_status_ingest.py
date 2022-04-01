@@ -84,7 +84,7 @@ class VideoStatusIngest(ModelNormal):
         lazy_import()
         return {
             'status': (str,),  # noqa: E501
-            'filesize': (int,),  # noqa: E501
+            'filesize': (int, none_type,),  # noqa: E501
             'received_bytes': ([BytesRange],),  # noqa: E501
             'received_parts': (VideoStatusIngestReceivedParts,),  # noqa: E501
         }
@@ -148,7 +148,7 @@ class VideoStatusIngest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             status (str): There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.. [optional]  # noqa: E501
-            filesize (int): The size of your file in bytes.. [optional]  # noqa: E501
+            filesize (int, none_type): The size of your file in bytes.. [optional]  # noqa: E501
             received_bytes ([BytesRange]): The total number of bytes received, listed for each chunk of the upload.. [optional]  # noqa: E501
             received_parts (VideoStatusIngestReceivedParts): [optional]  # noqa: E501
         """

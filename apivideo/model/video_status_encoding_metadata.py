@@ -71,14 +71,14 @@ class VideoStatusEncodingMetadata(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'width': (int,),  # noqa: E501
-            'height': (int,),  # noqa: E501
-            'bitrate': (float,),  # noqa: E501
-            'duration': (int,),  # noqa: E501
-            'framerate': (int,),  # noqa: E501
-            'samplerate': (int,),  # noqa: E501
-            'video_codec': (str,),  # noqa: E501
-            'audio_codec': (str,),  # noqa: E501
+            'width': (int, none_type,),  # noqa: E501
+            'height': (int, none_type,),  # noqa: E501
+            'bitrate': (float, none_type,),  # noqa: E501
+            'duration': (int, none_type,),  # noqa: E501
+            'framerate': (int, none_type,),  # noqa: E501
+            'samplerate': (int, none_type,),  # noqa: E501
+            'video_codec': (str, none_type,),  # noqa: E501
+            'audio_codec': (str, none_type,),  # noqa: E501
             'aspect_ratio': (str, none_type,),  # noqa: E501
         }
 
@@ -145,14 +145,14 @@ class VideoStatusEncodingMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            width (int): The width of the video in pixels.. [optional]  # noqa: E501
-            height (int): The height of the video in pixels.. [optional]  # noqa: E501
-            bitrate (float): The number of bits processed per second.. [optional]  # noqa: E501
-            duration (int): The length of the video.. [optional]  # noqa: E501
-            framerate (int): The frequency with which consecutive images or frames appear on a display. Shown in this API as frames per second (fps).. [optional]  # noqa: E501
-            samplerate (int): How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz.. [optional]  # noqa: E501
-            video_codec (str): The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. . [optional]  # noqa: E501
-            audio_codec (str): The method used to compress and decompress digital audio for your video.. [optional]  # noqa: E501
+            width (int, none_type): The width of the video in pixels.. [optional]  # noqa: E501
+            height (int, none_type): The height of the video in pixels.. [optional]  # noqa: E501
+            bitrate (float, none_type): The number of bits processed per second.. [optional]  # noqa: E501
+            duration (int, none_type): The length of the video.. [optional]  # noqa: E501
+            framerate (int, none_type): The frequency with which consecutive images or frames appear on a display. Shown in this API as frames per second (fps).. [optional]  # noqa: E501
+            samplerate (int, none_type): How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz.. [optional]  # noqa: E501
+            video_codec (str, none_type): The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. . [optional]  # noqa: E501
+            audio_codec (str, none_type): The method used to compress and decompress digital audio for your video.. [optional]  # noqa: E501
             aspect_ratio (str, none_type): [optional]  # noqa: E501
         """
 
