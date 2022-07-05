@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
 
-        self.default_headers['AV-Origin-Client'] = "python:1.2.6"
+        self.default_headers['AV-Origin-Client'] = "python:1.2.7"
 
     def __enter__(self):
         return self
@@ -91,23 +91,29 @@ class ApiClient(object):
             if hasattr(atexit, 'unregister'):
                 atexit.unregister(self.close)
 
-    def set_application_name(self, application_name, application_version = ""):
-        if application_name == "" or application_name is None:
-            if application_version != "" and application_version is not None:
-                raise Exception("applicationName is mandatory when applicationVersion is set.")
-            self.default_headers['AV-Origin-App'] = None
+    def set_application_name(self, application_name, application_version):
+        self.set_origin_header("application", 'AV-Origin-App', application_name, application_version)
+
+    def set_sdk_name(self, sdk_name, sdk_version):
+        self.set_origin_header("sdk", 'AV-Origin-App', sdk_name, sdk_version)
+
+    def set_origin_header(self, origin_type, header, name, version):
+        if (name is None or name == "") and (version is None or version == ""):
             return
 
-        if re.match(r"^[\w\-]{1,50}$", application_name) is None:
-            raise Exception("Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50.")
+        if name is None or name == "":
+            raise Exception(origin_type + " name is mandatory when " + origin_type + " version is set.")
 
-        if application_version != "" and application_version is not None:
-            if re.match(r"^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$", application_version) is None:
-                raise Exception("Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.")
-            self.default_headers['AV-Origin-App'] = application_name + ":" + application_version
-        else:
-            self.default_headers['AV-Origin-App'] = application_name
+        if version is None or version == "":
+            raise Exception(origin_type + " version is mandatory when " + origin_type + " name is set.")
 
+        if re.match(r"^[\w\-]{1,50}$", name) is None:
+            raise Exception("Invalid " + origin_type + " name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50.")
+
+        if re.match(r"^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$", version) is None:
+            raise Exception("Invalid " + origin_type + " version value. The version should match the xxx[.yyy][.zzz] pattern.")
+
+        self.default_headers[header] = name + ":" + version
 
     @property
     def pool(self):
