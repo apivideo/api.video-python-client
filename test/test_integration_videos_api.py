@@ -29,7 +29,7 @@ class TestVideosApi(TestCase):
     def setUp(self):
         super().setUp()
         self.client = apivideo.AuthenticatedApiClient(os.getenv("API_KEY"))
-        self.client.set_application_name("client-integration-tests")
+        self.client.set_application_name("client-integration-tests", "0")
         self.client.connect()
         self.api = VideosApi(self.client)  # noqa: E501
         self.token_api = UploadTokensApi(self.client)  # noqa: E501
