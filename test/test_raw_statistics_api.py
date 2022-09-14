@@ -43,6 +43,7 @@ class TestRawStatisticsApi(MainTest):
 
             kwargs = {
                 'live_stream_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'period': "2019-01-01T00:00:00.000Z",
             }
             url = '/analytics/live-streams/{live_stream_id}'.format(**kwargs)
 
@@ -91,6 +92,7 @@ class TestRawStatisticsApi(MainTest):
 
             kwargs = {
                 'video_id': "vi4k0jvEUuaTdRAEjQ4Prklg",
+                'period': "period_example",
             }
             url = '/analytics/videos/{video_id}'.format(**kwargs)
 

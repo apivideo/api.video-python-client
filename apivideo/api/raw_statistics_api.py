@@ -36,6 +36,7 @@ class RawStatisticsApi(_EndPoint):
     def list_live_stream_sessions(
             self,
             live_stream_id,
+            period,
             **kwargs
         ):
             """List live stream player sessions  # noqa: E501
@@ -43,14 +44,14 @@ class RawStatisticsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_live_stream_sessions(live_stream_id, async_req=True)
+            >>> thread = api.list_live_stream_sessions(live_stream_id, period, async_req=True)
             >>> result = thread.get()
 
             Args:
                 live_stream_id (str): The unique identifier for the live stream you want to retrieve analytics for.
+                period (str): Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\" 
 
             Keyword Args:
-                period (str): Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\" . [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
                 _return_http_data_only (bool): response data without head status
@@ -83,6 +84,8 @@ class RawStatisticsApi(_EndPoint):
             )
             kwargs['live_stream_id'] = \
                 live_stream_id
+            kwargs['period'] = \
+                period
 
             params_map = {
                 'all': [
@@ -97,6 +100,7 @@ class RawStatisticsApi(_EndPoint):
                 ],
                 'required': [
                     'live_stream_id',
+                    'period',
                 ],
                 'nullable': [
                     '_request_timeout'
@@ -321,6 +325,7 @@ class RawStatisticsApi(_EndPoint):
     def list_video_sessions(
             self,
             video_id,
+            period,
             **kwargs
         ):
             """List video player sessions  # noqa: E501
@@ -329,14 +334,14 @@ class RawStatisticsApi(_EndPoint):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.list_video_sessions(video_id, async_req=True)
+            >>> thread = api.list_video_sessions(video_id, period, async_req=True)
             >>> result = thread.get()
 
             Args:
                 video_id (str): The unique identifier for the video you want to retrieve session information for.
+                period (str): Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 
 
             Keyword Args:
-                period (str): Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 . [optional]
                 metadata ({str: (str,)}): Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with.. [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
@@ -370,6 +375,8 @@ class RawStatisticsApi(_EndPoint):
             )
             kwargs['video_id'] = \
                 video_id
+            kwargs['period'] = \
+                period
 
             params_map = {
                 'all': [
@@ -385,6 +392,7 @@ class RawStatisticsApi(_EndPoint):
                 ],
                 'required': [
                     'video_id',
+                    'period',
                 ],
                 'nullable': [
                     '_request_timeout'
