@@ -172,7 +172,7 @@ Method | HTTP request | Description
 [**create_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#create_token) | **POST** /upload-tokens | Generate an upload token
 [**get_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#get_token) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**delete_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#delete_token) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
 
 
 ### VideosApi
@@ -180,16 +180,16 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#create) | **POST** /videos | Create a video
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#create) | **POST** /videos | Create a video object
 [**upload**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**upload_with_upload_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an upload token
-[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
-[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all videos
+[**upload_with_upload_token**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an delegated upload token
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all video objects
 [**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-[**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status
+[**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status and details
 
 
 ### WatermarksApi

@@ -43,7 +43,7 @@ class CaptionsApi(_EndPoint):
         ):
             """Upload a caption  # noqa: E501
 
-            Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.  # noqa: E501
+            Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -477,7 +477,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
         ):
             """Delete a caption  # noqa: E501
 
-            Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.  # noqa: E501
+            Delete a caption in a specific language by by video id.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -614,7 +614,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
         ):
             """List video captions  # noqa: E501
 
-            Retrieve a list of available captions for the videoId you provide.  # noqa: E501
+            Retrieve a list of available captions by video id.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

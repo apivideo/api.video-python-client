@@ -4,24 +4,24 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](VideosApi.md#create) | **POST** /videos | Create a video
+[**create**](VideosApi.md#create) | **POST** /videos | Create a video object
 [**upload**](VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**upload_with_upload_token**](VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an upload token
-[**get**](VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
-[**update**](VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**delete**](VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**list**](VideosApi.md#list) | **GET** /videos | List all videos
+[**upload_with_upload_token**](VideosApi.md#upload_with_upload_token) | **POST** /upload | Upload with an delegated upload token
+[**get**](VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
+[**update**](VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
+[**delete**](VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
+[**list**](VideosApi.md#list) | **GET** /videos | List all video objects
 [**upload_thumbnail**](VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-[**pick_thumbnail**](VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**get_status**](VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status
+[**pick_thumbnail**](VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**get_status**](VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status and details
 
 
 # **create**
 > Video create(video_creation_payload)
 
-Create a video
+Create a video object
 
-We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
 
 ### Example
 ```python
@@ -200,7 +200,7 @@ part3.close()
 # **upload_with_upload_token**
 > Video upload_with_upload_token(token, file)
 
-Upload with an upload token
+Upload with an delegated upload token
 
 This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
 
@@ -226,7 +226,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
 
     # example passing only required values which don't have defaults set
     try:
-        # Upload with an upload token
+        # Upload with an delegated upload token
         api_response = api_instance.upload_with_upload_token(token, file)
         pprint(api_response)
     except apivideo.ApiException as e:
@@ -235,7 +235,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Upload with an upload token
+        # Upload with an delegated upload token
         api_response = api_instance.upload_with_upload_token(token, file, video_id=video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
@@ -298,7 +298,7 @@ part3.close()
 # **get**
 > Video get(video_id)
 
-Retrieve a video
+Retrieve a video object
 
 This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
 
@@ -355,9 +355,9 @@ Name | Type | Description  | Notes
 # **update**
 > Video update(video_id, video_update_payload)
 
-Update a video
+Update a video object
 
-Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
 
 
 
@@ -412,7 +412,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **video_id** | **str**| The video ID for the video you want to delete. |
+ **video_id** | **str**| The video ID for the video you want to update. |
  **video_update_payload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  |
 
 ### Return type
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 # **delete**
 > delete(video_id)
 
-Delete a video
+Delete a video object
 
 If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
 
@@ -491,7 +491,7 @@ void (empty response body)
 # **list**
 > VideosListResponse list()
 
-List all videos
+List all video objects
 
 This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
 
@@ -523,7 +523,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # List all videos
+        # List all video objects
         api_response = api_instance.list(title=title, tags=tags, metadata=metadata, description=description, live_stream_id=live_stream_id, sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 # **pick_thumbnail**
 > Video pick_thumbnail(video_id, video_thumbnail_pick_payload)
 
-Pick a thumbnail
+Set a thumbnail
 
 Pick a thumbnail from the given time code. 
 
@@ -714,7 +714,7 @@ Name | Type | Description  | Notes
 # **get_status**
 > VideoStatus get_status(video_id)
 
-Retrieve video status
+Retrieve video status and details
 
 This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
 

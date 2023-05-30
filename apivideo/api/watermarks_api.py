@@ -40,7 +40,7 @@ class WatermarksApi(_EndPoint):
         ):
             """Upload a watermark  # noqa: E501
 
-            Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).  # noqa: E501
+            Create a new watermark by uploading a `JPG` or a `PNG` image.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -168,7 +168,7 @@ class WatermarksApi(_EndPoint):
         ):
             """Delete a watermark  # noqa: E501
 
-            Delete a watermark. A watermark is a static image, directly burnt-into a video.  # noqa: E501
+            Delete a watermark.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -295,7 +295,7 @@ class WatermarksApi(_EndPoint):
         ):
             """List all watermarks  # noqa: E501
 
-            List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).  # noqa: E501
+            List all watermarks associated with your workspace.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

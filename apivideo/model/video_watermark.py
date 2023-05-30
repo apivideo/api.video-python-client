@@ -148,8 +148,8 @@ class VideoWatermark(ModelNormal):
             left (str): Distance expressed in px or % between the left-border of the video and the watermark-image.. [optional]  # noqa: E501
             bottom (str): Distance expressed in px or % between the bottom-border of the video and the watermark-image.. [optional]  # noqa: E501
             right (str): Distance expressed in px or % between the right-border of the video and the watermark-image.. [optional]  # noqa: E501
-            width (str): Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial. [optional]  # noqa: E501
-            height (str): Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial. [optional]  # noqa: E501
+            width (str): Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use `initial`.. [optional]  # noqa: E501
+            height (str): Height of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use `initial`.. [optional]  # noqa: E501
             opacity (str): Opacity expressed in % only to specify the degree of the watermark-image transparency with the video.. [optional]  # noqa: E501
         """
 

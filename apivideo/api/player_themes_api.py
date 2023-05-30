@@ -169,7 +169,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Retrieve a player  # noqa: E501
 
-            Use a player ID to retrieve details about the player and display it for viewers.  # noqa: E501
+            Retreive a player theme by player id.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -561,7 +561,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """List all player themes  # noqa: E501
 
-            Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).  # noqa: E501
+            Retrieve a list of all the player themes you created, as well as details about each one.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -716,7 +716,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Upload a logo  # noqa: E501
 
-            The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.  # noqa: E501
+            Upload an image logo for a player.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

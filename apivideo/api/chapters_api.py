@@ -189,7 +189,7 @@ class ChaptersApi(_EndPoint):
         ):
             """Retrieve a chapter  # noqa: E501
 
-            Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).  # noqa: E501
+            Retrieve a chapter for by video id in a specific language.   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -464,7 +464,7 @@ class ChaptersApi(_EndPoint):
         ):
             """List video chapters  # noqa: E501
 
-            Retrieve a list of all chapters for a specified video.  # noqa: E501
+            Retrieve a list of all chapters for by video id.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

@@ -139,7 +139,7 @@ class LiveStreamCreationPayload(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             record (bool): Whether you are recording or not. True for record, false for not record.. [optional] if omitted the server will use the default value of False  # noqa: E501
-            public (bool): BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.. [optional]  # noqa: E501
+            public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).. [optional]  # noqa: E501
             player_id (str): The unique identifier for the player.. [optional]  # noqa: E501
         """
 

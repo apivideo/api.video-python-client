@@ -42,9 +42,9 @@ class VideosApi(_EndPoint):
             video_creation_payload,
             **kwargs
         ):
-            """Create a video  # noqa: E501
+            """Create a video object  # noqa: E501
 
-            We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.   # noqa: E501
+            Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -473,7 +473,7 @@ The latter allows you to split a video source into X chunks and send those chunk
             file,
             **kwargs
         ):
-            """Upload with an upload token  # noqa: E501
+            """Upload with an delegated upload token  # noqa: E501
 
             This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -776,7 +776,7 @@ The latter allows you to split a video source into X chunks and send those chunk
             video_id,
             **kwargs
         ):
-            """Retrieve a video  # noqa: E501
+            """Retrieve a video object  # noqa: E501
 
             This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -905,9 +905,9 @@ The latter allows you to split a video source into X chunks and send those chunk
             video_update_payload,
             **kwargs
         ):
-            """Update a video  # noqa: E501
+            """Update a video object  # noqa: E501
 
-            Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+            Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
 
 
 
@@ -921,7 +921,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
             >>> result = thread.get()
 
             Args:
-                video_id (str): The video ID for the video you want to delete.
+                video_id (str): The video ID for the video you want to update.
                 video_update_payload (VideoUpdatePayload):
 
             Keyword Args:
@@ -1047,7 +1047,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
             video_id,
             **kwargs
         ):
-            """Delete a video  # noqa: E501
+            """Delete a video object  # noqa: E501
 
             If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -1174,7 +1174,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
             self,
             **kwargs
         ):
-            """List all videos  # noqa: E501
+            """List all video objects  # noqa: E501
 
             This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
@@ -1498,7 +1498,7 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
             video_thumbnail_pick_payload,
             **kwargs
         ):
-            """Pick a thumbnail  # noqa: E501
+            """Set a thumbnail  # noqa: E501
 
             Pick a thumbnail from the given time code. 
 
@@ -1644,7 +1644,7 @@ There may be a short delay for the thumbnail to update.
             video_id,
             **kwargs
         ):
-            """Retrieve video status  # noqa: E501
+            """Retrieve video status and details  # noqa: E501
 
             This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an

@@ -41,7 +41,7 @@ class UploadTokensApi(_EndPoint):
         ):
             """Generate an upload token  # noqa: E501
 
-            Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).  # noqa: E501
+            Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -168,7 +168,7 @@ class UploadTokensApi(_EndPoint):
         ):
             """Retrieve upload token  # noqa: E501
 
-            You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.  # noqa: E501
+            Retrieve details about a specific upload token by id.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -421,9 +421,9 @@ class UploadTokensApi(_EndPoint):
             self,
             **kwargs
         ):
-            """List all active upload tokens.  # noqa: E501
+            """List all active upload tokens  # noqa: E501
 
-            A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).  # noqa: E501
+            Retrieve a list of all currently active delegated tokens.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
