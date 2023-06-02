@@ -40,7 +40,7 @@ class TestVideosApi(MainTest):
     def test_create(self):
         """Test case for create
 
-        Create a video  # noqa: E501
+        Create a video object  # noqa: E501
         """
         for status, json in self.load_json('videos', 'create'):
             responses.reset()
@@ -118,7 +118,7 @@ class TestVideosApi(MainTest):
     def test_upload_with_upload_token(self):
         """Test case for upload_with_upload_token
 
-        Upload with an upload token  # noqa: E501
+        Upload with an delegated upload token  # noqa: E501
         """
         for status, json in self.load_json('videos', 'upload_with_upload_token'):
             responses.reset()
@@ -143,7 +143,7 @@ class TestVideosApi(MainTest):
     def test_get(self):
         """Test case for get
 
-        Retrieve a video  # noqa: E501
+        Retrieve a video object  # noqa: E501
         """
         for status, json in self.load_json('videos', 'get'):
             responses.reset()
@@ -167,7 +167,7 @@ class TestVideosApi(MainTest):
     def test_update(self):
         """Test case for update
 
-        Update a video  # noqa: E501
+        Update a video object  # noqa: E501
         """
         for status, json in self.load_json('videos', 'update'):
             responses.reset()
@@ -206,7 +206,7 @@ class TestVideosApi(MainTest):
     def test_delete(self):
         """Test case for delete
 
-        Delete a video  # noqa: E501
+        Delete a video object  # noqa: E501
         """
         pass
 
@@ -214,7 +214,7 @@ class TestVideosApi(MainTest):
     def test_list(self):
         """Test case for list
 
-        List all videos  # noqa: E501
+        List all video objects  # noqa: E501
         """
         for status, json in self.load_json('videos', 'list'):
             responses.reset()
@@ -262,7 +262,7 @@ class TestVideosApi(MainTest):
     def test_pick_thumbnail(self):
         """Test case for pick_thumbnail
 
-        Pick a thumbnail  # noqa: E501
+        Set a thumbnail  # noqa: E501
         """
         for status, json in self.load_json('videos', 'pick_thumbnail'):
             responses.reset()
@@ -289,7 +289,7 @@ class TestVideosApi(MainTest):
     def test_get_status(self):
         """Test case for get_status
 
-        Retrieve video status  # noqa: E501
+        Retrieve video status and details  # noqa: E501
         """
         for status, json in self.load_json('videos', 'get_status'):
             responses.reset()

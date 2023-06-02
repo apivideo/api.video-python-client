@@ -95,7 +95,7 @@ class TestUploadTokensApi(MainTest):
     def test_list(self):
         """Test case for list
 
-        List all active upload tokens.  # noqa: E501
+        List all active upload tokens  # noqa: E501
         """
         for status, json in self.load_json('upload_tokens', 'list'):
             responses.reset()
