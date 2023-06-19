@@ -218,6 +218,7 @@ Method | HTTP request | Description
 ## Models
 
  - [AccessToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/AccessToken.md)
+ - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-python-client/blob/main/docs/AdditionalBadRequestErrors.md)
  - [AuthenticatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/AuthenticatePayload.md)
  - [BadRequest](https://github.com/apivideo/api.video-python-client/blob/main/docs/BadRequest.md)
  - [BytesRange](https://github.com/apivideo/api.video-python-client/blob/main/docs/BytesRange.md)
