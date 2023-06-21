@@ -6,7 +6,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from .api.captions_api import CaptionsApi
+#   from .api.analytics_api import AnalyticsApi
 #
 # or import this package, but before doing it, use:
 #
@@ -14,6 +14,7 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
+from apivideo.api.analytics_api import AnalyticsApi
 from apivideo.api.captions_api import CaptionsApi
 from apivideo.api.chapters_api import ChaptersApi
 from apivideo.api.live_streams_api import LiveStreamsApi

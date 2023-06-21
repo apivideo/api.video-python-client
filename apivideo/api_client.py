@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
 
-        self.default_headers['AV-Origin-Client'] = "python:1.2.8"
+        self.default_headers['AV-Origin-Client'] = "python:1.3.0"
 
     def __enter__(self):
         return self
@@ -772,11 +772,11 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = CaptionsApi()
-        api_instance.upload  # this is an instance of the class Endpoint
-        api_instance.upload()  # this invokes api_instance.upload.__call__()
+        api_instance = AnalyticsApi()
+        api_instance.get_live_streams_plays  # this is an instance of the class Endpoint
+        api_instance.get_live_streams_plays()  # this invokes api_instance.get_live_streams_plays.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.upload.callable or self.callable in this class
+        api_instance.get_live_streams_plays.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

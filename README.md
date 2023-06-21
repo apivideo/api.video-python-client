@@ -16,6 +16,7 @@
     - [Manual authentication](#manual-authentication)
 - [Documentation](#documentation)
   - [API Endpoints](#api-endpoints)
+    - [AnalyticsApi](#)
     - [CaptionsApi](#)
     - [ChaptersApi](#)
     - [LiveStreamsApi](#)
@@ -101,6 +102,15 @@ except ApiAuthException:
 ## API Endpoints
 
 All URIs are relative to *https://ws.api.video*
+
+
+### AnalyticsApi
+
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**get_live_streams_plays**](https://github.com/apivideo/api.video-python-client/blob/main/docs/AnalyticsApi.md#get_live_streams_plays) | **GET** /analytics/live-streams/plays | Get play events for live stream
+[**get_videos_plays**](https://github.com/apivideo/api.video-python-client/blob/main/docs/AnalyticsApi.md#get_videos_plays) | **GET** /analytics/videos/plays | Get play events for video
 
 
 ### CaptionsApi
@@ -219,6 +229,9 @@ Method | HTTP request | Description
 
  - [AccessToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/AccessToken.md)
  - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-python-client/blob/main/docs/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](https://github.com/apivideo/api.video-python-client/blob/main/docs/AnalyticsData.md)
+ - [AnalyticsPlays400Error](https://github.com/apivideo/api.video-python-client/blob/main/docs/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/AuthenticatePayload.md)
  - [BadRequest](https://github.com/apivideo/api.video-python-client/blob/main/docs/BadRequest.md)
  - [BytesRange](https://github.com/apivideo/api.video-python-client/blob/main/docs/BytesRange.md)
