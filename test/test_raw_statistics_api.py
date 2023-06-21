@@ -38,7 +38,8 @@ class TestRawStatisticsApi(MainTest):
 
         List live stream player sessions  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'list_live_stream_sessions'):
+        for file_name, json in self.load_json('raw_statistics', 'list_live_stream_sessions'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -63,7 +64,8 @@ class TestRawStatisticsApi(MainTest):
 
         List player session events  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'list_session_events'):
+        for file_name, json in self.load_json('raw_statistics', 'list_session_events'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -87,7 +89,8 @@ class TestRawStatisticsApi(MainTest):
 
         List video player sessions  # noqa: E501
         """
-        for status, json in self.load_json('raw_statistics', 'list_video_sessions'):
+        for file_name, json in self.load_json('raw_statistics', 'list_video_sessions'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

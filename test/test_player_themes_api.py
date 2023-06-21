@@ -40,7 +40,8 @@ class TestPlayerThemesApi(MainTest):
 
         Create a player  # noqa: E501
         """
-        for status, json in self.load_json('player_themes', 'create'):
+        for file_name, json in self.load_json('player_themes', 'create'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -81,7 +82,8 @@ class TestPlayerThemesApi(MainTest):
 
         Retrieve a player  # noqa: E501
         """
-        for status, json in self.load_json('player_themes', 'get'):
+        for file_name, json in self.load_json('player_themes', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -105,7 +107,8 @@ class TestPlayerThemesApi(MainTest):
 
         Update a player  # noqa: E501
         """
-        for status, json in self.load_json('player_themes', 'update'):
+        for file_name, json in self.load_json('player_themes', 'update'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -155,7 +158,8 @@ class TestPlayerThemesApi(MainTest):
 
         List all player themes  # noqa: E501
         """
-        for status, json in self.load_json('player_themes', 'list'):
+        for file_name, json in self.load_json('player_themes', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

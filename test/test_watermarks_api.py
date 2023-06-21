@@ -38,7 +38,8 @@ class TestWatermarksApi(MainTest):
 
         Upload a watermark  # noqa: E501
         """
-        for status, json in self.load_json('watermarks', 'upload'):
+        for file_name, json in self.load_json('watermarks', 'upload'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -70,7 +71,8 @@ class TestWatermarksApi(MainTest):
 
         List all watermarks  # noqa: E501
         """
-        for status, json in self.load_json('watermarks', 'list'):
+        for file_name, json in self.load_json('watermarks', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

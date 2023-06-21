@@ -42,7 +42,8 @@ class TestVideosApi(MainTest):
 
         Create a video object  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'create'):
+        for file_name, json in self.load_json('videos', 'create'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -95,7 +96,8 @@ class TestVideosApi(MainTest):
 
         Upload a video  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'upload'):
+        for file_name, json in self.load_json('videos', 'upload'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -120,7 +122,8 @@ class TestVideosApi(MainTest):
 
         Upload with an delegated upload token  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'upload_with_upload_token'):
+        for file_name, json in self.load_json('videos', 'upload_with_upload_token'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -145,7 +148,8 @@ class TestVideosApi(MainTest):
 
         Retrieve a video object  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'get'):
+        for file_name, json in self.load_json('videos', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -169,7 +173,8 @@ class TestVideosApi(MainTest):
 
         Update a video object  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'update'):
+        for file_name, json in self.load_json('videos', 'update'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -216,7 +221,8 @@ class TestVideosApi(MainTest):
 
         List all video objects  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'list'):
+        for file_name, json in self.load_json('videos', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -239,7 +245,8 @@ class TestVideosApi(MainTest):
 
         Upload a thumbnail  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'upload_thumbnail'):
+        for file_name, json in self.load_json('videos', 'upload_thumbnail'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -264,7 +271,8 @@ class TestVideosApi(MainTest):
 
         Set a thumbnail  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'pick_thumbnail'):
+        for file_name, json in self.load_json('videos', 'pick_thumbnail'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -291,7 +299,8 @@ class TestVideosApi(MainTest):
 
         Retrieve video status and details  # noqa: E501
         """
-        for status, json in self.load_json('videos', 'get_status'):
+        for file_name, json in self.load_json('videos', 'get_status'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
