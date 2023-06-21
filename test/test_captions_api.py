@@ -39,7 +39,8 @@ class TestCaptionsApi(MainTest):
 
         Upload a caption  # noqa: E501
         """
-        for status, json in self.load_json('captions', 'upload'):
+        for file_name, json in self.load_json('captions', 'upload'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -65,7 +66,8 @@ class TestCaptionsApi(MainTest):
 
         Retrieve a caption  # noqa: E501
         """
-        for status, json in self.load_json('captions', 'get'):
+        for file_name, json in self.load_json('captions', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -90,7 +92,8 @@ class TestCaptionsApi(MainTest):
 
         Update a caption  # noqa: E501
         """
-        for status, json in self.load_json('captions', 'update'):
+        for file_name, json in self.load_json('captions', 'update'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -126,7 +129,8 @@ class TestCaptionsApi(MainTest):
 
         List video captions  # noqa: E501
         """
-        for status, json in self.load_json('captions', 'list'):
+        for file_name, json in self.load_json('captions', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

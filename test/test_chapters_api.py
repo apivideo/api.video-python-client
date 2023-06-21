@@ -38,7 +38,8 @@ class TestChaptersApi(MainTest):
 
         Upload a chapter  # noqa: E501
         """
-        for status, json in self.load_json('chapters', 'upload'):
+        for file_name, json in self.load_json('chapters', 'upload'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -64,7 +65,8 @@ class TestChaptersApi(MainTest):
 
         Retrieve a chapter  # noqa: E501
         """
-        for status, json in self.load_json('chapters', 'get'):
+        for file_name, json in self.load_json('chapters', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -97,7 +99,8 @@ class TestChaptersApi(MainTest):
 
         List video chapters  # noqa: E501
         """
-        for status, json in self.load_json('chapters', 'list'):
+        for file_name, json in self.load_json('chapters', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

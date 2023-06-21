@@ -39,7 +39,8 @@ class TestWebhooksApi(MainTest):
 
         Create Webhook  # noqa: E501
         """
-        for status, json in self.load_json('webhooks', 'create'):
+        for file_name, json in self.load_json('webhooks', 'create'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -66,7 +67,8 @@ class TestWebhooksApi(MainTest):
 
         Retrieve Webhook details  # noqa: E501
         """
-        for status, json in self.load_json('webhooks', 'get'):
+        for file_name, json in self.load_json('webhooks', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -98,7 +100,8 @@ class TestWebhooksApi(MainTest):
 
         List all webhooks  # noqa: E501
         """
-        for status, json in self.load_json('webhooks', 'list'):
+        for file_name, json in self.load_json('webhooks', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

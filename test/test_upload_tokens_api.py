@@ -39,7 +39,8 @@ class TestUploadTokensApi(MainTest):
 
         Generate an upload token  # noqa: E501
         """
-        for status, json in self.load_json('upload_tokens', 'create_token'):
+        for file_name, json in self.load_json('upload_tokens', 'create_token'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -65,7 +66,8 @@ class TestUploadTokensApi(MainTest):
 
         Retrieve upload token  # noqa: E501
         """
-        for status, json in self.load_json('upload_tokens', 'get_token'):
+        for file_name, json in self.load_json('upload_tokens', 'get_token'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -97,7 +99,8 @@ class TestUploadTokensApi(MainTest):
 
         List all active upload tokens  # noqa: E501
         """
-        for status, json in self.load_json('upload_tokens', 'list'):
+        for file_name, json in self.load_json('upload_tokens', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {

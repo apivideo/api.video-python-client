@@ -40,7 +40,8 @@ class TestLiveStreamsApi(MainTest):
 
         Create live stream  # noqa: E501
         """
-        for status, json in self.load_json('live_streams', 'create'):
+        for file_name, json in self.load_json('live_streams', 'create'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -69,7 +70,8 @@ class TestLiveStreamsApi(MainTest):
 
         Retrieve live stream  # noqa: E501
         """
-        for status, json in self.load_json('live_streams', 'get'):
+        for file_name, json in self.load_json('live_streams', 'get'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -93,7 +95,8 @@ class TestLiveStreamsApi(MainTest):
 
         Update a live stream  # noqa: E501
         """
-        for status, json in self.load_json('live_streams', 'update'):
+        for file_name, json in self.load_json('live_streams', 'update'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
@@ -131,7 +134,8 @@ class TestLiveStreamsApi(MainTest):
 
         List all live streams  # noqa: E501
         """
-        for status, json in self.load_json('live_streams', 'list'):
+        for file_name, json in self.load_json('live_streams', 'list'):
+            status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
