@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
 
-        self.default_headers['AV-Origin-Client'] = "python:1.3.0"
+        self.default_headers['AV-Origin-Client'] = "python:1.4.0"
 
     def __enter__(self):
         return self

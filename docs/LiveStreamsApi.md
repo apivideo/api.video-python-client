@@ -21,27 +21,42 @@ Create live stream
 Creates a livestream object.
 
 ### Example
+
 ```python
-# First install the api client with "pip install api.video"
-
-from apivideo.api.live_streams_api import LiveStreamsApi
+import apivideo
+from apivideo.api import live_streams_api
+from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
-from apivideo import AuthenticatedApiClient, ApiException
+from apivideo.model.live_stream import LiveStream
+from pprint import pprint
 
-with AuthenticatedApiClient("YOUR_API_KEY") as api_client:
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_creation_payload = LiveStreamCreationPayload(
-        record=False,
         name="My Live Stream Video",
+        record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
-    ) 
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
+    ) # LiveStreamCreationPayload | 
 
+    # example passing only required values which don't have defaults set
     try:
-        live_stream = LiveStreamsApi(api_client).create(live_stream_creation_payload)
-        print(live_stream)
-    except ApiException as e:
-        print("Exception when calling LiveStreamsApi->create: %s" % e)
+        # Create live stream
+        api_response = api_instance.create(live_stream_creation_payload)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling LiveStreamsApi->create: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -76,9 +91,8 @@ Retrieve live stream
 Get a livestream by id.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
@@ -92,12 +106,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show live stream
+        # Retrieve live stream
         api_response = api_instance.get(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->get: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -131,9 +146,8 @@ Update a live stream
 Updates the livestream object.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -151,6 +165,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         public=True,
         record=True,
         player_id="pl45KFKdlddgk654dspkze",
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
     ) # LiveStreamUpdatePayload | 
 
     # example passing only required values which don't have defaults set
@@ -159,9 +180,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(live_stream_id, live_stream_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->update: %s\
-" % e)
+        print("Exception when calling LiveStreamsApi->update: %s\n" % e)
 ```
+
 
 ### Parameters
 
