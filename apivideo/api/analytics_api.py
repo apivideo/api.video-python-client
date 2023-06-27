@@ -27,6 +27,7 @@ from apivideo.model_utils import (  # noqa: F401
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
 from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
+from apivideo.model.model403_error_schema import Model403ErrorSchema
 from apivideo.model.not_found import NotFound
 
 
