@@ -16,6 +16,7 @@ from apivideo.model.video_clip import VideoClip
 from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
 from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
+from apivideo.model.model403_error_schema import Model403ErrorSchema
 from apivideo.model.not_found import NotFound
 
 from helper import MainTest

@@ -253,6 +253,7 @@ Method | HTTP request | Description
  - [LiveStreamSessionSession](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamSessionSession.md)
  - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/LiveStreamUpdatePayload.md)
  - [Metadata](https://github.com/apivideo/api.video-python-client/blob/main/docs/Metadata.md)
+ - [Model403ErrorSchema](https://github.com/apivideo/api.video-python-client/blob/main/docs/Model403ErrorSchema.md)
  - [NotFound](https://github.com/apivideo/api.video-python-client/blob/main/docs/NotFound.md)
  - [Pagination](https://github.com/apivideo/api.video-python-client/blob/main/docs/Pagination.md)
  - [PaginationLink](https://github.com/apivideo/api.video-python-client/blob/main/docs/PaginationLink.md)
