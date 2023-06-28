@@ -27,7 +27,9 @@ from apivideo.model_utils import (  # noqa: F401
 
 def lazy_import():
     from apivideo.model.live_stream_assets import LiveStreamAssets
+    from apivideo.model.restreams_response_object import RestreamsResponseObject
     globals()['LiveStreamAssets'] = LiveStreamAssets
+    globals()['RestreamsResponseObject'] = RestreamsResponseObject
 
 
 class LiveStream(ModelNormal):
@@ -77,6 +79,7 @@ class LiveStream(ModelNormal):
         lazy_import()
         return {
             'live_stream_id': (str,),  # noqa: E501
+            'restreams': ([RestreamsResponseObject],),  # noqa: E501
             'name': (str,),  # noqa: E501
             'stream_key': (str,),  # noqa: E501
             'record': (bool,),  # noqa: E501
@@ -95,6 +98,7 @@ class LiveStream(ModelNormal):
 
     attribute_map = {
         'live_stream_id': 'liveStreamId',  # noqa: E501
+        'restreams': 'restreams',  # noqa: E501
         'name': 'name',  # noqa: E501
         'stream_key': 'streamKey',  # noqa: E501
         'record': 'record',  # noqa: E501
@@ -118,11 +122,12 @@ class LiveStream(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, live_stream_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, live_stream_id, restreams, *args, **kwargs):  # noqa: E501
         """LiveStream - a model defined in OpenAPI
 
         Args:
             live_stream_id (str): The unique identifier for the live stream. Live stream IDs begin with \"li.\"
+            restreams ([RestreamsResponseObject]): Returns the list of RTMP restream destinations.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,6 +195,7 @@ class LiveStream(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.live_stream_id = live_stream_id
+        self.restreams = restreams
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

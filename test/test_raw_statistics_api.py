@@ -14,6 +14,8 @@ from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.video_clip import VideoClip
 from apivideo.model.video_watermark import VideoWatermark
+from apivideo.model.restreams_request_object import RestreamsRequestObject
+
 from apivideo.model.not_found import NotFound
 from apivideo.model.raw_statistics_list_live_stream_analytics_response import RawStatisticsListLiveStreamAnalyticsResponse
 from apivideo.model.raw_statistics_list_player_session_events_response import RawStatisticsListPlayerSessionEventsResponse
