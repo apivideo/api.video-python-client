@@ -14,6 +14,8 @@ from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.video_clip import VideoClip
 from apivideo.model.video_watermark import VideoWatermark
+from apivideo.model.restreams_request_object import RestreamsRequestObject
+
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
 from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
 from apivideo.model.model403_error_schema import Model403ErrorSchema

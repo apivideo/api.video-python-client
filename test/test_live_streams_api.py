@@ -14,6 +14,8 @@ from apivideo.exceptions import ApiException, NotFoundException
 from apivideo.model.metadata import Metadata
 from apivideo.model.video_clip import VideoClip
 from apivideo.model.video_watermark import VideoWatermark
+from apivideo.model.restreams_request_object import RestreamsRequestObject
+
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream import LiveStream
 from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
@@ -50,6 +52,13 @@ class TestLiveStreamsApi(MainTest):
         record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com/app",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
     ),
             }
             url = '/live-streams'.format(**kwargs)
@@ -106,6 +115,13 @@ class TestLiveStreamsApi(MainTest):
         public=True,
         record=True,
         player_id="pl45KFKdlddgk654dspkze",
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com/app",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
     ),
             }
             url = '/live-streams/{live_stream_id}'.format(**kwargs)

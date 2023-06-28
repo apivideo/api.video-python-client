@@ -34,7 +34,14 @@ with AuthenticatedApiClient("YOUR_API_KEY") as api_client:
         name="My Live Stream Video",
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
-    ) 
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com/app",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
+    ) # LiveStreamCreationPayload | 
 
     try:
         live_stream = LiveStreamsApi(api_client).create(live_stream_creation_payload)
@@ -151,6 +158,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         public=True,
         record=True,
         player_id="pl45KFKdlddgk654dspkze",
+        restreams=[
+            RestreamsRequestObject(
+                name="My RTMP server",
+                server_url="rtmp://my.broadcast.example.com",
+                stream_key="dw-dew8-q6w9-k67w-1ws8",
+            ),
+        ],
     ) # LiveStreamUpdatePayload | 
 
     # example passing only required values which don't have defaults set
