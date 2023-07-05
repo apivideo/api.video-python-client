@@ -1188,10 +1188,10 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
                 title (str): The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.. [optional]
                 tags ([str]): A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.. [optional]
                 metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.. [optional]
-                description (str): If you described a video with a term or sentence, you can add it here to return videos containing this string.. [optional]
-                live_stream_id (str): If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.. [optional]
-                sort_by (str): Allowed: publishedAt, title. You can search by the time videos were published at, or by title.. [optional]
-                sort_order (str): Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A.. [optional]
+                description (str): Retrieve video objects by `description`.. [optional]
+                live_stream_id (str): Retrieve video objects that were recorded from a live stream by `liveStreamId`.. [optional]
+                sort_by (str): Use this parameter to sort videos by the their created time, published time, updated time, or by title.. [optional]
+                sort_order (str): Use this parameter to sort results. `asc` is ascending and sorts from A to Z. `desc` is descending and sorts from Z to A.. [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
                 _return_http_data_only (bool): response data without head status
@@ -1244,6 +1244,8 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
                     '_request_timeout'
                 ],
                 'enum': [
+                    'sort_by',
+                    'sort_order',
                 ],
                 'validation': [
                 ]
@@ -1251,6 +1253,18 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
             validations = {
             }
             allowed_values = {
+                ('sort_by',): {
+
+                    "TITLE": "title",
+                    "CREATEDAT": "createdAt",
+                    "PUBLISHEDAT": "publishedAt",
+                    "UPDATEDAT": "updatedAt"
+                },
+                ('sort_order',): {
+
+                    "ASC": "asc",
+                    "DESC": "desc"
+                },
             }
             openapi_types = {
                 'title':
