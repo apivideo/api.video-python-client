@@ -116,7 +116,7 @@ class TestVideosApi(TestCase):
 
     @unittest.skipIf(os.getenv("API_KEY") is None, "No API key")
     def test_upload_token_stream(self):
-        token = self.token_api.create_token(TokenCreationPayload()).token
+        token = self.token_api.create_token(TokenCreationPayload(ttl=0)).token
 
         part1 = open('10m.mp4.part.a', 'rb')
         part2 = open('10m.mp4.part.b', 'rb')
