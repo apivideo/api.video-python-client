@@ -18,9 +18,8 @@ Create Webhook
 Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when a live stream has finished broadcasting. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.bad_request import BadRequest
@@ -43,9 +42,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.create(webhooks_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling WebhooksApi->create: %s\
-" % e)
+        print("Exception when calling WebhooksApi->create: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -80,9 +79,8 @@ Retrieve Webhook details
 Retrieve webhook details by id.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.webhook import Webhook
@@ -96,12 +94,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show Webhook details
+        # Retrieve Webhook details
         api_response = api_instance.get(webhook_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling WebhooksApi->get: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -135,9 +134,8 @@ Delete a Webhook
 This method will delete the indicated webhook.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.not_found import NotFound
@@ -156,6 +154,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling WebhooksApi->delete: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -192,9 +191,8 @@ Thie method returns a list of your webhooks (with all their details).
 You can filter what the webhook list that the API returns using the parameters described below.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import webhooks_api
 from apivideo.model.webhooks_list_response import WebhooksListResponse
@@ -217,6 +215,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling WebhooksApi->list: %s\n" % e)
 ```
+
 
 ### Parameters
 

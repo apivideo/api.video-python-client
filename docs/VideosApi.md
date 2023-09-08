@@ -24,9 +24,8 @@ Create a video object
 Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_creation_payload import VideoCreationPayload
@@ -41,7 +40,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     video_creation_payload = VideoCreationPayload(
         title="Maths video",
         description="A video about string theory.",
-        source="https://www.myvideo.url.com/video.mp4",
+        source="https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl",
         public=True,
         panoramic=False,
         mp4_support=True,
@@ -53,16 +52,31 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
+        clip=VideoClip(
+            start_timecode="8072",
+            end_timecode="8072",
+        ),
+        watermark=VideoWatermark(
+            id="watermark_1BWr2L5MTQwxGkuxKjzh6i",
+            top="10px",
+            left="10px",
+            bottom="10px",
+            right="10px",
+            width="initial",
+            height="initial",
+            opacity="70%",
+        ),
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
     try:
-        # Create a video
+        # Create a video object
         api_response = api_instance.create(video_creation_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->create: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -116,9 +130,8 @@ The latter allows you to split a video source into X chunks and send those chunk
 
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
@@ -134,7 +147,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | Enter the videoId you want to use to upload your video.
-    file = open('/path/to/file', 'rb') # file_type | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
+    file = open('/path/to/file', 'rb') # file_type | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
 
     # example passing only required values which don't have defaults set
     try:
@@ -144,6 +157,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__, configuration=configuration) a
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->upload: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -303,9 +317,8 @@ Retrieve a video object
 This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
@@ -320,12 +333,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show a video
+        # Retrieve a video object
         api_response = api_instance.get(video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->get: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -366,9 +380,8 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_update_payload import VideoUpdatePayload
@@ -381,7 +394,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The video ID for the video you want to delete.
+    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The video ID for the video you want to update.
     video_update_payload = VideoUpdatePayload(
         player_id="pl4k0jvEUuaTdRAEjQ4Jfrgz",
         title="title_example",
@@ -400,13 +413,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Update a video
+        # Update a video object
         api_response = api_instance.update(video_id, video_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->update: %s\
-" % e)              
+        print("Exception when calling VideosApi->update: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -443,25 +456,27 @@ Delete a video object
 If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.not_found import NotFound
 from pprint import pprint
+
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The video ID for the video you want to delete.
+
     # example passing only required values which don't have defaults set
     try:
-        # Delete a video
+        # Delete a video object
         api_instance.delete(video_id)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->delete: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -584,9 +599,8 @@ To select a still frame from the video using a time stamp, use the [dedicated me
 Note: There may be a short delay before the new thumbnail is delivered to our CDN.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.bad_request import BadRequest
@@ -599,7 +613,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = videos_api.VideosApi(api_client)
     video_id = "videoId_example" # str | Unique identifier of the chosen video 
-    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     # example passing only required values which don't have defaults set
     try:
@@ -607,9 +621,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.upload_thumbnail(video_id, file)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->upload_thumbnail: %s\
-" % e)
+        print("Exception when calling VideosApi->upload_thumbnail: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -656,9 +670,8 @@ There may be a short delay for the thumbnail to update.
 
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_thumbnail_pick_payload import VideoThumbnailPickPayload
@@ -677,13 +690,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Pick a thumbnail
+        # Set a thumbnail
         api_response = api_instance.pick_thumbnail(video_id, video_thumbnail_pick_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling VideosApi->pick_thumbnail: %s\
-" % e)
+        print("Exception when calling VideosApi->pick_thumbnail: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -719,9 +732,8 @@ Retrieve video status and details
 This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import videos_api
 from apivideo.model.video_status import VideoStatus
@@ -736,12 +748,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show video status
+        # Retrieve video status and details
         api_response = api_instance.get_status(video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling VideosApi->get_status: %s\n" % e)
 ```
+
 
 ### Parameters
 
