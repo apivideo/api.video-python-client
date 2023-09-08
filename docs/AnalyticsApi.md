@@ -16,9 +16,11 @@ Get play events for live stream
 Retrieve filtered analytics about the number of plays for your live streams in a project.
 
 ### Example
+
 ```python
 import apivideo
 from apivideo.api import analytics_api
+from apivideo.model.model403_error_schema import Model403ErrorSchema
 from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
 from apivideo.model.not_found import NotFound
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
@@ -52,6 +54,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling AnalyticsApi->get_live_streams_plays: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -93,9 +96,11 @@ Get play events for video
 Retrieve filtered analytics about the number of plays for your videos in a project.
 
 ### Example
+
 ```python
 import apivideo
 from apivideo.api import analytics_api
+from apivideo.model.model403_error_schema import Model403ErrorSchema
 from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
 from apivideo.model.not_found import NotFound
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
@@ -129,6 +134,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling AnalyticsApi->get_videos_plays: %s\n" % e)
 ```
+
 
 ### Parameters
 

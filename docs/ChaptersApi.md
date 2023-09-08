@@ -18,9 +18,8 @@ Upload a chapter
 Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.bad_request import BadRequest
@@ -44,6 +43,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling ChaptersApi->upload: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -81,9 +81,8 @@ Retrieve a chapter
 Retrieve a chapter for by video id in a specific language. 
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
@@ -99,12 +98,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show a chapter
+        # Retrieve a chapter
         api_response = api_instance.get(video_id, language)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling ChaptersApi->get: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -140,9 +140,8 @@ Delete a chapter
 Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
@@ -162,6 +161,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling ChaptersApi->delete: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -197,30 +197,40 @@ List video chapters
 Retrieve a list of all chapters for by video id.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import chapters_api
 from apivideo.model.not_found import NotFound
-from apivideo.model.chapter import Chapter
+from apivideo.model.chapters_list_response import ChaptersListResponse
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = chapters_api.ChaptersApi(api_client)
-    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the video you want to show a chapter for.
-    language = "en" # str | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the video you want to retrieve a list of chapters for.
+    current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
+    page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
     # example passing only required values which don't have defaults set
     try:
-        # Show a chapter
-        api_response = api_instance.get(video_id, language)
+        # List video chapters
+        api_response = api_instance.list(video_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling ChaptersApi->get: %s\n" % e)
+        print("Exception when calling ChaptersApi->list: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # List video chapters
+        api_response = api_instance.list(video_id, current_page=current_page, page_size=page_size)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling ChaptersApi->list: %s\n" % e)
 ```
+
 
 ### Parameters
 

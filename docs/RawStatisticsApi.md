@@ -15,9 +15,8 @@ Method | HTTP request | Description
 List live stream player sessions
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import raw_statistics_api
 from apivideo.model.raw_statistics_list_live_stream_analytics_response import RawStatisticsListLiveStreamAnalyticsResponse
@@ -29,14 +28,14 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = raw_statistics_api.RawStatisticsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique identifier for the live stream you want to retrieve analytics for.
-    period = "2019-01-01" # str | Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15"  (optional)
+    period = "2019-01-01T00:00:00.000Z" # str | Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\" 
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
     page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
     # example passing only required values which don't have defaults set
     try:
         # List live stream player sessions
-        api_response = api_instance.list_live_stream_sessions(live_stream_id)
+        api_response = api_instance.list_live_stream_sessions(live_stream_id, period)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling RawStatisticsApi->list_live_stream_sessions: %s\n" % e)
@@ -45,11 +44,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # and optional values
     try:
         # List live stream player sessions
-        api_response = api_instance.list_live_stream_sessions(live_stream_id, period=period, current_page=current_page, page_size=page_size)
+        api_response = api_instance.list_live_stream_sessions(live_stream_id, period, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling RawStatisticsApi->list_live_stream_sessions: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -87,9 +87,8 @@ List player session events
 Useful to track and measure video's engagement.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import raw_statistics_api
 from apivideo.model.not_found import NotFound
@@ -121,6 +120,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling RawStatisticsApi->list_session_events: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -157,9 +157,8 @@ List video player sessions
 Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import raw_statistics_api
 from apivideo.model.not_found import NotFound
@@ -171,17 +170,17 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = raw_statistics_api.RawStatisticsApi(api_client)
     video_id = "vi4k0jvEUuaTdRAEjQ4Prklg" # str | The unique identifier for the video you want to retrieve session information for.
-    period = "period_example" # str | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  (optional)
+    period = "period_example" # str | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 
     metadata = {
         "key": "key_example",
-    } # {str: (str,)} | Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
+    } # {str: (str,)} | Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. (optional)
     current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
     page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
     # example passing only required values which don't have defaults set
     try:
         # List video player sessions
-        api_response = api_instance.list_video_sessions(video_id)
+        api_response = api_instance.list_video_sessions(video_id, period)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling RawStatisticsApi->list_video_sessions: %s\n" % e)
@@ -190,11 +189,12 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # and optional values
     try:
         # List video player sessions
-        api_response = api_instance.list_video_sessions(video_id, period=period, metadata=metadata, current_page=current_page, page_size=page_size)
+        api_response = api_instance.list_video_sessions(video_id, period, metadata=metadata, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling RawStatisticsApi->list_video_sessions: %s\n" % e)
 ```
+
 
 ### Parameters
 

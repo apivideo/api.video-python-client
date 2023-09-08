@@ -21,17 +21,22 @@ Create live stream
 Creates a livestream object.
 
 ### Example
+
 ```python
-# First install the api client with "pip install api.video"
-
-from apivideo.api.live_streams_api import LiveStreamsApi
+import apivideo
+from apivideo.api import live_streams_api
+from apivideo.model.bad_request import BadRequest
 from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayload
-from apivideo import AuthenticatedApiClient, ApiException
+from apivideo.model.live_stream import LiveStream
+from pprint import pprint
 
-with AuthenticatedApiClient("YOUR_API_KEY") as api_client:
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_creation_payload = LiveStreamCreationPayload(
-        record=False,
         name="My Live Stream Video",
+        record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
         restreams=[
@@ -43,12 +48,15 @@ with AuthenticatedApiClient("YOUR_API_KEY") as api_client:
         ],
     ) # LiveStreamCreationPayload | 
 
+    # example passing only required values which don't have defaults set
     try:
-        live_stream = LiveStreamsApi(api_client).create(live_stream_creation_payload)
-        print(live_stream)
-    except ApiException as e:
-        print("Exception when calling LiveStreamsApi->create: %s" % e)
+        # Create live stream
+        api_response = api_instance.create(live_stream_creation_payload)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling LiveStreamsApi->create: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -83,9 +91,8 @@ Retrieve live stream
 Get a livestream by id.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.live_stream import LiveStream
@@ -99,12 +106,13 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Show live stream
+        # Retrieve live stream
         api_response = api_instance.get(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->get: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -138,9 +146,8 @@ Update a live stream
 Updates the livestream object.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -161,7 +168,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         restreams=[
             RestreamsRequestObject(
                 name="My RTMP server",
-                server_url="rtmp://my.broadcast.example.com",
+                server_url="rtmp://my.broadcast.example.com/app",
                 stream_key="dw-dew8-q6w9-k67w-1ws8",
             ),
         ],
@@ -173,9 +180,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.update(live_stream_id, live_stream_update_payload)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->update: %s\
-" % e)
+        print("Exception when calling LiveStreamsApi->update: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -211,9 +218,8 @@ Delete a live stream
 If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from pprint import pprint
@@ -231,6 +237,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->delete: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -264,28 +271,34 @@ List all live streams
 Get the list of livestreams on the workspace.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
-from apivideo.model.live_stream import LiveStream
+from apivideo.model.live_stream_list_response import LiveStreamListResponse
 from pprint import pprint
 
 # Enter a context with an instance of the API client
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
-    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream you want to watch.
+    stream_key = "dw-dew8-q6w9-k67w-1ws8" # str | The unique stream key that allows you to stream videos. (optional)
+    name = "My Video" # str | You can filter live streams by their name or a part of their name. (optional)
+    sort_by = "createdAt" # str | Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
+    sort_order = "desc" # str | Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
+    current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
+    page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
-        # Show live stream
-        api_response = api_instance.get(live_stream_id)
+        # List all live streams
+        api_response = api_instance.list(stream_key=stream_key, name=name, sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->get: %s\n" % e)
+        print("Exception when calling LiveStreamsApi->list: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -324,9 +337,8 @@ Upload a thumbnail
 Upload the thumbnail for the livestream.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.bad_request import BadRequest
@@ -339,7 +351,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique ID for the live stream you want to upload.
-    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail.
+    file = open('/path/to/file', 'rb') # file_type | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     # example passing only required values which don't have defaults set
     try:
@@ -349,6 +361,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     except apivideo.ApiException as e:
         print("Exception when calling LiveStreamsApi->upload_thumbnail: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -385,9 +398,8 @@ Delete a thumbnail
 Send the unique identifier for a live stream to delete its thumbnail.
 
 ### Example
-```python
-# First install the api client with "pip install api.video"
 
+```python
 import apivideo
 from apivideo.api import live_streams_api
 from apivideo.model.not_found import NotFound
@@ -398,7 +410,7 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
-    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique identifier for the live stream you want to delete. 
+    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique identifier of the live stream whose thumbnail you want to delete.
 
     # example passing only required values which don't have defaults set
     try:
@@ -406,9 +418,9 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         api_response = api_instance.delete_thumbnail(live_stream_id)
         pprint(api_response)
     except apivideo.ApiException as e:
-        print("Exception when calling LiveStreamsApi->delete_thumbnail: %s\
-" % e)
+        print("Exception when calling LiveStreamsApi->delete_thumbnail: %s\n" % e)
 ```
+
 
 ### Parameters
 
