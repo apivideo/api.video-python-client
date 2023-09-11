@@ -82,7 +82,6 @@ class LiveStream(ModelNormal):
             'restreams': ([RestreamsResponseObject],),  # noqa: E501
             'name': (str,),  # noqa: E501
             'stream_key': (str,),  # noqa: E501
-            'record': (bool,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'assets': (LiveStreamAssets,),  # noqa: E501
             'player_id': (str,),  # noqa: E501
@@ -101,7 +100,6 @@ class LiveStream(ModelNormal):
         'restreams': 'restreams',  # noqa: E501
         'name': 'name',  # noqa: E501
         'stream_key': 'streamKey',  # noqa: E501
-        'record': 'record',  # noqa: E501
         'public': 'public',  # noqa: E501
         'assets': 'assets',  # noqa: E501
         'player_id': 'playerId',  # noqa: E501
@@ -162,7 +160,6 @@ class LiveStream(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): The name of your live stream.. [optional]  # noqa: E501
             stream_key (str): The unique, private stream key that you use to begin streaming.. [optional]  # noqa: E501
-            record (bool): Whether you are recording or not.. [optional]  # noqa: E501
             public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).. [optional]  # noqa: E501
             assets (LiveStreamAssets): [optional]  # noqa: E501
             player_id (str): The unique identifier for the player.. [optional]  # noqa: E501

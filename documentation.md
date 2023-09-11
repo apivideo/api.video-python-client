@@ -137,16 +137,6 @@ Method | HTTP request | Description
 [**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete_logo) | **DELETE** /players/{playerId}/logo | Delete logo
 
 
-### RawStatisticsApi
-
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**list_live_stream_sessions**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_live_stream_sessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**list_session_events**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_session_events) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**list_video_sessions**](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsApi.md#list_video_sessions) | **GET** /analytics/videos/{videoId} | List video player sessions
-
-
 ### UploadTokensApi
 
 
@@ -237,9 +227,6 @@ Method | HTTP request | Description
  - [PlayerThemeUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemeUpdatePayload.md)
  - [PlayerThemesListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesListResponse.md)
  - [Quality](https://github.com/apivideo/api.video-python-client/blob/main/docs/Quality.md)
- - [RawStatisticsListLiveStreamAnalyticsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
- - [RawStatisticsListPlayerSessionEventsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListPlayerSessionEventsResponse.md)
- - [RawStatisticsListSessionsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/RefreshTokenPayload.md)
  - [RestreamsRequestObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/RestreamsRequestObject.md)
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/RestreamsResponseObject.md)

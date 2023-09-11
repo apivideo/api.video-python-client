@@ -80,7 +80,6 @@ class LiveStreamCreationPayload(ModelNormal):
         lazy_import()
         return {
             'name': (str,),  # noqa: E501
-            'record': (bool,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'player_id': (str,),  # noqa: E501
             'restreams': ([RestreamsRequestObject],),  # noqa: E501
@@ -93,7 +92,6 @@ class LiveStreamCreationPayload(ModelNormal):
 
     attribute_map = {
         'name': 'name',  # noqa: E501
-        'record': 'record',  # noqa: E501
         'public': 'public',  # noqa: E501
         'player_id': 'playerId',  # noqa: E501
         'restreams': 'restreams',  # noqa: E501
@@ -148,7 +146,6 @@ class LiveStreamCreationPayload(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            record (bool): Whether you are recording or not. True for record, false for not record.. [optional] if omitted the server will use the default value of False  # noqa: E501
             public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).. [optional]  # noqa: E501
             player_id (str): The unique identifier for the player.. [optional]  # noqa: E501
             restreams ([RestreamsRequestObject]): Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.. [optional]  # noqa: E501

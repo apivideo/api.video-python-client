@@ -49,7 +49,6 @@ class TestLiveStreamsApi(MainTest):
             kwargs = {
                 'live_stream_creation_payload': LiveStreamCreationPayload(
         name="My Live Stream Video",
-        record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
         restreams=[
@@ -113,7 +112,6 @@ class TestLiveStreamsApi(MainTest):
                 'live_stream_update_payload': LiveStreamUpdatePayload(
         name="My Live Stream Video",
         public=True,
-        record=True,
         player_id="pl45KFKdlddgk654dspkze",
         restreams=[
             RestreamsRequestObject(
