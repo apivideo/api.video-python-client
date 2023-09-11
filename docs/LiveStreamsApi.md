@@ -36,7 +36,6 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     api_instance = live_streams_api.LiveStreamsApi(api_client)
     live_stream_creation_payload = LiveStreamCreationPayload(
         name="My Live Stream Video",
-        record=True,
         public=True,
         player_id="pl4f4ferf5erfr5zed4fsdd",
         restreams=[
@@ -159,11 +158,10 @@ from pprint import pprint
 with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     # Create an instance of the API class
     api_instance = live_streams_api.LiveStreamsApi(api_client)
-    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
+    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | The unique ID for the live stream that you want to update information for such as player details.
     live_stream_update_payload = LiveStreamUpdatePayload(
         name="My Live Stream Video",
         public=True,
-        record=True,
         player_id="pl45KFKdlddgk654dspkze",
         restreams=[
             RestreamsRequestObject(
@@ -188,7 +186,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **live_stream_id** | **str**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
+ **live_stream_id** | **str**| The unique ID for the live stream that you want to update information for such as player details. |
  **live_stream_update_payload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  |
 
 ### Return type

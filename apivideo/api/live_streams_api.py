@@ -306,7 +306,7 @@ class LiveStreamsApi(_EndPoint):
             >>> result = thread.get()
 
             Args:
-                live_stream_id (str): The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
+                live_stream_id (str): The unique ID for the live stream that you want to update information for such as player details.
                 live_stream_update_payload (LiveStreamUpdatePayload):
 
             Keyword Args:
