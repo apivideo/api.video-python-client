@@ -716,7 +716,7 @@ class PlayerThemesApi(_EndPoint):
         ):
             """Upload a logo  # noqa: E501
 
-            Upload an image logo for a player.  # noqa: E501
+            Upload an image file as a logo for your player. The image should fit within these constraints: - The image mime type must be `image/jpeg` or `image/png`. api.video recommends using `png` images with transparent background. - The image size should be a maximum of 200px width x 100px. - The file size should be a maximum of 100 KiB.   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
