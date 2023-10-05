@@ -263,13 +263,3 @@ Method | HTTP request | Description
  - [WebhooksListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/WebhooksListResponse.md)
 
 
-
-# Have you gotten use from this API client?
-
-Please take a moment to leave a star on the client
-
-This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
-
-# Contribution
-
-Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
