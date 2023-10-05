@@ -43,7 +43,7 @@ class CaptionsApi(_EndPoint):
         ):
             """Upload a caption  # noqa: E501
 
-            Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)  # noqa: E501
+            Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

@@ -163,12 +163,12 @@ class VideoCreationPayload(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             description (str): A brief description of your video.. [optional]  # noqa: E501
             source (str): You can either add a video already on the web, by entering the URL of the video, or you can also enter the `videoId` of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.. [optional]  # noqa: E501
-            public (bool): Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos). [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management). [optional] if omitted the server will use the default value of True  # noqa: E501
             panoramic (bool): Indicates if your video is a 360/immersive video.. [optional] if omitted the server will use the default value of False  # noqa: E501
             mp4_support (bool): Enables mp4 version in addition to streamed version.. [optional] if omitted the server will use the default value of True  # noqa: E501
             player_id (str): The unique identification number for your video player.. [optional]  # noqa: E501
             tags ([str]): A list of tags you want to use to describe your video.. [optional]  # noqa: E501
-            metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).. [optional]  # noqa: E501
+            metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).. [optional]  # noqa: E501
             clip (VideoClip): [optional]  # noqa: E501
             watermark (VideoWatermark): [optional]  # noqa: E501
         """
