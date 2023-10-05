@@ -41,7 +41,7 @@ class UploadTokensApi(_EndPoint):
         ):
             """Generate an upload token  # noqa: E501
 
-            Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)  # noqa: E501
+            Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

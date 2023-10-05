@@ -44,7 +44,7 @@ class VideosApi(_EndPoint):
         ):
             """Create a video object  # noqa: E501
 
-            Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).   # noqa: E501
+            Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos).   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -1187,7 +1187,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
             Keyword Args:
                 title (str): The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.. [optional]
                 tags ([str]): A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.. [optional]
-                metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.. [optional]
+                metadata ({str: (str,)}): Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.. [optional]
                 description (str): Retrieve video objects by `description`.. [optional]
                 live_stream_id (str): Retrieve video objects that were recorded from a live stream by `liveStreamId`.. [optional]
                 sort_by (str): Use this parameter to sort videos by the their created time, published time, updated time, or by title.. [optional]
