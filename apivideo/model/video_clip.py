@@ -141,8 +141,8 @@ class VideoClip(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            start_timecode (str): [optional]  # noqa: E501
-            end_timecode (str): [optional]  # noqa: E501
+            start_timecode (str): The timestamp that defines the beginning of the video clip you want to create. The value must follow the `HH:MM:SS` format.. [optional]  # noqa: E501
+            end_timecode (str): The timestamp that defines the end of the video clip you want to create. The value must follow the `HH:MM:SS` format.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

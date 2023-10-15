@@ -65,8 +65,8 @@ class TestVideosApi(MainTest):
             ),
         ],
         clip=VideoClip(
-            start_timecode="8072",
-            end_timecode="8072",
+            start_timecode="00:01:15",
+            end_timecode="00:02:33",
         ),
         watermark=VideoWatermark(
             id="watermark_1BWr2L5MTQwxGkuxKjzh6i",
