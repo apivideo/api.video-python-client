@@ -1,10 +1,11 @@
+<!--<documentation_excluded>-->
 [![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-python-client?style=social)](https://github.com/apivideo/api.video-python-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/.github/blob/main/assets/apivideo_banner.png)
 <h1 align="center">api.video Python client</h1>
 
 [api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
 
-# Table of contents
+## Table of contents
 
 - [Table of contents](#table-of-contents)
 - [Project description](#project-description)
@@ -28,28 +29,38 @@
   - [Models](#models)
 - [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
 - [Contribution](#contribution)
+<!--</documentation_excluded>-->
+<!--<documentation_only>
+---
+title: Python API client
+meta: 
+  description: The official Python API client for api.video. [api.video](https://api.video/) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
+---
 
+# api.video Python API client
 
+[api.video](https://api.video/) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
+</documentation_only>-->
 
-# Project description
+## Project description
 
 api.video's Python API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
 
-# Getting started
+## Getting started
 
-## Requirements
+### Requirements
 
 Python >= 3.6
 
-## Installation
+### Installation
 
 ```sh
 pip install api.video
 ```
 
-## Code samples
+### Code samples
 
-### Automatic authentication
+#### Automatic authentication
 
 list all videos:
 
@@ -69,7 +80,7 @@ with apivideo.AuthenticatedApiClient(api_key) as client:
 
 In this context the client will keep its authentication updated.
 
-### Manual authentication
+#### Manual authentication
 
 If there is an issue, like you think a refresh token may have been exposed, you can manually retrieve a new one. Otherwise, authentication is handled for you.
 When you retrieve a new refresh token, the old one becomes invalid. Here is the code, where you retrieve a list of videos and then refresh your token:
@@ -96,9 +107,9 @@ except ApiAuthException:
 ...
 ```
 
-# Documentation
+## Documentation
 
-## API Endpoints
+### API Endpoints
 
 All URIs are relative to *https://ws.api.video*
 
@@ -214,7 +225,7 @@ Method | HTTP request | Description
 
 
 
-## Models
+### Models
 
  - [AccessToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/AccessToken.md)
  - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-python-client/blob/main/docs/AdditionalBadRequestErrors.md)
@@ -290,12 +301,12 @@ Method | HTTP request | Description
 
 
 
-# Have you gotten use from this API client?
+## Have you gotten use from this API client?
 
 Please take a moment to leave a star on the client
 
 This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
 
-# Contribution
+## Contribution
 
 Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
