@@ -74,6 +74,7 @@ class Caption(ModelNormal):
             'uri': (str,),  # noqa: E501
             'src': (str,),  # noqa: E501
             'srclang': (str,),  # noqa: E501
+            'language_name': (str,),  # noqa: E501
             'default': (bool,),  # noqa: E501
         }
 
@@ -86,6 +87,7 @@ class Caption(ModelNormal):
         'uri': 'uri',  # noqa: E501
         'src': 'src',  # noqa: E501
         'srclang': 'srclang',  # noqa: E501
+        'language_name': 'languageName',  # noqa: E501
         'default': 'default',  # noqa: E501
     }
 
@@ -135,9 +137,10 @@ class Caption(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            uri (str): [optional]  # noqa: E501
-            src (str): [optional]  # noqa: E501
-            srclang (str): [optional]  # noqa: E501
+            uri (str): The unique resource identifier of the uploaded caption.. [optional]  # noqa: E501
+            src (str): A direct URL to the uploaded caption file.. [optional]  # noqa: E501
+            srclang (str): Indicates the language of the uploaded caption file using IETF language tags.. [optional]  # noqa: E501
+            language_name (str): Returns the native name of the caption language in UTF-8 encoding.. [optional]  # noqa: E501
             default (bool): Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.. [optional] if omitted the server will use the default value of False  # noqa: E501
         """
 
