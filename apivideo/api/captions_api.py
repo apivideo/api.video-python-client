@@ -52,7 +52,7 @@ class CaptionsApi(_EndPoint):
 
             Args:
                 video_id (str): The unique identifier for the video you want to add a caption to.
-                language (str): A valid BCP 47 language representation.
+                language (str): A valid language identifier using IETF language tags. You can use primary subtags like `en` (English), extended subtags like `fr-CA` (French, Canada), or region subtags like `zh-Hans-CN` (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example `fr-CA`. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
                 file (file_type): The video text track (VTT) you want to upload.
 
             Keyword Args:
@@ -201,7 +201,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
 
             Args:
                 video_id (str): The unique identifier for the video you want captions for.
-                language (str): A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
+                language (str): A valid language identifier using IETF language tags. You can use primary subtags like `en` (English), extended subtags like `fr-CA` (French, Canada), or region subtags like `zh-Hans-CN` (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example `fr-CA`. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -340,7 +340,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
 
             Args:
                 video_id (str): The unique identifier for the video you want to have automatic captions for.
-                language (str): A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+                language (str): A valid language identifier using IETF language tags. You can use primary subtags like `en` (English), extended subtags like `fr-CA` (French, Canada), or region subtags like `zh-Hans-CN` (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example `fr-CA`. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
                 captions_update_payload (CaptionsUpdatePayload):
 
             Keyword Args:
@@ -486,7 +486,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
 
             Args:
                 video_id (str): The unique identifier for the video you want to delete a caption from.
-                language (str): A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+                language (str): A valid language identifier using IETF language tags. You can use primary subtags like `en` (English), extended subtags like `fr-CA` (French, Canada), or region subtags like `zh-Hans-CN` (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example `fr-CA`. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of supported language tags. You can find the list of supported tags [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
