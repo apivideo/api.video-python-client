@@ -9,7 +9,7 @@
 """
 
 
-__version__ = "1.3.0"
+__version__ = "1.3.1"
 
 # import ApiVideoClient
 from apivideo.auth_api_client import AuthenticatedApiClient
