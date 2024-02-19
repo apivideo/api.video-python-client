@@ -58,9 +58,10 @@ class VideoStatusIngest(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'MISSING': "missing",
             'UPLOADING': "uploading",
             'UPLOADED': "uploaded",
+            'INGESTING': "ingesting",
+            'INGESTED': "ingested",
         },
     }
 
@@ -147,7 +148,7 @@ class VideoStatusIngest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            status (str): There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.. [optional]  # noqa: E501
+            status (str): There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored. . [optional]  # noqa: E501
             filesize (int, none_type): The size of your file in bytes.. [optional]  # noqa: E501
             received_bytes ([BytesRange]): The total number of bytes received, listed for each chunk of the upload.. [optional]  # noqa: E501
             received_parts (VideoStatusIngestReceivedParts): [optional]  # noqa: E501
