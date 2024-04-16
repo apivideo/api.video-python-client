@@ -18,6 +18,7 @@ from apivideo.model.restreams_request_object import RestreamsRequestObject
 
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
+from apivideo.model.too_many_requests import TooManyRequests
 from apivideo.model.webhook import Webhook
 from apivideo.model.webhooks_creation_payload import WebhooksCreationPayload
 from apivideo.model.webhooks_list_response import WebhooksListResponse

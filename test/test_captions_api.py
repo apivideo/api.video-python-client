@@ -21,6 +21,7 @@ from apivideo.model.caption import Caption
 from apivideo.model.captions_list_response import CaptionsListResponse
 from apivideo.model.captions_update_payload import CaptionsUpdatePayload
 from apivideo.model.not_found import NotFound
+from apivideo.model.too_many_requests import TooManyRequests
 
 from helper import MainTest
 
