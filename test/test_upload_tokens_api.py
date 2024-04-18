@@ -20,6 +20,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
 from apivideo.model.token_creation_payload import TokenCreationPayload
 from apivideo.model.token_list_response import TokenListResponse
+from apivideo.model.too_many_requests import TooManyRequests
 from apivideo.model.upload_token import UploadToken
 
 from helper import MainTest

@@ -20,6 +20,7 @@ from apivideo.model.bad_request import BadRequest
 from apivideo.model.chapter import Chapter
 from apivideo.model.chapters_list_response import ChaptersListResponse
 from apivideo.model.not_found import NotFound
+from apivideo.model.too_many_requests import TooManyRequests
 
 from helper import MainTest
 

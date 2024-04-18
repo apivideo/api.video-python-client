@@ -22,6 +22,7 @@ from apivideo.model.live_stream_creation_payload import LiveStreamCreationPayloa
 from apivideo.model.live_stream_list_response import LiveStreamListResponse
 from apivideo.model.live_stream_update_payload import LiveStreamUpdatePayload
 from apivideo.model.not_found import NotFound
+from apivideo.model.too_many_requests import TooManyRequests
 
 from helper import MainTest
 

@@ -22,6 +22,7 @@ from apivideo.model.player_theme import PlayerTheme
 from apivideo.model.player_theme_creation_payload import PlayerThemeCreationPayload
 from apivideo.model.player_theme_update_payload import PlayerThemeUpdatePayload
 from apivideo.model.player_themes_list_response import PlayerThemesListResponse
+from apivideo.model.too_many_requests import TooManyRequests
 
 from helper import MainTest
 

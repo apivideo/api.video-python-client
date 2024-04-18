@@ -18,6 +18,7 @@ from apivideo.model.restreams_request_object import RestreamsRequestObject
 
 from apivideo.model.bad_request import BadRequest
 from apivideo.model.not_found import NotFound
+from apivideo.model.too_many_requests import TooManyRequests
 from apivideo.model.watermark import Watermark
 from apivideo.model.watermarks_list_response import WatermarksListResponse
 
