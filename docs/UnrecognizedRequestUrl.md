@@ -1,11 +1,11 @@
-# VideoSessionLocation
+# UnrecognizedRequestUrl
 
-The location of the viewer.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**country** | **str** | The country of the viewer. | [optional] 
-**city** | **str, none_type** | The city of the viewer. | [optional] 
+**type** | **str** | A link to the error documentation. | [optional] 
+**title** | **str** | A description of the error that occurred. | [optional] 
+**status** | **int** | The HTTP status code. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

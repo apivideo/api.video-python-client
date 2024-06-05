@@ -42,7 +42,7 @@ class AnalyticsApi(_EndPoint):
         ):
             """Get play events for live stream  # noqa: E501
 
-            Retrieve filtered analytics about the number of plays for your live streams in a project.  # noqa: E501
+            Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0.   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -214,7 +214,7 @@ class AnalyticsApi(_EndPoint):
         ):
             """Get play events for video  # noqa: E501
 
-            Retrieve filtered analytics about the number of plays for your videos in a project.  # noqa: E501
+            Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0.   # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
