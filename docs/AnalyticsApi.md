@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get play events for live stream
 
-Retrieve filtered analytics about the number of plays for your live streams in a project.
+Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
 
 ### Example
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 Get play events for video
 
-Retrieve filtered analytics about the number of plays for your videos in a project.
+Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
 
 ### Example
 
