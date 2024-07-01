@@ -84,7 +84,7 @@ class Configuration(object):
                  api_key=None, api_key_prefix=None,
                  access_token=None,
                  username=None, password=None,
-                 discard_unknown_keys=False,
+                 discard_unknown_keys=True,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
@@ -391,7 +391,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1\n"\
-               "SDK Package Version: 1.3.1".\
+               "SDK Package Version: 1.3.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
