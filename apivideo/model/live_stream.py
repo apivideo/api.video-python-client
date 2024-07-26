@@ -125,7 +125,7 @@ class LiveStream(ModelNormal):
 
         Args:
             live_stream_id (str): The unique identifier for the live stream. Live stream IDs begin with \"li.\"
-            restreams ([RestreamsResponseObject]): Returns the list of RTMP restream destinations.
+            restreams ([RestreamsResponseObject]): Returns the list of restream destinations.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -160,7 +160,7 @@ class LiveStream(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): The name of your live stream.. [optional]  # noqa: E501
             stream_key (str): The unique, private stream key that you use to begin streaming.. [optional]  # noqa: E501
-            public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).. [optional]  # noqa: E501
+            public (bool): Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).. [optional]  # noqa: E501
             assets (LiveStreamAssets): [optional]  # noqa: E501
             player_id (str): The unique identifier for the player.. [optional]  # noqa: E501
             broadcasting (bool): Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.. [optional]  # noqa: E501

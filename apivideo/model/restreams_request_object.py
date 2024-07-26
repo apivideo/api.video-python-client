@@ -104,7 +104,7 @@ class RestreamsRequestObject(ModelNormal):
 
         Args:
             name (str): Use this parameter to define a name for the restream destination.
-            server_url (str): Use this parameter to set the RTMP URL of the restream destination.
+            server_url (str): Use this parameter to set the `RTMPS` or `RTMP` server URL of the restream destination.
             stream_key (str): Use this parameter to provide the unique key of the live stream that you want to restream.
 
         Keyword Args:

@@ -134,7 +134,7 @@ class RestreamsResponseObject(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             name (str): Returns the name of a restream destination.. [optional]  # noqa: E501
-            server_url (str): Returns the RTMP URL of a restream destination.. [optional]  # noqa: E501
+            server_url (str): Returns the server URL of a restream destination.. [optional]  # noqa: E501
             stream_key (str): Returns the unique key of the live stream that is set up for restreaming.. [optional]  # noqa: E501
         """
 

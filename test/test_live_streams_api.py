@@ -54,7 +54,7 @@ class TestLiveStreamsApi(MainTest):
         player_id="pl4f4ferf5erfr5zed4fsdd",
         restreams=[
             RestreamsRequestObject(
-                name="My RTMP server",
+                name="My restream server",
                 server_url="rtmp://my.broadcast.example.com/app",
                 stream_key="dw-dew8-q6w9-k67w-1ws8",
             ),
@@ -116,7 +116,7 @@ class TestLiveStreamsApi(MainTest):
         player_id="pl45KFKdlddgk654dspkze",
         restreams=[
             RestreamsRequestObject(
-                name="My RTMP server",
+                name="My restream server",
                 server_url="rtmp://my.broadcast.example.com/app",
                 stream_key="dw-dew8-q6w9-k67w-1ws8",
             ),
@@ -180,6 +180,14 @@ class TestLiveStreamsApi(MainTest):
         """Test case for delete_thumbnail
 
         Delete a thumbnail  # noqa: E501
+        """
+        pass
+
+    @responses.activate
+    def test_complete(self):
+        """Test case for complete
+
+        Complete a live stream  # noqa: E501
         """
         pass
 
