@@ -987,3 +987,131 @@ class LiveStreamsApi(_EndPoint):
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
 
+    def complete(
+            self,
+            live_stream_id,
+            **kwargs
+        ):
+            """Complete a live stream  # noqa: E501
+
+            Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.complete(live_stream_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                live_stream_id (str): The unique ID for the live stream you want to complete.
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['live_stream_id'] = \
+                live_stream_id
+
+            params_map = {
+                'all': [
+                    'live_stream_id',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'live_stream_id',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+            }
+            openapi_types = {
+                'live_stream_id':
+                    (str,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+                'live_stream_id': 'liveStreamId',
+            }
+            location_map = {
+                'live_stream_id': 'path',
+            }
+            collection_format_map = {
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `complete`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `complete`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`complete`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/live-streams/{liveStreamId}/complete",
+                "PUT",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=None,
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+

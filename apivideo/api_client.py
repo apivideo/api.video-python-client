@@ -75,7 +75,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
 
-        self.default_headers['AV-Origin-Client'] = "python:1.3.2"
+        self.default_headers['AV-Origin-Client'] = "python:1.4.0"
 
     def __enter__(self):
         return self
@@ -514,7 +514,11 @@ class ApiClient(object):
             if k in collection_formats:
                 collection_format = collection_formats[k]
                 if collection_format == 'deepObject':
-                    new_params.extend((k+'['+value+']', v[value]) for value in v)
+                    for value in v:
+                        if isinstance(v[value], list):
+                            new_params.extend((k + '[' + value + '][]', item) for item in v[value])
+                        else:
+                            new_params.append((k+'['+value+']', v[value]))
                 elif collection_format == 'multi':
                     new_params.extend((k, value) for value in v)
                 else:
@@ -773,10 +777,10 @@ class Endpoint(object):
         Example:
 
         api_instance = AnalyticsApi()
-        api_instance.get_live_streams_plays  # this is an instance of the class Endpoint
-        api_instance.get_live_streams_plays()  # this invokes api_instance.get_live_streams_plays.__call__()
+        api_instance.get_aggregated_metrics  # this is an instance of the class Endpoint
+        api_instance.get_aggregated_metrics()  # this invokes api_instance.get_aggregated_metrics.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.get_live_streams_plays.callable or self.callable in this class
+        api_instance.get_aggregated_metrics.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

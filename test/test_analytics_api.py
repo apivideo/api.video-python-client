@@ -16,11 +16,13 @@ from apivideo.model.video_clip import VideoClip
 from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.restreams_request_object import RestreamsRequestObject
 
+from apivideo.model.analytics_aggregated_metrics_response import AnalyticsAggregatedMetricsResponse
+from apivideo.model.analytics_metrics_breakdown_response import AnalyticsMetricsBreakdownResponse
+from apivideo.model.analytics_metrics_over_time_response import AnalyticsMetricsOverTimeResponse
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
-from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
-from apivideo.model.model403_error_schema import Model403ErrorSchema
-from apivideo.model.not_found import NotFound
+from apivideo.model.filter_by2 import FilterBy2
 from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.unrecognized_request_url import UnrecognizedRequestUrl
 
 from helper import MainTest
 
@@ -36,54 +38,79 @@ class TestAnalyticsApi(MainTest):
         self.api = AnalyticsApi(self.client)  # noqa: E501
 
     @responses.activate
-    def test_get_live_streams_plays(self):
-        """Test case for get_live_streams_plays
+    def test_get_aggregated_metrics(self):
+        """Test case for get_aggregated_metrics
 
-        Get play events for live stream  # noqa: E501
+        Retrieve aggregated metrics  # noqa: E501
         """
-        for file_name, json in self.load_json('analytics', 'get_live_streams_plays'):
+        for file_name, json in self.load_json('analytics', 'get_aggregated_metrics'):
             status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
-                '_from': dateutil_parser('2023-06-01').date(),
-                'dimension': "browser",
+                'metric': "play",
+                'aggregation': "count",
             }
-            url = '/analytics/live-streams/plays'.format(**kwargs)
+            url = '/data/metrics/{metric}/{aggregation}'.format(**kwargs)
 
             responses.add('GET', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.get_live_streams_plays(**kwargs)
+                    self.api.get_aggregated_metrics(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.get_live_streams_plays(**kwargs)
+                self.api.get_aggregated_metrics(**kwargs)
 
     @responses.activate
-    def test_get_videos_plays(self):
-        """Test case for get_videos_plays
+    def test_get_metrics_breakdown(self):
+        """Test case for get_metrics_breakdown
 
-        Get play events for video  # noqa: E501
+        Retrieve metrics in a breakdown of dimensions  # noqa: E501
         """
-        for file_name, json in self.load_json('analytics', 'get_videos_plays'):
+        for file_name, json in self.load_json('analytics', 'get_metrics_breakdown'):
             status = file_name.split("-")[0]
             responses.reset()
 
             kwargs = {
-                '_from': dateutil_parser('2023-06-01').date(),
-                'dimension': "browser",
+                'metric': "play",
+                'breakdown': "media-id",
             }
-            url = '/analytics/videos/plays'.format(**kwargs)
+            url = '/data/buckets/{metric}/{breakdown}'.format(**kwargs)
 
             responses.add('GET', url, body=json, status=int(status), content_type='application/json')
 
             if status[0] == '4':
                 with self.assertRaises(ApiException) as context:
-                    self.api.get_videos_plays(**kwargs)
+                    self.api.get_metrics_breakdown(**kwargs)
                 if status == '404':
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
-                self.api.get_videos_plays(**kwargs)
+                self.api.get_metrics_breakdown(**kwargs)
+
+    @responses.activate
+    def test_get_metrics_over_time(self):
+        """Test case for get_metrics_over_time
+
+        Retrieve metrics over time  # noqa: E501
+        """
+        for file_name, json in self.load_json('analytics', 'get_metrics_over_time'):
+            status = file_name.split("-")[0]
+            responses.reset()
+
+            kwargs = {
+                'metric': "play",
+            }
+            url = '/data/timeseries/{metric}'.format(**kwargs)
+
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.get_metrics_over_time(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.get_metrics_over_time(**kwargs)
 

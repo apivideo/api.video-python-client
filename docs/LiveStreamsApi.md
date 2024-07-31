@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
 [**upload_thumbnail**](LiveStreamsApi.md#upload_thumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 [**delete_thumbnail**](LiveStreamsApi.md#delete_thumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**complete**](LiveStreamsApi.md#complete) | **PUT** /live-streams/{liveStreamId}/complete | Complete a live stream
 
 
 # **create**
@@ -41,7 +42,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         player_id="pl4f4ferf5erfr5zed4fsdd",
         restreams=[
             RestreamsRequestObject(
-                name="My RTMP server",
+                name="My restream server",
                 server_url="rtmp://my.broadcast.example.com/app",
                 stream_key="dw-dew8-q6w9-k67w-1ws8",
             ),
@@ -170,7 +171,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         player_id="pl45KFKdlddgk654dspkze",
         restreams=[
             RestreamsRequestObject(
-                name="My RTMP server",
+                name="My restream server",
                 server_url="rtmp://my.broadcast.example.com/app",
                 stream_key="dw-dew8-q6w9-k67w-1ws8",
             ),
@@ -454,6 +455,63 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **complete**
+> complete(live_stream_id)
+
+Complete a live stream
+
+Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+
+### Example
+
+```python
+import apivideo
+from apivideo.api import live_streams_api
+from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.not_found import NotFound
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = live_streams_api.LiveStreamsApi(api_client)
+    live_stream_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The unique ID for the live stream you want to complete.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Complete a live stream
+        api_instance.complete(live_stream_id)
+    except apivideo.ApiException as e:
+        print("Exception when calling LiveStreamsApi->complete: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_stream_id** | **str**| The unique ID for the live stream you want to complete. |
+
+### Return type
+
+void (empty response body)
+
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 

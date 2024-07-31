@@ -25,39 +25,40 @@ from apivideo.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from apivideo.exceptions import ApiTypeError, ApiValueError
+from apivideo.model.analytics_aggregated_metrics_response import AnalyticsAggregatedMetricsResponse
+from apivideo.model.analytics_metrics_breakdown_response import AnalyticsMetricsBreakdownResponse
+from apivideo.model.analytics_metrics_over_time_response import AnalyticsMetricsOverTimeResponse
 from apivideo.model.analytics_plays400_error import AnalyticsPlays400Error
-from apivideo.model.analytics_plays_response import AnalyticsPlaysResponse
-from apivideo.model.model403_error_schema import Model403ErrorSchema
-from apivideo.model.not_found import NotFound
+from apivideo.model.filter_by2 import FilterBy2
 from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.unrecognized_request_url import UnrecognizedRequestUrl
 
 
 class AnalyticsApi(_EndPoint):
 
-    def get_live_streams_plays(
+    def get_aggregated_metrics(
             self,
-            _from,
-            dimension,
+            metric,
+            aggregation,
             **kwargs
         ):
-            """Get play events for live stream  # noqa: E501
+            """Retrieve aggregated metrics  # noqa: E501
 
-            Retrieve filtered analytics about the number of plays for your live streams in a project.  # noqa: E501
+            Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_live_streams_plays(_from, dimension, async_req=True)
+            >>> thread = api.get_aggregated_metrics(metric, aggregation, async_req=True)
             >>> result = thread.get()
 
             Args:
-                _from (date): Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in `from`. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-                dimension (str): Use this query parameter to define the dimension that you want analytics for. - `liveStreamId`: Returns analytics based on the public live stream identifiers. - `emittedAt`: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in `from` and `to` is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - `deviceType`: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers during the play event. Response values include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers during the play event. Response values include `chrome`, `firefox`, `edge`, `opera`.
+                metric (str): Use this path parameter to select a metric that you want analytics for.  - `play` is the number of times your content has been played. You can use the aggregations `count`, `rate`, and `total` with the `play` metric. - `start` is the number of times playback was started. You can use the aggregation `count` with this metric. - `end` is the number of times playback has ended with the content watch until the end. You can use the aggregation `count` with this metric. - `impression` is the number of times your content has been loaded and was ready for playback. You can use the aggregation `count` with this metric. - `impression-time` is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations `average` and `sum` with this metric. - `watch-time` is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations `average` and `sum` with this metric. 
+                aggregation (str): Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - `count` returns the overall number of events for the `play` metric. - `rate` returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the `play` metric. - `total` calculates the total number of events for the `play` metric.  - `average` calculates an average value for the selected metric. - `sum` adds up the total value of the select metric. 
 
             Keyword Args:
-                to (date): Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a `to` date, the API returns analytics data starting from the `from` date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. . [optional]
-                filter (str): Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the `liveStreamId:` prefix when specifying a live stream ID.. [optional]
-                current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
-                page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
+                _from (datetime): Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for `from`, the default assigned value is 1 day ago, based on the `to` parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: `2024-02-05T00:00:00+01:00` - The API ignores this parameter when you call `/data/metrics/play/total`. . [optional]
+                to (datetime): Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for `to`, the default assigned value is `now`. - The API ignores this parameter when you call `/data/metrics/play/total`. - The value for `to` is a non-inclusive value: the API returns data **before** the date-time that you set. . [optional]
+                filter_by (FilterBy2): Use this parameter to filter the API's response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for `filterBy`, the API returns the full dataset for your project. - The API only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.  These are the available breakdown dimensions:  - `mediaId`: Returns analytics based on the unique identifiers of a video or a live stream. - `mediaType`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`. - `deviceType`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. - `tag`: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata). . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -70,7 +71,7 @@ class AnalyticsApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                AnalyticsPlaysResponse
+                AnalyticsAggregatedMetricsResponse
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -86,33 +87,33 @@ class AnalyticsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_from'] = \
-                _from
-            kwargs['dimension'] = \
-                dimension
+            kwargs['metric'] = \
+                metric
+            kwargs['aggregation'] = \
+                aggregation
 
             params_map = {
                 'all': [
+                    'metric',
+                    'aggregation',
                     '_from',
-                    'dimension',
                     'to',
-                    'filter',
-                    'current_page',
-                    'page_size',
+                    'filter_by',
                     'async_req',
                     '_preload_content',
                     '_request_timeout',
                     '_return_http_data_only'
                 ],
                 'required': [
-                    '_from',
-                    'dimension',
+                    'metric',
+                    'aggregation',
                 ],
                 'nullable': [
                     '_request_timeout'
                 ],
                 'enum': [
-                    'dimension',
+                    'metric',
+                    'aggregation',
                 ],
                 'validation': [
                 ]
@@ -120,64 +121,69 @@ class AnalyticsApi(_EndPoint):
             validations = {
             }
             allowed_values = {
-                ('dimension',): {
+                ('metric',): {
 
-                    "LIVESTREAMID": "liveStreamId",
-                    "EMITTEDAT": "emittedAt",
-                    "COUNTRY": "country",
-                    "DEVICETYPE": "deviceType",
-                    "OPERATINGSYSTEM": "operatingSystem",
-                    "BROWSER": "browser"
+                    "PLAY": "play",
+                    "START": "start",
+                    "END": "end",
+                    "IMPRESSION": "impression",
+                    "IMPRESSION-TIME": "impression-time",
+                    "WATCH-TIME": "watch-time"
+                },
+                ('aggregation',): {
+
+                    "COUNT": "count",
+                    "RATE": "rate",
+                    "TOTAL": "total",
+                    "AVERAGE": "average",
+                    "SUM": "sum"
                 },
             }
             openapi_types = {
+                'metric':
+                    (str,),
+                'aggregation':
+                    (str,),
                 '_from':
-                    (date,),
-                'dimension':
-                    (str,),
+                    (datetime,),
                 'to':
-                    (date,),
-                'filter':
-                    (str,),
-                'current_page':
-                    (int,),
-                'page_size':
-                    (int,),
+                    (datetime,),
+                'filter_by':
+                    (FilterBy2,),
                 'async_req': (bool,),
                 '_preload_content': (bool,),
                 '_request_timeout': (none_type, int, (int,), [int]),
                 '_return_http_data_only': (bool,)
             }
             attribute_map = {
+                'metric': 'metric',
+                'aggregation': 'aggregation',
                 '_from': 'from',
-                'dimension': 'dimension',
                 'to': 'to',
-                'filter': 'filter',
-                'current_page': 'currentPage',
-                'page_size': 'pageSize',
+                'filter_by': 'filterBy',
             }
             location_map = {
+                'metric': 'path',
+                'aggregation': 'path',
                 '_from': 'query',
-                'dimension': 'query',
                 'to': 'query',
-                'filter': 'query',
-                'current_page': 'query',
-                'page_size': 'query',
+                'filter_by': 'query',
             }
             collection_format_map = {
+                'filter_by': 'deepObject',
             }
 
             for key, value in kwargs.items():
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `get_live_streams_plays`" %
+                        " to method `get_aggregated_metrics`" %
                         (key, )
                     )
                 if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `get_live_streams_plays`" %
+                        " when calling `get_aggregated_metrics`" %
                         (key, )
                     )
 
@@ -185,13 +191,13 @@ class AnalyticsApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`get_live_streams_plays`" % (key, )
+                        "`get_aggregated_metrics`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             return self.api_client.call_api(
-                "/analytics/live-streams/plays",
+                "/data/metrics/{metric}/{aggregation}",
                 "GET",
                 params['path'],
                 params['query'],
@@ -199,35 +205,36 @@ class AnalyticsApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(AnalyticsPlaysResponse,),
+                response_type=(AnalyticsAggregatedMetricsResponse,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
                 _request_timeout=kwargs['_request_timeout'],
                 collection_formats=params['collection_format'])
 
-    def get_videos_plays(
+    def get_metrics_breakdown(
             self,
-            _from,
-            dimension,
+            metric,
+            breakdown,
             **kwargs
         ):
-            """Get play events for video  # noqa: E501
+            """Retrieve metrics in a breakdown of dimensions  # noqa: E501
 
-            Retrieve filtered analytics about the number of plays for your videos in a project.  # noqa: E501
+            Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_videos_plays(_from, dimension, async_req=True)
+            >>> thread = api.get_metrics_breakdown(metric, breakdown, async_req=True)
             >>> result = thread.get()
 
             Args:
-                _from (date): Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in `from`. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. 
-                dimension (str): Use this query parameter to define the dimension that you want analytics for. - `videoId`: Returns analytics based on the public video identifiers. - `emittedAt`: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in `from` and `to` is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - `deviceType`: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers during the play event. Response values include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers during the play event. Response values include `chrome`, `firefox`, `edge`, `opera`.
+                metric (str): Use this path parameter to select a metric that you want analytics for.  - `play` is the number of times your content has been played. - `play-rate` is the ratio that calculates the number of plays your content receives divided by its impressions. - `play-total` is the total number of times a specific content has been played. You can only use the `media-id` breakdown with this metric. - `start` is the number of times playback was started. - `end` is the number of times playback has ended with the content watch until the end. - `impression` is the number of times your content has been loaded and was ready for playback. 
+                breakdown (str): Use this path parameter to define a dimension for segmenting analytics data. You must use `kebab-case` for path parameters.  These are the available dimensions:  - `media-id`: Returns analytics based on the unique identifiers of a video or a live stream. - `media-type`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - `device-type`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operating-system`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. 
 
             Keyword Args:
-                to (date): Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a `to` date, the API returns analytics data starting from the `from` date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the `YYYY-MM-DD` format. . [optional]
-                filter (str): Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the `videoId:` prefix when specifying a video ID.. [optional]
+                _from (datetime): Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for `from`, the default assigned value is 1 day ago, based on the `to` parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: `2024-02-05T00:00:00+01:00` . [optional]
+                to (datetime): Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for `to`, the default assigned value is `now`. - The value for `to` is a non-inclusive value: the API returns data **before** the date-time that you set. . [optional]
+                filter_by (FilterBy2): Use this parameter to filter the API's response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for `filterBy`, the API returns the full dataset for your project. - The API only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.  These are the available breakdown dimensions:  - `mediaId`: Returns analytics based on the unique identifiers of a video or a live stream. - `mediaType`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`. - `deviceType`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. - `tag`: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata). . [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
                 _return_http_data_only (bool): response data without head status
@@ -242,7 +249,7 @@ class AnalyticsApi(_EndPoint):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                AnalyticsPlaysResponse
+                AnalyticsMetricsBreakdownResponse
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -258,17 +265,18 @@ class AnalyticsApi(_EndPoint):
             kwargs['_request_timeout'] = kwargs.get(
                 '_request_timeout', None
             )
-            kwargs['_from'] = \
-                _from
-            kwargs['dimension'] = \
-                dimension
+            kwargs['metric'] = \
+                metric
+            kwargs['breakdown'] = \
+                breakdown
 
             params_map = {
                 'all': [
+                    'metric',
+                    'breakdown',
                     '_from',
-                    'dimension',
                     'to',
-                    'filter',
+                    'filter_by',
                     'current_page',
                     'page_size',
                     'async_req',
@@ -277,14 +285,15 @@ class AnalyticsApi(_EndPoint):
                     '_return_http_data_only'
                 ],
                 'required': [
-                    '_from',
-                    'dimension',
+                    'metric',
+                    'breakdown',
                 ],
                 'nullable': [
                     '_request_timeout'
                 ],
                 'enum': [
-                    'dimension',
+                    'metric',
+                    'breakdown',
                 ],
                 'validation': [
                 ]
@@ -292,25 +301,37 @@ class AnalyticsApi(_EndPoint):
             validations = {
             }
             allowed_values = {
-                ('dimension',): {
+                ('metric',): {
 
-                    "VIDEOID": "videoId",
-                    "EMITTEDAT": "emittedAt",
+                    "PLAY": "play",
+                    "PLAY-RATE": "play-rate",
+                    "PLAY-TOTAL": "play-total",
+                    "START": "start",
+                    "END": "end",
+                    "IMPRESSION": "impression"
+                },
+                ('breakdown',): {
+
+                    "MEDIA-ID": "media-id",
+                    "MEDIA-TYPE": "media-type",
+                    "CONTINENT": "continent",
                     "COUNTRY": "country",
-                    "DEVICETYPE": "deviceType",
-                    "OPERATINGSYSTEM": "operatingSystem",
+                    "DEVICE-TYPE": "device-type",
+                    "OPERATING-SYSTEM": "operating-system",
                     "BROWSER": "browser"
                 },
             }
             openapi_types = {
+                'metric':
+                    (str,),
+                'breakdown':
+                    (str,),
                 '_from':
-                    (date,),
-                'dimension':
-                    (str,),
+                    (datetime,),
                 'to':
-                    (date,),
-                'filter':
-                    (str,),
+                    (datetime,),
+                'filter_by':
+                    (FilterBy2,),
                 'current_page':
                     (int,),
                 'page_size':
@@ -321,35 +342,38 @@ class AnalyticsApi(_EndPoint):
                 '_return_http_data_only': (bool,)
             }
             attribute_map = {
+                'metric': 'metric',
+                'breakdown': 'breakdown',
                 '_from': 'from',
-                'dimension': 'dimension',
                 'to': 'to',
-                'filter': 'filter',
+                'filter_by': 'filterBy',
                 'current_page': 'currentPage',
                 'page_size': 'pageSize',
             }
             location_map = {
+                'metric': 'path',
+                'breakdown': 'path',
                 '_from': 'query',
-                'dimension': 'query',
                 'to': 'query',
-                'filter': 'query',
+                'filter_by': 'query',
                 'current_page': 'query',
                 'page_size': 'query',
             }
             collection_format_map = {
+                'filter_by': 'deepObject',
             }
 
             for key, value in kwargs.items():
                 if key not in params_map['all']:
                     raise ApiTypeError(
                         "Got an unexpected parameter '%s'"
-                        " to method `get_videos_plays`" %
+                        " to method `get_metrics_breakdown`" %
                         (key, )
                     )
                 if (key not in params_map['nullable'] and value is None):
                     raise ApiValueError(
                         "Value may not be None for non-nullable parameter `%s`"
-                        " when calling `get_videos_plays`" %
+                        " when calling `get_metrics_breakdown`" %
                         (key, )
                     )
 
@@ -357,13 +381,13 @@ class AnalyticsApi(_EndPoint):
                 if key not in kwargs.keys():
                     raise ApiValueError(
                         "Missing the required parameter `%s` when calling "
-                        "`get_videos_plays`" % (key, )
+                        "`get_metrics_breakdown`" % (key, )
                     )
 
             self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
             params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
             return self.api_client.call_api(
-                "/analytics/videos/plays",
+                "/data/buckets/{metric}/{breakdown}",
                 "GET",
                 params['path'],
                 params['query'],
@@ -371,7 +395,187 @@ class AnalyticsApi(_EndPoint):
                 body=params['body'],
                 post_params=params['form'],
                 files=params['file'],
-                response_type=(AnalyticsPlaysResponse,),
+                response_type=(AnalyticsMetricsBreakdownResponse,),
+                async_req=kwargs['async_req'],
+                _return_http_data_only=kwargs['_return_http_data_only'],
+                _preload_content=kwargs['_preload_content'],
+                _request_timeout=kwargs['_request_timeout'],
+                collection_formats=params['collection_format'])
+
+    def get_metrics_over_time(
+            self,
+            metric,
+            **kwargs
+        ):
+            """Retrieve metrics over time  # noqa: E501
+
+            Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_metrics_over_time(metric, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                metric (str): Use this path parameter to select a metric that you want analytics for.  - `play` is the number of times your content has been played. - `play-rate` is the ratio that calculates the number of plays your content receives divided by its impressions. - `start` is the number of times playback was started. - `end` is the number of times playback has ended with the content watch until the end. - `impression` is the number of times your content has been loaded and was ready for playback. 
+
+            Keyword Args:
+                _from (datetime): Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for `from`, the default assigned value is 1 day ago, based on the `to` parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: `2024-02-05T00:00:00+01:00` . [optional]
+                to (datetime): Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for `to`, the default assigned value is `now`. - The value for `to` is a non-inclusive value: the API returns data **before** the date-time that you set. . [optional]
+                interval (str): Use this query parameter to define how granularity of the data. Possible values: `hour`, `day`.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for `interval`, and the period you set using the `from` and `to` parameters is less than or equals to 2 days, then the default assigned value is `hour`. Otherwise the API sets it to `day`. . [optional]
+                filter_by (FilterBy2): Use this parameter to filter the API's response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for `filterBy`, the API returns the full dataset for your project. - The API only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.  These are the available breakdown dimensions:  - `mediaId`: Returns analytics based on the unique identifiers of a video or a live stream. - `mediaType`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`. - `deviceType`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. - `tag`: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata). . [optional]
+                current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
+                page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                AnalyticsMetricsOverTimeResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['metric'] = \
+                metric
+
+            params_map = {
+                'all': [
+                    'metric',
+                    '_from',
+                    'to',
+                    'interval',
+                    'filter_by',
+                    'current_page',
+                    'page_size',
+                    'async_req',
+                    '_preload_content',
+                    '_request_timeout',
+                    '_return_http_data_only'
+                ],
+                'required': [
+                    'metric',
+                ],
+                'nullable': [
+                    '_request_timeout'
+                ],
+                'enum': [
+                    'metric',
+                    'interval',
+                ],
+                'validation': [
+                ]
+            }
+            validations = {
+            }
+            allowed_values = {
+                ('metric',): {
+
+                    "PLAY": "play",
+                    "PLAY-RATE": "play-rate",
+                    "START": "start",
+                    "END": "end",
+                    "IMPRESSION": "impression"
+                },
+                ('interval',): {
+
+                    "HOUR": "hour",
+                    "DAY": "day"
+                },
+            }
+            openapi_types = {
+                'metric':
+                    (str,),
+                '_from':
+                    (datetime,),
+                'to':
+                    (datetime,),
+                'interval':
+                    (str,),
+                'filter_by':
+                    (FilterBy2,),
+                'current_page':
+                    (int,),
+                'page_size':
+                    (int,),
+                'async_req': (bool,),
+                '_preload_content': (bool,),
+                '_request_timeout': (none_type, int, (int,), [int]),
+                '_return_http_data_only': (bool,)
+            }
+            attribute_map = {
+                'metric': 'metric',
+                '_from': 'from',
+                'to': 'to',
+                'interval': 'interval',
+                'filter_by': 'filterBy',
+                'current_page': 'currentPage',
+                'page_size': 'pageSize',
+            }
+            location_map = {
+                'metric': 'path',
+                '_from': 'query',
+                'to': 'query',
+                'interval': 'query',
+                'filter_by': 'query',
+                'current_page': 'query',
+                'page_size': 'query',
+            }
+            collection_format_map = {
+                'filter_by': 'deepObject',
+            }
+
+            for key, value in kwargs.items():
+                if key not in params_map['all']:
+                    raise ApiTypeError(
+                        "Got an unexpected parameter '%s'"
+                        " to method `get_metrics_over_time`" %
+                        (key, )
+                    )
+                if (key not in params_map['nullable'] and value is None):
+                    raise ApiValueError(
+                        "Value may not be None for non-nullable parameter `%s`"
+                        " when calling `get_metrics_over_time`" %
+                        (key, )
+                    )
+
+            for key in params_map['required']:
+                if key not in kwargs.keys():
+                    raise ApiValueError(
+                        "Missing the required parameter `%s` when calling "
+                        "`get_metrics_over_time`" % (key, )
+                    )
+
+            self._validate_inputs(kwargs, params_map, allowed_values, validations, openapi_types)
+            params = self._gather_params(kwargs, location_map, attribute_map, openapi_types, collection_format_map)
+            return self.api_client.call_api(
+                "/data/timeseries/{metric}",
+                "GET",
+                params['path'],
+                params['query'],
+                params['header'],
+                body=params['body'],
+                post_params=params['form'],
+                files=params['file'],
+                response_type=(AnalyticsMetricsOverTimeResponse,),
                 async_req=kwargs['async_req'],
                 _return_http_data_only=kwargs['_return_http_data_only'],
                 _preload_content=kwargs['_preload_content'],
