@@ -234,6 +234,8 @@ class AnalyticsApi(_EndPoint):
             Keyword Args:
                 _from (datetime): Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for `from`, the default assigned value is 1 day ago, based on the `to` parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: `2024-02-05T00:00:00+01:00` . [optional]
                 to (datetime): Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for `to`, the default assigned value is `now`. - The value for `to` is a non-inclusive value: the API returns data **before** the date-time that you set. . [optional]
+                sort_by (str): Use this parameter to choose which field the API will use to sort the analytics data.  These are the available fields to sort by:  - `metricValue`: Sorts the results based on the **metric** you selected in your request. - `dimensionValue`: Sorts the results based on the **dimension** you selected in your request. . [optional]
+                sort_order (str): Use this parameter to define the sort order of results.  These are the available sort orders:  - `asc`: Sorts the results in ascending order: `A to Z` and `0 to 9`. - `desc`: Sorts the results in descending order: `Z to A` and `9 to 0`. . [optional]
                 filter_by (FilterBy2): Use this parameter to filter the API's response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for `filterBy`, the API returns the full dataset for your project. - The API only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.  These are the available breakdown dimensions:  - `mediaId`: Returns analytics based on the unique identifiers of a video or a live stream. - `mediaType`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`. - `deviceType`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. - `tag`: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata). . [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
@@ -276,6 +278,8 @@ class AnalyticsApi(_EndPoint):
                     'breakdown',
                     '_from',
                     'to',
+                    'sort_by',
+                    'sort_order',
                     'filter_by',
                     'current_page',
                     'page_size',
@@ -294,6 +298,8 @@ class AnalyticsApi(_EndPoint):
                 'enum': [
                     'metric',
                     'breakdown',
+                    'sort_by',
+                    'sort_order',
                 ],
                 'validation': [
                 ]
@@ -320,6 +326,16 @@ class AnalyticsApi(_EndPoint):
                     "OPERATING-SYSTEM": "operating-system",
                     "BROWSER": "browser"
                 },
+                ('sort_by',): {
+
+                    "METRICVALUE": "metricValue",
+                    "DIMENSIONVALUE": "dimensionValue"
+                },
+                ('sort_order',): {
+
+                    "ASC": "asc",
+                    "DESC": "desc"
+                },
             }
             openapi_types = {
                 'metric':
@@ -330,6 +346,10 @@ class AnalyticsApi(_EndPoint):
                     (datetime,),
                 'to':
                     (datetime,),
+                'sort_by':
+                    (str,),
+                'sort_order':
+                    (str,),
                 'filter_by':
                     (FilterBy2,),
                 'current_page':
@@ -346,6 +366,8 @@ class AnalyticsApi(_EndPoint):
                 'breakdown': 'breakdown',
                 '_from': 'from',
                 'to': 'to',
+                'sort_by': 'sortBy',
+                'sort_order': 'sortOrder',
                 'filter_by': 'filterBy',
                 'current_page': 'currentPage',
                 'page_size': 'pageSize',
@@ -355,6 +377,8 @@ class AnalyticsApi(_EndPoint):
                 'breakdown': 'path',
                 '_from': 'query',
                 'to': 'query',
+                'sort_by': 'query',
+                'sort_order': 'query',
                 'filter_by': 'query',
                 'current_page': 'query',
                 'page_size': 'query',
@@ -423,6 +447,8 @@ class AnalyticsApi(_EndPoint):
                 _from (datetime): Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for `from`, the default assigned value is 1 day ago, based on the `to` parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: `2024-02-05T00:00:00+01:00` . [optional]
                 to (datetime): Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for `to`, the default assigned value is `now`. - The value for `to` is a non-inclusive value: the API returns data **before** the date-time that you set. . [optional]
                 interval (str): Use this query parameter to define how granularity of the data. Possible values: `hour`, `day`.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for `interval`, and the period you set using the `from` and `to` parameters is less than or equals to 2 days, then the default assigned value is `hour`. Otherwise the API sets it to `day`. . [optional]
+                sort_by (str): Use this parameter to choose which field the API will use to sort the analytics data.  These are the available fields to sort by:  - `metricValue`: Sorts the results based on the **metric** you selected in your request. - `emittedAt`: Sorts the results based on the **timestamp** of the event in ATOM date-time format. . [optional]
+                sort_order (str): Use this parameter to define the sort order of results.  These are the available sort orders:  - `asc`: Sorts the results in ascending order: `A to Z` and `0 to 9`. - `desc`: Sorts the results in descending order: `Z to A` and `9 to 0`. . [optional]
                 filter_by (FilterBy2): Use this parameter to filter the API's response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for `filterBy`, the API returns the full dataset for your project. - The API only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.  These are the available breakdown dimensions:  - `mediaId`: Returns analytics based on the unique identifiers of a video or a live stream. - `mediaType`: Returns analytics based on the type of content. Possible values: `video` and `live-stream`.  - `continent`: Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`.  - `country`: Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`. - `deviceType`: Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`. - `operatingSystem`: Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`. - `browser`: Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`. - `tag`: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata). . [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25
@@ -463,6 +489,8 @@ class AnalyticsApi(_EndPoint):
                     '_from',
                     'to',
                     'interval',
+                    'sort_by',
+                    'sort_order',
                     'filter_by',
                     'current_page',
                     'page_size',
@@ -480,6 +508,8 @@ class AnalyticsApi(_EndPoint):
                 'enum': [
                     'metric',
                     'interval',
+                    'sort_by',
+                    'sort_order',
                 ],
                 'validation': [
                 ]
@@ -500,6 +530,16 @@ class AnalyticsApi(_EndPoint):
                     "HOUR": "hour",
                     "DAY": "day"
                 },
+                ('sort_by',): {
+
+                    "METRICVALUE": "metricValue",
+                    "EMITTEDAT": "emittedAt"
+                },
+                ('sort_order',): {
+
+                    "ASC": "asc",
+                    "DESC": "desc"
+                },
             }
             openapi_types = {
                 'metric':
@@ -509,6 +549,10 @@ class AnalyticsApi(_EndPoint):
                 'to':
                     (datetime,),
                 'interval':
+                    (str,),
+                'sort_by':
+                    (str,),
+                'sort_order':
                     (str,),
                 'filter_by':
                     (FilterBy2,),
@@ -526,6 +570,8 @@ class AnalyticsApi(_EndPoint):
                 '_from': 'from',
                 'to': 'to',
                 'interval': 'interval',
+                'sort_by': 'sortBy',
+                'sort_order': 'sortOrder',
                 'filter_by': 'filterBy',
                 'current_page': 'currentPage',
                 'page_size': 'pageSize',
@@ -535,6 +581,8 @@ class AnalyticsApi(_EndPoint):
                 '_from': 'query',
                 'to': 'query',
                 'interval': 'query',
+                'sort_by': 'query',
+                'sort_order': 'query',
                 'filter_by': 'query',
                 'current_page': 'query',
                 'page_size': 'query',
