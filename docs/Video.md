@@ -4,13 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **video_id** | **str** | The unique identifier of the video object. | 
-**created_at** | **datetime** | When a video was created, presented in ISO-8601 format. | [optional] 
+**created_at** | **datetime** | When a video was created, presented in ATOM UTC format. | [optional] 
 **title** | **str** | The title of the video content.  | [optional] 
 **description** | **str** | A description for the video content.  | [optional] 
-**published_at** | **datetime** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. | [optional] 
-**updated_at** | **datetime** | The date and time the video was updated. Date and time are provided using ISO-8601 UTC format. | [optional] 
+**published_at** | **datetime** | The date and time the API created the video. Date and time are provided using ATOM UTC format. | [optional] 
+**updated_at** | **datetime** | The date and time the video was updated. Date and time are provided using ATOM UTC format. | [optional] 
+**discarded_at** | **datetime, none_type** | The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format. | [optional] 
+**deletes_at** | **datetime, none_type** | The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format. | [optional] 
+**discarded** | **bool** | Returns &#x60;true&#x60; for videos you discarded when you have the Video Restore feature enabled. Returns &#x60;false&#x60; for every other video. | [optional] 
 **tags** | **[str]** | One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.   | [optional] 
-**metadata** | [**[Metadata]**](Metadata.md) | Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.  | [optional] 
+**metadata** | [**[Metadata]**](Metadata.md) | Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  | [optional] 
 **source** | [**VideoSource**](VideoSource.md) |  | [optional] 
 **assets** | [**VideoAssets**](VideoAssets.md) |  | [optional] 
 **player_id** | **str** | The id of the player that will be applied on the video.  | [optional] 

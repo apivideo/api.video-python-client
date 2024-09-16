@@ -191,8 +191,8 @@ class PlayerTheme(ModelNormal):
             force_autoplay (bool): enable/disable player autoplay. Default: false. [optional]  # noqa: E501
             hide_title (bool): enable/disable title. Default: false. [optional]  # noqa: E501
             force_loop (bool): enable/disable looping. Default: false. [optional]  # noqa: E501
-            created_at (datetime): When the player was created, presented in ISO-8601 format.. [optional]  # noqa: E501
-            updated_at (datetime): When the player was last updated, presented in ISO-8601 format.. [optional]  # noqa: E501
+            created_at (datetime): When the player was created, presented in ATOM UTC format.. [optional]  # noqa: E501
+            updated_at (datetime): When the player was last updated, presented in ATOM UTC format.. [optional]  # noqa: E501
             assets (PlayerThemeAssets): [optional]  # noqa: E501
         """
 

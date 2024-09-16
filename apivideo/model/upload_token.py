@@ -141,8 +141,8 @@ class UploadToken(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             token (str): The unique identifier for the token you will use to authenticate an upload.. [optional]  # noqa: E501
             ttl (int): Time-to-live - how long the upload token is valid for.. [optional]  # noqa: E501
-            created_at (datetime): When the token was created, displayed in ISO-8601 format.. [optional]  # noqa: E501
-            expires_at (datetime, none_type): When the token expires, displayed in ISO-8601 format.. [optional]  # noqa: E501
+            created_at (datetime): When the token was created, displayed in ATOM UTC format.. [optional]  # noqa: E501
+            expires_at (datetime, none_type): When the token expires, displayed in ATOM UTC format.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

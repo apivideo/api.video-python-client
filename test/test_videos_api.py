@@ -17,6 +17,7 @@ from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.restreams_request_object import RestreamsRequestObject
 
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.discarded_video_update_payload import DiscardedVideoUpdatePayload
 from apivideo.model.not_found import NotFound
 from apivideo.model.too_many_requests import TooManyRequests
 from apivideo.model.video import Video
@@ -297,6 +298,31 @@ class TestVideosApi(MainTest):
                 self.api.pick_thumbnail(**kwargs)
 
     @responses.activate
+    def test_get_discarded(self):
+        """Test case for get_discarded
+
+        Retrieve a discarded video object  # noqa: E501
+        """
+        for file_name, json in self.load_json('videos', 'get_discarded'):
+            status = file_name.split("-")[0]
+            responses.reset()
+
+            kwargs = {
+                'video_id': "videoId_example",
+            }
+            url = '/discarded/videos/{video_id}'.format(**kwargs)
+
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.get_discarded(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.get_discarded(**kwargs)
+
+    @responses.activate
     def test_get_status(self):
         """Test case for get_status
 
@@ -320,4 +346,56 @@ class TestVideosApi(MainTest):
                     self.assertIsInstance(context.exception, NotFoundException)
             else:
                 self.api.get_status(**kwargs)
+
+    @responses.activate
+    def test_list_discarded(self):
+        """Test case for list_discarded
+
+        List all discarded video objects  # noqa: E501
+        """
+        for file_name, json in self.load_json('videos', 'list_discarded'):
+            status = file_name.split("-")[0]
+            responses.reset()
+
+            kwargs = {
+            }
+            url = '/discarded/videos'.format(**kwargs)
+
+            responses.add('GET', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.list_discarded(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.list_discarded(**kwargs)
+
+    @responses.activate
+    def test_update_discarded(self):
+        """Test case for update_discarded
+
+        Update a discarded video object  # noqa: E501
+        """
+        for file_name, json in self.load_json('videos', 'update_discarded'):
+            status = file_name.split("-")[0]
+            responses.reset()
+
+            kwargs = {
+                'video_id': "vi4k0jvEUuaTdRAEjQ4Jfrgz",
+                'discarded_video_update_payload': DiscardedVideoUpdatePayload(
+        discarded=True,
+    ),
+            }
+            url = '/discarded/videos/{video_id}'.format(**kwargs)
+
+            responses.add('PATCH', url, body=json, status=int(status), content_type='application/json')
+
+            if status[0] == '4':
+                with self.assertRaises(ApiException) as context:
+                    self.api.update_discarded(**kwargs)
+                if status == '404':
+                    self.assertIsInstance(context.exception, NotFoundException)
+            else:
+                self.api.update_discarded(**kwargs)
 

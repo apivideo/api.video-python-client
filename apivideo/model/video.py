@@ -86,6 +86,9 @@ class Video(ModelNormal):
             'description': (str,),  # noqa: E501
             'published_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
+            'discarded_at': (datetime, none_type,),  # noqa: E501
+            'deletes_at': (datetime, none_type,),  # noqa: E501
+            'discarded': (bool,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'metadata': ([Metadata],),  # noqa: E501
             'source': (VideoSource,),  # noqa: E501
@@ -108,6 +111,9 @@ class Video(ModelNormal):
         'description': 'description',  # noqa: E501
         'published_at': 'publishedAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
+        'discarded_at': 'discardedAt',  # noqa: E501
+        'deletes_at': 'deletesAt',  # noqa: E501
+        'discarded': 'discarded',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'source': 'source',  # noqa: E501
@@ -167,13 +173,16 @@ class Video(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            created_at (datetime): When a video was created, presented in ISO-8601 format.. [optional]  # noqa: E501
+            created_at (datetime): When a video was created, presented in ATOM UTC format.. [optional]  # noqa: E501
             title (str): The title of the video content. . [optional]  # noqa: E501
             description (str): A description for the video content. . [optional]  # noqa: E501
-            published_at (datetime): The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
-            updated_at (datetime): The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.. [optional]  # noqa: E501
+            published_at (datetime): The date and time the API created the video. Date and time are provided using ATOM UTC format.. [optional]  # noqa: E501
+            updated_at (datetime): The date and time the video was updated. Date and time are provided using ATOM UTC format.. [optional]  # noqa: E501
+            discarded_at (datetime, none_type): The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.. [optional]  # noqa: E501
+            deletes_at (datetime, none_type): The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.. [optional]  # noqa: E501
+            discarded (bool): Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.. [optional]  # noqa: E501
             tags ([str]): One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  . [optional]  # noqa: E501
-            metadata ([Metadata]): Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. . [optional]  # noqa: E501
+            metadata ([Metadata]): Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. . [optional]  # noqa: E501
             source (VideoSource): [optional]  # noqa: E501
             assets (VideoAssets): [optional]  # noqa: E501
             player_id (str): The id of the player that will be applied on the video. . [optional]  # noqa: E501

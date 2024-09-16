@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **force_autoplay** | **bool** | enable/disable player autoplay. Default: false | [optional] 
 **hide_title** | **bool** | enable/disable title. Default: false | [optional] 
 **force_loop** | **bool** | enable/disable looping. Default: false | [optional] 
-**created_at** | **datetime** | When the player was created, presented in ISO-8601 format. | [optional] 
-**updated_at** | **datetime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
+**created_at** | **datetime** | When the player was created, presented in ATOM UTC format. | [optional] 
+**updated_at** | **datetime** | When the player was last updated, presented in ATOM UTC format. | [optional] 
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

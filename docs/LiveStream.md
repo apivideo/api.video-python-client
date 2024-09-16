@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **assets** | [**LiveStreamAssets**](LiveStreamAssets.md) |  | [optional] 
 **player_id** | **str** | The unique identifier for the player. | [optional] 
 **broadcasting** | **bool** | Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not. | [optional] 
-**created_at** | **datetime** | When the player was created, presented in ISO-8601 format. | [optional] 
-**updated_at** | **datetime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
+**created_at** | **datetime** | When the player was created, presented in ATOM UTC format. | [optional] 
+**updated_at** | **datetime** | When the player was last updated, presented in ATOM UTC format. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

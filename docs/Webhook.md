@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **webhook_id** | **str** | Unique identifier of the webhook | [optional] 
-**created_at** | **datetime** | When an webhook was created, presented in ISO-8601 format. | [optional] 
+**created_at** | **datetime** | When an webhook was created, presented in ATOM UTC format. | [optional] 
 **events** | **[str]** | A list of events that will trigger the webhook. | [optional] 
 **url** | **str** | URL of the webhook | [optional] 
 
