@@ -132,7 +132,7 @@ class Watermark(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             watermark_id (str): The unique identifier of the watermark.. [optional]  # noqa: E501
-            created_at (datetime): When the watermark was created, presented in ISO-8601 format.. [optional]  # noqa: E501
+            created_at (datetime): When the watermark was created, presented in ATOM UTC format.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

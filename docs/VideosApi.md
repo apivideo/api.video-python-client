@@ -13,7 +13,10 @@ Method | HTTP request | Description
 [**list**](VideosApi.md#list) | **GET** /videos | List all video objects
 [**upload_thumbnail**](VideosApi.md#upload_thumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 [**pick_thumbnail**](VideosApi.md#pick_thumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**get_discarded**](VideosApi.md#get_discarded) | **GET** /discarded/videos/{videoId} | Retrieve a discarded video object
 [**get_status**](VideosApi.md#get_status) | **GET** /videos/{videoId}/status | Retrieve video status and details
+[**list_discarded**](VideosApi.md#list_discarded) | **GET** /discarded/videos | List all discarded video objects
+[**update_discarded**](VideosApi.md#update_discarded) | **PATCH** /discarded/videos/{videoId} | Update a discarded video object
 
 
 # **create**
@@ -463,7 +466,7 @@ Name | Type | Description  | Notes
 
 Delete a video object
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
 
 ### Example
 
@@ -540,7 +543,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
     tags = ["captions", "dialogue"] # [str] | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
     metadata = {
         "key": "key_example",
-    } # {str: (str,)} | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)
+    } # {str: (str,)} | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
     description = "New Zealand" # str | Retrieve video objects by `description`. (optional)
     live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | Retrieve video objects that were recorded from a live stream by `liveStreamId`. (optional)
     sort_by = "publishedAt" # str | Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)
@@ -565,7 +568,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **str**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | **[str]**| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | **{str: (str,)}**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional]
+ **metadata** | **{str: (str,)}**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **str**| Retrieve video objects by &#x60;description&#x60;. | [optional]
  **live_stream_id** | **str**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
  **sort_by** | **str**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional]
@@ -742,6 +745,65 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_discarded**
+> Video get_discarded(video_id)
+
+Retrieve a discarded video object
+
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+
+### Example
+
+```python
+import apivideo
+from apivideo.api import videos_api
+from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.not_found import NotFound
+from apivideo.model.video import Video
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = videos_api.VideosApi(api_client)
+    video_id = "videoId_example" # str | The unique identifier for the video you want details about.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Retrieve a discarded video object
+        api_response = api_instance.get_discarded(video_id)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling VideosApi->get_discarded: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **video_id** | **str**| The unique identifier for the video you want details about. |
+
+### Return type
+
+[**Video**](Video.md)
+
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_status**
 > VideoStatus get_status(video_id)
 
@@ -796,6 +858,152 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_discarded**
+> VideosListResponse list_discarded()
+
+List all discarded video objects
+
+This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+
+### Example
+
+```python
+import apivideo
+from apivideo.api import videos_api
+from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.videos_list_response import VideosListResponse
+from apivideo.model.bad_request import BadRequest
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = videos_api.VideosApi(api_client)
+    title = "My Video.mp4" # str | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)
+    tags = ["captions", "dialogue"] # [str] | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
+    metadata = {
+        "key": "key_example",
+    } # {str: (str,)} | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
+    description = "New Zealand" # str | Retrieve video objects by `description`. (optional)
+    live_stream_id = "li400mYKSgQ6xs7taUeSaEKr" # str | Retrieve video objects that were recorded from a live stream by `liveStreamId`. (optional)
+    sort_by = "publishedAt" # str | Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)
+    sort_order = "asc" # str | Use this parameter to sort results. `asc` is ascending and sorts from A to Z. `desc` is descending and sorts from Z to A. (optional)
+    current_page = 2 # int | Choose the number of search results to return per page. Minimum value: 1 (optional) if omitted the server will use the default value of 1
+    page_size = 30 # int | Results per page. Allowed values 1-100, default is 25. (optional) if omitted the server will use the default value of 25
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # List all discarded video objects
+        api_response = api_instance.list_discarded(title=title, tags=tags, metadata=metadata, description=description, live_stream_id=live_stream_id, sort_by=sort_by, sort_order=sort_order, current_page=current_page, page_size=page_size)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling VideosApi->list_discarded: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **title** | **str**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
+ **tags** | **[str]**| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
+ **metadata** | **{str: (str,)}**| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **description** | **str**| Retrieve video objects by &#x60;description&#x60;. | [optional]
+ **live_stream_id** | **str**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
+ **sort_by** | **str**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional]
+ **sort_order** | **str**| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. | [optional]
+ **current_page** | **int**| Choose the number of search results to return per page. Minimum value: 1 | [optional] if omitted the server will use the default value of 1
+ **page_size** | **int**| Results per page. Allowed values 1-100, default is 25. | [optional] if omitted the server will use the default value of 25
+
+### Return type
+
+[**VideosListResponse**](VideosListResponse.md)
+
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_discarded**
+> Video update_discarded(video_id, discarded_video_update_payload)
+
+Update a discarded video object
+
+Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+
+### Example
+
+```python
+import apivideo
+from apivideo.api import videos_api
+from apivideo.model.too_many_requests import TooManyRequests
+from apivideo.model.bad_request import BadRequest
+from apivideo.model.not_found import NotFound
+from apivideo.model.discarded_video_update_payload import DiscardedVideoUpdatePayload
+from apivideo.model.video import Video
+from pprint import pprint
+
+# Enter a context with an instance of the API client
+with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
+    # Create an instance of the API class
+    api_instance = videos_api.VideosApi(api_client)
+    video_id = "vi4k0jvEUuaTdRAEjQ4Jfrgz" # str | The video ID for the video you want to restore.
+    discarded_video_update_payload = DiscardedVideoUpdatePayload(
+        discarded=True,
+    ) # DiscardedVideoUpdatePayload | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update a discarded video object
+        api_response = api_instance.update_discarded(video_id, discarded_video_update_payload)
+        pprint(api_response)
+    except apivideo.ApiException as e:
+        print("Exception when calling VideosApi->update_discarded: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **video_id** | **str**| The video ID for the video you want to restore. |
+ **discarded_video_update_payload** | [**DiscardedVideoUpdatePayload**](DiscardedVideoUpdatePayload.md)|  |
+
+### Return type
+
+[**Video**](Video.md)
+
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 

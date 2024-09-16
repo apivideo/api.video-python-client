@@ -433,7 +433,7 @@ class UploadTokensApi(_EndPoint):
 
 
             Keyword Args:
-                sort_by (str): Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.. [optional]
+                sort_by (str): Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ATOM UTC format.. [optional]
                 sort_order (str): Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.. [optional]
                 current_page (int): Choose the number of search results to return per page. Minimum value: 1. [optional] if omitted the server will use the default value of 1
                 page_size (int): Results per page. Allowed values 1-100, default is 25.. [optional] if omitted the server will use the default value of 25

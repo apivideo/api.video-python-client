@@ -201,7 +201,10 @@ Method | HTTP request | Description
 [**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list) | **GET** `/videos` | List all video objects
 [**upload_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#upload_thumbnail) | **POST** `/videos/{videoId}/thumbnail` | Upload a thumbnail
 [**pick_thumbnail**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#pick_thumbnail) | **PATCH** `/videos/{videoId}/thumbnail` | Set a thumbnail
+[**get_discarded**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_discarded) | **GET** `/discarded/videos/{videoId}` | Retrieve a discarded video object
 [**get_status**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#get_status) | **GET** `/videos/{videoId}/status` | Retrieve video status and details
+[**list_discarded**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#list_discarded) | **GET** `/discarded/videos` | List all discarded video objects
+[**update_discarded**](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideosApi.md#update_discarded) | **PATCH** `/discarded/videos/{videoId}` | Update a discarded video object
 
 
 ### WatermarksApi
@@ -251,6 +254,7 @@ Method | HTTP request | Description
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-python-client/blob/main/docs/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersListResponse.md)
+ - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy2.md)

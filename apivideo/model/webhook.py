@@ -136,7 +136,7 @@ class Webhook(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             webhook_id (str): Unique identifier of the webhook. [optional]  # noqa: E501
-            created_at (datetime): When an webhook was created, presented in ISO-8601 format.. [optional]  # noqa: E501
+            created_at (datetime): When an webhook was created, presented in ATOM UTC format.. [optional]  # noqa: E501
             events ([str]): A list of events that will trigger the webhook.. [optional]  # noqa: E501
             url (str): URL of the webhook. [optional]  # noqa: E501
         """

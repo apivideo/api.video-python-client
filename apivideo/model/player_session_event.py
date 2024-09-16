@@ -138,7 +138,7 @@ class PlayerSessionEvent(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             type (str): Possible values are: ready, play, pause, resume, seek.backward, seek.forward, end. [optional]  # noqa: E501
-            emitted_at (datetime): When an event occurred, presented in ISO-8601 format.. [optional]  # noqa: E501
+            emitted_at (datetime): When an event occurred, presented in ATOM UTC format.. [optional]  # noqa: E501
             at (int): [optional]  # noqa: E501
             _from (int): [optional]  # noqa: E501
             to (int): [optional]  # noqa: E501
