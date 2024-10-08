@@ -70,6 +70,8 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
             height="initial",
             opacity="70%",
         ),
+        language="fr",
+        transcript=True,
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
@@ -421,6 +423,8 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
                 value="Green",
             ),
         ],
+        language="fr",
+        transcript=True,
     ) # VideoUpdatePayload | 
 
     # example passing only required values which don't have defaults set

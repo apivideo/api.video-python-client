@@ -59,6 +59,41 @@ class VideoCreationPayload(ModelNormal):
     """
 
     allowed_values = {
+        ('language',): {
+            'AR': "ar",
+            'CA': "ca",
+            'CS': "cs",
+            'DA': "da",
+            'DE': "de",
+            'EL': "el",
+            'EN': "en",
+            'ES': "es",
+            'FA': "fa",
+            'FI': "fi",
+            'FR': "fr",
+            'HE': "he",
+            'HI': "hi",
+            'HR': "hr",
+            'HU': "hu",
+            'IT': "it",
+            'JA': "ja",
+            'KO': "ko",
+            'ML': "ml",
+            'NL': "nl",
+            'NN': "nn",
+            'FALSE': "false",
+            'PL': "pl",
+            'PT': "pt",
+            'RU': "ru",
+            'SK': "sk",
+            'SL': "sl",
+            'TE': "te",
+            'TR': "tr",
+            'UK': "uk",
+            'UR': "ur",
+            'VI': "vi",
+            'ZH': "zh",
+        },
     }
 
     validations = {
@@ -91,6 +126,8 @@ class VideoCreationPayload(ModelNormal):
             'metadata': ([Metadata],),  # noqa: E501
             'clip': (VideoClip,),  # noqa: E501
             'watermark': (VideoWatermark,),  # noqa: E501
+            'language': (str,),  # noqa: E501
+            'transcript': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -110,6 +147,8 @@ class VideoCreationPayload(ModelNormal):
         'metadata': 'metadata',  # noqa: E501
         'clip': 'clip',  # noqa: E501
         'watermark': 'watermark',  # noqa: E501
+        'language': 'language',  # noqa: E501
+        'transcript': 'transcript',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -171,6 +210,8 @@ class VideoCreationPayload(ModelNormal):
             metadata ([Metadata]): A list of key value pairs that you use to provide metadata for your video.. [optional]  # noqa: E501
             clip (VideoClip): [optional]  # noqa: E501
             watermark (VideoWatermark): [optional]  # noqa: E501
+            language (str): Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.. [optional]  # noqa: E501
+            transcript (bool): Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
