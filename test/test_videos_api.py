@@ -80,6 +80,8 @@ class TestVideosApi(MainTest):
             height="initial",
             opacity="70%",
         ),
+        language="fr",
+        transcript=True,
     ),
             }
             url = '/videos'.format(**kwargs)
@@ -197,6 +199,8 @@ class TestVideosApi(MainTest):
                 value="Green",
             ),
         ],
+        language="fr",
+        transcript=True,
     ),
             }
             url = '/videos/{video_id}'.format(**kwargs)
