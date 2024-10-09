@@ -129,7 +129,7 @@ class CaptionsUpdatePayload(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            default (bool): [optional]  # noqa: E501
+            default (bool): Set this parameter to `true` to define a caption as the default for a video.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
