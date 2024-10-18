@@ -72,6 +72,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         ),
         language="fr",
         transcript=True,
+        transcript_summary=True,
     ) # VideoCreationPayload | video to create
 
     # example passing only required values which don't have defaults set
@@ -397,6 +398,7 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 ```python
 import apivideo
 from apivideo.api import videos_api
+from apivideo.model.conflict_error import ConflictError
 from apivideo.model.too_many_requests import TooManyRequests
 from apivideo.model.video_update_payload import VideoUpdatePayload
 from apivideo.model.bad_request import BadRequest
@@ -425,6 +427,7 @@ with apivideo.AuthenticatedApiClient(__API_KEY__) as api_client:
         ],
         language="fr",
         transcript=True,
+        transcript_summary=True,
     ) # VideoUpdatePayload | 
 
     # example passing only required values which don't have defaults set
@@ -461,6 +464,7 @@ Name | Type | Description  | Notes
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**409** | Conflict |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

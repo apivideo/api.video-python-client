@@ -19,6 +19,7 @@ from apivideo.api.captions_api import CaptionsApi
 from apivideo.api.chapters_api import ChaptersApi
 from apivideo.api.live_streams_api import LiveStreamsApi
 from apivideo.api.player_themes_api import PlayerThemesApi
+from apivideo.api.summaries_api import SummariesApi
 from apivideo.api.tags_api import TagsApi
 from apivideo.api.upload_tokens_api import UploadTokensApi
 from apivideo.api.videos_api import VideosApi
