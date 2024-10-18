@@ -22,6 +22,7 @@
     - [ChaptersApi](#)
     - [LiveStreamsApi](#)
     - [PlayerThemesApi](#)
+    - [SummariesApi](#)
     - [TagsApi](#)
     - [UploadTokensApi](#)
     - [VideosApi](#)
@@ -177,6 +178,18 @@ Method | HTTP request | Description
 [**delete_logo**](https://github.com/apivideo/api.video-python-client/blob/main/docs/PlayerThemesApi.md#delete_logo) | **DELETE** `/players/{playerId}/logo` | Delete logo
 
 
+### SummariesApi
+
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create**](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummariesApi.md#create) | **POST** `/summaries` | Generate video summary
+[**get**](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummariesApi.md#get) | **GET** `/summaries/{summaryId}/source` | Get summary details
+[**update**](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummariesApi.md#update) | **PATCH** `/summaries/{summaryId}/source` | Update summary details
+[**delete**](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummariesApi.md#delete) | **DELETE** `/summaries/{summaryId}` | Delete video summary
+[**list**](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummariesApi.md#list) | **GET** `/summaries` | List summaries
+
+
 ### TagsApi
 
 
@@ -263,10 +276,13 @@ Method | HTTP request | Description
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-python-client/blob/main/docs/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/ChaptersListResponse.md)
+ - [ConflictError](https://github.com/apivideo/api.video-python-client/blob/main/docs/ConflictError.md)
  - [DiscardedVideoUpdatePayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/DiscardedVideoUpdatePayload.md)
  - [FilterBy](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy.md)
  - [FilterBy1](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-python-client/blob/main/docs/FilterBy2.md)
+ - [GetSummaries](https://github.com/apivideo/api.video-python-client/blob/main/docs/GetSummaries.md)
+ - [InlineObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/InlineObject.md)
  - [Link](https://github.com/apivideo/api.video-python-client/blob/main/docs/Link.md)
  - [ListTagsResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/ListTagsResponse.md)
  - [ListTagsResponseData](https://github.com/apivideo/api.video-python-client/blob/main/docs/ListTagsResponseData.md)
@@ -290,10 +306,13 @@ Method | HTTP request | Description
  - [RefreshTokenPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/RefreshTokenPayload.md)
  - [RestreamsRequestObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/RestreamsRequestObject.md)
  - [RestreamsResponseObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/RestreamsResponseObject.md)
+ - [SummaryObject](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummaryObject.md)
+ - [SummarySource](https://github.com/apivideo/api.video-python-client/blob/main/docs/SummarySource.md)
  - [TokenCreationPayload](https://github.com/apivideo/api.video-python-client/blob/main/docs/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-python-client/blob/main/docs/TokenListResponse.md)
  - [TooManyRequests](https://github.com/apivideo/api.video-python-client/blob/main/docs/TooManyRequests.md)
  - [UnrecognizedRequestUrl](https://github.com/apivideo/api.video-python-client/blob/main/docs/UnrecognizedRequestUrl.md)
+ - [UpdateSummaryRequest](https://github.com/apivideo/api.video-python-client/blob/main/docs/UpdateSummaryRequest.md)
  - [UploadToken](https://github.com/apivideo/api.video-python-client/blob/main/docs/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-python-client/blob/main/docs/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-python-client/blob/main/docs/VideoAssets.md)

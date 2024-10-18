@@ -135,10 +135,10 @@ class NotFound(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            type (str): [optional]  # noqa: E501
-            title (str): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            status (int): [optional]  # noqa: E501
+            type (str): A link to the error documentation.. [optional]  # noqa: E501
+            title (str): A description of the error that occurred.. [optional]  # noqa: E501
+            name (str): The name of the parameter that caused the error.. [optional]  # noqa: E501
+            status (int): The HTTP status code.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

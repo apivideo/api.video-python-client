@@ -17,6 +17,7 @@ from apivideo.model.video_watermark import VideoWatermark
 from apivideo.model.restreams_request_object import RestreamsRequestObject
 
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.conflict_error import ConflictError
 from apivideo.model.discarded_video_update_payload import DiscardedVideoUpdatePayload
 from apivideo.model.not_found import NotFound
 from apivideo.model.too_many_requests import TooManyRequests
@@ -82,6 +83,7 @@ class TestVideosApi(MainTest):
         ),
         language="fr",
         transcript=True,
+        transcript_summary=True,
     ),
             }
             url = '/videos'.format(**kwargs)
@@ -201,6 +203,7 @@ class TestVideosApi(MainTest):
         ],
         language="fr",
         transcript=True,
+        transcript_summary=True,
     ),
             }
             url = '/videos/{video_id}'.format(**kwargs)

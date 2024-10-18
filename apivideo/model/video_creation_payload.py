@@ -129,6 +129,7 @@ class VideoCreationPayload(ModelNormal):
             'watermark': (VideoWatermark,),  # noqa: E501
             'language': (str, none_type,),  # noqa: E501
             'transcript': (bool,),  # noqa: E501
+            'transcript_summary': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -150,6 +151,7 @@ class VideoCreationPayload(ModelNormal):
         'watermark': 'watermark',  # noqa: E501
         'language': 'language',  # noqa: E501
         'transcript': 'transcript',  # noqa: E501
+        'transcript_summary': 'transcriptSummary',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -213,6 +215,7 @@ class VideoCreationPayload(ModelNormal):
             watermark (VideoWatermark): [optional]  # noqa: E501
             language (str, none_type): Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.. [optional]  # noqa: E501
             transcript (bool): Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.. [optional]  # noqa: E501
+            transcript_summary (bool): Use this parameter to enable summarization. We recommend using this parameter together with `transcript: true`.  - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
