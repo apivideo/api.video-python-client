@@ -26,6 +26,7 @@ from apivideo.model_utils import (  # noqa: F401
 )
 from apivideo.exceptions import ApiTypeError, ApiValueError
 from apivideo.model.bad_request import BadRequest
+from apivideo.model.conflict_error import ConflictError
 from apivideo.model.discarded_video_update_payload import DiscardedVideoUpdatePayload
 from apivideo.model.not_found import NotFound
 from apivideo.model.too_many_requests import TooManyRequests
